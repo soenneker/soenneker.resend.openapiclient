@@ -19,7 +19,7 @@ namespace Soenneker.Resend.OpenApiClient.Domains
     public partial class DomainsRequestBuilder : BaseRequestBuilder
     {
         /// <summary>Gets an item from the Soenneker.Resend.OpenApiClient.domains.item collection</summary>
-        /// <param name="position">Unique identifier of the item</param>
+        /// <param name="position">The ID of the domain.</param>
         /// <returns>A <see cref="global::Soenneker.Resend.OpenApiClient.Domains.Item.WithDomain_ItemRequestBuilder"/></returns>
         public global::Soenneker.Resend.OpenApiClient.Domains.Item.WithDomain_ItemRequestBuilder this[string position]
         {

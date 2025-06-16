@@ -19,7 +19,7 @@ namespace Soenneker.Resend.OpenApiClient.ApiKeys
     public partial class ApiKeysRequestBuilder : BaseRequestBuilder
     {
         /// <summary>Gets an item from the Soenneker.Resend.OpenApiClient.apiKeys.item collection</summary>
-        /// <param name="position">Unique identifier of the item</param>
+        /// <param name="position">The API key ID.</param>
         /// <returns>A <see cref="global::Soenneker.Resend.OpenApiClient.ApiKeys.Item.WithApi_key_ItemRequestBuilder"/></returns>
         public global::Soenneker.Resend.OpenApiClient.ApiKeys.Item.WithApi_key_ItemRequestBuilder this[string position]
         {

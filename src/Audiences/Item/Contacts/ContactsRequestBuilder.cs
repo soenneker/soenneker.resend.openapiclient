@@ -19,7 +19,7 @@ namespace Soenneker.Resend.OpenApiClient.Audiences.Item.Contacts
     public partial class ContactsRequestBuilder : BaseRequestBuilder
     {
         /// <summary>Gets an item from the Soenneker.Resend.OpenApiClient.audiences.item.contacts.item collection</summary>
-        /// <param name="position">Unique identifier of the item</param>
+        /// <param name="position">The Contact email.</param>
         /// <returns>A <see cref="global::Soenneker.Resend.OpenApiClient.Audiences.Item.Contacts.Item.EmailItemRequestBuilder"/></returns>
         public global::Soenneker.Resend.OpenApiClient.Audiences.Item.Contacts.Item.EmailItemRequestBuilder this[string position]
         {

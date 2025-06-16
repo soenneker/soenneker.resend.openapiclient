@@ -19,7 +19,7 @@ namespace Soenneker.Resend.OpenApiClient.Audiences
     public partial class AudiencesRequestBuilder : BaseRequestBuilder
     {
         /// <summary>Gets an item from the Soenneker.Resend.OpenApiClient.audiences.item collection</summary>
-        /// <param name="position">Unique identifier of the item</param>
+        /// <param name="position">The Audience ID.</param>
         /// <returns>A <see cref="global::Soenneker.Resend.OpenApiClient.Audiences.Item.Audience_ItemRequestBuilder"/></returns>
         public global::Soenneker.Resend.OpenApiClient.Audiences.Item.Audience_ItemRequestBuilder this[string position]
         {

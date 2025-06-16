@@ -25,7 +25,7 @@ namespace Soenneker.Resend.OpenApiClient.Emails
             get => new global::Soenneker.Resend.OpenApiClient.Emails.Batch.BatchRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>Gets an item from the Soenneker.Resend.OpenApiClient.emails.item collection</summary>
-        /// <param name="position">Unique identifier of the item</param>
+        /// <param name="position">The ID of the email.</param>
         /// <returns>A <see cref="global::Soenneker.Resend.OpenApiClient.Emails.Item.WithEmail_ItemRequestBuilder"/></returns>
         public global::Soenneker.Resend.OpenApiClient.Emails.Item.WithEmail_ItemRequestBuilder this[string position]
         {

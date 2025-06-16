@@ -19,7 +19,7 @@ namespace Soenneker.Resend.OpenApiClient.Broadcasts
     public partial class BroadcastsRequestBuilder : BaseRequestBuilder
     {
         /// <summary>Gets an item from the Soenneker.Resend.OpenApiClient.broadcasts.item collection</summary>
-        /// <param name="position">Unique identifier of the item</param>
+        /// <param name="position">The Broadcast ID.</param>
         /// <returns>A <see cref="global::Soenneker.Resend.OpenApiClient.Broadcasts.Item.BroadcastsItemRequestBuilder"/></returns>
         public global::Soenneker.Resend.OpenApiClient.Broadcasts.Item.BroadcastsItemRequestBuilder this[string position]
         {

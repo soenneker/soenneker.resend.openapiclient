@@ -52,7 +52,7 @@ namespace Soenneker.Resend.OpenApiClient.Audiences.Item.Contacts.Item
             return await RequestAdapter.SendAsync<global::Soenneker.Resend.OpenApiClient.Models.RemoveContactResponseSuccess>(requestInfo, global::Soenneker.Resend.OpenApiClient.Models.RemoveContactResponseSuccess.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Retrieve a single contact
+        /// Retrieves a single contact by email
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Resend.OpenApiClient.Models.GetContactResponseSuccess"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -70,23 +70,21 @@ namespace Soenneker.Resend.OpenApiClient.Audiences.Item.Contacts.Item
             return await RequestAdapter.SendAsync<global::Soenneker.Resend.OpenApiClient.Models.GetContactResponseSuccess>(requestInfo, global::Soenneker.Resend.OpenApiClient.Models.GetContactResponseSuccess.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Update a single contact
+        /// Update a single contact by email
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Resend.OpenApiClient.Models.UpdateContactResponseSuccess"/></returns>
-        /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Resend.OpenApiClient.Models.UpdateContactResponseSuccess?> PatchAsync(global::Soenneker.Resend.OpenApiClient.Models.UpdateContactOptions body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Resend.OpenApiClient.Models.UpdateContactResponseSuccess?> PatchAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Resend.OpenApiClient.Models.UpdateContactResponseSuccess> PatchAsync(global::Soenneker.Resend.OpenApiClient.Models.UpdateContactOptions body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Resend.OpenApiClient.Models.UpdateContactResponseSuccess> PatchAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
-            _ = body ?? throw new ArgumentNullException(nameof(body));
-            var requestInfo = ToPatchRequestInformation(body, requestConfiguration);
+            var requestInfo = ToPatchRequestInformation(requestConfiguration);
             return await RequestAdapter.SendAsync<global::Soenneker.Resend.OpenApiClient.Models.UpdateContactResponseSuccess>(requestInfo, global::Soenneker.Resend.OpenApiClient.Models.UpdateContactResponseSuccess.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
@@ -109,7 +107,7 @@ namespace Soenneker.Resend.OpenApiClient.Audiences.Item.Contacts.Item
             return requestInfo;
         }
         /// <summary>
-        /// Retrieve a single contact
+        /// Retrieves a single contact by email
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -128,25 +126,22 @@ namespace Soenneker.Resend.OpenApiClient.Audiences.Item.Contacts.Item
             return requestInfo;
         }
         /// <summary>
-        /// Update a single contact
+        /// Update a single contact by email
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
-        /// <param name="body">The request body</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPatchRequestInformation(global::Soenneker.Resend.OpenApiClient.Models.UpdateContactOptions body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToPatchRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToPatchRequestInformation(global::Soenneker.Resend.OpenApiClient.Models.UpdateContactOptions body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToPatchRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
         {
 #endif
-            _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = new RequestInformation(Method.PATCH, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
-            requestInfo.SetContentFromParsable(RequestAdapter, "application/json", body);
             return requestInfo;
         }
         /// <summary>
