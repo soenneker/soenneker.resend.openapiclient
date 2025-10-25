@@ -91,7 +91,7 @@ namespace Soenneker.Resend.OpenApiClient.Domains.Item
         public async Task<global::Soenneker.Resend.OpenApiClient.Models.UpdateDomainResponseSuccess> PatchAsync(global::Soenneker.Resend.OpenApiClient.Models.UpdateDomainOptions body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
-            _ = body ?? throw new ArgumentNullException(nameof(body));
+            if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPatchRequestInformation(body, requestConfiguration);
             return await RequestAdapter.SendAsync<global::Soenneker.Resend.OpenApiClient.Models.UpdateDomainResponseSuccess>(requestInfo, global::Soenneker.Resend.OpenApiClient.Models.UpdateDomainResponseSuccess.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
@@ -148,7 +148,7 @@ namespace Soenneker.Resend.OpenApiClient.Domains.Item
         public RequestInformation ToPatchRequestInformation(global::Soenneker.Resend.OpenApiClient.Models.UpdateDomainOptions body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
         {
 #endif
-            _ = body ?? throw new ArgumentNullException(nameof(body));
+            if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = new RequestInformation(Method.PATCH, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
