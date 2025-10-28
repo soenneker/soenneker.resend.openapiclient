@@ -94,6 +94,14 @@ namespace Soenneker.Resend.OpenApiClient.Models
 #else
         public List<global::Soenneker.Resend.OpenApiClient.Models.Tag> Tags { get; set; }
 #endif
+        /// <summary>The template property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Resend.OpenApiClient.Models.EmailTemplateInput? Template { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Resend.OpenApiClient.Models.EmailTemplateInput Template { get; set; }
+#endif
         /// <summary>The plain text version of the message.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -145,6 +153,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
                 { "scheduled_at", n => { ScheduledAt = n.GetStringValue(); } },
                 { "subject", n => { Subject = n.GetStringValue(); } },
                 { "tags", n => { Tags = n.GetCollectionOfObjectValues<global::Soenneker.Resend.OpenApiClient.Models.Tag>(global::Soenneker.Resend.OpenApiClient.Models.Tag.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "template", n => { Template = n.GetObjectValue<global::Soenneker.Resend.OpenApiClient.Models.EmailTemplateInput>(global::Soenneker.Resend.OpenApiClient.Models.EmailTemplateInput.CreateFromDiscriminatorValue); } },
                 { "text", n => { Text = n.GetStringValue(); } },
                 { "to", n => { To = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
             };
@@ -166,6 +175,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
             writer.WriteStringValue("scheduled_at", ScheduledAt);
             writer.WriteStringValue("subject", Subject);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Resend.OpenApiClient.Models.Tag>("tags", Tags);
+            writer.WriteObjectValue<global::Soenneker.Resend.OpenApiClient.Models.EmailTemplateInput>("template", Template);
             writer.WriteStringValue("text", Text);
             writer.WriteCollectionOfPrimitiveValues<string>("to", To);
             writer.WriteAdditionalData(AdditionalData);

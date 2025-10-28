@@ -3,25 +3,29 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.Resend.OpenApiClient.Models
 {
-    /// <summary>The region where emails will be sent from. Possible values are us-east-1 | eu-west-1 | sa-east-1 | ap-northeast-1</summary>
+    /// <summary>The status of the record.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public enum CreateDomainRequest_region
+    public enum DomainRecord_status
     {
-        [EnumMember(Value = "us-east-1")]
+        [EnumMember(Value = "pending")]
         #pragma warning disable CS1591
-        UsEast1,
+        Pending,
         #pragma warning restore CS1591
-        [EnumMember(Value = "eu-west-1")]
+        [EnumMember(Value = "verified")]
         #pragma warning disable CS1591
-        EuWest1,
+        Verified,
         #pragma warning restore CS1591
-        [EnumMember(Value = "sa-east-1")]
+        [EnumMember(Value = "failed")]
         #pragma warning disable CS1591
-        SaEast1,
+        Failed,
         #pragma warning restore CS1591
-        [EnumMember(Value = "ap-northeast-1")]
+        [EnumMember(Value = "temporary_failure")]
         #pragma warning disable CS1591
-        ApNortheast1,
+        Temporary_failure,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "not_started")]
+        #pragma warning disable CS1591
+        Not_started,
         #pragma warning restore CS1591
     }
 }

@@ -14,6 +14,8 @@ namespace Soenneker.Resend.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>The capability of the domain. Determines which DNS records are needed.</summary>
+        public global::Soenneker.Resend.OpenApiClient.Models.CreateDomainRequest_capability? Capability { get; set; }
         /// <summary>The name of the domain you want to create.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -22,7 +24,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
 #else
         public string Name { get; set; }
 #endif
-        /// <summary>The region where emails will be sent from. Possible values are us-east-1&apos; | &apos;eu-west-1&apos; | &apos;sa-east-1</summary>
+        /// <summary>The region where emails will be sent from. Possible values are us-east-1 | eu-west-1 | sa-east-1 | ap-northeast-1</summary>
         public global::Soenneker.Resend.OpenApiClient.Models.CreateDomainRequest_region? Region { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Resend.OpenApiClient.Models.CreateDomainRequest"/> and sets the default values.
@@ -30,6 +32,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
         public CreateDomainRequest()
         {
             AdditionalData = new Dictionary<string, object>();
+            Capability = global::Soenneker.Resend.OpenApiClient.Models.CreateDomainRequest_capability.Send;
             Region = global::Soenneker.Resend.OpenApiClient.Models.CreateDomainRequest_region.UsEast1;
         }
         /// <summary>
@@ -50,6 +53,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "capability", n => { Capability = n.GetEnumValue<global::Soenneker.Resend.OpenApiClient.Models.CreateDomainRequest_capability>(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "region", n => { Region = n.GetEnumValue<global::Soenneker.Resend.OpenApiClient.Models.CreateDomainRequest_region>(); } },
             };
@@ -61,6 +65,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteEnumValue<global::Soenneker.Resend.OpenApiClient.Models.CreateDomainRequest_capability>("capability", Capability);
             writer.WriteStringValue("name", Name);
             writer.WriteEnumValue<global::Soenneker.Resend.OpenApiClient.Models.CreateDomainRequest_region>("region", Region);
             writer.WriteAdditionalData(AdditionalData);

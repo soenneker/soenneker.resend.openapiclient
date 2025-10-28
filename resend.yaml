@@ -18,6 +18,12 @@ tags:
     description: Create and manage Audiences through the Resend API.
   - name: Contacts
     description: Create and manage Contacts through the Resend API.
+  - name: Receiving Emails
+    description: Retrieve and manage received emails and attachments through the Resend API.
+  - name: Webhooks
+    description: Create and manage Webhooks through the Resend API.
+  - name: Templates
+    description: Create and manage Templates through the Resend API.
 paths:
   /emails:
     post:
@@ -127,6 +133,193 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CreateBatchEmailsResponse'
+  /emails/{email_id}/attachments:
+    get:
+      tags:
+        - Emails
+      summary: Retrieve a list of attachments for a sent email
+      parameters:
+        - name: email_id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+          description: The ID of the email.
+        - name: limit
+          in: query
+          required: false
+          schema:
+            type: integer
+          description: Maximum number of attachments to return.
+        - name: after
+          in: query
+          required: false
+          schema:
+            type: string
+            format: uuid
+          description: Pagination cursor to fetch results after this attachment ID. Cannot be used with 'before'.
+        - name: before
+          in: query
+          required: false
+          schema:
+            type: string
+            format: uuid
+          description: Pagination cursor to fetch results before this attachment ID. Cannot be used with 'after'.
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListAttachmentsResponse'
+  /emails/{email_id}/attachments/{attachment_id}:
+    get:
+      tags:
+        - Emails
+      summary: Retrieve a single attachment for a sent email
+      parameters:
+        - name: email_id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+          description: The ID of the email.
+        - name: attachment_id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+          description: The ID of the attachment.
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RetrievedAttachment'
+  /emails/receiving:
+    get:
+      tags:
+        - Receiving Emails
+      summary: Retrieve a list of received emails
+      parameters:
+        - name: limit
+          in: query
+          required: false
+          schema:
+            type: integer
+          description: Maximum number of received emails to return.
+        - name: after
+          in: query
+          required: false
+          schema:
+            type: string
+            format: uuid
+          description: Pagination cursor to fetch results after this email ID. Cannot be used with 'before'.
+        - name: before
+          in: query
+          required: false
+          schema:
+            type: string
+            format: uuid
+          description: Pagination cursor to fetch results before this email ID. Cannot be used with 'after'.
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListReceivedEmailsResponse'
+  /emails/receiving/{email_id}:
+    get:
+      tags:
+        - Receiving Emails
+      summary: Retrieve a single received email
+      parameters:
+        - name: email_id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+          description: The ID of the received email.
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetReceivedEmailResponse'
+  /emails/receiving/{email_id}/attachments:
+    get:
+      tags:
+        - Receiving Emails
+      summary: Retrieve a list of attachments for a received email
+      parameters:
+        - name: email_id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+          description: The ID of the received email.
+        - name: limit
+          in: query
+          required: false
+          schema:
+            type: integer
+          description: Maximum number of attachments to return.
+        - name: after
+          in: query
+          required: false
+          schema:
+            type: string
+            format: uuid
+          description: Pagination cursor to fetch results after this attachment ID. Cannot be used with 'before'.
+        - name: before
+          in: query
+          required: false
+          schema:
+            type: string
+            format: uuid
+          description: Pagination cursor to fetch results before this attachment ID. Cannot be used with 'after'.
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListAttachmentsResponse'
+  /emails/receiving/{email_id}/attachments/{attachment_id}:
+    get:
+      tags:
+        - Receiving Emails
+      summary: Retrieve a single attachment for a received email
+      parameters:
+        - name: email_id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+          description: The ID of the received email.
+        - name: attachment_id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+          description: The ID of the attachment.
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RetrievedAttachment'
   /domains:
     post:
       tags:
@@ -277,6 +470,136 @@ paths:
       responses:
         '200':
           description: OK
+  /templates:
+    post:
+      tags:
+        - Templates
+      summary: Create a template
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateTemplateRequest'
+      responses:
+        '201':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateTemplateResponseSuccess'
+    get:
+      tags:
+        - Templates
+      summary: Retrieve a list of templates
+      parameters:
+        - $ref: '#/components/parameters/PaginationLimit'
+        - $ref: '#/components/parameters/PaginationAfter'
+        - $ref: '#/components/parameters/PaginationBefore'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListTemplatesResponseSuccess'
+  /templates/{id}:
+    get:
+      tags:
+        - Templates
+      summary: Retrieve a single template
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The Template ID or alias.
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Template'
+    patch:
+      tags:
+        - Templates
+      summary: Update an existing template
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The Template ID or alias.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateTemplateOptions'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdateTemplateResponseSuccess'
+    delete:
+      tags:
+        - Templates
+      summary: Remove an existing template
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The Template ID or alias.
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RemoveTemplateResponseSuccess'
+  /templates/{id}/publish:
+    post:
+      tags:
+        - Templates
+      summary: Publish a template
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The Template ID or alias.
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublishTemplateResponseSuccess'
+  /templates/{id}/duplicate:
+    post:
+      tags:
+        - Templates
+      summary: Duplicate a template
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The Template ID or alias.
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DuplicateTemplateResponseSuccess'
   /audiences:
     post:
       tags:
@@ -624,11 +947,147 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SendBroadcastResponseSuccess'
+  /webhooks:
+    post:
+      tags:
+        - Webhooks
+      summary: Create a new webhook
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateWebhookRequest'
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateWebhookResponse'
+    get:
+      tags:
+        - Webhooks
+      summary: Retrieve a list of webhooks
+      parameters:
+        - name: limit
+          in: query
+          required: false
+          schema:
+            type: integer
+          description: Maximum number of webhooks to return.
+        - name: after
+          in: query
+          required: false
+          schema:
+            type: string
+            format: uuid
+          description: Pagination cursor to fetch results after this webhook ID. Cannot be used with 'before'.
+        - name: before
+          in: query
+          required: false
+          schema:
+            type: string
+            format: uuid
+          description: Pagination cursor to fetch results before this webhook ID. Cannot be used with 'after'.
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListWebhooksResponse'
+  /webhooks/{webhook_id}:
+    get:
+      tags:
+        - Webhooks
+      summary: Retrieve a single webhook
+      parameters:
+        - name: webhook_id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+          description: The Webhook ID.
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetWebhookResponse'
+    patch:
+      tags:
+        - Webhooks
+      summary: Update an existing webhook
+      parameters:
+        - name: webhook_id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+          description: The Webhook ID.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateWebhookRequest'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdateWebhookResponse'
+    delete:
+      tags:
+        - Webhooks
+      summary: Remove an existing webhook
+      parameters:
+        - name: webhook_id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+          description: The Webhook ID.
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeleteWebhookResponse'
 components:
   securitySchemes:
     bearerAuth:
       type: http
       scheme: bearer
+  parameters:
+    PaginationLimit:
+      in: query
+      name: limit
+      required: false
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 100
+      description: Number of items to return.
+    PaginationAfter:
+      in: query
+      name: after
+      required: false
+      schema:
+        type: string
+      description: Return items after this cursor.
+    PaginationBefore:
+      in: query
+      name: before
+      required: false
+      schema:
+        type: string
+      description: Return items before this cursor.
   schemas:
     SendEmailRequest:
       type: object
@@ -663,6 +1122,9 @@ components:
         text:
           type: string
           description: The plain text version of the message.
+        template:
+          $ref: '#/components/schemas/EmailTemplateInput'
+          description: Use a published template to send the email. If provided, do not include html or text.
         headers:
           type: object
           description: Custom headers to add to the email.
@@ -702,6 +1164,24 @@ components:
         value:
           type: string
           description: The value of the email tag.It can only contain ASCII letters (a–z, A–Z), numbers (0–9), underscores (_), or dashes (-). It can contain no more than 256 characters.
+    EmailTemplateInput:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The id of the published email template.
+        variables:
+          type: object
+          additionalProperties:
+            oneOf:
+              - type: string
+              - type: number
+          description: Template variables object with key/value pairs.
+          example:
+            variableName: 'Sign up now'
+            variableName2: 123
+      required:
+        - id
     SendEmailResponse:
       type: object
       properties:
@@ -795,8 +1275,17 @@ components:
             - us-east-1
             - eu-west-1
             - sa-east-1
+            - ap-northeast-1
           default: us-east-1
-          description: The region where emails will be sent from. Possible values are us-east-1' | 'eu-west-1' | 'sa-east-1
+          description: The region where emails will be sent from. Possible values are us-east-1 | eu-west-1 | sa-east-1 | ap-northeast-1
+        capability:
+          type: string
+          enum:
+            - send
+            - receive
+            - send-and-receive
+          default: send
+          description: The capability of the domain. Determines which DNS records are needed.
     CreateDomainResponse:
       type: object
       properties:
@@ -820,6 +1309,13 @@ components:
         region:
           type: string
           description: The region where the domain is hosted.
+        capability:
+          type: string
+          enum:
+            - send
+            - receive
+            - send-and-receive
+          description: The capability of the domain.
     UpdateDomainOptions:
       type: object
       properties:
@@ -838,25 +1334,39 @@ components:
       properties:
         record:
           type: string
-          description: The type of record.
+          enum:
+            - SPF
+            - DKIM
+            - Receiving
+          description: The type of record (SPF for sending, DKIM for sending, Receiving for inbound emails).
         name:
           type: string
-          description: The name of the record.
+          description: The name of the DNS record.
         type:
           type: string
-          description: The type of record.
+          enum:
+            - MX
+            - TXT
+            - CNAME
+          description: The DNS record type.
         ttl:
           type: string
           description: The time to live for the record.
         status:
           type: string
+          enum:
+            - pending
+            - verified
+            - failed
+            - temporary_failure
+            - not_started
           description: The status of the record.
         value:
           type: string
           description: The value of the record.
         priority:
           type: integer
-          description: The priority of the record.
+          description: The priority of the record (only applicable for MX records).
     Domain:
       type: object
       properties:
@@ -885,6 +1395,14 @@ components:
           type: string
           description: The region where the domain is hosted.
           example: 'us-east-1'
+        capability:
+          type: string
+          enum:
+            - send
+            - receive
+            - send-and-receive
+          description: The capability of the domain.
+          example: 'send'
         records:
           type: array
           items:
@@ -931,6 +1449,14 @@ components:
           type: string
           description: The region where the domain is hosted.
           example: 'us-east-1'
+        capability:
+          type: string
+          enum:
+            - send
+            - receive
+            - send-and-receive
+          description: The capability of the domain.
+          example: 'send'
     UpdateDomainResponseSuccess:
       type: object
       properties:
@@ -1404,3 +1930,727 @@ components:
           type: string
           description: The ID of the broadcast.
           example: 78261eea-8f8b-4381-83c6-79fa7120f1cf
+    RetrievedAttachment:
+      type: object
+      properties:
+        object:
+          type: string
+          description: The type of object.
+          example: 'attachment'
+        id:
+          type: string
+          format: uuid
+          description: The ID of the attachment.
+          example: '660e8400-e29b-41d4-a716-446655440000'
+        filename:
+          type: string
+          description: The filename of the attachment.
+          example: 'document.pdf'
+        content_type:
+          type: string
+          description: The MIME type of the attachment.
+          example: 'application/pdf'
+        content_id:
+          type: string
+          description: The content ID for inline attachments.
+          example: 'img001'
+        content_disposition:
+          type: string
+          enum:
+            - inline
+            - attachment
+          description: How the attachment should be displayed.
+          example: 'attachment'
+        download_url:
+          type: string
+          description: Signed URL to download the attachment content.
+          example: 'https://cloudfront.example.com/path?Signature=...'
+        expires_at:
+          type: string
+          format: date-time
+          description: Timestamp when the download URL expires.
+          example: '2024-10-27T18:30:00.000Z'
+        size:
+          type: integer
+          description: Size of the attachment in bytes.
+          example: 2048
+    ListAttachmentsResponse:
+      type: object
+      properties:
+        object:
+          type: string
+          description: Type of the response object.
+          example: 'list'
+        has_more:
+          type: boolean
+          description: Indicates if there are more results available.
+          example: false
+        data:
+          type: array
+          description: Array containing attachment information.
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+                format: uuid
+                description: The ID of the attachment.
+                example: '660e8400-e29b-41d4-a716-446655440000'
+              filename:
+                type: string
+                description: The filename of the attachment.
+                example: 'document.pdf'
+              content_type:
+                type: string
+                description: The MIME type of the attachment.
+                example: 'application/pdf'
+              content_id:
+                type: string
+                description: The content ID for inline attachments.
+                example: 'img001'
+              content_disposition:
+                type: string
+                enum:
+                  - inline
+                  - attachment
+                description: How the attachment should be displayed.
+                example: 'attachment'
+              download_url:
+                type: string
+                description: Signed URL to download the attachment content.
+                example: 'https://cloudfront.example.com/path?Signature=...'
+              expires_at:
+                type: string
+                format: date-time
+                description: Timestamp when the download URL expires.
+                example: '2024-10-27T18:30:00.000Z'
+              size:
+                type: integer
+                description: Size of the attachment in bytes.
+                example: 2048
+    GetReceivedEmailResponse:
+      type: object
+      properties:
+        object:
+          type: string
+          description: The type of object.
+          example: 'email'
+        id:
+          type: string
+          format: uuid
+          description: The ID of the received email.
+          example: '550e8400-e29b-41d4-a716-446655440000'
+        to:
+          type: array
+          items:
+            type: string
+          description: The recipient email addresses.
+          example: ['delivered@resend.dev']
+        from:
+          type: string
+          description: The sender email address.
+          example: 'sender@example.com'
+        subject:
+          type: string
+          description: The email subject.
+          example: 'Hello World'
+        message_id:
+          type: string
+          description: The unique message ID from the email headers.
+          example: '<message-id@example.com>'
+        bcc:
+          type: array
+          items:
+            type: string
+          nullable: true
+          description: The BCC recipients.
+          example: []
+        cc:
+          type: array
+          items:
+            type: string
+          nullable: true
+          description: The CC recipients.
+          example: []
+        reply_to:
+          type: array
+          items:
+            type: string
+          nullable: true
+          description: The reply-to addresses.
+          example: []
+        html:
+          type: string
+          nullable: true
+          description: The HTML content of the email.
+          example: '<p>Email content</p>'
+        text:
+          type: string
+          nullable: true
+          description: The plain text content of the email.
+          example: 'Email content'
+        headers:
+          type: object
+          nullable: true
+          description: The email headers.
+          example: {'X-Custom-Header': 'value'}
+        created_at:
+          type: string
+          format: date-time
+          description: Timestamp when the email was received.
+          example: '2023-10-06:23:47:56.678Z'
+        attachments:
+          type: array
+          description: Array of attachments.
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+                format: uuid
+                description: The ID of the attachment.
+              filename:
+                type: string
+                description: The filename of the attachment.
+              content_type:
+                type: string
+                description: The MIME type of the attachment.
+              content_id:
+                type: string
+                description: The content ID for inline attachments.
+              content_disposition:
+                type: string
+                enum:
+                  - inline
+                  - attachment
+                description: How the attachment should be displayed.
+              size:
+                type: integer
+                description: Size of the attachment in bytes.
+    ListReceivedEmailsResponse:
+      type: object
+      properties:
+        object:
+          type: string
+          description: Type of the response object.
+          example: 'list'
+        has_more:
+          type: boolean
+          description: Indicates if there are more results available.
+          example: false
+        data:
+          type: array
+          description: Array containing received email information.
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+                format: uuid
+                description: The ID of the received email.
+                example: '550e8400-e29b-41d4-a716-446655440000'
+              to:
+                type: array
+                items:
+                  type: string
+                description: The recipient email addresses.
+                example: ['delivered@resend.dev']
+              from:
+                type: string
+                description: The sender email address.
+                example: 'sender@example.com'
+              subject:
+                type: string
+                nullable: true
+                description: The email subject.
+                example: 'Hello World'
+              message_id:
+                type: string
+                description: The unique message ID from the email headers.
+                example: '<message-id@example.com>'
+              bcc:
+                type: array
+                items:
+                  type: string
+                nullable: true
+                description: The BCC recipients.
+              cc:
+                type: array
+                items:
+                  type: string
+                nullable: true
+                description: The CC recipients.
+              reply_to:
+                type: array
+                items:
+                  type: string
+                nullable: true
+                description: The reply-to addresses.
+              created_at:
+                type: string
+                format: date-time
+                description: Timestamp when the email was received.
+                example: '2023-10-06T23:47:56.678Z'
+              attachments:
+                type: array
+                description: Array of attachments for this email.
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                      format: uuid
+                      description: The ID of the attachment.
+                    filename:
+                      type: string
+                      description: The filename of the attachment.
+                    content_type:
+                      type: string
+                      description: The MIME type of the attachment.
+                    content_id:
+                      type: string
+                      description: The content ID for inline attachments.
+                    content_disposition:
+                      type: string
+                      enum:
+                        - inline
+                        - attachment
+                      description: How the attachment should be displayed.
+                    size:
+                      type: integer
+                      description: Size of the attachment in bytes.
+    CreateWebhookRequest:
+      type: object
+      required:
+        - endpoint
+        - events
+      properties:
+        endpoint:
+          type: string
+          description: The URL where webhook events will be sent.
+          example: 'https://webhook.example.com/handler'
+        events:
+          type: array
+          items:
+            type: string
+          minItems: 1
+          description: Array of event types to subscribe to.
+          example: ['email.sent', 'email.delivered', 'email.bounced']
+    CreateWebhookResponse:
+      type: object
+      properties:
+        object:
+          type: string
+          description: The type of object.
+          example: 'webhook'
+        id:
+          type: string
+          format: uuid
+          description: The ID of the webhook.
+          example: '479e3145-dd38-476b-932c-529ceb705947'
+        signing_secret:
+          type: string
+          description: The secret key used to verify webhook payloads.
+          example: 'whsec_...'
+    GetWebhookResponse:
+      type: object
+      properties:
+        object:
+          type: string
+          description: The type of object.
+          example: 'webhook'
+        id:
+          type: string
+          format: uuid
+          description: The ID of the webhook.
+          example: '479e3145-dd38-476b-932c-529ceb705947'
+        endpoint:
+          type: string
+          description: The URL where webhook events are sent.
+          example: 'https://webhook.example.com/handler'
+        events:
+          type: array
+          items:
+            type: string
+          nullable: true
+          description: Array of event types subscribed to.
+          example: ['email.sent', 'email.delivered']
+        status:
+          type: string
+          description: The status of the webhook.
+          example: 'enabled'
+        created_at:
+          type: string
+          format: date-time
+          description: Timestamp indicating when the webhook was created.
+          example: '2023-10-06T23:47:56.678Z'
+        signing_secret:
+          type: string
+          description: The secret key used to verify webhook payloads.
+          example: 'whsec_...'
+    ListWebhooksResponse:
+      type: object
+      properties:
+        object:
+          type: string
+          description: Type of the response object.
+          example: 'list'
+        has_more:
+          type: boolean
+          description: Indicates if there are more results available.
+          example: false
+        data:
+          type: array
+          description: Array containing webhook information.
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+                format: uuid
+                description: The ID of the webhook.
+                example: '479e3145-dd38-476b-932c-529ceb705947'
+              endpoint:
+                type: string
+                description: The URL where webhook events are sent.
+                example: 'https://webhook.example.com/handler'
+              events:
+                type: array
+                items:
+                  type: string
+                nullable: true
+                description: Array of event types subscribed to.
+                example: ['email.sent']
+              status:
+                type: string
+                description: The status of the webhook.
+                example: 'enabled'
+              created_at:
+                type: string
+                format: date-time
+                description: Timestamp indicating when the webhook was created.
+                example: '2023-10-06T23:47:56.678Z'
+    UpdateWebhookRequest:
+      type: object
+      properties:
+        endpoint:
+          type: string
+          description: The URL where webhook events will be sent.
+          example: 'https://webhook.example.com/new-handler'
+        events:
+          type: array
+          items:
+            type: string
+          minItems: 1
+          description: Array of event types to subscribe to.
+          example: ['email.sent', 'email.delivered']
+        status:
+          type: string
+          enum:
+            - enabled
+            - disabled
+          description: The status of the webhook.
+          example: 'enabled'
+    UpdateWebhookResponse:
+      type: object
+      properties:
+        object:
+          type: string
+          description: The type of object.
+          example: 'webhook'
+        id:
+          type: string
+          format: uuid
+          description: The ID of the updated webhook.
+          example: '479e3145-dd38-476b-932c-529ceb705947'
+    DeleteWebhookResponse:
+      type: object
+      properties:
+        object:
+          type: string
+          description: The type of object.
+          example: 'webhook'
+        id:
+          type: string
+          format: uuid
+          description: The ID of the deleted webhook.
+          example: '479e3145-dd38-476b-932c-529ceb705947'
+        deleted:
+          type: boolean
+          description: Indicates whether the webhook was successfully deleted.
+          example: true
+    TemplateVariable:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The ID of the template variable.
+        key:
+          type: string
+          description: The key of the variable.
+        type:
+          type: string
+          description: The type of the variable.
+          enum: [string, number, boolean, object, list]
+        fallback_value:
+          description: The fallback value of the variable.
+          oneOf:
+            - type: string
+            - type: number
+            - type: boolean
+            - type: object
+            - type: array
+        created_at:
+          type: string
+          format: date-time
+          description: Timestamp indicating when the variable was created.
+        updated_at:
+          type: string
+          format: date-time
+          description: Timestamp indicating when the variable was last updated.
+      required:
+        - key
+        - type
+    TemplateVariableInput:
+      type: object
+      properties:
+        key:
+          type: string
+          description: The key of the variable.
+        type:
+          type: string
+          description: The type of the variable.
+          enum: [string, number, boolean, object, list]
+        fallback_value:
+          description: The fallback value of the variable.
+          oneOf:
+            - type: string
+            - type: number
+            - type: boolean
+            - type: object
+            - type: array
+      required:
+        - key
+        - type
+    Template:
+      type: object
+      properties:
+        object:
+          type: string
+          description: The type of object.
+          example: template
+        id:
+          type: string
+          description: The ID of the template.
+        current_version_id:
+          type: string
+          description: The ID of the current version of the template.
+        name:
+          type: string
+          description: The name of the template.
+        alias:
+          type: string
+          description: The alias of the template.
+        from:
+          type: string
+          description: Sender email address. To include a friendly name, use the format "Your Name <sender@domain.com>".
+        subject:
+          type: string
+          description: Email subject.
+        reply_to:
+          type: array
+          items:
+            type: string
+          nullable: true
+          description: Reply-to email addresses.
+        html:
+          type: string
+          description: The HTML version of the template.
+        text:
+          type: string
+          description: The plain text version of the template.
+        variables:
+          type: array
+          items:
+            $ref: '#/components/schemas/TemplateVariable'
+        created_at:
+          type: string
+          format: date-time
+          description: Timestamp indicating when the template was created.
+        updated_at:
+          type: string
+          format: date-time
+          description: Timestamp indicating when the template was last updated.
+        status:
+          type: string
+          description: The publication status of the template.
+          enum: [draft, published]
+        published_at:
+          type: string
+          format: date-time
+          description: Timestamp indicating when the template was published.
+          nullable: true
+        has_unpublished_versions:
+          type: boolean
+          description: Indicates whether the template has unpublished versions.
+    TemplateListItem:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The ID of the template.
+        name:
+          type: string
+          description: The name of the template.
+        status:
+          type: string
+          description: The publication status of the template.
+          enum: [draft, published]
+        published_at:
+          type: string
+          format: date-time
+          nullable: true
+          description: Timestamp indicating when the template was published.
+        created_at:
+          type: string
+          format: date-time
+          description: Timestamp indicating when the template was created.
+        updated_at:
+          type: string
+          format: date-time
+          description: Timestamp indicating when the template was last updated.
+        alias:
+          type: string
+          description: The alias of the template.
+    CreateTemplateRequest:
+      type: object
+      required:
+        - name
+        - html
+      properties:
+        name:
+          type: string
+          description: The name of the template.
+        alias:
+          type: string
+          description: The alias of the template.
+        from:
+          type: string
+          description: Sender email address. To include a friendly name, use the format "Your Name <sender@domain.com>".
+        subject:
+          type: string
+          description: Email subject.
+        reply_to:
+          type: array
+          items:
+            type: string
+          description: Reply-to email addresses.
+        html:
+          type: string
+          description: The HTML version of the template.
+        text:
+          type: string
+          description: The plain text version of the template.
+        variables:
+          type: array
+          items:
+            $ref: '#/components/schemas/TemplateVariableInput'
+    CreateTemplateResponseSuccess:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The ID of the template.
+        object:
+          type: string
+          description: The object type of the response.
+          example: template
+    ListTemplatesResponseSuccess:
+      type: object
+      properties:
+        object:
+          type: string
+          description: Type of the response object.
+          example: list
+        data:
+          type: array
+          description: Array containing templates information.
+          items:
+            $ref: '#/components/schemas/TemplateListItem'
+        has_more:
+          type: boolean
+          description: Indicates if there are more templates to retrieve.
+    UpdateTemplateOptions:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The name of the template.
+        alias:
+          type: string
+          description: The alias of the template.
+        from:
+          type: string
+          description: Sender email address. To include a friendly name, use the format "Your Name <sender@domain.com>".
+        subject:
+          type: string
+          description: Email subject.
+        reply_to:
+          type: array
+          items:
+            type: string
+          description: Reply-to email addresses.
+        html:
+          type: string
+          description: The HTML version of the template.
+        text:
+          type: string
+          description: The plain text version of the template.
+        variables:
+          type: array
+          items:
+            $ref: '#/components/schemas/TemplateVariableInput'
+    UpdateTemplateResponseSuccess:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The ID of the template.
+        object: 
+          type: string
+          description: The object type of the response.
+          example: template
+    RemoveTemplateResponseSuccess:
+      type: object
+      properties:
+        object:
+          type: string
+          description: Type of the response object.
+          example: template
+        id:
+          type: string
+          description: The ID of the template.
+        deleted:
+          type: boolean
+          description: Indicates whether the template was successfully deleted.
+          example: true
+    PublishTemplateResponseSuccess:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The ID of the template.
+        object:
+          type: string
+          description: The object type of the response.
+          example: template
+    DuplicateTemplateResponseSuccess:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The ID of the duplicated template.
+        object:
+          type: string
+          description: The object type of the response.
+          example: template

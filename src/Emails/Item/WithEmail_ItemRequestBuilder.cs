@@ -3,6 +3,7 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.Resend.OpenApiClient.Emails.Item.Attachments;
 using Soenneker.Resend.OpenApiClient.Emails.Item.Cancel;
 using Soenneker.Resend.OpenApiClient.Models;
 using System.Collections.Generic;
@@ -18,6 +19,11 @@ namespace Soenneker.Resend.OpenApiClient.Emails.Item
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class WithEmail_ItemRequestBuilder : BaseRequestBuilder
     {
+        /// <summary>The attachments property</summary>
+        public global::Soenneker.Resend.OpenApiClient.Emails.Item.Attachments.AttachmentsRequestBuilder Attachments
+        {
+            get => new global::Soenneker.Resend.OpenApiClient.Emails.Item.Attachments.AttachmentsRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The cancel property</summary>
         public global::Soenneker.Resend.OpenApiClient.Emails.Item.Cancel.CancelRequestBuilder Cancel
         {

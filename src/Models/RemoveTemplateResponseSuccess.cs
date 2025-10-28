@@ -9,16 +9,14 @@ namespace Soenneker.Resend.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class ListDomainsItem : IAdditionalDataHolder, IParsable
+    public partial class RemoveTemplateResponseSuccess : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The capability of the domain.</summary>
-        public global::Soenneker.Resend.OpenApiClient.Models.ListDomainsItem_capability? Capability { get; set; }
-        /// <summary>The date and time the domain was created.</summary>
-        public DateTimeOffset? CreatedAt { get; set; }
-        /// <summary>The ID of the domain.</summary>
+        /// <summary>Indicates whether the template was successfully deleted.</summary>
+        public bool? Deleted { get; set; }
+        /// <summary>The ID of the template.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Id { get; set; }
@@ -26,46 +24,30 @@ namespace Soenneker.Resend.OpenApiClient.Models
 #else
         public string Id { get; set; }
 #endif
-        /// <summary>The name of the domain.</summary>
+        /// <summary>Type of the response object.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Name { get; set; }
+        public string? Object { get; set; }
 #nullable restore
 #else
-        public string Name { get; set; }
-#endif
-        /// <summary>The region where the domain is hosted.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Region { get; set; }
-#nullable restore
-#else
-        public string Region { get; set; }
-#endif
-        /// <summary>The status of the domain.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Status { get; set; }
-#nullable restore
-#else
-        public string Status { get; set; }
+        public string Object { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.Resend.OpenApiClient.Models.ListDomainsItem"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.Resend.OpenApiClient.Models.RemoveTemplateResponseSuccess"/> and sets the default values.
         /// </summary>
-        public ListDomainsItem()
+        public RemoveTemplateResponseSuccess()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Resend.OpenApiClient.Models.ListDomainsItem"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Resend.OpenApiClient.Models.RemoveTemplateResponseSuccess"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.Resend.OpenApiClient.Models.ListDomainsItem CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.Resend.OpenApiClient.Models.RemoveTemplateResponseSuccess CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Resend.OpenApiClient.Models.ListDomainsItem();
+            return new global::Soenneker.Resend.OpenApiClient.Models.RemoveTemplateResponseSuccess();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -75,12 +57,9 @@ namespace Soenneker.Resend.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "capability", n => { Capability = n.GetEnumValue<global::Soenneker.Resend.OpenApiClient.Models.ListDomainsItem_capability>(); } },
-                { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
+                { "deleted", n => { Deleted = n.GetBoolValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
-                { "name", n => { Name = n.GetStringValue(); } },
-                { "region", n => { Region = n.GetStringValue(); } },
-                { "status", n => { Status = n.GetStringValue(); } },
+                { "object", n => { Object = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -90,12 +69,9 @@ namespace Soenneker.Resend.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<global::Soenneker.Resend.OpenApiClient.Models.ListDomainsItem_capability>("capability", Capability);
-            writer.WriteDateTimeOffsetValue("created_at", CreatedAt);
+            writer.WriteBoolValue("deleted", Deleted);
             writer.WriteStringValue("id", Id);
-            writer.WriteStringValue("name", Name);
-            writer.WriteStringValue("region", Region);
-            writer.WriteStringValue("status", Status);
+            writer.WriteStringValue("object", Object);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

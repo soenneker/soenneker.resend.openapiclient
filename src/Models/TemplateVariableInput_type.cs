@@ -3,25 +3,29 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.Resend.OpenApiClient.Models
 {
-    /// <summary>The region where emails will be sent from. Possible values are us-east-1 | eu-west-1 | sa-east-1 | ap-northeast-1</summary>
+    /// <summary>The type of the variable.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public enum CreateDomainRequest_region
+    public enum TemplateVariableInput_type
     {
-        [EnumMember(Value = "us-east-1")]
+        [EnumMember(Value = "string")]
         #pragma warning disable CS1591
-        UsEast1,
+        String,
         #pragma warning restore CS1591
-        [EnumMember(Value = "eu-west-1")]
+        [EnumMember(Value = "number")]
         #pragma warning disable CS1591
-        EuWest1,
+        Number,
         #pragma warning restore CS1591
-        [EnumMember(Value = "sa-east-1")]
+        [EnumMember(Value = "boolean")]
         #pragma warning disable CS1591
-        SaEast1,
+        Boolean,
         #pragma warning restore CS1591
-        [EnumMember(Value = "ap-northeast-1")]
+        [EnumMember(Value = "object")]
         #pragma warning disable CS1591
-        ApNortheast1,
+        Object,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "list")]
+        #pragma warning disable CS1591
+        List,
         #pragma warning restore CS1591
     }
 }

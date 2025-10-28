@@ -9,16 +9,22 @@ namespace Soenneker.Resend.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class ListDomainsItem : IAdditionalDataHolder, IParsable
+    public partial class TemplateListItem : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The capability of the domain.</summary>
-        public global::Soenneker.Resend.OpenApiClient.Models.ListDomainsItem_capability? Capability { get; set; }
-        /// <summary>The date and time the domain was created.</summary>
+        /// <summary>The alias of the template.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Alias { get; set; }
+#nullable restore
+#else
+        public string Alias { get; set; }
+#endif
+        /// <summary>Timestamp indicating when the template was created.</summary>
         public DateTimeOffset? CreatedAt { get; set; }
-        /// <summary>The ID of the domain.</summary>
+        /// <summary>The ID of the template.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Id { get; set; }
@@ -26,7 +32,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
 #else
         public string Id { get; set; }
 #endif
-        /// <summary>The name of the domain.</summary>
+        /// <summary>The name of the template.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Name { get; set; }
@@ -34,38 +40,28 @@ namespace Soenneker.Resend.OpenApiClient.Models
 #else
         public string Name { get; set; }
 #endif
-        /// <summary>The region where the domain is hosted.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Region { get; set; }
-#nullable restore
-#else
-        public string Region { get; set; }
-#endif
-        /// <summary>The status of the domain.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Status { get; set; }
-#nullable restore
-#else
-        public string Status { get; set; }
-#endif
+        /// <summary>Timestamp indicating when the template was published.</summary>
+        public DateTimeOffset? PublishedAt { get; set; }
+        /// <summary>The publication status of the template.</summary>
+        public global::Soenneker.Resend.OpenApiClient.Models.TemplateListItem_status? Status { get; set; }
+        /// <summary>Timestamp indicating when the template was last updated.</summary>
+        public DateTimeOffset? UpdatedAt { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.Resend.OpenApiClient.Models.ListDomainsItem"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.Resend.OpenApiClient.Models.TemplateListItem"/> and sets the default values.
         /// </summary>
-        public ListDomainsItem()
+        public TemplateListItem()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Resend.OpenApiClient.Models.ListDomainsItem"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Resend.OpenApiClient.Models.TemplateListItem"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.Resend.OpenApiClient.Models.ListDomainsItem CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.Resend.OpenApiClient.Models.TemplateListItem CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Resend.OpenApiClient.Models.ListDomainsItem();
+            return new global::Soenneker.Resend.OpenApiClient.Models.TemplateListItem();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -75,12 +71,13 @@ namespace Soenneker.Resend.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "capability", n => { Capability = n.GetEnumValue<global::Soenneker.Resend.OpenApiClient.Models.ListDomainsItem_capability>(); } },
+                { "alias", n => { Alias = n.GetStringValue(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
-                { "region", n => { Region = n.GetStringValue(); } },
-                { "status", n => { Status = n.GetStringValue(); } },
+                { "published_at", n => { PublishedAt = n.GetDateTimeOffsetValue(); } },
+                { "status", n => { Status = n.GetEnumValue<global::Soenneker.Resend.OpenApiClient.Models.TemplateListItem_status>(); } },
+                { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
             };
         }
         /// <summary>
@@ -90,12 +87,13 @@ namespace Soenneker.Resend.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<global::Soenneker.Resend.OpenApiClient.Models.ListDomainsItem_capability>("capability", Capability);
+            writer.WriteStringValue("alias", Alias);
             writer.WriteDateTimeOffsetValue("created_at", CreatedAt);
             writer.WriteStringValue("id", Id);
             writer.WriteStringValue("name", Name);
-            writer.WriteStringValue("region", Region);
-            writer.WriteStringValue("status", Status);
+            writer.WriteDateTimeOffsetValue("published_at", PublishedAt);
+            writer.WriteEnumValue<global::Soenneker.Resend.OpenApiClient.Models.TemplateListItem_status>("status", Status);
+            writer.WriteDateTimeOffsetValue("updated_at", UpdatedAt);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

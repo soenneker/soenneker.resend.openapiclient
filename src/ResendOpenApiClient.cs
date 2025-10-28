@@ -11,6 +11,8 @@ using Soenneker.Resend.OpenApiClient.Audiences;
 using Soenneker.Resend.OpenApiClient.Broadcasts;
 using Soenneker.Resend.OpenApiClient.Domains;
 using Soenneker.Resend.OpenApiClient.Emails;
+using Soenneker.Resend.OpenApiClient.Templates;
+using Soenneker.Resend.OpenApiClient.Webhooks;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
@@ -47,6 +49,16 @@ namespace Soenneker.Resend.OpenApiClient
         public global::Soenneker.Resend.OpenApiClient.Emails.EmailsRequestBuilder Emails
         {
             get => new global::Soenneker.Resend.OpenApiClient.Emails.EmailsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The templates property</summary>
+        public global::Soenneker.Resend.OpenApiClient.Templates.TemplatesRequestBuilder Templates
+        {
+            get => new global::Soenneker.Resend.OpenApiClient.Templates.TemplatesRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The webhooks property</summary>
+        public global::Soenneker.Resend.OpenApiClient.Webhooks.WebhooksRequestBuilder Webhooks
+        {
+            get => new global::Soenneker.Resend.OpenApiClient.Webhooks.WebhooksRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Resend.OpenApiClient.ResendOpenApiClient"/> and sets the default values.
