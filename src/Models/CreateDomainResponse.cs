@@ -14,8 +14,6 @@ namespace Soenneker.Resend.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The capability of the domain.</summary>
-        public global::Soenneker.Resend.OpenApiClient.Models.CreateDomainResponse_capability? Capability { get; set; }
         /// <summary>The date and time the domain was created.</summary>
         public DateTimeOffset? CreatedAt { get; set; }
         /// <summary>The ID of the domain.</summary>
@@ -83,7 +81,6 @@ namespace Soenneker.Resend.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "capability", n => { Capability = n.GetEnumValue<global::Soenneker.Resend.OpenApiClient.Models.CreateDomainResponse_capability>(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
@@ -99,7 +96,6 @@ namespace Soenneker.Resend.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<global::Soenneker.Resend.OpenApiClient.Models.CreateDomainResponse_capability>("capability", Capability);
             writer.WriteDateTimeOffsetValue("created_at", CreatedAt);
             writer.WriteStringValue("id", Id);
             writer.WriteStringValue("name", Name);
