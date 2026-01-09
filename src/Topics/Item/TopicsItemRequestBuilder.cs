@@ -3,100 +3,94 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
-using Soenneker.Resend.OpenApiClient.Broadcasts.Item.Send;
 using Soenneker.Resend.OpenApiClient.Models;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 using System.Threading;
 using System;
-namespace Soenneker.Resend.OpenApiClient.Broadcasts.Item
+namespace Soenneker.Resend.OpenApiClient.Topics.Item
 {
     /// <summary>
-    /// Builds and executes requests for operations under \broadcasts\{id}
+    /// Builds and executes requests for operations under \topics\{id}
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class BroadcastsItemRequestBuilder : BaseRequestBuilder
+    public partial class TopicsItemRequestBuilder : BaseRequestBuilder
     {
-        /// <summary>The send property</summary>
-        public global::Soenneker.Resend.OpenApiClient.Broadcasts.Item.Send.SendRequestBuilder Send
-        {
-            get => new global::Soenneker.Resend.OpenApiClient.Broadcasts.Item.Send.SendRequestBuilder(PathParameters, RequestAdapter);
-        }
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.Resend.OpenApiClient.Broadcasts.Item.BroadcastsItemRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.Resend.OpenApiClient.Topics.Item.TopicsItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public BroadcastsItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/broadcasts/{id}", pathParameters)
+        public TopicsItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/topics/{id}", pathParameters)
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.Resend.OpenApiClient.Broadcasts.Item.BroadcastsItemRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.Resend.OpenApiClient.Topics.Item.TopicsItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public BroadcastsItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/broadcasts/{id}", rawUrl)
+        public TopicsItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/topics/{id}", rawUrl)
         {
         }
         /// <summary>
-        /// Remove an existing broadcast that is in the draft status
+        /// Remove an existing topic
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Resend.OpenApiClient.Models.RemoveBroadcastResponseSuccess"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Resend.OpenApiClient.Models.RemoveTopicResponseSuccess"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Resend.OpenApiClient.Models.RemoveBroadcastResponseSuccess?> DeleteAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Resend.OpenApiClient.Models.RemoveTopicResponseSuccess?> DeleteAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Resend.OpenApiClient.Models.RemoveBroadcastResponseSuccess> DeleteAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Resend.OpenApiClient.Models.RemoveTopicResponseSuccess> DeleteAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToDeleteRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Resend.OpenApiClient.Models.RemoveBroadcastResponseSuccess>(requestInfo, global::Soenneker.Resend.OpenApiClient.Models.RemoveBroadcastResponseSuccess.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Resend.OpenApiClient.Models.RemoveTopicResponseSuccess>(requestInfo, global::Soenneker.Resend.OpenApiClient.Models.RemoveTopicResponseSuccess.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Retrieve a single broadcast
+        /// Retrieve a single topic
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Resend.OpenApiClient.Models.GetBroadcastResponseSuccess"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Resend.OpenApiClient.Models.GetTopicResponseSuccess"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Resend.OpenApiClient.Models.GetBroadcastResponseSuccess?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Resend.OpenApiClient.Models.GetTopicResponseSuccess?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Resend.OpenApiClient.Models.GetBroadcastResponseSuccess> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Resend.OpenApiClient.Models.GetTopicResponseSuccess> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Resend.OpenApiClient.Models.GetBroadcastResponseSuccess>(requestInfo, global::Soenneker.Resend.OpenApiClient.Models.GetBroadcastResponseSuccess.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Resend.OpenApiClient.Models.GetTopicResponseSuccess>(requestInfo, global::Soenneker.Resend.OpenApiClient.Models.GetTopicResponseSuccess.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Update an existing broadcast
+        /// Update an existing topic
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Resend.OpenApiClient.Models.UpdateBroadcastResponseSuccess"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Resend.OpenApiClient.Models.UpdateTopicResponseSuccess"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Resend.OpenApiClient.Models.UpdateBroadcastResponseSuccess?> PatchAsync(global::Soenneker.Resend.OpenApiClient.Models.UpdateBroadcastOptions body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Resend.OpenApiClient.Models.UpdateTopicResponseSuccess?> PatchAsync(global::Soenneker.Resend.OpenApiClient.Models.UpdateTopicOptions body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Resend.OpenApiClient.Models.UpdateBroadcastResponseSuccess> PatchAsync(global::Soenneker.Resend.OpenApiClient.Models.UpdateBroadcastOptions body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Resend.OpenApiClient.Models.UpdateTopicResponseSuccess> PatchAsync(global::Soenneker.Resend.OpenApiClient.Models.UpdateTopicOptions body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPatchRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Resend.OpenApiClient.Models.UpdateBroadcastResponseSuccess>(requestInfo, global::Soenneker.Resend.OpenApiClient.Models.UpdateBroadcastResponseSuccess.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Resend.OpenApiClient.Models.UpdateTopicResponseSuccess>(requestInfo, global::Soenneker.Resend.OpenApiClient.Models.UpdateTopicResponseSuccess.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Remove an existing broadcast that is in the draft status
+        /// Remove an existing topic
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -115,7 +109,7 @@ namespace Soenneker.Resend.OpenApiClient.Broadcasts.Item
             return requestInfo;
         }
         /// <summary>
-        /// Retrieve a single broadcast
+        /// Retrieve a single topic
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -134,18 +128,18 @@ namespace Soenneker.Resend.OpenApiClient.Broadcasts.Item
             return requestInfo;
         }
         /// <summary>
-        /// Update an existing broadcast
+        /// Update an existing topic
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPatchRequestInformation(global::Soenneker.Resend.OpenApiClient.Models.UpdateBroadcastOptions body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToPatchRequestInformation(global::Soenneker.Resend.OpenApiClient.Models.UpdateTopicOptions body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToPatchRequestInformation(global::Soenneker.Resend.OpenApiClient.Models.UpdateBroadcastOptions body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToPatchRequestInformation(global::Soenneker.Resend.OpenApiClient.Models.UpdateTopicOptions body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
         {
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
@@ -158,11 +152,11 @@ namespace Soenneker.Resend.OpenApiClient.Broadcasts.Item
         /// <summary>
         /// Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Resend.OpenApiClient.Broadcasts.Item.BroadcastsItemRequestBuilder"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Resend.OpenApiClient.Topics.Item.TopicsItemRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public global::Soenneker.Resend.OpenApiClient.Broadcasts.Item.BroadcastsItemRequestBuilder WithUrl(string rawUrl)
+        public global::Soenneker.Resend.OpenApiClient.Topics.Item.TopicsItemRequestBuilder WithUrl(string rawUrl)
         {
-            return new global::Soenneker.Resend.OpenApiClient.Broadcasts.Item.BroadcastsItemRequestBuilder(rawUrl, RequestAdapter);
+            return new global::Soenneker.Resend.OpenApiClient.Topics.Item.TopicsItemRequestBuilder(rawUrl, RequestAdapter);
         }
     }
 }

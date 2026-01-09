@@ -47,7 +47,7 @@ namespace Soenneker.Resend.OpenApiClient.Emails
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public EmailsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/emails", pathParameters)
+        public EmailsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/emails{?after*,before*,limit*}", pathParameters)
         {
         }
         /// <summary>
@@ -55,8 +55,26 @@ namespace Soenneker.Resend.OpenApiClient.Emails
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public EmailsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/emails", rawUrl)
+        public EmailsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/emails{?after*,before*,limit*}", rawUrl)
         {
+        }
+        /// <summary>
+        /// Retrieve a list of emails
+        /// </summary>
+        /// <returns>A <see cref="global::Soenneker.Resend.OpenApiClient.Models.ListEmailsResponse"/></returns>
+        /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
+        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public async Task<global::Soenneker.Resend.OpenApiClient.Models.ListEmailsResponse?> GetAsync(Action<RequestConfiguration<global::Soenneker.Resend.OpenApiClient.Emails.EmailsRequestBuilder.EmailsRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
+#nullable restore
+#else
+        public async Task<global::Soenneker.Resend.OpenApiClient.Models.ListEmailsResponse> GetAsync(Action<RequestConfiguration<global::Soenneker.Resend.OpenApiClient.Emails.EmailsRequestBuilder.EmailsRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
+#endif
+            var requestInfo = ToGetRequestInformation(requestConfiguration);
+            return await RequestAdapter.SendAsync<global::Soenneker.Resend.OpenApiClient.Models.ListEmailsResponse>(requestInfo, global::Soenneker.Resend.OpenApiClient.Models.ListEmailsResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Send an email
@@ -77,6 +95,25 @@ namespace Soenneker.Resend.OpenApiClient.Emails
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
             return await RequestAdapter.SendAsync<global::Soenneker.Resend.OpenApiClient.Models.SendEmailResponse>(requestInfo, global::Soenneker.Resend.OpenApiClient.Models.SendEmailResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+        }
+        /// <summary>
+        /// Retrieve a list of emails
+        /// </summary>
+        /// <returns>A <see cref="RequestInformation"/></returns>
+        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Soenneker.Resend.OpenApiClient.Emails.EmailsRequestBuilder.EmailsRequestBuilderGetQueryParameters>>? requestConfiguration = default)
+        {
+#nullable restore
+#else
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Soenneker.Resend.OpenApiClient.Emails.EmailsRequestBuilder.EmailsRequestBuilderGetQueryParameters>> requestConfiguration = default)
+        {
+#endif
+            var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
+            requestInfo.Configure(requestConfiguration);
+            requestInfo.Headers.TryAdd("Accept", "application/json");
+            return requestInfo;
         }
         /// <summary>
         /// Send an email
@@ -108,6 +145,36 @@ namespace Soenneker.Resend.OpenApiClient.Emails
         public global::Soenneker.Resend.OpenApiClient.Emails.EmailsRequestBuilder WithUrl(string rawUrl)
         {
             return new global::Soenneker.Resend.OpenApiClient.Emails.EmailsRequestBuilder(rawUrl, RequestAdapter);
+        }
+        /// <summary>
+        /// Retrieve a list of emails
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
+        public partial class EmailsRequestBuilderGetQueryParameters 
+        {
+            /// <summary>Return items after this cursor.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("after")]
+            public string? After { get; set; }
+#nullable restore
+#else
+            [QueryParameter("after")]
+            public string After { get; set; }
+#endif
+            /// <summary>Return items before this cursor.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("before")]
+            public string? Before { get; set; }
+#nullable restore
+#else
+            [QueryParameter("before")]
+            public string Before { get; set; }
+#endif
+            /// <summary>Number of items to return.</summary>
+            [QueryParameter("limit")]
+            public int? Limit { get; set; }
         }
     }
 }

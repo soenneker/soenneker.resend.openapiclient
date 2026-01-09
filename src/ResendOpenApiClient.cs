@@ -9,9 +9,12 @@ using Microsoft.Kiota.Serialization.Text;
 using Soenneker.Resend.OpenApiClient.ApiKeys;
 using Soenneker.Resend.OpenApiClient.Audiences;
 using Soenneker.Resend.OpenApiClient.Broadcasts;
+using Soenneker.Resend.OpenApiClient.ContactProperties;
 using Soenneker.Resend.OpenApiClient.Domains;
 using Soenneker.Resend.OpenApiClient.Emails;
+using Soenneker.Resend.OpenApiClient.Segments;
 using Soenneker.Resend.OpenApiClient.Templates;
+using Soenneker.Resend.OpenApiClient.Topics;
 using Soenneker.Resend.OpenApiClient.Webhooks;
 using System.Collections.Generic;
 using System.IO;
@@ -40,6 +43,11 @@ namespace Soenneker.Resend.OpenApiClient
         {
             get => new global::Soenneker.Resend.OpenApiClient.Broadcasts.BroadcastsRequestBuilder(PathParameters, RequestAdapter);
         }
+        /// <summary>The contactProperties property</summary>
+        public global::Soenneker.Resend.OpenApiClient.ContactProperties.ContactPropertiesRequestBuilder ContactProperties
+        {
+            get => new global::Soenneker.Resend.OpenApiClient.ContactProperties.ContactPropertiesRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The domains property</summary>
         public global::Soenneker.Resend.OpenApiClient.Domains.DomainsRequestBuilder Domains
         {
@@ -50,10 +58,20 @@ namespace Soenneker.Resend.OpenApiClient
         {
             get => new global::Soenneker.Resend.OpenApiClient.Emails.EmailsRequestBuilder(PathParameters, RequestAdapter);
         }
+        /// <summary>The segments property</summary>
+        public global::Soenneker.Resend.OpenApiClient.Segments.SegmentsRequestBuilder Segments
+        {
+            get => new global::Soenneker.Resend.OpenApiClient.Segments.SegmentsRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The templates property</summary>
         public global::Soenneker.Resend.OpenApiClient.Templates.TemplatesRequestBuilder Templates
         {
             get => new global::Soenneker.Resend.OpenApiClient.Templates.TemplatesRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The topics property</summary>
+        public global::Soenneker.Resend.OpenApiClient.Topics.TopicsRequestBuilder Topics
+        {
+            get => new global::Soenneker.Resend.OpenApiClient.Topics.TopicsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The webhooks property</summary>
         public global::Soenneker.Resend.OpenApiClient.Webhooks.WebhooksRequestBuilder Webhooks

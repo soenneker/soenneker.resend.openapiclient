@@ -3,6 +3,8 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.Resend.OpenApiClient.Audiences.Item.Contacts.Item.Segments;
+using Soenneker.Resend.OpenApiClient.Audiences.Item.Contacts.Item.Topics;
 using Soenneker.Resend.OpenApiClient.Models;
 using System.Collections.Generic;
 using System.IO;
@@ -17,6 +19,16 @@ namespace Soenneker.Resend.OpenApiClient.Audiences.Item.Contacts.Item
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class EmailItemRequestBuilder : BaseRequestBuilder
     {
+        /// <summary>The segments property</summary>
+        public global::Soenneker.Resend.OpenApiClient.Audiences.Item.Contacts.Item.Segments.SegmentsRequestBuilder Segments
+        {
+            get => new global::Soenneker.Resend.OpenApiClient.Audiences.Item.Contacts.Item.Segments.SegmentsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The topics property</summary>
+        public global::Soenneker.Resend.OpenApiClient.Audiences.Item.Contacts.Item.Topics.TopicsRequestBuilder Topics
+        {
+            get => new global::Soenneker.Resend.OpenApiClient.Audiences.Item.Contacts.Item.Topics.TopicsRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Resend.OpenApiClient.Audiences.Item.Contacts.Item.EmailItemRequestBuilder"/> and sets the default values.
         /// </summary>
