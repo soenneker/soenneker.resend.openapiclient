@@ -14,7 +14,8 @@ namespace Soenneker.Resend.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Unique identifier of the audience this broadcast will be sent to.</summary>
+        /// <summary>Use `segment_id` instead. Unique identifier of the segment this broadcast will be sent to.</summary>
+        [Obsolete("")]
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? AudienceId { get; set; }
@@ -62,6 +63,24 @@ namespace Soenneker.Resend.OpenApiClient.Models
 #else
         public List<string> ReplyTo { get; set; }
 #endif
+        /// <summary>Schedule time to send the broadcast. Can only be used if `send` is true.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? ScheduledAt { get; set; }
+#nullable restore
+#else
+        public string ScheduledAt { get; set; }
+#endif
+        /// <summary>Unique identifier of the segment this broadcast will be sent to.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? SegmentId { get; set; }
+#nullable restore
+#else
+        public string SegmentId { get; set; }
+#endif
+        /// <summary>Whether to send the broadcast immediately or keep it as a draft.</summary>
+        public bool? Send { get; set; }
         /// <summary>The subject line of the email.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -109,6 +128,9 @@ namespace Soenneker.Resend.OpenApiClient.Models
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "preview_text", n => { PreviewText = n.GetStringValue(); } },
                 { "reply_to", n => { ReplyTo = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
+                { "scheduled_at", n => { ScheduledAt = n.GetStringValue(); } },
+                { "segment_id", n => { SegmentId = n.GetStringValue(); } },
+                { "send", n => { Send = n.GetBoolValue(); } },
                 { "subject", n => { Subject = n.GetStringValue(); } },
                 { "text", n => { Text = n.GetStringValue(); } },
             };
@@ -126,6 +148,9 @@ namespace Soenneker.Resend.OpenApiClient.Models
             writer.WriteStringValue("name", Name);
             writer.WriteStringValue("preview_text", PreviewText);
             writer.WriteCollectionOfPrimitiveValues<string>("reply_to", ReplyTo);
+            writer.WriteStringValue("scheduled_at", ScheduledAt);
+            writer.WriteStringValue("segment_id", SegmentId);
+            writer.WriteBoolValue("send", Send);
             writer.WriteStringValue("subject", Subject);
             writer.WriteStringValue("text", Text);
             writer.WriteAdditionalData(AdditionalData);
