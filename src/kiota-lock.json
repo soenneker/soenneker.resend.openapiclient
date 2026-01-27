@@ -1,8 +1,8 @@
 {
-  "descriptionHash": "3D094F92870FDBF78E16E30154327BA950D1BDDCE218E93B4F60E82E6D19EBC1B36ABBC58EFEA7F01227BAC05B184AA1655AD02B5A1F560D541FCDB6D990AA66",
+  "descriptionHash": "27BA7DA064632F86B14F4ABE36BCABC18A31423E1128E7BA3BAD2E81A3E3F8EE488B06C88BFDEC8061C39418FEE84279B7BCC3D4BF48F8B6AF5EFEEEE5E1A059",
   "descriptionLocation": "../resend.yaml",
   "lockFileVersion": "1.0.0",
-  "kiotaVersion": "1.29.0",
+  "kiotaVersion": "1.30.0",
   "clientClassName": "ResendOpenApiClient",
   "typeAccessModifier": "Public",
   "clientNamespaceName": "Soenneker.Resend.OpenApiClient",
