@@ -25,18 +25,18 @@ namespace Soenneker.Resend.OpenApiClient.Models
         /// <summary>Bcc recipient email address. For multiple addresses, send as an array of strings.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Bcc { get; set; }
+        public global::Soenneker.Resend.OpenApiClient.Models.SendEmailRequest.SendEmailRequest_bcc? Bcc { get; set; }
 #nullable restore
 #else
-        public string Bcc { get; set; }
+        public global::Soenneker.Resend.OpenApiClient.Models.SendEmailRequest.SendEmailRequest_bcc Bcc { get; set; }
 #endif
         /// <summary>Cc recipient email address. For multiple addresses, send as an array of strings.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Cc { get; set; }
+        public global::Soenneker.Resend.OpenApiClient.Models.SendEmailRequest.SendEmailRequest_cc? Cc { get; set; }
 #nullable restore
 #else
-        public string Cc { get; set; }
+        public global::Soenneker.Resend.OpenApiClient.Models.SendEmailRequest.SendEmailRequest_cc Cc { get; set; }
 #endif
         /// <summary>Sender email address. To include a friendly name, use the format &quot;Your Name &lt;sender@domain.com&gt;&quot;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -65,10 +65,10 @@ namespace Soenneker.Resend.OpenApiClient.Models
         /// <summary>Reply-to email address. For multiple addresses, send as an array of strings.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ReplyTo { get; set; }
+        public global::Soenneker.Resend.OpenApiClient.Models.SendEmailRequest.SendEmailRequest_reply_to? ReplyTo { get; set; }
 #nullable restore
 #else
-        public string ReplyTo { get; set; }
+        public global::Soenneker.Resend.OpenApiClient.Models.SendEmailRequest.SendEmailRequest_reply_to ReplyTo { get; set; }
 #endif
         /// <summary>Schedule email to be sent later. The date should be in ISO 8601 format.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -110,13 +110,13 @@ namespace Soenneker.Resend.OpenApiClient.Models
 #else
         public string Text { get; set; }
 #endif
-        /// <summary>The to property</summary>
+        /// <summary>Recipient email address. For multiple addresses, send as an array of strings. Max 50.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? To { get; set; }
+        public global::Soenneker.Resend.OpenApiClient.Models.SendEmailRequest.SendEmailRequest_to? To { get; set; }
 #nullable restore
 #else
-        public List<string> To { get; set; }
+        public global::Soenneker.Resend.OpenApiClient.Models.SendEmailRequest.SendEmailRequest_to To { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Resend.OpenApiClient.Models.SendEmailRequest"/> and sets the default values.
@@ -144,18 +144,18 @@ namespace Soenneker.Resend.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "attachments", n => { Attachments = n.GetCollectionOfObjectValues<global::Soenneker.Resend.OpenApiClient.Models.Attachment>(global::Soenneker.Resend.OpenApiClient.Models.Attachment.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "bcc", n => { Bcc = n.GetStringValue(); } },
-                { "cc", n => { Cc = n.GetStringValue(); } },
+                { "bcc", n => { Bcc = n.GetObjectValue<global::Soenneker.Resend.OpenApiClient.Models.SendEmailRequest.SendEmailRequest_bcc>(global::Soenneker.Resend.OpenApiClient.Models.SendEmailRequest.SendEmailRequest_bcc.CreateFromDiscriminatorValue); } },
+                { "cc", n => { Cc = n.GetObjectValue<global::Soenneker.Resend.OpenApiClient.Models.SendEmailRequest.SendEmailRequest_cc>(global::Soenneker.Resend.OpenApiClient.Models.SendEmailRequest.SendEmailRequest_cc.CreateFromDiscriminatorValue); } },
                 { "from", n => { From = n.GetStringValue(); } },
                 { "headers", n => { Headers = n.GetObjectValue<global::Soenneker.Resend.OpenApiClient.Models.SendEmailRequest_headers>(global::Soenneker.Resend.OpenApiClient.Models.SendEmailRequest_headers.CreateFromDiscriminatorValue); } },
                 { "html", n => { Html = n.GetStringValue(); } },
-                { "reply_to", n => { ReplyTo = n.GetStringValue(); } },
+                { "reply_to", n => { ReplyTo = n.GetObjectValue<global::Soenneker.Resend.OpenApiClient.Models.SendEmailRequest.SendEmailRequest_reply_to>(global::Soenneker.Resend.OpenApiClient.Models.SendEmailRequest.SendEmailRequest_reply_to.CreateFromDiscriminatorValue); } },
                 { "scheduled_at", n => { ScheduledAt = n.GetStringValue(); } },
                 { "subject", n => { Subject = n.GetStringValue(); } },
                 { "tags", n => { Tags = n.GetCollectionOfObjectValues<global::Soenneker.Resend.OpenApiClient.Models.Tag>(global::Soenneker.Resend.OpenApiClient.Models.Tag.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "template", n => { Template = n.GetObjectValue<global::Soenneker.Resend.OpenApiClient.Models.EmailTemplateInput>(global::Soenneker.Resend.OpenApiClient.Models.EmailTemplateInput.CreateFromDiscriminatorValue); } },
                 { "text", n => { Text = n.GetStringValue(); } },
-                { "to", n => { To = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
+                { "to", n => { To = n.GetObjectValue<global::Soenneker.Resend.OpenApiClient.Models.SendEmailRequest.SendEmailRequest_to>(global::Soenneker.Resend.OpenApiClient.Models.SendEmailRequest.SendEmailRequest_to.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -166,19 +166,287 @@ namespace Soenneker.Resend.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfObjectValues<global::Soenneker.Resend.OpenApiClient.Models.Attachment>("attachments", Attachments);
-            writer.WriteStringValue("bcc", Bcc);
-            writer.WriteStringValue("cc", Cc);
+            writer.WriteObjectValue<global::Soenneker.Resend.OpenApiClient.Models.SendEmailRequest.SendEmailRequest_bcc>("bcc", Bcc);
+            writer.WriteObjectValue<global::Soenneker.Resend.OpenApiClient.Models.SendEmailRequest.SendEmailRequest_cc>("cc", Cc);
             writer.WriteStringValue("from", From);
             writer.WriteObjectValue<global::Soenneker.Resend.OpenApiClient.Models.SendEmailRequest_headers>("headers", Headers);
             writer.WriteStringValue("html", Html);
-            writer.WriteStringValue("reply_to", ReplyTo);
+            writer.WriteObjectValue<global::Soenneker.Resend.OpenApiClient.Models.SendEmailRequest.SendEmailRequest_reply_to>("reply_to", ReplyTo);
             writer.WriteStringValue("scheduled_at", ScheduledAt);
             writer.WriteStringValue("subject", Subject);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Resend.OpenApiClient.Models.Tag>("tags", Tags);
             writer.WriteObjectValue<global::Soenneker.Resend.OpenApiClient.Models.EmailTemplateInput>("template", Template);
             writer.WriteStringValue("text", Text);
-            writer.WriteCollectionOfPrimitiveValues<string>("to", To);
+            writer.WriteObjectValue<global::Soenneker.Resend.OpenApiClient.Models.SendEmailRequest.SendEmailRequest_to>("to", To);
             writer.WriteAdditionalData(AdditionalData);
+        }
+        /// <summary>
+        /// Composed type wrapper for classes <see cref="string"/>, List&lt;string&gt;
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
+        public partial class SendEmailRequest_bcc : IComposedTypeWrapper, IParsable
+        {
+            /// <summary>Composed type representation for type <see cref="string"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            public string? SendEmailRequestBccString { get; set; }
+#nullable restore
+#else
+            public string SendEmailRequestBccString { get; set; }
+#endif
+            /// <summary>Composed type representation for type List&lt;string&gt;</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            public List<string>? String { get; set; }
+#nullable restore
+#else
+            public List<string> String { get; set; }
+#endif
+            /// <summary>
+            /// Creates a new instance of the appropriate class based on discriminator value
+            /// </summary>
+            /// <returns>A <see cref="global::Soenneker.Resend.OpenApiClient.Models.SendEmailRequest.SendEmailRequest_bcc"/></returns>
+            /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
+            public static global::Soenneker.Resend.OpenApiClient.Models.SendEmailRequest.SendEmailRequest_bcc CreateFromDiscriminatorValue(IParseNode parseNode)
+            {
+                if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
+                var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
+                var result = new global::Soenneker.Resend.OpenApiClient.Models.SendEmailRequest.SendEmailRequest_bcc();
+                if(parseNode.GetStringValue() is string sendEmailRequestBccStringValue)
+                {
+                    result.SendEmailRequestBccString = sendEmailRequestBccStringValue;
+                }
+                else if(parseNode.GetCollectionOfPrimitiveValues<string>()?.AsList() is List<string> stringValue)
+                {
+                    result.String = stringValue;
+                }
+                return result;
+            }
+            /// <summary>
+            /// The deserialization information for the current model
+            /// </summary>
+            /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
+            public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
+            {
+                return new Dictionary<string, Action<IParseNode>>();
+            }
+            /// <summary>
+            /// Serializes information the current object
+            /// </summary>
+            /// <param name="writer">Serialization writer to use to serialize this model</param>
+            public virtual void Serialize(ISerializationWriter writer)
+            {
+                if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+                if(SendEmailRequestBccString != null)
+                {
+                    writer.WriteStringValue(null, SendEmailRequestBccString);
+                }
+                else if(String != null)
+                {
+                    writer.WriteCollectionOfPrimitiveValues<string>(null, String);
+                }
+            }
+        }
+        /// <summary>
+        /// Composed type wrapper for classes <see cref="string"/>, List&lt;string&gt;
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
+        public partial class SendEmailRequest_cc : IComposedTypeWrapper, IParsable
+        {
+            /// <summary>Composed type representation for type <see cref="string"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            public string? SendEmailRequestCcString { get; set; }
+#nullable restore
+#else
+            public string SendEmailRequestCcString { get; set; }
+#endif
+            /// <summary>Composed type representation for type List&lt;string&gt;</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            public List<string>? String { get; set; }
+#nullable restore
+#else
+            public List<string> String { get; set; }
+#endif
+            /// <summary>
+            /// Creates a new instance of the appropriate class based on discriminator value
+            /// </summary>
+            /// <returns>A <see cref="global::Soenneker.Resend.OpenApiClient.Models.SendEmailRequest.SendEmailRequest_cc"/></returns>
+            /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
+            public static global::Soenneker.Resend.OpenApiClient.Models.SendEmailRequest.SendEmailRequest_cc CreateFromDiscriminatorValue(IParseNode parseNode)
+            {
+                if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
+                var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
+                var result = new global::Soenneker.Resend.OpenApiClient.Models.SendEmailRequest.SendEmailRequest_cc();
+                if(parseNode.GetStringValue() is string sendEmailRequestCcStringValue)
+                {
+                    result.SendEmailRequestCcString = sendEmailRequestCcStringValue;
+                }
+                else if(parseNode.GetCollectionOfPrimitiveValues<string>()?.AsList() is List<string> stringValue)
+                {
+                    result.String = stringValue;
+                }
+                return result;
+            }
+            /// <summary>
+            /// The deserialization information for the current model
+            /// </summary>
+            /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
+            public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
+            {
+                return new Dictionary<string, Action<IParseNode>>();
+            }
+            /// <summary>
+            /// Serializes information the current object
+            /// </summary>
+            /// <param name="writer">Serialization writer to use to serialize this model</param>
+            public virtual void Serialize(ISerializationWriter writer)
+            {
+                if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+                if(SendEmailRequestCcString != null)
+                {
+                    writer.WriteStringValue(null, SendEmailRequestCcString);
+                }
+                else if(String != null)
+                {
+                    writer.WriteCollectionOfPrimitiveValues<string>(null, String);
+                }
+            }
+        }
+        /// <summary>
+        /// Composed type wrapper for classes <see cref="string"/>, List&lt;string&gt;
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
+        public partial class SendEmailRequest_reply_to : IComposedTypeWrapper, IParsable
+        {
+            /// <summary>Composed type representation for type <see cref="string"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            public string? SendEmailRequestReplyToString { get; set; }
+#nullable restore
+#else
+            public string SendEmailRequestReplyToString { get; set; }
+#endif
+            /// <summary>Composed type representation for type List&lt;string&gt;</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            public List<string>? String { get; set; }
+#nullable restore
+#else
+            public List<string> String { get; set; }
+#endif
+            /// <summary>
+            /// Creates a new instance of the appropriate class based on discriminator value
+            /// </summary>
+            /// <returns>A <see cref="global::Soenneker.Resend.OpenApiClient.Models.SendEmailRequest.SendEmailRequest_reply_to"/></returns>
+            /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
+            public static global::Soenneker.Resend.OpenApiClient.Models.SendEmailRequest.SendEmailRequest_reply_to CreateFromDiscriminatorValue(IParseNode parseNode)
+            {
+                if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
+                var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
+                var result = new global::Soenneker.Resend.OpenApiClient.Models.SendEmailRequest.SendEmailRequest_reply_to();
+                if(parseNode.GetStringValue() is string sendEmailRequestReplyToStringValue)
+                {
+                    result.SendEmailRequestReplyToString = sendEmailRequestReplyToStringValue;
+                }
+                else if(parseNode.GetCollectionOfPrimitiveValues<string>()?.AsList() is List<string> stringValue)
+                {
+                    result.String = stringValue;
+                }
+                return result;
+            }
+            /// <summary>
+            /// The deserialization information for the current model
+            /// </summary>
+            /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
+            public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
+            {
+                return new Dictionary<string, Action<IParseNode>>();
+            }
+            /// <summary>
+            /// Serializes information the current object
+            /// </summary>
+            /// <param name="writer">Serialization writer to use to serialize this model</param>
+            public virtual void Serialize(ISerializationWriter writer)
+            {
+                if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+                if(SendEmailRequestReplyToString != null)
+                {
+                    writer.WriteStringValue(null, SendEmailRequestReplyToString);
+                }
+                else if(String != null)
+                {
+                    writer.WriteCollectionOfPrimitiveValues<string>(null, String);
+                }
+            }
+        }
+        /// <summary>
+        /// Composed type wrapper for classes <see cref="string"/>, List&lt;string&gt;
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
+        public partial class SendEmailRequest_to : IComposedTypeWrapper, IParsable
+        {
+            /// <summary>Composed type representation for type <see cref="string"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            public string? SendEmailRequestToString { get; set; }
+#nullable restore
+#else
+            public string SendEmailRequestToString { get; set; }
+#endif
+            /// <summary>Composed type representation for type List&lt;string&gt;</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            public List<string>? String { get; set; }
+#nullable restore
+#else
+            public List<string> String { get; set; }
+#endif
+            /// <summary>
+            /// Creates a new instance of the appropriate class based on discriminator value
+            /// </summary>
+            /// <returns>A <see cref="global::Soenneker.Resend.OpenApiClient.Models.SendEmailRequest.SendEmailRequest_to"/></returns>
+            /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
+            public static global::Soenneker.Resend.OpenApiClient.Models.SendEmailRequest.SendEmailRequest_to CreateFromDiscriminatorValue(IParseNode parseNode)
+            {
+                if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
+                var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
+                var result = new global::Soenneker.Resend.OpenApiClient.Models.SendEmailRequest.SendEmailRequest_to();
+                if(parseNode.GetStringValue() is string sendEmailRequestToStringValue)
+                {
+                    result.SendEmailRequestToString = sendEmailRequestToStringValue;
+                }
+                else if(parseNode.GetCollectionOfPrimitiveValues<string>()?.AsList() is List<string> stringValue)
+                {
+                    result.String = stringValue;
+                }
+                return result;
+            }
+            /// <summary>
+            /// The deserialization information for the current model
+            /// </summary>
+            /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
+            public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
+            {
+                return new Dictionary<string, Action<IParseNode>>();
+            }
+            /// <summary>
+            /// Serializes information the current object
+            /// </summary>
+            /// <param name="writer">Serialization writer to use to serialize this model</param>
+            public virtual void Serialize(ISerializationWriter writer)
+            {
+                if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+                if(SendEmailRequestToString != null)
+                {
+                    writer.WriteStringValue(null, SendEmailRequestToString);
+                }
+                else if(String != null)
+                {
+                    writer.WriteCollectionOfPrimitiveValues<string>(null, String);
+                }
+            }
         }
     }
 }
