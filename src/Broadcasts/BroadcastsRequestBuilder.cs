@@ -35,7 +35,7 @@ namespace Soenneker.Resend.OpenApiClient.Broadcasts
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public BroadcastsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/broadcasts", pathParameters)
+        public BroadcastsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/broadcasts{?after*,before*,limit*}", pathParameters)
         {
         }
         /// <summary>
@@ -43,7 +43,7 @@ namespace Soenneker.Resend.OpenApiClient.Broadcasts
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public BroadcastsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/broadcasts", rawUrl)
+        public BroadcastsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/broadcasts{?after*,before*,limit*}", rawUrl)
         {
         }
         /// <summary>
@@ -54,11 +54,11 @@ namespace Soenneker.Resend.OpenApiClient.Broadcasts
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Resend.OpenApiClient.Models.ListBroadcastsResponseSuccess?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Resend.OpenApiClient.Models.ListBroadcastsResponseSuccess?> GetAsync(Action<RequestConfiguration<global::Soenneker.Resend.OpenApiClient.Broadcasts.BroadcastsRequestBuilder.BroadcastsRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Resend.OpenApiClient.Models.ListBroadcastsResponseSuccess> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Resend.OpenApiClient.Models.ListBroadcastsResponseSuccess> GetAsync(Action<RequestConfiguration<global::Soenneker.Resend.OpenApiClient.Broadcasts.BroadcastsRequestBuilder.BroadcastsRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
@@ -91,11 +91,11 @@ namespace Soenneker.Resend.OpenApiClient.Broadcasts
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Soenneker.Resend.OpenApiClient.Broadcasts.BroadcastsRequestBuilder.BroadcastsRequestBuilderGetQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Soenneker.Resend.OpenApiClient.Broadcasts.BroadcastsRequestBuilder.BroadcastsRequestBuilderGetQueryParameters>> requestConfiguration = default)
         {
 #endif
             var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
@@ -133,6 +133,36 @@ namespace Soenneker.Resend.OpenApiClient.Broadcasts
         public global::Soenneker.Resend.OpenApiClient.Broadcasts.BroadcastsRequestBuilder WithUrl(string rawUrl)
         {
             return new global::Soenneker.Resend.OpenApiClient.Broadcasts.BroadcastsRequestBuilder(rawUrl, RequestAdapter);
+        }
+        /// <summary>
+        /// Retrieve a list of broadcasts
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
+        public partial class BroadcastsRequestBuilderGetQueryParameters 
+        {
+            /// <summary>Return items after this cursor.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("after")]
+            public string? After { get; set; }
+#nullable restore
+#else
+            [QueryParameter("after")]
+            public string After { get; set; }
+#endif
+            /// <summary>Return items before this cursor.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("before")]
+            public string? Before { get; set; }
+#nullable restore
+#else
+            [QueryParameter("before")]
+            public string Before { get; set; }
+#endif
+            /// <summary>Number of items to return.</summary>
+            [QueryParameter("limit")]
+            public int? Limit { get; set; }
         }
     }
 }

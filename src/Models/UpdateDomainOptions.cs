@@ -14,6 +14,14 @@ namespace Soenneker.Resend.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Configure the domain capabilities for sending and receiving emails. At least one capability must be enabled.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Resend.OpenApiClient.Models.DomainCapabilities? Capabilities { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Resend.OpenApiClient.Models.DomainCapabilities Capabilities { get; set; }
+#endif
         /// <summary>Track clicks within the body of each HTML email.</summary>
         public bool? ClickTracking { get; set; }
         /// <summary>Track the open rate of each email.</summary>
@@ -52,6 +60,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "capabilities", n => { Capabilities = n.GetObjectValue<global::Soenneker.Resend.OpenApiClient.Models.DomainCapabilities>(global::Soenneker.Resend.OpenApiClient.Models.DomainCapabilities.CreateFromDiscriminatorValue); } },
                 { "click_tracking", n => { ClickTracking = n.GetBoolValue(); } },
                 { "open_tracking", n => { OpenTracking = n.GetBoolValue(); } },
                 { "tls", n => { Tls = n.GetStringValue(); } },
@@ -64,6 +73,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteObjectValue<global::Soenneker.Resend.OpenApiClient.Models.DomainCapabilities>("capabilities", Capabilities);
             writer.WriteBoolValue("click_tracking", ClickTracking);
             writer.WriteBoolValue("open_tracking", OpenTracking);
             writer.WriteStringValue("tls", Tls);

@@ -20,14 +20,15 @@ namespace Soenneker.Resend.OpenApiClient.Audiences
     {
         /// <summary>Gets an item from the Soenneker.Resend.OpenApiClient.audiences.item collection</summary>
         /// <param name="position">The Audience ID.</param>
-        /// <returns>A <see cref="global::Soenneker.Resend.OpenApiClient.Audiences.Item.Audience_ItemRequestBuilder"/></returns>
-        public global::Soenneker.Resend.OpenApiClient.Audiences.Item.Audience_ItemRequestBuilder this[string position]
+        /// <returns>A <see cref="global::Soenneker.Resend.OpenApiClient.Audiences.Item.AudiencesItemRequestBuilder"/></returns>
+        [Obsolete("")]
+        public global::Soenneker.Resend.OpenApiClient.Audiences.Item.AudiencesItemRequestBuilder this[string position]
         {
             get
             {
                 var urlTplParams = new Dictionary<string, object>(PathParameters);
-                urlTplParams.Add("audience_%2Did", position);
-                return new global::Soenneker.Resend.OpenApiClient.Audiences.Item.Audience_ItemRequestBuilder(urlTplParams, RequestAdapter);
+                urlTplParams.Add("id", position);
+                return new global::Soenneker.Resend.OpenApiClient.Audiences.Item.AudiencesItemRequestBuilder(urlTplParams, RequestAdapter);
             }
         }
         /// <summary>
@@ -47,11 +48,12 @@ namespace Soenneker.Resend.OpenApiClient.Audiences
         {
         }
         /// <summary>
-        /// Retrieve a list of audiences
+        /// Deprecated: Use Segments instead. These endpoints still work, but will be removed in the future.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Resend.OpenApiClient.Models.ListAudiencesResponseSuccess"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        [Obsolete("")]
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.Resend.OpenApiClient.Models.ListAudiencesResponseSuccess?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -65,12 +67,13 @@ namespace Soenneker.Resend.OpenApiClient.Audiences
             return await RequestAdapter.SendAsync<global::Soenneker.Resend.OpenApiClient.Models.ListAudiencesResponseSuccess>(requestInfo, global::Soenneker.Resend.OpenApiClient.Models.ListAudiencesResponseSuccess.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Create a list of contacts
+        /// Deprecated: Use Segments instead. These endpoints still work, but will be removed in the future.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Resend.OpenApiClient.Models.CreateAudienceResponseSuccess"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        [Obsolete("")]
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.Resend.OpenApiClient.Models.CreateAudienceResponseSuccess?> PostAsync(global::Soenneker.Resend.OpenApiClient.Models.CreateAudienceOptions body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -85,10 +88,11 @@ namespace Soenneker.Resend.OpenApiClient.Audiences
             return await RequestAdapter.SendAsync<global::Soenneker.Resend.OpenApiClient.Models.CreateAudienceResponseSuccess>(requestInfo, global::Soenneker.Resend.OpenApiClient.Models.CreateAudienceResponseSuccess.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Retrieve a list of audiences
+        /// Deprecated: Use Segments instead. These endpoints still work, but will be removed in the future.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        [Obsolete("")]
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
@@ -104,11 +108,12 @@ namespace Soenneker.Resend.OpenApiClient.Audiences
             return requestInfo;
         }
         /// <summary>
-        /// Create a list of contacts
+        /// Deprecated: Use Segments instead. These endpoints still work, but will be removed in the future.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        [Obsolete("")]
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public RequestInformation ToPostRequestInformation(global::Soenneker.Resend.OpenApiClient.Models.CreateAudienceOptions body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
@@ -130,6 +135,7 @@ namespace Soenneker.Resend.OpenApiClient.Audiences
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Resend.OpenApiClient.Audiences.AudiencesRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
+        [Obsolete("")]
         public global::Soenneker.Resend.OpenApiClient.Audiences.AudiencesRequestBuilder WithUrl(string rawUrl)
         {
             return new global::Soenneker.Resend.OpenApiClient.Audiences.AudiencesRequestBuilder(rawUrl, RequestAdapter);

@@ -22,6 +22,8 @@ namespace Soenneker.Resend.OpenApiClient.Models
 #else
         public List<global::Soenneker.Resend.OpenApiClient.Models.ListBroadcastsResponseSuccess_data> Data { get; set; }
 #endif
+        /// <summary>Indicates if there are more results available.</summary>
+        public bool? HasMore { get; set; }
         /// <summary>Type of the response object.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -56,6 +58,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "data", n => { Data = n.GetCollectionOfObjectValues<global::Soenneker.Resend.OpenApiClient.Models.ListBroadcastsResponseSuccess_data>(global::Soenneker.Resend.OpenApiClient.Models.ListBroadcastsResponseSuccess_data.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "has_more", n => { HasMore = n.GetBoolValue(); } },
                 { "object", n => { Object = n.GetStringValue(); } },
             };
         }
@@ -67,6 +70,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfObjectValues<global::Soenneker.Resend.OpenApiClient.Models.ListBroadcastsResponseSuccess_data>("data", Data);
+            writer.WriteBoolValue("has_more", HasMore);
             writer.WriteStringValue("object", Object);
             writer.WriteAdditionalData(AdditionalData);
         }

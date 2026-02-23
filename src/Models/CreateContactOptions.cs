@@ -15,6 +15,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Unique identifier of the audience to which the contact belongs.</summary>
+        [Obsolete("")]
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? AudienceId { get; set; }
@@ -46,7 +47,31 @@ namespace Soenneker.Resend.OpenApiClient.Models
 #else
         public string LastName { get; set; }
 #endif
-        /// <summary>Indicates if the contact is unsubscribed.</summary>
+        /// <summary>A map of custom property keys and values to create.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Resend.OpenApiClient.Models.CreateContactOptions_properties? Properties { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Resend.OpenApiClient.Models.CreateContactOptions_properties Properties { get; set; }
+#endif
+        /// <summary>Array of segment IDs to add the contact to.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<string>? Segments { get; set; }
+#nullable restore
+#else
+        public List<string> Segments { get; set; }
+#endif
+        /// <summary>Array of topic subscriptions for the contact.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.Resend.OpenApiClient.Models.CreateContactOptions_topics>? Topics { get; set; }
+#nullable restore
+#else
+        public List<global::Soenneker.Resend.OpenApiClient.Models.CreateContactOptions_topics> Topics { get; set; }
+#endif
+        /// <summary>The Contact&apos;s global subscription status. If set to true, the contact will be unsubscribed from all Broadcasts.</summary>
         public bool? Unsubscribed { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Resend.OpenApiClient.Models.CreateContactOptions"/> and sets the default values.
@@ -77,6 +102,9 @@ namespace Soenneker.Resend.OpenApiClient.Models
                 { "email", n => { Email = n.GetStringValue(); } },
                 { "first_name", n => { FirstName = n.GetStringValue(); } },
                 { "last_name", n => { LastName = n.GetStringValue(); } },
+                { "properties", n => { Properties = n.GetObjectValue<global::Soenneker.Resend.OpenApiClient.Models.CreateContactOptions_properties>(global::Soenneker.Resend.OpenApiClient.Models.CreateContactOptions_properties.CreateFromDiscriminatorValue); } },
+                { "segments", n => { Segments = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
+                { "topics", n => { Topics = n.GetCollectionOfObjectValues<global::Soenneker.Resend.OpenApiClient.Models.CreateContactOptions_topics>(global::Soenneker.Resend.OpenApiClient.Models.CreateContactOptions_topics.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "unsubscribed", n => { Unsubscribed = n.GetBoolValue(); } },
             };
         }
@@ -91,6 +119,9 @@ namespace Soenneker.Resend.OpenApiClient.Models
             writer.WriteStringValue("email", Email);
             writer.WriteStringValue("first_name", FirstName);
             writer.WriteStringValue("last_name", LastName);
+            writer.WriteObjectValue<global::Soenneker.Resend.OpenApiClient.Models.CreateContactOptions_properties>("properties", Properties);
+            writer.WriteCollectionOfPrimitiveValues<string>("segments", Segments);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.Resend.OpenApiClient.Models.CreateContactOptions_topics>("topics", Topics);
             writer.WriteBoolValue("unsubscribed", Unsubscribed);
             writer.WriteAdditionalData(AdditionalData);
         }

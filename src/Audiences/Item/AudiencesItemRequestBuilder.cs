@@ -3,7 +3,6 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
-using Soenneker.Resend.OpenApiClient.Audiences.Item.Contacts;
 using Soenneker.Resend.OpenApiClient.Models;
 using System.Collections.Generic;
 using System.IO;
@@ -13,38 +12,34 @@ using System;
 namespace Soenneker.Resend.OpenApiClient.Audiences.Item
 {
     /// <summary>
-    /// Builds and executes requests for operations under \audiences\{audience_-id}
+    /// Builds and executes requests for operations under \audiences\{id}
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class Audience_ItemRequestBuilder : BaseRequestBuilder
+    public partial class AudiencesItemRequestBuilder : BaseRequestBuilder
     {
-        /// <summary>The contacts property</summary>
-        public global::Soenneker.Resend.OpenApiClient.Audiences.Item.Contacts.ContactsRequestBuilder Contacts
-        {
-            get => new global::Soenneker.Resend.OpenApiClient.Audiences.Item.Contacts.ContactsRequestBuilder(PathParameters, RequestAdapter);
-        }
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.Resend.OpenApiClient.Audiences.Item.Audience_ItemRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.Resend.OpenApiClient.Audiences.Item.AudiencesItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Audience_ItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/audiences/{audience_%2Did}", pathParameters)
+        public AudiencesItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/audiences/{id}", pathParameters)
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.Resend.OpenApiClient.Audiences.Item.Audience_ItemRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.Resend.OpenApiClient.Audiences.Item.AudiencesItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public Audience_ItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/audiences/{audience_%2Did}", rawUrl)
+        public AudiencesItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/audiences/{id}", rawUrl)
         {
         }
         /// <summary>
-        /// Remove an existing audience
+        /// Deprecated: Use Segments instead. These endpoints still work, but will be removed in the future.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Resend.OpenApiClient.Models.RemoveAudienceResponseSuccess"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        [Obsolete("")]
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.Resend.OpenApiClient.Models.RemoveAudienceResponseSuccess?> DeleteAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -58,11 +53,12 @@ namespace Soenneker.Resend.OpenApiClient.Audiences.Item
             return await RequestAdapter.SendAsync<global::Soenneker.Resend.OpenApiClient.Models.RemoveAudienceResponseSuccess>(requestInfo, global::Soenneker.Resend.OpenApiClient.Models.RemoveAudienceResponseSuccess.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Retrieve a single audience
+        /// Deprecated: Use Segments instead. These endpoints still work, but will be removed in the future.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Resend.OpenApiClient.Models.GetAudienceResponseSuccess"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        [Obsolete("")]
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::Soenneker.Resend.OpenApiClient.Models.GetAudienceResponseSuccess?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -76,10 +72,11 @@ namespace Soenneker.Resend.OpenApiClient.Audiences.Item
             return await RequestAdapter.SendAsync<global::Soenneker.Resend.OpenApiClient.Models.GetAudienceResponseSuccess>(requestInfo, global::Soenneker.Resend.OpenApiClient.Models.GetAudienceResponseSuccess.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Remove an existing audience
+        /// Deprecated: Use Segments instead. These endpoints still work, but will be removed in the future.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        [Obsolete("")]
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public RequestInformation ToDeleteRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
@@ -95,10 +92,11 @@ namespace Soenneker.Resend.OpenApiClient.Audiences.Item
             return requestInfo;
         }
         /// <summary>
-        /// Retrieve a single audience
+        /// Deprecated: Use Segments instead. These endpoints still work, but will be removed in the future.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        [Obsolete("")]
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
@@ -116,11 +114,12 @@ namespace Soenneker.Resend.OpenApiClient.Audiences.Item
         /// <summary>
         /// Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Resend.OpenApiClient.Audiences.Item.Audience_ItemRequestBuilder"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Resend.OpenApiClient.Audiences.Item.AudiencesItemRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public global::Soenneker.Resend.OpenApiClient.Audiences.Item.Audience_ItemRequestBuilder WithUrl(string rawUrl)
+        [Obsolete("")]
+        public global::Soenneker.Resend.OpenApiClient.Audiences.Item.AudiencesItemRequestBuilder WithUrl(string rawUrl)
         {
-            return new global::Soenneker.Resend.OpenApiClient.Audiences.Item.Audience_ItemRequestBuilder(rawUrl, RequestAdapter);
+            return new global::Soenneker.Resend.OpenApiClient.Audiences.Item.AudiencesItemRequestBuilder(rawUrl, RequestAdapter);
         }
     }
 }

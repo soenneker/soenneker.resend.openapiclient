@@ -22,6 +22,16 @@ namespace Soenneker.Resend.OpenApiClient.Models
 #else
         public List<global::Soenneker.Resend.OpenApiClient.Models.ListDomainsItem> Data { get; set; }
 #endif
+        /// <summary>Indicates if there are more results available.</summary>
+        public bool? HasMore { get; set; }
+        /// <summary>Type of the response object.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Object { get; set; }
+#nullable restore
+#else
+        public string Object { get; set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Resend.OpenApiClient.Models.ListDomainsResponse"/> and sets the default values.
         /// </summary>
@@ -48,6 +58,8 @@ namespace Soenneker.Resend.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "data", n => { Data = n.GetCollectionOfObjectValues<global::Soenneker.Resend.OpenApiClient.Models.ListDomainsItem>(global::Soenneker.Resend.OpenApiClient.Models.ListDomainsItem.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "has_more", n => { HasMore = n.GetBoolValue(); } },
+                { "object", n => { Object = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -58,6 +70,8 @@ namespace Soenneker.Resend.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfObjectValues<global::Soenneker.Resend.OpenApiClient.Models.ListDomainsItem>("data", Data);
+            writer.WriteBoolValue("has_more", HasMore);
+            writer.WriteStringValue("object", Object);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

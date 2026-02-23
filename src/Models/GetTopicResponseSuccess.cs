@@ -14,16 +14,18 @@ namespace Soenneker.Resend.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The ID of the audience this topic belongs to.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? AudienceId { get; set; }
-#nullable restore
-#else
-        public string AudienceId { get; set; }
-#endif
         /// <summary>Timestamp indicating when the topic was created.</summary>
         public DateTimeOffset? CreatedAt { get; set; }
+        /// <summary>The default subscription status for the topic.</summary>
+        public global::Soenneker.Resend.OpenApiClient.Models.GetTopicResponseSuccess_default_subscription? DefaultSubscription { get; set; }
+        /// <summary>A description of the topic.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Description { get; set; }
+#nullable restore
+#else
+        public string Description { get; set; }
+#endif
         /// <summary>The ID of the topic.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -48,6 +50,8 @@ namespace Soenneker.Resend.OpenApiClient.Models
 #else
         public string Object { get; set; }
 #endif
+        /// <summary>The visibility of the topic.</summary>
+        public global::Soenneker.Resend.OpenApiClient.Models.GetTopicResponseSuccess_visibility? Visibility { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Resend.OpenApiClient.Models.GetTopicResponseSuccess"/> and sets the default values.
         /// </summary>
@@ -73,11 +77,13 @@ namespace Soenneker.Resend.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "audience_id", n => { AudienceId = n.GetStringValue(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
+                { "default_subscription", n => { DefaultSubscription = n.GetEnumValue<global::Soenneker.Resend.OpenApiClient.Models.GetTopicResponseSuccess_default_subscription>(); } },
+                { "description", n => { Description = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "object", n => { Object = n.GetStringValue(); } },
+                { "visibility", n => { Visibility = n.GetEnumValue<global::Soenneker.Resend.OpenApiClient.Models.GetTopicResponseSuccess_visibility>(); } },
             };
         }
         /// <summary>
@@ -87,11 +93,13 @@ namespace Soenneker.Resend.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteStringValue("audience_id", AudienceId);
             writer.WriteDateTimeOffsetValue("created_at", CreatedAt);
+            writer.WriteEnumValue<global::Soenneker.Resend.OpenApiClient.Models.GetTopicResponseSuccess_default_subscription>("default_subscription", DefaultSubscription);
+            writer.WriteStringValue("description", Description);
             writer.WriteStringValue("id", Id);
             writer.WriteStringValue("name", Name);
             writer.WriteStringValue("object", Object);
+            writer.WriteEnumValue<global::Soenneker.Resend.OpenApiClient.Models.GetTopicResponseSuccess_visibility>("visibility", Visibility);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

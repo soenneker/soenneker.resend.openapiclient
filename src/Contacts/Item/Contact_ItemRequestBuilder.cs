@@ -3,50 +3,50 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
-using Soenneker.Resend.OpenApiClient.Audiences.Item.Contacts.Item.Segments;
-using Soenneker.Resend.OpenApiClient.Audiences.Item.Contacts.Item.Topics;
+using Soenneker.Resend.OpenApiClient.Contacts.Item.Segments;
+using Soenneker.Resend.OpenApiClient.Contacts.Item.Topics;
 using Soenneker.Resend.OpenApiClient.Models;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 using System.Threading;
 using System;
-namespace Soenneker.Resend.OpenApiClient.Audiences.Item.Contacts.Item
+namespace Soenneker.Resend.OpenApiClient.Contacts.Item
 {
     /// <summary>
-    /// Builds and executes requests for operations under \audiences\{audience_-id}\contacts\{email-id}
+    /// Builds and executes requests for operations under \contacts\{contact_-id}
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class EmailItemRequestBuilder : BaseRequestBuilder
+    public partial class Contact_ItemRequestBuilder : BaseRequestBuilder
     {
         /// <summary>The segments property</summary>
-        public global::Soenneker.Resend.OpenApiClient.Audiences.Item.Contacts.Item.Segments.SegmentsRequestBuilder Segments
+        public global::Soenneker.Resend.OpenApiClient.Contacts.Item.Segments.SegmentsRequestBuilder Segments
         {
-            get => new global::Soenneker.Resend.OpenApiClient.Audiences.Item.Contacts.Item.Segments.SegmentsRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Soenneker.Resend.OpenApiClient.Contacts.Item.Segments.SegmentsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The topics property</summary>
-        public global::Soenneker.Resend.OpenApiClient.Audiences.Item.Contacts.Item.Topics.TopicsRequestBuilder Topics
+        public global::Soenneker.Resend.OpenApiClient.Contacts.Item.Topics.TopicsRequestBuilder Topics
         {
-            get => new global::Soenneker.Resend.OpenApiClient.Audiences.Item.Contacts.Item.Topics.TopicsRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::Soenneker.Resend.OpenApiClient.Contacts.Item.Topics.TopicsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.Resend.OpenApiClient.Audiences.Item.Contacts.Item.EmailItemRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.Resend.OpenApiClient.Contacts.Item.Contact_ItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public EmailItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/audiences/{audience_%2Did}/contacts/{email%2Did}", pathParameters)
+        public Contact_ItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/contacts/{contact_%2Did}", pathParameters)
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.Resend.OpenApiClient.Audiences.Item.Contacts.Item.EmailItemRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.Resend.OpenApiClient.Contacts.Item.Contact_ItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public EmailItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/audiences/{audience_%2Did}/contacts/{email%2Did}", rawUrl)
+        public Contact_ItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/contacts/{contact_%2Did}", rawUrl)
         {
         }
         /// <summary>
-        /// Remove an existing contact by email
+        /// Remove an existing contact by ID or email
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Resend.OpenApiClient.Models.RemoveContactResponseSuccess"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -64,7 +64,7 @@ namespace Soenneker.Resend.OpenApiClient.Audiences.Item.Contacts.Item
             return await RequestAdapter.SendAsync<global::Soenneker.Resend.OpenApiClient.Models.RemoveContactResponseSuccess>(requestInfo, global::Soenneker.Resend.OpenApiClient.Models.RemoveContactResponseSuccess.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Retrieves a single contact by email
+        /// Retrieve a single contact by ID or email
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Resend.OpenApiClient.Models.GetContactResponseSuccess"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -82,25 +82,27 @@ namespace Soenneker.Resend.OpenApiClient.Audiences.Item.Contacts.Item
             return await RequestAdapter.SendAsync<global::Soenneker.Resend.OpenApiClient.Models.GetContactResponseSuccess>(requestInfo, global::Soenneker.Resend.OpenApiClient.Models.GetContactResponseSuccess.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Update a single contact by email
+        /// Update a single contact by ID or email
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Resend.OpenApiClient.Models.UpdateContactResponseSuccess"/></returns>
+        /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Resend.OpenApiClient.Models.UpdateContactResponseSuccess?> PatchAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Resend.OpenApiClient.Models.UpdateContactResponseSuccess?> PatchAsync(global::Soenneker.Resend.OpenApiClient.Models.UpdateContactOptions body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Resend.OpenApiClient.Models.UpdateContactResponseSuccess> PatchAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Resend.OpenApiClient.Models.UpdateContactResponseSuccess> PatchAsync(global::Soenneker.Resend.OpenApiClient.Models.UpdateContactOptions body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
-            var requestInfo = ToPatchRequestInformation(requestConfiguration);
+            if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
+            var requestInfo = ToPatchRequestInformation(body, requestConfiguration);
             return await RequestAdapter.SendAsync<global::Soenneker.Resend.OpenApiClient.Models.UpdateContactResponseSuccess>(requestInfo, global::Soenneker.Resend.OpenApiClient.Models.UpdateContactResponseSuccess.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Remove an existing contact by email
+        /// Remove an existing contact by ID or email
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -119,7 +121,7 @@ namespace Soenneker.Resend.OpenApiClient.Audiences.Item.Contacts.Item
             return requestInfo;
         }
         /// <summary>
-        /// Retrieves a single contact by email
+        /// Retrieve a single contact by ID or email
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -138,32 +140,35 @@ namespace Soenneker.Resend.OpenApiClient.Audiences.Item.Contacts.Item
             return requestInfo;
         }
         /// <summary>
-        /// Update a single contact by email
+        /// Update a single contact by ID or email
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
+        /// <param name="body">The request body</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToPatchRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToPatchRequestInformation(global::Soenneker.Resend.OpenApiClient.Models.UpdateContactOptions body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToPatchRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToPatchRequestInformation(global::Soenneker.Resend.OpenApiClient.Models.UpdateContactOptions body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
         {
 #endif
+            if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = new RequestInformation(Method.PATCH, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
+            requestInfo.SetContentFromParsable(RequestAdapter, "application/json", body);
             return requestInfo;
         }
         /// <summary>
         /// Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Resend.OpenApiClient.Audiences.Item.Contacts.Item.EmailItemRequestBuilder"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Resend.OpenApiClient.Contacts.Item.Contact_ItemRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public global::Soenneker.Resend.OpenApiClient.Audiences.Item.Contacts.Item.EmailItemRequestBuilder WithUrl(string rawUrl)
+        public global::Soenneker.Resend.OpenApiClient.Contacts.Item.Contact_ItemRequestBuilder WithUrl(string rawUrl)
         {
-            return new global::Soenneker.Resend.OpenApiClient.Audiences.Item.Contacts.Item.EmailItemRequestBuilder(rawUrl, RequestAdapter);
+            return new global::Soenneker.Resend.OpenApiClient.Contacts.Item.Contact_ItemRequestBuilder(rawUrl, RequestAdapter);
         }
     }
 }

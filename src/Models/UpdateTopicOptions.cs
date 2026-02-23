@@ -14,7 +14,15 @@ namespace Soenneker.Resend.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The name of the topic.</summary>
+        /// <summary>A description of the topic. Max 200 characters.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Description { get; set; }
+#nullable restore
+#else
+        public string Description { get; set; }
+#endif
+        /// <summary>The name of the topic. Max 50 characters.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Name { get; set; }
@@ -22,6 +30,8 @@ namespace Soenneker.Resend.OpenApiClient.Models
 #else
         public string Name { get; set; }
 #endif
+        /// <summary>The visibility of the topic.</summary>
+        public global::Soenneker.Resend.OpenApiClient.Models.UpdateTopicOptions_visibility? Visibility { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Resend.OpenApiClient.Models.UpdateTopicOptions"/> and sets the default values.
         /// </summary>
@@ -47,7 +57,9 @@ namespace Soenneker.Resend.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "description", n => { Description = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
+                { "visibility", n => { Visibility = n.GetEnumValue<global::Soenneker.Resend.OpenApiClient.Models.UpdateTopicOptions_visibility>(); } },
             };
         }
         /// <summary>
@@ -57,7 +69,9 @@ namespace Soenneker.Resend.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteStringValue("description", Description);
             writer.WriteStringValue("name", Name);
+            writer.WriteEnumValue<global::Soenneker.Resend.OpenApiClient.Models.UpdateTopicOptions_visibility>("visibility", Visibility);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

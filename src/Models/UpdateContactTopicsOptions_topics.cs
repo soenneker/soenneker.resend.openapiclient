@@ -22,8 +22,8 @@ namespace Soenneker.Resend.OpenApiClient.Models
 #else
         public string Id { get; set; }
 #endif
-        /// <summary>Whether to subscribe or unsubscribe from the topic.</summary>
-        public bool? Subscribed { get; set; }
+        /// <summary>The subscription status (opt_in or opt_out).</summary>
+        public global::Soenneker.Resend.OpenApiClient.Models.UpdateContactTopicsOptions_topics_subscription? Subscription { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Resend.OpenApiClient.Models.UpdateContactTopicsOptions_topics"/> and sets the default values.
         /// </summary>
@@ -50,7 +50,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "id", n => { Id = n.GetStringValue(); } },
-                { "subscribed", n => { Subscribed = n.GetBoolValue(); } },
+                { "subscription", n => { Subscription = n.GetEnumValue<global::Soenneker.Resend.OpenApiClient.Models.UpdateContactTopicsOptions_topics_subscription>(); } },
             };
         }
         /// <summary>
@@ -61,7 +61,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("id", Id);
-            writer.WriteBoolValue("subscribed", Subscribed);
+            writer.WriteEnumValue<global::Soenneker.Resend.OpenApiClient.Models.UpdateContactTopicsOptions_topics_subscription>("subscription", Subscription);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

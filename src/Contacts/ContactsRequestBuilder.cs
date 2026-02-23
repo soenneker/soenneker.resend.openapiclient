@@ -3,47 +3,47 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
-using Soenneker.Resend.OpenApiClient.Audiences.Item.Contacts.Item;
+using Soenneker.Resend.OpenApiClient.Contacts.Item;
 using Soenneker.Resend.OpenApiClient.Models;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 using System.Threading;
 using System;
-namespace Soenneker.Resend.OpenApiClient.Audiences.Item.Contacts
+namespace Soenneker.Resend.OpenApiClient.Contacts
 {
     /// <summary>
-    /// Builds and executes requests for operations under \audiences\{audience_-id}\contacts
+    /// Builds and executes requests for operations under \contacts
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ContactsRequestBuilder : BaseRequestBuilder
     {
-        /// <summary>Gets an item from the Soenneker.Resend.OpenApiClient.audiences.item.contacts.item collection</summary>
-        /// <param name="position">The Contact email.</param>
-        /// <returns>A <see cref="global::Soenneker.Resend.OpenApiClient.Audiences.Item.Contacts.Item.EmailItemRequestBuilder"/></returns>
-        public global::Soenneker.Resend.OpenApiClient.Audiences.Item.Contacts.Item.EmailItemRequestBuilder this[string position]
+        /// <summary>Gets an item from the Soenneker.Resend.OpenApiClient.contacts.item collection</summary>
+        /// <param name="position">The Contact ID or email address.</param>
+        /// <returns>A <see cref="global::Soenneker.Resend.OpenApiClient.Contacts.Item.Contact_ItemRequestBuilder"/></returns>
+        public global::Soenneker.Resend.OpenApiClient.Contacts.Item.Contact_ItemRequestBuilder this[string position]
         {
             get
             {
                 var urlTplParams = new Dictionary<string, object>(PathParameters);
-                urlTplParams.Add("email%2Did", position);
-                return new global::Soenneker.Resend.OpenApiClient.Audiences.Item.Contacts.Item.EmailItemRequestBuilder(urlTplParams, RequestAdapter);
+                urlTplParams.Add("contact_%2Did", position);
+                return new global::Soenneker.Resend.OpenApiClient.Contacts.Item.Contact_ItemRequestBuilder(urlTplParams, RequestAdapter);
             }
         }
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.Resend.OpenApiClient.Audiences.Item.Contacts.ContactsRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.Resend.OpenApiClient.Contacts.ContactsRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public ContactsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/audiences/{audience_%2Did}/contacts", pathParameters)
+        public ContactsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/contacts{?after*,before*,limit*,segment_id*}", pathParameters)
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.Resend.OpenApiClient.Audiences.Item.Contacts.ContactsRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.Resend.OpenApiClient.Contacts.ContactsRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public ContactsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/audiences/{audience_%2Did}/contacts", rawUrl)
+        public ContactsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/contacts{?after*,before*,limit*,segment_id*}", rawUrl)
         {
         }
         /// <summary>
@@ -54,11 +54,11 @@ namespace Soenneker.Resend.OpenApiClient.Audiences.Item.Contacts
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Resend.OpenApiClient.Models.ListContactsResponseSuccess?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Resend.OpenApiClient.Models.ListContactsResponseSuccess?> GetAsync(Action<RequestConfiguration<global::Soenneker.Resend.OpenApiClient.Contacts.ContactsRequestBuilder.ContactsRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Resend.OpenApiClient.Models.ListContactsResponseSuccess> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Resend.OpenApiClient.Models.ListContactsResponseSuccess> GetAsync(Action<RequestConfiguration<global::Soenneker.Resend.OpenApiClient.Contacts.ContactsRequestBuilder.ContactsRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
@@ -91,11 +91,11 @@ namespace Soenneker.Resend.OpenApiClient.Audiences.Item.Contacts
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Soenneker.Resend.OpenApiClient.Contacts.ContactsRequestBuilder.ContactsRequestBuilderGetQueryParameters>>? requestConfiguration = default)
         {
 #nullable restore
 #else
-        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Soenneker.Resend.OpenApiClient.Contacts.ContactsRequestBuilder.ContactsRequestBuilderGetQueryParameters>> requestConfiguration = default)
         {
 #endif
             var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
@@ -128,11 +128,51 @@ namespace Soenneker.Resend.OpenApiClient.Audiences.Item.Contacts
         /// <summary>
         /// Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Resend.OpenApiClient.Audiences.Item.Contacts.ContactsRequestBuilder"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Resend.OpenApiClient.Contacts.ContactsRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public global::Soenneker.Resend.OpenApiClient.Audiences.Item.Contacts.ContactsRequestBuilder WithUrl(string rawUrl)
+        public global::Soenneker.Resend.OpenApiClient.Contacts.ContactsRequestBuilder WithUrl(string rawUrl)
         {
-            return new global::Soenneker.Resend.OpenApiClient.Audiences.Item.Contacts.ContactsRequestBuilder(rawUrl, RequestAdapter);
+            return new global::Soenneker.Resend.OpenApiClient.Contacts.ContactsRequestBuilder(rawUrl, RequestAdapter);
+        }
+        /// <summary>
+        /// Retrieve a list of contacts
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
+        public partial class ContactsRequestBuilderGetQueryParameters 
+        {
+            /// <summary>Return items after this cursor.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("after")]
+            public string? After { get; set; }
+#nullable restore
+#else
+            [QueryParameter("after")]
+            public string After { get; set; }
+#endif
+            /// <summary>Return items before this cursor.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("before")]
+            public string? Before { get; set; }
+#nullable restore
+#else
+            [QueryParameter("before")]
+            public string Before { get; set; }
+#endif
+            /// <summary>Number of items to return.</summary>
+            [QueryParameter("limit")]
+            public int? Limit { get; set; }
+            /// <summary>Filter contacts by segment ID.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("segment_id")]
+            public string? SegmentId { get; set; }
+#nullable restore
+#else
+            [QueryParameter("segment_id")]
+            public string SegmentId { get; set; }
+#endif
         }
     }
 }

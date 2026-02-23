@@ -118,6 +118,14 @@ namespace Soenneker.Resend.OpenApiClient.Models
 #else
         public global::Soenneker.Resend.OpenApiClient.Models.SendEmailRequest.SendEmailRequest_to To { get; set; }
 #endif
+        /// <summary>The topic ID to scope the email to. If the recipient is a contact and opted-in to the topic, the email is sent. If opted-out, the email is not sent. If the recipient is not a contact, the email is sent if the topic&apos;s default subscription is opt_in.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? TopicId { get; set; }
+#nullable restore
+#else
+        public string TopicId { get; set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Resend.OpenApiClient.Models.SendEmailRequest"/> and sets the default values.
         /// </summary>
@@ -156,6 +164,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
                 { "template", n => { Template = n.GetObjectValue<global::Soenneker.Resend.OpenApiClient.Models.EmailTemplateInput>(global::Soenneker.Resend.OpenApiClient.Models.EmailTemplateInput.CreateFromDiscriminatorValue); } },
                 { "text", n => { Text = n.GetStringValue(); } },
                 { "to", n => { To = n.GetObjectValue<global::Soenneker.Resend.OpenApiClient.Models.SendEmailRequest.SendEmailRequest_to>(global::Soenneker.Resend.OpenApiClient.Models.SendEmailRequest.SendEmailRequest_to.CreateFromDiscriminatorValue); } },
+                { "topic_id", n => { TopicId = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -178,6 +187,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.Resend.OpenApiClient.Models.EmailTemplateInput>("template", Template);
             writer.WriteStringValue("text", Text);
             writer.WriteObjectValue<global::Soenneker.Resend.OpenApiClient.Models.SendEmailRequest.SendEmailRequest_to>("to", To);
+            writer.WriteStringValue("topic_id", TopicId);
             writer.WriteAdditionalData(AdditionalData);
         }
         /// <summary>

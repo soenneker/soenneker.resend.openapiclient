@@ -14,6 +14,24 @@ namespace Soenneker.Resend.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Configure the domain capabilities for sending and receiving emails. At least one capability must be enabled.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Resend.OpenApiClient.Models.DomainCapabilities? Capabilities { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Resend.OpenApiClient.Models.DomainCapabilities Capabilities { get; set; }
+#endif
+        /// <summary>Track clicks within the body of each HTML email.</summary>
+        public bool? ClickTracking { get; set; }
+        /// <summary>For advanced use cases, choose a subdomain for the Return-Path address. Defaults to &apos;send&apos; (i.e., send.yourdomain.tld).</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? CustomReturnPath { get; set; }
+#nullable restore
+#else
+        public string CustomReturnPath { get; set; }
+#endif
         /// <summary>The name of the domain you want to create.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -22,8 +40,12 @@ namespace Soenneker.Resend.OpenApiClient.Models
 #else
         public string Name { get; set; }
 #endif
+        /// <summary>Track the open rate of each email.</summary>
+        public bool? OpenTracking { get; set; }
         /// <summary>The region where emails will be sent from. Possible values are us-east-1 | eu-west-1 | sa-east-1 | ap-northeast-1</summary>
         public global::Soenneker.Resend.OpenApiClient.Models.CreateDomainRequest_region? Region { get; set; }
+        /// <summary>TLS mode. Opportunistic attempts secure connection but falls back to unencrypted. Enforced requires TLS or email won&apos;t be sent.</summary>
+        public global::Soenneker.Resend.OpenApiClient.Models.CreateDomainRequest_tls? Tls { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Resend.OpenApiClient.Models.CreateDomainRequest"/> and sets the default values.
         /// </summary>
@@ -31,6 +53,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
         {
             AdditionalData = new Dictionary<string, object>();
             Region = global::Soenneker.Resend.OpenApiClient.Models.CreateDomainRequest_region.UsEast1;
+            Tls = global::Soenneker.Resend.OpenApiClient.Models.CreateDomainRequest_tls.Opportunistic;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -50,8 +73,13 @@ namespace Soenneker.Resend.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "capabilities", n => { Capabilities = n.GetObjectValue<global::Soenneker.Resend.OpenApiClient.Models.DomainCapabilities>(global::Soenneker.Resend.OpenApiClient.Models.DomainCapabilities.CreateFromDiscriminatorValue); } },
+                { "click_tracking", n => { ClickTracking = n.GetBoolValue(); } },
+                { "custom_return_path", n => { CustomReturnPath = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
+                { "open_tracking", n => { OpenTracking = n.GetBoolValue(); } },
                 { "region", n => { Region = n.GetEnumValue<global::Soenneker.Resend.OpenApiClient.Models.CreateDomainRequest_region>(); } },
+                { "tls", n => { Tls = n.GetEnumValue<global::Soenneker.Resend.OpenApiClient.Models.CreateDomainRequest_tls>(); } },
             };
         }
         /// <summary>
@@ -61,8 +89,13 @@ namespace Soenneker.Resend.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteObjectValue<global::Soenneker.Resend.OpenApiClient.Models.DomainCapabilities>("capabilities", Capabilities);
+            writer.WriteBoolValue("click_tracking", ClickTracking);
+            writer.WriteStringValue("custom_return_path", CustomReturnPath);
             writer.WriteStringValue("name", Name);
+            writer.WriteBoolValue("open_tracking", OpenTracking);
             writer.WriteEnumValue<global::Soenneker.Resend.OpenApiClient.Models.CreateDomainRequest_region>("region", Region);
+            writer.WriteEnumValue<global::Soenneker.Resend.OpenApiClient.Models.CreateDomainRequest_tls>("tls", Tls);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

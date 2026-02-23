@@ -22,6 +22,14 @@ namespace Soenneker.Resend.OpenApiClient.Models
 #else
         public byte[] Content { get; set; }
 #endif
+        /// <summary>Content ID for embedding inline images using cid references (e.g., cid:image001).</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? ContentId { get; set; }
+#nullable restore
+#else
+        public string ContentId { get; set; }
+#endif
         /// <summary>Optional content type for the attachment, if not set it will be derived from the filename property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -72,6 +80,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "content", n => { Content = n.GetByteArrayValue(); } },
+                { "content_id", n => { ContentId = n.GetStringValue(); } },
                 { "content_type", n => { ContentType = n.GetStringValue(); } },
                 { "filename", n => { Filename = n.GetStringValue(); } },
                 { "path", n => { Path = n.GetStringValue(); } },
@@ -85,6 +94,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteByteArrayValue("content", Content);
+            writer.WriteStringValue("content_id", ContentId);
             writer.WriteStringValue("content_type", ContentType);
             writer.WriteStringValue("filename", Filename);
             writer.WriteStringValue("path", Path);

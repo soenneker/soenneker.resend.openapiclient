@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.Resend.OpenApiClient.Models
 {
-    /// <summary>The type of the contact property.</summary>
+    /// <summary>The property type.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum CreateContactPropertyOptions_type
     {
@@ -14,14 +14,6 @@ namespace Soenneker.Resend.OpenApiClient.Models
         [EnumMember(Value = "number")]
         #pragma warning disable CS1591
         Number,
-        #pragma warning restore CS1591
-        [EnumMember(Value = "boolean")]
-        #pragma warning disable CS1591
-        Boolean,
-        #pragma warning restore CS1591
-        [EnumMember(Value = "date")]
-        #pragma warning disable CS1591
-        Date,
         #pragma warning restore CS1591
     }
 }

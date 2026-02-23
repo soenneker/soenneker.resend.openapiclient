@@ -109,6 +109,14 @@ namespace Soenneker.Resend.OpenApiClient.Models
 #else
         public string Text { get; set; }
 #endif
+        /// <summary>The topic ID that the broadcast is scoped to.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? TopicId { get; set; }
+#nullable restore
+#else
+        public string TopicId { get; set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Resend.OpenApiClient.Models.GetBroadcastResponseSuccess"/> and sets the default values.
         /// </summary>
@@ -148,6 +156,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
                 { "status", n => { Status = n.GetStringValue(); } },
                 { "subject", n => { Subject = n.GetStringValue(); } },
                 { "text", n => { Text = n.GetStringValue(); } },
+                { "topic_id", n => { TopicId = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -171,6 +180,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
             writer.WriteStringValue("status", Status);
             writer.WriteStringValue("subject", Subject);
             writer.WriteStringValue("text", Text);
+            writer.WriteStringValue("topic_id", TopicId);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

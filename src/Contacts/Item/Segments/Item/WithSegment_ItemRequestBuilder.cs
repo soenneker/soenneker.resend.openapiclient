@@ -9,28 +9,28 @@ using System.IO;
 using System.Threading.Tasks;
 using System.Threading;
 using System;
-namespace Soenneker.Resend.OpenApiClient.Audiences.Item.Contacts.Item.Segments.Item
+namespace Soenneker.Resend.OpenApiClient.Contacts.Item.Segments.Item
 {
     /// <summary>
-    /// Builds and executes requests for operations under \audiences\{audience_-id}\contacts\{email-id}\segments\{segment_id}
+    /// Builds and executes requests for operations under \contacts\{contact_-id}\segments\{segment_id}
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class WithSegment_ItemRequestBuilder : BaseRequestBuilder
     {
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.Resend.OpenApiClient.Audiences.Item.Contacts.Item.Segments.Item.WithSegment_ItemRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.Resend.OpenApiClient.Contacts.Item.Segments.Item.WithSegment_ItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public WithSegment_ItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/audiences/{audience_%2Did}/contacts/{email%2Did}/segments/{segment_id}", pathParameters)
+        public WithSegment_ItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/contacts/{contact_%2Did}/segments/{segment_id}", pathParameters)
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.Resend.OpenApiClient.Audiences.Item.Contacts.Item.Segments.Item.WithSegment_ItemRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.Resend.OpenApiClient.Contacts.Item.Segments.Item.WithSegment_ItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public WithSegment_ItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/audiences/{audience_%2Did}/contacts/{email%2Did}/segments/{segment_id}", rawUrl)
+        public WithSegment_ItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/contacts/{contact_%2Did}/segments/{segment_id}", rawUrl)
         {
         }
         /// <summary>
@@ -52,6 +52,24 @@ namespace Soenneker.Resend.OpenApiClient.Audiences.Item.Contacts.Item.Segments.I
             return await RequestAdapter.SendAsync<global::Soenneker.Resend.OpenApiClient.Models.RemoveContactFromSegmentResponseSuccess>(requestInfo, global::Soenneker.Resend.OpenApiClient.Models.RemoveContactFromSegmentResponseSuccess.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
+        /// Add a contact to a segment
+        /// </summary>
+        /// <returns>A <see cref="global::Soenneker.Resend.OpenApiClient.Models.AddContactToSegmentResponseSuccess"/></returns>
+        /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
+        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public async Task<global::Soenneker.Resend.OpenApiClient.Models.AddContactToSegmentResponseSuccess?> PostAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
+#nullable restore
+#else
+        public async Task<global::Soenneker.Resend.OpenApiClient.Models.AddContactToSegmentResponseSuccess> PostAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        {
+#endif
+            var requestInfo = ToPostRequestInformation(requestConfiguration);
+            return await RequestAdapter.SendAsync<global::Soenneker.Resend.OpenApiClient.Models.AddContactToSegmentResponseSuccess>(requestInfo, global::Soenneker.Resend.OpenApiClient.Models.AddContactToSegmentResponseSuccess.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+        }
+        /// <summary>
         /// Remove a contact from a segment
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
@@ -71,13 +89,32 @@ namespace Soenneker.Resend.OpenApiClient.Audiences.Item.Contacts.Item.Segments.I
             return requestInfo;
         }
         /// <summary>
+        /// Add a contact to a segment
+        /// </summary>
+        /// <returns>A <see cref="RequestInformation"/></returns>
+        /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public RequestInformation ToPostRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default)
+        {
+#nullable restore
+#else
+        public RequestInformation ToPostRequestInformation(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
+        {
+#endif
+            var requestInfo = new RequestInformation(Method.POST, UrlTemplate, PathParameters);
+            requestInfo.Configure(requestConfiguration);
+            requestInfo.Headers.TryAdd("Accept", "application/json");
+            return requestInfo;
+        }
+        /// <summary>
         /// Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Resend.OpenApiClient.Audiences.Item.Contacts.Item.Segments.Item.WithSegment_ItemRequestBuilder"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Resend.OpenApiClient.Contacts.Item.Segments.Item.WithSegment_ItemRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public global::Soenneker.Resend.OpenApiClient.Audiences.Item.Contacts.Item.Segments.Item.WithSegment_ItemRequestBuilder WithUrl(string rawUrl)
+        public global::Soenneker.Resend.OpenApiClient.Contacts.Item.Segments.Item.WithSegment_ItemRequestBuilder WithUrl(string rawUrl)
         {
-            return new global::Soenneker.Resend.OpenApiClient.Audiences.Item.Contacts.Item.Segments.Item.WithSegment_ItemRequestBuilder(rawUrl, RequestAdapter);
+            return new global::Soenneker.Resend.OpenApiClient.Contacts.Item.Segments.Item.WithSegment_ItemRequestBuilder(rawUrl, RequestAdapter);
         }
     }
 }

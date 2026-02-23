@@ -14,7 +14,8 @@ namespace Soenneker.Resend.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Unique identifier of the audience this broadcast will be sent to.</summary>
+        /// <summary>Use `segment_id` instead. Unique identifier of the audience this broadcast will be sent to.</summary>
+        [Obsolete("")]
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? AudienceId { get; set; }
@@ -86,6 +87,14 @@ namespace Soenneker.Resend.OpenApiClient.Models
 #else
         public string Text { get; set; }
 #endif
+        /// <summary>The topic ID that the broadcast will be scoped to.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? TopicId { get; set; }
+#nullable restore
+#else
+        public string TopicId { get; set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Resend.OpenApiClient.Models.UpdateBroadcastOptions"/> and sets the default values.
         /// </summary>
@@ -120,6 +129,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
                 { "segment_id", n => { SegmentId = n.GetStringValue(); } },
                 { "subject", n => { Subject = n.GetStringValue(); } },
                 { "text", n => { Text = n.GetStringValue(); } },
+                { "topic_id", n => { TopicId = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -138,6 +148,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
             writer.WriteStringValue("segment_id", SegmentId);
             writer.WriteStringValue("subject", Subject);
             writer.WriteStringValue("text", Text);
+            writer.WriteStringValue("topic_id", TopicId);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

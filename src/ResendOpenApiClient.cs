@@ -10,6 +10,7 @@ using Soenneker.Resend.OpenApiClient.ApiKeys;
 using Soenneker.Resend.OpenApiClient.Audiences;
 using Soenneker.Resend.OpenApiClient.Broadcasts;
 using Soenneker.Resend.OpenApiClient.ContactProperties;
+using Soenneker.Resend.OpenApiClient.Contacts;
 using Soenneker.Resend.OpenApiClient.Domains;
 using Soenneker.Resend.OpenApiClient.Emails;
 using Soenneker.Resend.OpenApiClient.Segments;
@@ -47,6 +48,11 @@ namespace Soenneker.Resend.OpenApiClient
         public global::Soenneker.Resend.OpenApiClient.ContactProperties.ContactPropertiesRequestBuilder ContactProperties
         {
             get => new global::Soenneker.Resend.OpenApiClient.ContactProperties.ContactPropertiesRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The contacts property</summary>
+        public global::Soenneker.Resend.OpenApiClient.Contacts.ContactsRequestBuilder Contacts
+        {
+            get => new global::Soenneker.Resend.OpenApiClient.Contacts.ContactsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The domains property</summary>
         public global::Soenneker.Resend.OpenApiClient.Domains.DomainsRequestBuilder Domains

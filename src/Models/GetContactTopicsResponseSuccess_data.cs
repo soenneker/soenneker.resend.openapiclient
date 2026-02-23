@@ -14,6 +14,14 @@ namespace Soenneker.Resend.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>Description of the topic.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Description { get; set; }
+#nullable restore
+#else
+        public string Description { get; set; }
+#endif
         /// <summary>Unique identifier for the topic.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -30,8 +38,8 @@ namespace Soenneker.Resend.OpenApiClient.Models
 #else
         public string Name { get; set; }
 #endif
-        /// <summary>Indicates if the contact is subscribed to this topic.</summary>
-        public bool? Subscribed { get; set; }
+        /// <summary>The subscription status for this topic.</summary>
+        public global::Soenneker.Resend.OpenApiClient.Models.GetContactTopicsResponseSuccess_data_subscription? Subscription { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Resend.OpenApiClient.Models.GetContactTopicsResponseSuccess_data"/> and sets the default values.
         /// </summary>
@@ -57,9 +65,10 @@ namespace Soenneker.Resend.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "description", n => { Description = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
-                { "subscribed", n => { Subscribed = n.GetBoolValue(); } },
+                { "subscription", n => { Subscription = n.GetEnumValue<global::Soenneker.Resend.OpenApiClient.Models.GetContactTopicsResponseSuccess_data_subscription>(); } },
             };
         }
         /// <summary>
@@ -69,9 +78,10 @@ namespace Soenneker.Resend.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteStringValue("description", Description);
             writer.WriteStringValue("id", Id);
             writer.WriteStringValue("name", Name);
-            writer.WriteBoolValue("subscribed", Subscribed);
+            writer.WriteEnumValue<global::Soenneker.Resend.OpenApiClient.Models.GetContactTopicsResponseSuccess_data_subscription>("subscription", Subscription);
             writer.WriteAdditionalData(AdditionalData);
         }
     }
