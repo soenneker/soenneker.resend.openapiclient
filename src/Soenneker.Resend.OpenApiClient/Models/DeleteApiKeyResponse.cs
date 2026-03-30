@@ -9,45 +9,45 @@ namespace Soenneker.Resend.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class CreateApiKeyRequest : IAdditionalDataHolder, IParsable
+    public partial class DeleteApiKeyResponse : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Restrict an API key to send emails only from a specific domain. Only used when the permission is sending_access.</summary>
+        /// <summary>Indicates whether the API key was successfully deleted.</summary>
+        public bool? Deleted { get; set; }
+        /// <summary>The ID of the API key.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? DomainId { get; set; }
+        public string? Id { get; set; }
 #nullable restore
 #else
-        public string DomainId { get; set; }
+        public string Id { get; set; }
 #endif
-        /// <summary>The API key name.</summary>
+        /// <summary>The type of object.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Name { get; set; }
+        public string? Object { get; set; }
 #nullable restore
 #else
-        public string Name { get; set; }
+        public string Object { get; set; }
 #endif
-        /// <summary>The API key can have full access to Resend’s API or be only restricted to send emails. * full_access - Can create, delete, get, and update any resource. * sending_access - Can only send emails.</summary>
-        public global::Soenneker.Resend.OpenApiClient.Models.CreateApiKeyRequest_permission? Permission { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.Resend.OpenApiClient.Models.CreateApiKeyRequest"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.Resend.OpenApiClient.Models.DeleteApiKeyResponse"/> and sets the default values.
         /// </summary>
-        public CreateApiKeyRequest()
+        public DeleteApiKeyResponse()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Resend.OpenApiClient.Models.CreateApiKeyRequest"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Resend.OpenApiClient.Models.DeleteApiKeyResponse"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.Resend.OpenApiClient.Models.CreateApiKeyRequest CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.Resend.OpenApiClient.Models.DeleteApiKeyResponse CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Resend.OpenApiClient.Models.CreateApiKeyRequest();
+            return new global::Soenneker.Resend.OpenApiClient.Models.DeleteApiKeyResponse();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -57,9 +57,9 @@ namespace Soenneker.Resend.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "domain_id", n => { DomainId = n.GetStringValue(); } },
-                { "name", n => { Name = n.GetStringValue(); } },
-                { "permission", n => { Permission = n.GetEnumValue<global::Soenneker.Resend.OpenApiClient.Models.CreateApiKeyRequest_permission>(); } },
+                { "deleted", n => { Deleted = n.GetBoolValue(); } },
+                { "id", n => { Id = n.GetStringValue(); } },
+                { "object", n => { Object = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -69,9 +69,9 @@ namespace Soenneker.Resend.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteStringValue("domain_id", DomainId);
-            writer.WriteStringValue("name", Name);
-            writer.WriteEnumValue<global::Soenneker.Resend.OpenApiClient.Models.CreateApiKeyRequest_permission>("permission", Permission);
+            writer.WriteBoolValue("deleted", Deleted);
+            writer.WriteStringValue("id", Id);
+            writer.WriteStringValue("object", Object);
             writer.WriteAdditionalData(AdditionalData);
         }
     }
