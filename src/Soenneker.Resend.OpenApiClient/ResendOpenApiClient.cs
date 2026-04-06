@@ -8,11 +8,13 @@ using Microsoft.Kiota.Serialization.Multipart;
 using Microsoft.Kiota.Serialization.Text;
 using Soenneker.Resend.OpenApiClient.ApiKeys;
 using Soenneker.Resend.OpenApiClient.Audiences;
+using Soenneker.Resend.OpenApiClient.Automations;
 using Soenneker.Resend.OpenApiClient.Broadcasts;
 using Soenneker.Resend.OpenApiClient.ContactProperties;
 using Soenneker.Resend.OpenApiClient.Contacts;
 using Soenneker.Resend.OpenApiClient.Domains;
 using Soenneker.Resend.OpenApiClient.Emails;
+using Soenneker.Resend.OpenApiClient.Events;
 using Soenneker.Resend.OpenApiClient.Logs;
 using Soenneker.Resend.OpenApiClient.Segments;
 using Soenneker.Resend.OpenApiClient.Templates;
@@ -40,6 +42,11 @@ namespace Soenneker.Resend.OpenApiClient
         {
             get => new global::Soenneker.Resend.OpenApiClient.Audiences.AudiencesRequestBuilder(PathParameters, RequestAdapter);
         }
+        /// <summary>The automations property</summary>
+        public global::Soenneker.Resend.OpenApiClient.Automations.AutomationsRequestBuilder Automations
+        {
+            get => new global::Soenneker.Resend.OpenApiClient.Automations.AutomationsRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The broadcasts property</summary>
         public global::Soenneker.Resend.OpenApiClient.Broadcasts.BroadcastsRequestBuilder Broadcasts
         {
@@ -64,6 +71,11 @@ namespace Soenneker.Resend.OpenApiClient
         public global::Soenneker.Resend.OpenApiClient.Emails.EmailsRequestBuilder Emails
         {
             get => new global::Soenneker.Resend.OpenApiClient.Emails.EmailsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The events property</summary>
+        public global::Soenneker.Resend.OpenApiClient.Events.EventsRequestBuilder Events
+        {
+            get => new global::Soenneker.Resend.OpenApiClient.Events.EventsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The logs property</summary>
         public global::Soenneker.Resend.OpenApiClient.Logs.LogsRequestBuilder Logs
