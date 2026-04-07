@@ -46,6 +46,14 @@ namespace Soenneker.Resend.OpenApiClient.Models
         public global::Soenneker.Resend.OpenApiClient.Models.CreateDomainRequest_region? Region { get; set; }
         /// <summary>TLS mode. Opportunistic attempts secure connection but falls back to unencrypted. Enforced requires TLS or email won&apos;t be sent.</summary>
         public global::Soenneker.Resend.OpenApiClient.Models.CreateDomainRequest_tls? Tls { get; set; }
+        /// <summary>The subdomain to use for click and open tracking.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? TrackingSubdomain { get; set; }
+#nullable restore
+#else
+        public string TrackingSubdomain { get; set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Resend.OpenApiClient.Models.CreateDomainRequest"/> and sets the default values.
         /// </summary>
@@ -80,6 +88,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
                 { "open_tracking", n => { OpenTracking = n.GetBoolValue(); } },
                 { "region", n => { Region = n.GetEnumValue<global::Soenneker.Resend.OpenApiClient.Models.CreateDomainRequest_region>(); } },
                 { "tls", n => { Tls = n.GetEnumValue<global::Soenneker.Resend.OpenApiClient.Models.CreateDomainRequest_tls>(); } },
+                { "tracking_subdomain", n => { TrackingSubdomain = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -96,6 +105,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
             writer.WriteBoolValue("open_tracking", OpenTracking);
             writer.WriteEnumValue<global::Soenneker.Resend.OpenApiClient.Models.CreateDomainRequest_region>("region", Region);
             writer.WriteEnumValue<global::Soenneker.Resend.OpenApiClient.Models.CreateDomainRequest_tls>("tls", Tls);
+            writer.WriteStringValue("tracking_subdomain", TrackingSubdomain);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

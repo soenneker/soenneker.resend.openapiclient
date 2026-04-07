@@ -34,6 +34,14 @@ namespace Soenneker.Resend.OpenApiClient.Models
 #else
         public string Tls { get; set; }
 #endif
+        /// <summary>The subdomain to use for click and open tracking.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? TrackingSubdomain { get; set; }
+#nullable restore
+#else
+        public string TrackingSubdomain { get; set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Resend.OpenApiClient.Models.UpdateDomainOptions"/> and sets the default values.
         /// </summary>
@@ -64,6 +72,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
                 { "click_tracking", n => { ClickTracking = n.GetBoolValue(); } },
                 { "open_tracking", n => { OpenTracking = n.GetBoolValue(); } },
                 { "tls", n => { Tls = n.GetStringValue(); } },
+                { "tracking_subdomain", n => { TrackingSubdomain = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -77,6 +86,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
             writer.WriteBoolValue("click_tracking", ClickTracking);
             writer.WriteBoolValue("open_tracking", OpenTracking);
             writer.WriteStringValue("tls", Tls);
+            writer.WriteStringValue("tracking_subdomain", TrackingSubdomain);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

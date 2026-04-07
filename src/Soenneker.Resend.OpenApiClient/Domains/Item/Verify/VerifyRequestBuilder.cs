@@ -34,7 +34,7 @@ namespace Soenneker.Resend.OpenApiClient.Domains.Item.Verify
         {
         }
         /// <summary>
-        /// Verify an existing domain
+        /// Triggers verification of the domain&apos;s DNS records including DKIM, SPF, and the tracking CNAME (if a tracking subdomain is configured).
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Resend.OpenApiClient.Models.VerifyDomainResponse"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -52,7 +52,7 @@ namespace Soenneker.Resend.OpenApiClient.Domains.Item.Verify
             return await RequestAdapter.SendAsync<global::Soenneker.Resend.OpenApiClient.Models.VerifyDomainResponse>(requestInfo, global::Soenneker.Resend.OpenApiClient.Models.VerifyDomainResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Verify an existing domain
+        /// Triggers verification of the domain&apos;s DNS records including DKIM, SPF, and the tracking CNAME (if a tracking subdomain is configured).
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>

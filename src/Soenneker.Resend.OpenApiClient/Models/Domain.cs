@@ -22,6 +22,8 @@ namespace Soenneker.Resend.OpenApiClient.Models
 #else
         public global::Soenneker.Resend.OpenApiClient.Models.DomainCapabilities Capabilities { get; set; }
 #endif
+        /// <summary>Whether click tracking is enabled for this domain.</summary>
+        public bool? ClickTracking { get; set; }
         /// <summary>The date and time the domain was created.</summary>
         public DateTimeOffset? CreatedAt { get; set; }
         /// <summary>The ID of the domain.</summary>
@@ -48,6 +50,8 @@ namespace Soenneker.Resend.OpenApiClient.Models
 #else
         public string Object { get; set; }
 #endif
+        /// <summary>Whether open tracking is enabled for this domain.</summary>
+        public bool? OpenTracking { get; set; }
         /// <summary>The records property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -71,6 +75,14 @@ namespace Soenneker.Resend.OpenApiClient.Models
 #nullable restore
 #else
         public string Status { get; set; }
+#endif
+        /// <summary>The subdomain used for click and open tracking.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? TrackingSubdomain { get; set; }
+#nullable restore
+#else
+        public string TrackingSubdomain { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Resend.OpenApiClient.Models.Domain"/> and sets the default values.
@@ -98,13 +110,16 @@ namespace Soenneker.Resend.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "capabilities", n => { Capabilities = n.GetObjectValue<global::Soenneker.Resend.OpenApiClient.Models.DomainCapabilities>(global::Soenneker.Resend.OpenApiClient.Models.DomainCapabilities.CreateFromDiscriminatorValue); } },
+                { "click_tracking", n => { ClickTracking = n.GetBoolValue(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "object", n => { Object = n.GetStringValue(); } },
+                { "open_tracking", n => { OpenTracking = n.GetBoolValue(); } },
                 { "records", n => { Records = n.GetCollectionOfObjectValues<global::Soenneker.Resend.OpenApiClient.Models.DomainRecord>(global::Soenneker.Resend.OpenApiClient.Models.DomainRecord.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "region", n => { Region = n.GetStringValue(); } },
                 { "status", n => { Status = n.GetStringValue(); } },
+                { "tracking_subdomain", n => { TrackingSubdomain = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -115,13 +130,16 @@ namespace Soenneker.Resend.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.Resend.OpenApiClient.Models.DomainCapabilities>("capabilities", Capabilities);
+            writer.WriteBoolValue("click_tracking", ClickTracking);
             writer.WriteDateTimeOffsetValue("created_at", CreatedAt);
             writer.WriteStringValue("id", Id);
             writer.WriteStringValue("name", Name);
             writer.WriteStringValue("object", Object);
+            writer.WriteBoolValue("open_tracking", OpenTracking);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Resend.OpenApiClient.Models.DomainRecord>("records", Records);
             writer.WriteStringValue("region", Region);
             writer.WriteStringValue("status", Status);
+            writer.WriteStringValue("tracking_subdomain", TrackingSubdomain);
             writer.WriteAdditionalData(AdditionalData);
         }
     }
