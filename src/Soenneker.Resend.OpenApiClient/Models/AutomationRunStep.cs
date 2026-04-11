@@ -39,6 +39,14 @@ namespace Soenneker.Resend.OpenApiClient.Models
 #else
         public UntypedNode Error { get; set; }
 #endif
+        /// <summary>The key of the automation step.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Key { get; set; }
+#nullable restore
+#else
+        public string Key { get; set; }
+#endif
         /// <summary>The output produced by the step, if any.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -93,6 +101,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
                 { "completed_at", n => { CompletedAt = n.GetStringValue(); } },
                 { "created_at", n => { CreatedAt = n.GetStringValue(); } },
                 { "error", n => { Error = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "key", n => { Key = n.GetStringValue(); } },
                 { "output", n => { Output = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "started_at", n => { StartedAt = n.GetStringValue(); } },
                 { "status", n => { Status = n.GetStringValue(); } },
@@ -109,6 +118,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
             writer.WriteStringValue("completed_at", CompletedAt);
             writer.WriteStringValue("created_at", CreatedAt);
             writer.WriteObjectValue<UntypedNode>("error", Error);
+            writer.WriteStringValue("key", Key);
             writer.WriteObjectValue<UntypedNode>("output", Output);
             writer.WriteStringValue("started_at", StartedAt);
             writer.WriteStringValue("status", Status);

@@ -8,16 +8,14 @@ using System;
 namespace Soenneker.Resend.OpenApiClient.Models
 {
     /// <summary>
-    /// An edge connecting two steps in the automation graph.
+    /// A connection between two steps in the automation graph.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class AutomationEdge : IAdditionalDataHolder, IParsable
+    public partial class AutomationConnection : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The type of edge. Defaults to `default`.</summary>
-        public global::Soenneker.Resend.OpenApiClient.Models.AutomationEdge_edge_type? EdgeType { get; set; }
-        /// <summary>The `ref` of the source step (in requests) or the step ID (in responses).</summary>
+        /// <summary>The `key` of the source step.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? From { get; set; }
@@ -25,7 +23,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
 #else
         public string From { get; set; }
 #endif
-        /// <summary>The `ref` of the target step (in requests) or the step ID (in responses).</summary>
+        /// <summary>The `key` of the target step.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? To { get; set; }
@@ -33,23 +31,25 @@ namespace Soenneker.Resend.OpenApiClient.Models
 #else
         public string To { get; set; }
 #endif
+        /// <summary>The type of connection. Defaults to `default`.</summary>
+        public global::Soenneker.Resend.OpenApiClient.Models.AutomationConnection_type? Type { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.Resend.OpenApiClient.Models.AutomationEdge"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.Resend.OpenApiClient.Models.AutomationConnection"/> and sets the default values.
         /// </summary>
-        public AutomationEdge()
+        public AutomationConnection()
         {
             AdditionalData = new Dictionary<string, object>();
-            EdgeType = global::Soenneker.Resend.OpenApiClient.Models.AutomationEdge_edge_type.Default;
+            Type = global::Soenneker.Resend.OpenApiClient.Models.AutomationConnection_type.Default;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Resend.OpenApiClient.Models.AutomationEdge"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Resend.OpenApiClient.Models.AutomationConnection"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.Resend.OpenApiClient.Models.AutomationEdge CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.Resend.OpenApiClient.Models.AutomationConnection CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Resend.OpenApiClient.Models.AutomationEdge();
+            return new global::Soenneker.Resend.OpenApiClient.Models.AutomationConnection();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -59,9 +59,9 @@ namespace Soenneker.Resend.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "edge_type", n => { EdgeType = n.GetEnumValue<global::Soenneker.Resend.OpenApiClient.Models.AutomationEdge_edge_type>(); } },
                 { "from", n => { From = n.GetStringValue(); } },
                 { "to", n => { To = n.GetStringValue(); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.Resend.OpenApiClient.Models.AutomationConnection_type>(); } },
             };
         }
         /// <summary>
@@ -71,9 +71,9 @@ namespace Soenneker.Resend.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<global::Soenneker.Resend.OpenApiClient.Models.AutomationEdge_edge_type>("edge_type", EdgeType);
             writer.WriteStringValue("from", From);
             writer.WriteStringValue("to", To);
+            writer.WriteEnumValue<global::Soenneker.Resend.OpenApiClient.Models.AutomationConnection_type>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

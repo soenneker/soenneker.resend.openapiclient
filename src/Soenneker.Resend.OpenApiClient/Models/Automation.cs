@@ -14,6 +14,14 @@ namespace Soenneker.Resend.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>The connections between steps in the active version of the automation.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::Soenneker.Resend.OpenApiClient.Models.AutomationConnection>? Connections { get; set; }
+#nullable restore
+#else
+        public List<global::Soenneker.Resend.OpenApiClient.Models.AutomationConnection> Connections { get; set; }
+#endif
         /// <summary>The date and time the automation was created.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -21,14 +29,6 @@ namespace Soenneker.Resend.OpenApiClient.Models
 #nullable restore
 #else
         public string CreatedAt { get; set; }
-#endif
-        /// <summary>The edges connecting steps in the active version of the automation.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public List<global::Soenneker.Resend.OpenApiClient.Models.AutomationEdge>? Edges { get; set; }
-#nullable restore
-#else
-        public List<global::Soenneker.Resend.OpenApiClient.Models.AutomationEdge> Edges { get; set; }
 #endif
         /// <summary>The ID of the automation.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -97,8 +97,8 @@ namespace Soenneker.Resend.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "connections", n => { Connections = n.GetCollectionOfObjectValues<global::Soenneker.Resend.OpenApiClient.Models.AutomationConnection>(global::Soenneker.Resend.OpenApiClient.Models.AutomationConnection.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "created_at", n => { CreatedAt = n.GetStringValue(); } },
-                { "edges", n => { Edges = n.GetCollectionOfObjectValues<global::Soenneker.Resend.OpenApiClient.Models.AutomationEdge>(global::Soenneker.Resend.OpenApiClient.Models.AutomationEdge.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "object", n => { Object = n.GetStringValue(); } },
@@ -114,8 +114,8 @@ namespace Soenneker.Resend.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteCollectionOfObjectValues<global::Soenneker.Resend.OpenApiClient.Models.AutomationConnection>("connections", Connections);
             writer.WriteStringValue("created_at", CreatedAt);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.Resend.OpenApiClient.Models.AutomationEdge>("edges", Edges);
             writer.WriteStringValue("id", Id);
             writer.WriteStringValue("name", Name);
             writer.WriteStringValue("object", Object);

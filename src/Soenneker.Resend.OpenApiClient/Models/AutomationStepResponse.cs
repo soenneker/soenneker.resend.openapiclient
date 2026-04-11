@@ -15,13 +15,21 @@ namespace Soenneker.Resend.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Configuration for the step. Shape depends on `type`.</summary>
+        /// <summary>Configuration for the step. Shape depends on `type`. For `delay` steps, config contains `{ duration: string }` with a human-readable duration (e.g. `&quot;30 minutes&quot;`). For `wait_for_event` steps, config contains `{ event_name: string, timeout?: string, filter_rule?: object }` where `timeout` is a human-readable duration.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.Resend.OpenApiClient.Models.AutomationStepResponse_config? Config { get; set; }
 #nullable restore
 #else
         public global::Soenneker.Resend.OpenApiClient.Models.AutomationStepResponse_config Config { get; set; }
+#endif
+        /// <summary>The unique key of this step within the automation graph.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Key { get; set; }
+#nullable restore
+#else
+        public string Key { get; set; }
 #endif
         /// <summary>The type of automation step.</summary>
         public global::Soenneker.Resend.OpenApiClient.Models.AutomationStepResponse_type? Type { get; set; }
@@ -51,6 +59,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "config", n => { Config = n.GetObjectValue<global::Soenneker.Resend.OpenApiClient.Models.AutomationStepResponse_config>(global::Soenneker.Resend.OpenApiClient.Models.AutomationStepResponse_config.CreateFromDiscriminatorValue); } },
+                { "key", n => { Key = n.GetStringValue(); } },
                 { "type", n => { Type = n.GetEnumValue<global::Soenneker.Resend.OpenApiClient.Models.AutomationStepResponse_type>(); } },
             };
         }
@@ -62,6 +71,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.Resend.OpenApiClient.Models.AutomationStepResponse_config>("config", Config);
+            writer.WriteStringValue("key", Key);
             writer.WriteEnumValue<global::Soenneker.Resend.OpenApiClient.Models.AutomationStepResponse_type>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }

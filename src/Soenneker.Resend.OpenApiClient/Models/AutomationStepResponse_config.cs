@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.Resend.OpenApiClient.Models
 {
     /// <summary>
-    /// Configuration for the step. Shape depends on `type`.
+    /// Configuration for the step. Shape depends on `type`. For `delay` steps, config contains `{ duration: string }` with a human-readable duration (e.g. `&quot;30 minutes&quot;`). For `wait_for_event` steps, config contains `{ event_name: string, timeout?: string, filter_rule?: object }` where `timeout` is a human-readable duration.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class AutomationStepResponse_config : IAdditionalDataHolder, IParsable

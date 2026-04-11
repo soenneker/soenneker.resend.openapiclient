@@ -3,9 +3,9 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.Resend.OpenApiClient.Models
 {
-    /// <summary>The type of edge. Defaults to `default`.</summary>
+    /// <summary>The type of connection. Defaults to `default`.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public enum AutomationEdge_edge_type
+    public enum AutomationConnection_type
     {
         [EnumMember(Value = "default")]
         #pragma warning disable CS1591

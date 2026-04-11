@@ -14,13 +14,13 @@ namespace Soenneker.Resend.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The edges connecting steps in the automation graph.</summary>
+        /// <summary>The connections between steps in the automation graph.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Resend.OpenApiClient.Models.AutomationEdge>? Edges { get; set; }
+        public List<global::Soenneker.Resend.OpenApiClient.Models.AutomationConnection>? Connections { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.Resend.OpenApiClient.Models.AutomationEdge> Edges { get; set; }
+        public List<global::Soenneker.Resend.OpenApiClient.Models.AutomationConnection> Connections { get; set; }
 #endif
         /// <summary>The name of the automation.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -66,7 +66,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "edges", n => { Edges = n.GetCollectionOfObjectValues<global::Soenneker.Resend.OpenApiClient.Models.AutomationEdge>(global::Soenneker.Resend.OpenApiClient.Models.AutomationEdge.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "connections", n => { Connections = n.GetCollectionOfObjectValues<global::Soenneker.Resend.OpenApiClient.Models.AutomationConnection>(global::Soenneker.Resend.OpenApiClient.Models.AutomationConnection.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "status", n => { Status = n.GetEnumValue<global::Soenneker.Resend.OpenApiClient.Models.CreateAutomationRequest_status>(); } },
                 { "steps", n => { Steps = n.GetCollectionOfObjectValues<global::Soenneker.Resend.OpenApiClient.Models.AutomationStep>(global::Soenneker.Resend.OpenApiClient.Models.AutomationStep.CreateFromDiscriminatorValue)?.AsList(); } },
@@ -79,7 +79,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteCollectionOfObjectValues<global::Soenneker.Resend.OpenApiClient.Models.AutomationEdge>("edges", Edges);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.Resend.OpenApiClient.Models.AutomationConnection>("connections", Connections);
             writer.WriteStringValue("name", Name);
             writer.WriteEnumValue<global::Soenneker.Resend.OpenApiClient.Models.CreateAutomationRequest_status>("status", Status);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Resend.OpenApiClient.Models.AutomationStep>("steps", Steps);

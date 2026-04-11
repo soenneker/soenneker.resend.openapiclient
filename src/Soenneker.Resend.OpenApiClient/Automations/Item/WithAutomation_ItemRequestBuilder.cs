@@ -85,7 +85,7 @@ namespace Soenneker.Resend.OpenApiClient.Automations.Item
         /// Update an automation
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Resend.OpenApiClient.Models.PatchAutomationResponse"/></returns>
-        /// <param name="body">At least one of `name`, `status`, or `steps` and `edges` must be provided. When updating the workflow graph, both `steps` and `edges` must be provided together.</param>
+        /// <param name="body">At least one of `name`, `status`, or `steps` and `connections` must be provided. When updating the workflow graph, both `steps` and `connections` must be provided together.</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -143,7 +143,7 @@ namespace Soenneker.Resend.OpenApiClient.Automations.Item
         /// Update an automation
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
-        /// <param name="body">At least one of `name`, `status`, or `steps` and `edges` must be provided. When updating the workflow graph, both `steps` and `edges` must be provided together.</param>
+        /// <param name="body">At least one of `name`, `status`, or `steps` and `connections` must be provided. When updating the workflow graph, both `steps` and `connections` must be provided together.</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
