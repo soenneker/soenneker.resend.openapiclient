@@ -2,7 +2,7 @@
   "descriptionHash": "4A3870B4F8DD959F23D4784D587D955D3851B26E28DA0219974E1DB3277E72E62286F93D23255F0FAEDD53E995140B63BEC93431BD626FE425F1B30C3A321EA3",
   "descriptionLocation": "../../resend.yaml",
   "lockFileVersion": "1.0.0",
-  "kiotaVersion": "1.31.0",
+  "kiotaVersion": "1.31.1",
   "clientClassName": "ResendOpenApiClient",
   "typeAccessModifier": "Public",
   "clientNamespaceName": "Soenneker.Resend.OpenApiClient",
