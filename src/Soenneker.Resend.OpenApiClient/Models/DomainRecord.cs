@@ -24,7 +24,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
 #endif
         /// <summary>The priority of the record (only applicable for MX records).</summary>
         public int? Priority { get; set; }
-        /// <summary>The type of record (SPF for sending, DKIM for sending, Receiving for inbound emails, Tracking for click and open tracking).</summary>
+        /// <summary>The type of record (SPF for sending, DKIM for sending, Receiving for inbound emails, Tracking &amp; TrackingCAA for click and open tracking).</summary>
         public global::Soenneker.Resend.OpenApiClient.Models.DomainRecord_record? Record { get; set; }
         /// <summary>The status of the record.</summary>
         public global::Soenneker.Resend.OpenApiClient.Models.DomainRecord_status? Status { get; set; }

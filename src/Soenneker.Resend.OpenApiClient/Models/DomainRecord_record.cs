@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.Resend.OpenApiClient.Models
 {
-    /// <summary>The type of record (SPF for sending, DKIM for sending, Receiving for inbound emails, Tracking for click and open tracking).</summary>
+    /// <summary>The type of record (SPF for sending, DKIM for sending, Receiving for inbound emails, Tracking &amp; TrackingCAA for click and open tracking).</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum DomainRecord_record
     {
@@ -22,6 +22,10 @@ namespace Soenneker.Resend.OpenApiClient.Models
         [EnumMember(Value = "Tracking")]
         #pragma warning disable CS1591
         Tracking,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "TrackingCAA")]
+        #pragma warning disable CS1591
+        TrackingCAA,
         #pragma warning restore CS1591
     }
 }

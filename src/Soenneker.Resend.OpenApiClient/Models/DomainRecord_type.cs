@@ -19,5 +19,9 @@ namespace Soenneker.Resend.OpenApiClient.Models
         #pragma warning disable CS1591
         CNAME,
         #pragma warning restore CS1591
+        [EnumMember(Value = "CAA")]
+        #pragma warning disable CS1591
+        CAA,
+        #pragma warning restore CS1591
     }
 }
