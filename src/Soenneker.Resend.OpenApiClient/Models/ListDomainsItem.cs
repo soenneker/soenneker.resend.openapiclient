@@ -49,13 +49,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
         public string Region { get; set; }
 #endif
         /// <summary>The status of the domain.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Status { get; set; }
-#nullable restore
-#else
-        public string Status { get; set; }
-#endif
+        public global::Soenneker.Resend.OpenApiClient.Models.ListDomainsItem_status? Status { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Resend.OpenApiClient.Models.ListDomainsItem"/> and sets the default values.
         /// </summary>
@@ -86,7 +80,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "region", n => { Region = n.GetStringValue(); } },
-                { "status", n => { Status = n.GetStringValue(); } },
+                { "status", n => { Status = n.GetEnumValue<global::Soenneker.Resend.OpenApiClient.Models.ListDomainsItem_status>(); } },
             };
         }
         /// <summary>
@@ -101,7 +95,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
             writer.WriteStringValue("id", Id);
             writer.WriteStringValue("name", Name);
             writer.WriteStringValue("region", Region);
-            writer.WriteStringValue("status", Status);
+            writer.WriteEnumValue<global::Soenneker.Resend.OpenApiClient.Models.ListDomainsItem_status>("status", Status);
             writer.WriteAdditionalData(AdditionalData);
         }
     }
