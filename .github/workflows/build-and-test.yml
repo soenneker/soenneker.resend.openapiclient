@@ -38,7 +38,7 @@ jobs:
         run: dotnet build test/Soenneker.Resend.OpenApiClient.Tests/Soenneker.Resend.OpenApiClient.Tests.csproj --configuration Release --no-restore --verbosity minimal
 
       - name: Test
-        run: dotnet test test/Soenneker.Resend.OpenApiClient.Tests/Soenneker.Resend.OpenApiClient.Tests.csproj --configuration Release --no-build --no-restore --verbosity minimal
+        run: dotnet test --project test/Soenneker.Resend.OpenApiClient.Tests/Soenneker.Resend.OpenApiClient.Tests.csproj --configuration Release --no-build --no-restore --verbosity minimal
 
       - name: Pack
         run: dotnet pack src/Soenneker.Resend.OpenApiClient/Soenneker.Resend.OpenApiClient.csproj --configuration Release --no-build --no-restore --output . --verbosity minimal
