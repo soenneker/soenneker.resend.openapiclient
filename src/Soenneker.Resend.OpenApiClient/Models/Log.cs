@@ -39,18 +39,18 @@ namespace Soenneker.Resend.OpenApiClient.Models
         /// <summary>The request body sent to the API.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? RequestBody { get; set; }
+        public global::Soenneker.Resend.OpenApiClient.Models.Log_request_body? RequestBody { get; set; }
 #nullable restore
 #else
-        public UntypedNode RequestBody { get; set; }
+        public global::Soenneker.Resend.OpenApiClient.Models.Log_request_body RequestBody { get; set; }
 #endif
         /// <summary>The response body returned by the API.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? ResponseBody { get; set; }
+        public global::Soenneker.Resend.OpenApiClient.Models.Log_response_body? ResponseBody { get; set; }
 #nullable restore
 #else
-        public UntypedNode ResponseBody { get; set; }
+        public global::Soenneker.Resend.OpenApiClient.Models.Log_response_body ResponseBody { get; set; }
 #endif
         /// <summary>The HTTP status code of the response.</summary>
         public int? ResponseStatus { get; set; }
@@ -92,8 +92,8 @@ namespace Soenneker.Resend.OpenApiClient.Models
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "method", n => { Method = n.GetEnumValue<global::Soenneker.Resend.OpenApiClient.Models.Log_method>(); } },
                 { "object", n => { Object = n.GetStringValue(); } },
-                { "request_body", n => { RequestBody = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
-                { "response_body", n => { ResponseBody = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "request_body", n => { RequestBody = n.GetObjectValue<global::Soenneker.Resend.OpenApiClient.Models.Log_request_body>(global::Soenneker.Resend.OpenApiClient.Models.Log_request_body.CreateFromDiscriminatorValue); } },
+                { "response_body", n => { ResponseBody = n.GetObjectValue<global::Soenneker.Resend.OpenApiClient.Models.Log_response_body>(global::Soenneker.Resend.OpenApiClient.Models.Log_response_body.CreateFromDiscriminatorValue); } },
                 { "response_status", n => { ResponseStatus = n.GetIntValue(); } },
                 { "user_agent", n => { UserAgent = n.GetStringValue(); } },
             };
@@ -110,8 +110,8 @@ namespace Soenneker.Resend.OpenApiClient.Models
             writer.WriteGuidValue("id", Id);
             writer.WriteEnumValue<global::Soenneker.Resend.OpenApiClient.Models.Log_method>("method", Method);
             writer.WriteStringValue("object", Object);
-            writer.WriteObjectValue<UntypedNode>("request_body", RequestBody);
-            writer.WriteObjectValue<UntypedNode>("response_body", ResponseBody);
+            writer.WriteObjectValue<global::Soenneker.Resend.OpenApiClient.Models.Log_request_body>("request_body", RequestBody);
+            writer.WriteObjectValue<global::Soenneker.Resend.OpenApiClient.Models.Log_response_body>("response_body", ResponseBody);
             writer.WriteIntValue("response_status", ResponseStatus);
             writer.WriteStringValue("user_agent", UserAgent);
             writer.WriteAdditionalData(AdditionalData);

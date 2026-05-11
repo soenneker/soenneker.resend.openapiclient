@@ -34,10 +34,10 @@ namespace Soenneker.Resend.OpenApiClient.Models
         /// <summary>The error produced by the step, if any.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? Error { get; set; }
+        public global::Soenneker.Resend.OpenApiClient.Models.AutomationRunStep_error? Error { get; set; }
 #nullable restore
 #else
-        public UntypedNode Error { get; set; }
+        public global::Soenneker.Resend.OpenApiClient.Models.AutomationRunStep_error Error { get; set; }
 #endif
         /// <summary>The key of the automation step.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -50,10 +50,10 @@ namespace Soenneker.Resend.OpenApiClient.Models
         /// <summary>The output produced by the step, if any.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? Output { get; set; }
+        public global::Soenneker.Resend.OpenApiClient.Models.AutomationRunStep_output? Output { get; set; }
 #nullable restore
 #else
-        public UntypedNode Output { get; set; }
+        public global::Soenneker.Resend.OpenApiClient.Models.AutomationRunStep_output Output { get; set; }
 #endif
         /// <summary>The date and time the step started executing.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -100,9 +100,9 @@ namespace Soenneker.Resend.OpenApiClient.Models
             {
                 { "completed_at", n => { CompletedAt = n.GetStringValue(); } },
                 { "created_at", n => { CreatedAt = n.GetStringValue(); } },
-                { "error", n => { Error = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "error", n => { Error = n.GetObjectValue<global::Soenneker.Resend.OpenApiClient.Models.AutomationRunStep_error>(global::Soenneker.Resend.OpenApiClient.Models.AutomationRunStep_error.CreateFromDiscriminatorValue); } },
                 { "key", n => { Key = n.GetStringValue(); } },
-                { "output", n => { Output = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "output", n => { Output = n.GetObjectValue<global::Soenneker.Resend.OpenApiClient.Models.AutomationRunStep_output>(global::Soenneker.Resend.OpenApiClient.Models.AutomationRunStep_output.CreateFromDiscriminatorValue); } },
                 { "started_at", n => { StartedAt = n.GetStringValue(); } },
                 { "status", n => { Status = n.GetStringValue(); } },
                 { "type", n => { Type = n.GetEnumValue<global::Soenneker.Resend.OpenApiClient.Models.AutomationRunStep_type>(); } },
@@ -117,9 +117,9 @@ namespace Soenneker.Resend.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("completed_at", CompletedAt);
             writer.WriteStringValue("created_at", CreatedAt);
-            writer.WriteObjectValue<UntypedNode>("error", Error);
+            writer.WriteObjectValue<global::Soenneker.Resend.OpenApiClient.Models.AutomationRunStep_error>("error", Error);
             writer.WriteStringValue("key", Key);
-            writer.WriteObjectValue<UntypedNode>("output", Output);
+            writer.WriteObjectValue<global::Soenneker.Resend.OpenApiClient.Models.AutomationRunStep_output>("output", Output);
             writer.WriteStringValue("started_at", StartedAt);
             writer.WriteStringValue("status", Status);
             writer.WriteEnumValue<global::Soenneker.Resend.OpenApiClient.Models.AutomationRunStep_type>("type", Type);
