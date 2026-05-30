@@ -39,7 +39,6 @@ namespace Soenneker.Resend.OpenApiClient.Models
         public AutomationConnection()
         {
             AdditionalData = new Dictionary<string, object>();
-            Type = global::Soenneker.Resend.OpenApiClient.Models.AutomationConnection_type.Default;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value

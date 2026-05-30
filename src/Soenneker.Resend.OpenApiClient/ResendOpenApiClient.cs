@@ -7,7 +7,6 @@ using Microsoft.Kiota.Serialization.Json;
 using Microsoft.Kiota.Serialization.Multipart;
 using Microsoft.Kiota.Serialization.Text;
 using Soenneker.Resend.OpenApiClient.ApiKeys;
-using Soenneker.Resend.OpenApiClient.Audiences;
 using Soenneker.Resend.OpenApiClient.Automations;
 using Soenneker.Resend.OpenApiClient.Broadcasts;
 using Soenneker.Resend.OpenApiClient.ContactProperties;
@@ -36,11 +35,6 @@ namespace Soenneker.Resend.OpenApiClient
         public global::Soenneker.Resend.OpenApiClient.ApiKeys.ApiKeysRequestBuilder ApiKeys
         {
             get => new global::Soenneker.Resend.OpenApiClient.ApiKeys.ApiKeysRequestBuilder(PathParameters, RequestAdapter);
-        }
-        /// <summary>The audiences property</summary>
-        public global::Soenneker.Resend.OpenApiClient.Audiences.AudiencesRequestBuilder Audiences
-        {
-            get => new global::Soenneker.Resend.OpenApiClient.Audiences.AudiencesRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The automations property</summary>
         public global::Soenneker.Resend.OpenApiClient.Automations.AutomationsRequestBuilder Automations

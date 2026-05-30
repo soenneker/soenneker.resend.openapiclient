@@ -121,7 +121,7 @@ namespace Soenneker.Resend.OpenApiClient.Automations.Item.Runs
             /// <summary>Number of items to return.</summary>
             [QueryParameter("limit")]
             public int? Limit { get; set; }
-            /// <summary>Filter runs by status. Comma-separated list of: running, completed, failed, cancelled.</summary>
+            /// <summary>&quot;Filter runs by status. Comma-separated list of: running, completed, failed, cancelled.&quot;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("status")]

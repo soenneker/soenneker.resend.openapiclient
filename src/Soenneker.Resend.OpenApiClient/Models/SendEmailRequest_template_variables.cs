@@ -7,45 +7,30 @@ using System.IO;
 using System;
 namespace Soenneker.Resend.OpenApiClient.Models
 {
+    /// <summary>
+    /// Template variables object with key/value pairs.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
-    public partial class EmailTemplateInput : IAdditionalDataHolder, IParsable
-    #pragma warning restore CS1591
+    public partial class SendEmailRequest_template_variables : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The id of the published email template.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Id { get; set; }
-#nullable restore
-#else
-        public string Id { get; set; }
-#endif
-        /// <summary>Template variables object with key/value pairs.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.Resend.OpenApiClient.Models.EmailTemplateInput_variables? Variables { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.Resend.OpenApiClient.Models.EmailTemplateInput_variables Variables { get; set; }
-#endif
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.Resend.OpenApiClient.Models.EmailTemplateInput"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.Resend.OpenApiClient.Models.SendEmailRequest_template_variables"/> and sets the default values.
         /// </summary>
-        public EmailTemplateInput()
+        public SendEmailRequest_template_variables()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Resend.OpenApiClient.Models.EmailTemplateInput"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Resend.OpenApiClient.Models.SendEmailRequest_template_variables"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.Resend.OpenApiClient.Models.EmailTemplateInput CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.Resend.OpenApiClient.Models.SendEmailRequest_template_variables CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Resend.OpenApiClient.Models.EmailTemplateInput();
+            return new global::Soenneker.Resend.OpenApiClient.Models.SendEmailRequest_template_variables();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -55,8 +40,6 @@ namespace Soenneker.Resend.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "id", n => { Id = n.GetStringValue(); } },
-                { "variables", n => { Variables = n.GetObjectValue<global::Soenneker.Resend.OpenApiClient.Models.EmailTemplateInput_variables>(global::Soenneker.Resend.OpenApiClient.Models.EmailTemplateInput_variables.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -66,8 +49,6 @@ namespace Soenneker.Resend.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteStringValue("id", Id);
-            writer.WriteObjectValue<global::Soenneker.Resend.OpenApiClient.Models.EmailTemplateInput_variables>("variables", Variables);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

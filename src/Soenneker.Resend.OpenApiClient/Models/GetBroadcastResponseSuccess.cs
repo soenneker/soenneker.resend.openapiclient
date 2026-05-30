@@ -14,7 +14,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Deprecated: use `segment_id` instead. Unique identifier of the segment this broadcast will be sent to.</summary>
+        /// <summary>&quot;Deprecated: use `segment_id` instead. Unique identifier of the segment this broadcast will be sent to.&quot;</summary>
         [Obsolete("")]
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
