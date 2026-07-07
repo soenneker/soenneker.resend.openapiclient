@@ -17,10 +17,10 @@ namespace Soenneker.Resend.OpenApiClient.Models
         /// <summary>The fallback value of the variable.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Resend.OpenApiClient.Models.TemplateVariableInput_fallback_value? FallbackValue { get; set; }
+        public global::Soenneker.Resend.OpenApiClient.Models.TemplateVariableInputFallbackValue? FallbackValue { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Resend.OpenApiClient.Models.TemplateVariableInput_fallback_value FallbackValue { get; set; }
+        public global::Soenneker.Resend.OpenApiClient.Models.TemplateVariableInputFallbackValue FallbackValue { get; set; }
 #endif
         /// <summary>The key of the variable.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -31,7 +31,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
         public string Key { get; set; }
 #endif
         /// <summary>The type of the variable.</summary>
-        public global::Soenneker.Resend.OpenApiClient.Models.TemplateVariableInput_type? Type { get; set; }
+        public global::Soenneker.Resend.OpenApiClient.Models.TemplateVariableInputType? Type { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Resend.OpenApiClient.Models.TemplateVariableInput"/> and sets the default values.
         /// </summary>
@@ -57,9 +57,9 @@ namespace Soenneker.Resend.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "fallback_value", n => { FallbackValue = n.GetObjectValue<global::Soenneker.Resend.OpenApiClient.Models.TemplateVariableInput_fallback_value>(global::Soenneker.Resend.OpenApiClient.Models.TemplateVariableInput_fallback_value.CreateFromDiscriminatorValue); } },
+                { "fallback_value", n => { FallbackValue = n.GetObjectValue<global::Soenneker.Resend.OpenApiClient.Models.TemplateVariableInputFallbackValue>(global::Soenneker.Resend.OpenApiClient.Models.TemplateVariableInputFallbackValue.CreateFromDiscriminatorValue); } },
                 { "key", n => { Key = n.GetStringValue(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.Resend.OpenApiClient.Models.TemplateVariableInput_type>(); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.Resend.OpenApiClient.Models.TemplateVariableInputType>(); } },
             };
         }
         /// <summary>
@@ -69,9 +69,9 @@ namespace Soenneker.Resend.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.Resend.OpenApiClient.Models.TemplateVariableInput_fallback_value>("fallback_value", FallbackValue);
+            writer.WriteObjectValue<global::Soenneker.Resend.OpenApiClient.Models.TemplateVariableInputFallbackValue>("fallback_value", FallbackValue);
             writer.WriteStringValue("key", Key);
-            writer.WriteEnumValue<global::Soenneker.Resend.OpenApiClient.Models.TemplateVariableInput_type>("type", Type);
+            writer.WriteEnumValue<global::Soenneker.Resend.OpenApiClient.Models.TemplateVariableInputType>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

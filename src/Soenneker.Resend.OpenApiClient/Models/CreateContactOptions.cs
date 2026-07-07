@@ -50,10 +50,10 @@ namespace Soenneker.Resend.OpenApiClient.Models
         /// <summary>A map of custom property keys and values to create.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Resend.OpenApiClient.Models.CreateContactOptions_properties? Properties { get; set; }
+        public global::Soenneker.Resend.OpenApiClient.Models.CreateContactOptionsPropertiesProperty? Properties { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Resend.OpenApiClient.Models.CreateContactOptions_properties Properties { get; set; }
+        public global::Soenneker.Resend.OpenApiClient.Models.CreateContactOptionsPropertiesProperty Properties { get; set; }
 #endif
         /// <summary>Array of segment IDs to add the contact to.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -66,10 +66,10 @@ namespace Soenneker.Resend.OpenApiClient.Models
         /// <summary>Array of topic subscriptions for the contact.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Resend.OpenApiClient.Models.CreateContactOptions_topics>? Topics { get; set; }
+        public List<global::Soenneker.Resend.OpenApiClient.Models.CreateContactOptionsTopicsItem>? Topics { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.Resend.OpenApiClient.Models.CreateContactOptions_topics> Topics { get; set; }
+        public List<global::Soenneker.Resend.OpenApiClient.Models.CreateContactOptionsTopicsItem> Topics { get; set; }
 #endif
         /// <summary>The Contact&apos;s global subscription status. If set to true, the contact will be unsubscribed from all Broadcasts.</summary>
         public bool? Unsubscribed { get; set; }
@@ -102,9 +102,9 @@ namespace Soenneker.Resend.OpenApiClient.Models
                 { "email", n => { Email = n.GetStringValue(); } },
                 { "first_name", n => { FirstName = n.GetStringValue(); } },
                 { "last_name", n => { LastName = n.GetStringValue(); } },
-                { "properties", n => { Properties = n.GetObjectValue<global::Soenneker.Resend.OpenApiClient.Models.CreateContactOptions_properties>(global::Soenneker.Resend.OpenApiClient.Models.CreateContactOptions_properties.CreateFromDiscriminatorValue); } },
+                { "properties", n => { Properties = n.GetObjectValue<global::Soenneker.Resend.OpenApiClient.Models.CreateContactOptionsPropertiesProperty>(global::Soenneker.Resend.OpenApiClient.Models.CreateContactOptionsPropertiesProperty.CreateFromDiscriminatorValue); } },
                 { "segments", n => { Segments = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
-                { "topics", n => { Topics = n.GetCollectionOfObjectValues<global::Soenneker.Resend.OpenApiClient.Models.CreateContactOptions_topics>(global::Soenneker.Resend.OpenApiClient.Models.CreateContactOptions_topics.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "topics", n => { Topics = n.GetCollectionOfObjectValues<global::Soenneker.Resend.OpenApiClient.Models.CreateContactOptionsTopicsItem>(global::Soenneker.Resend.OpenApiClient.Models.CreateContactOptionsTopicsItem.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "unsubscribed", n => { Unsubscribed = n.GetBoolValue(); } },
             };
         }
@@ -119,9 +119,9 @@ namespace Soenneker.Resend.OpenApiClient.Models
             writer.WriteStringValue("email", Email);
             writer.WriteStringValue("first_name", FirstName);
             writer.WriteStringValue("last_name", LastName);
-            writer.WriteObjectValue<global::Soenneker.Resend.OpenApiClient.Models.CreateContactOptions_properties>("properties", Properties);
+            writer.WriteObjectValue<global::Soenneker.Resend.OpenApiClient.Models.CreateContactOptionsPropertiesProperty>("properties", Properties);
             writer.WriteCollectionOfPrimitiveValues<string>("segments", Segments);
-            writer.WriteCollectionOfObjectValues<global::Soenneker.Resend.OpenApiClient.Models.CreateContactOptions_topics>("topics", Topics);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.Resend.OpenApiClient.Models.CreateContactOptionsTopicsItem>("topics", Topics);
             writer.WriteBoolValue("unsubscribed", Unsubscribed);
             writer.WriteAdditionalData(AdditionalData);
         }

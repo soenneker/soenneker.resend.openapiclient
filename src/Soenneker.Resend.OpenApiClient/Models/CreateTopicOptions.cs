@@ -15,7 +15,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The default subscription status for the topic. Cannot be changed after creation.</summary>
-        public global::Soenneker.Resend.OpenApiClient.Models.CreateTopicOptions_default_subscription? DefaultSubscription { get; set; }
+        public global::Soenneker.Resend.OpenApiClient.Models.CreateTopicOptionsDefaultSubscription? DefaultSubscription { get; set; }
         /// <summary>A description of the topic. Max 200 characters.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -33,14 +33,13 @@ namespace Soenneker.Resend.OpenApiClient.Models
         public string Name { get; set; }
 #endif
         /// <summary>The visibility of the topic. Public topics are visible to all contacts on the unsubscribe page. Private topics are only visible to opted-in contacts.</summary>
-        public global::Soenneker.Resend.OpenApiClient.Models.CreateTopicOptions_visibility? Visibility { get; set; }
+        public global::Soenneker.Resend.OpenApiClient.Models.CreateTopicOptionsVisibility? Visibility { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Resend.OpenApiClient.Models.CreateTopicOptions"/> and sets the default values.
         /// </summary>
         public CreateTopicOptions()
         {
             AdditionalData = new Dictionary<string, object>();
-            Visibility = global::Soenneker.Resend.OpenApiClient.Models.CreateTopicOptions_visibility.Private;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -60,10 +59,10 @@ namespace Soenneker.Resend.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "default_subscription", n => { DefaultSubscription = n.GetEnumValue<global::Soenneker.Resend.OpenApiClient.Models.CreateTopicOptions_default_subscription>(); } },
+                { "default_subscription", n => { DefaultSubscription = n.GetEnumValue<global::Soenneker.Resend.OpenApiClient.Models.CreateTopicOptionsDefaultSubscription>(); } },
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
-                { "visibility", n => { Visibility = n.GetEnumValue<global::Soenneker.Resend.OpenApiClient.Models.CreateTopicOptions_visibility>(); } },
+                { "visibility", n => { Visibility = n.GetEnumValue<global::Soenneker.Resend.OpenApiClient.Models.CreateTopicOptionsVisibility>(); } },
             };
         }
         /// <summary>
@@ -73,10 +72,10 @@ namespace Soenneker.Resend.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<global::Soenneker.Resend.OpenApiClient.Models.CreateTopicOptions_default_subscription>("default_subscription", DefaultSubscription);
+            writer.WriteEnumValue<global::Soenneker.Resend.OpenApiClient.Models.CreateTopicOptionsDefaultSubscription>("default_subscription", DefaultSubscription);
             writer.WriteStringValue("description", Description);
             writer.WriteStringValue("name", Name);
-            writer.WriteEnumValue<global::Soenneker.Resend.OpenApiClient.Models.CreateTopicOptions_visibility>("visibility", Visibility);
+            writer.WriteEnumValue<global::Soenneker.Resend.OpenApiClient.Models.CreateTopicOptionsVisibility>("visibility", Visibility);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

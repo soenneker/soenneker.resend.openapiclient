@@ -55,7 +55,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
         public string StartedAt { get; set; }
 #endif
         /// <summary>The current status of the automation run.</summary>
-        public global::Soenneker.Resend.OpenApiClient.Models.AutomationRun_status? Status { get; set; }
+        public global::Soenneker.Resend.OpenApiClient.Models.AutomationRunStatus? Status { get; set; }
         /// <summary>The steps executed in this run, sorted in graph order.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -94,7 +94,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "object", n => { Object = n.GetStringValue(); } },
                 { "started_at", n => { StartedAt = n.GetStringValue(); } },
-                { "status", n => { Status = n.GetEnumValue<global::Soenneker.Resend.OpenApiClient.Models.AutomationRun_status>(); } },
+                { "status", n => { Status = n.GetEnumValue<global::Soenneker.Resend.OpenApiClient.Models.AutomationRunStatus>(); } },
                 { "steps", n => { Steps = n.GetCollectionOfObjectValues<global::Soenneker.Resend.OpenApiClient.Models.AutomationRunStep>(global::Soenneker.Resend.OpenApiClient.Models.AutomationRunStep.CreateFromDiscriminatorValue)?.AsList(); } },
             };
         }
@@ -110,7 +110,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
             writer.WriteStringValue("id", Id);
             writer.WriteStringValue("object", Object);
             writer.WriteStringValue("started_at", StartedAt);
-            writer.WriteEnumValue<global::Soenneker.Resend.OpenApiClient.Models.AutomationRun_status>("status", Status);
+            writer.WriteEnumValue<global::Soenneker.Resend.OpenApiClient.Models.AutomationRunStatus>("status", Status);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Resend.OpenApiClient.Models.AutomationRunStep>("steps", Steps);
             writer.WriteAdditionalData(AdditionalData);
         }

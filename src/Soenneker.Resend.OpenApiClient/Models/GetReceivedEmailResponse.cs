@@ -17,10 +17,10 @@ namespace Soenneker.Resend.OpenApiClient.Models
         /// <summary>Array of attachments.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Resend.OpenApiClient.Models.GetReceivedEmailResponse_attachments>? Attachments { get; set; }
+        public List<global::Soenneker.Resend.OpenApiClient.Models.GetReceivedEmailResponseAttachmentsItem>? Attachments { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.Resend.OpenApiClient.Models.GetReceivedEmailResponse_attachments> Attachments { get; set; }
+        public List<global::Soenneker.Resend.OpenApiClient.Models.GetReceivedEmailResponseAttachmentsItem> Attachments { get; set; }
 #endif
         /// <summary>The BCC recipients.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -51,10 +51,10 @@ namespace Soenneker.Resend.OpenApiClient.Models
         /// <summary>The email headers.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Resend.OpenApiClient.Models.GetReceivedEmailResponse_headers? Headers { get; set; }
+        public global::Soenneker.Resend.OpenApiClient.Models.GetReceivedEmailResponseHeadersProperty? Headers { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Resend.OpenApiClient.Models.GetReceivedEmailResponse_headers Headers { get; set; }
+        public global::Soenneker.Resend.OpenApiClient.Models.GetReceivedEmailResponseHeadersProperty Headers { get; set; }
 #endif
         /// <summary>The HTML content of the email.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -139,12 +139,12 @@ namespace Soenneker.Resend.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "attachments", n => { Attachments = n.GetCollectionOfObjectValues<global::Soenneker.Resend.OpenApiClient.Models.GetReceivedEmailResponse_attachments>(global::Soenneker.Resend.OpenApiClient.Models.GetReceivedEmailResponse_attachments.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "attachments", n => { Attachments = n.GetCollectionOfObjectValues<global::Soenneker.Resend.OpenApiClient.Models.GetReceivedEmailResponseAttachmentsItem>(global::Soenneker.Resend.OpenApiClient.Models.GetReceivedEmailResponseAttachmentsItem.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "bcc", n => { Bcc = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "cc", n => { Cc = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "from", n => { From = n.GetStringValue(); } },
-                { "headers", n => { Headers = n.GetObjectValue<global::Soenneker.Resend.OpenApiClient.Models.GetReceivedEmailResponse_headers>(global::Soenneker.Resend.OpenApiClient.Models.GetReceivedEmailResponse_headers.CreateFromDiscriminatorValue); } },
+                { "headers", n => { Headers = n.GetObjectValue<global::Soenneker.Resend.OpenApiClient.Models.GetReceivedEmailResponseHeadersProperty>(global::Soenneker.Resend.OpenApiClient.Models.GetReceivedEmailResponseHeadersProperty.CreateFromDiscriminatorValue); } },
                 { "html", n => { Html = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "message_id", n => { MessageId = n.GetStringValue(); } },
@@ -162,12 +162,12 @@ namespace Soenneker.Resend.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteCollectionOfObjectValues<global::Soenneker.Resend.OpenApiClient.Models.GetReceivedEmailResponse_attachments>("attachments", Attachments);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.Resend.OpenApiClient.Models.GetReceivedEmailResponseAttachmentsItem>("attachments", Attachments);
             writer.WriteCollectionOfPrimitiveValues<string>("bcc", Bcc);
             writer.WriteCollectionOfPrimitiveValues<string>("cc", Cc);
             writer.WriteDateTimeOffsetValue("created_at", CreatedAt);
             writer.WriteStringValue("from", From);
-            writer.WriteObjectValue<global::Soenneker.Resend.OpenApiClient.Models.GetReceivedEmailResponse_headers>("headers", Headers);
+            writer.WriteObjectValue<global::Soenneker.Resend.OpenApiClient.Models.GetReceivedEmailResponseHeadersProperty>("headers", Headers);
             writer.WriteStringValue("html", Html);
             writer.WriteGuidValue("id", Id);
             writer.WriteStringValue("message_id", MessageId);

@@ -49,7 +49,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
         public string Region { get; set; }
 #endif
         /// <summary>The status of the domain.</summary>
-        public global::Soenneker.Resend.OpenApiClient.Models.ListDomainsItem_status? Status { get; set; }
+        public global::Soenneker.Resend.OpenApiClient.Models.ListDomainsItemStatus? Status { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Resend.OpenApiClient.Models.ListDomainsItem"/> and sets the default values.
         /// </summary>
@@ -80,7 +80,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "region", n => { Region = n.GetStringValue(); } },
-                { "status", n => { Status = n.GetEnumValue<global::Soenneker.Resend.OpenApiClient.Models.ListDomainsItem_status>(); } },
+                { "status", n => { Status = n.GetEnumValue<global::Soenneker.Resend.OpenApiClient.Models.ListDomainsItemStatus>(); } },
             };
         }
         /// <summary>
@@ -95,7 +95,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
             writer.WriteStringValue("id", Id);
             writer.WriteStringValue("name", Name);
             writer.WriteStringValue("region", Region);
-            writer.WriteEnumValue<global::Soenneker.Resend.OpenApiClient.Models.ListDomainsItem_status>("status", Status);
+            writer.WriteEnumValue<global::Soenneker.Resend.OpenApiClient.Models.ListDomainsItemStatus>("status", Status);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -28,10 +28,10 @@ namespace Soenneker.Resend.OpenApiClient.Models
         /// <summary>Filter conditions for the segment.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Resend.OpenApiClient.Models.GetSegmentResponseSuccess_filter? Filter { get; set; }
+        public global::Soenneker.Resend.OpenApiClient.Models.GetSegmentResponseSuccessFilterProperty? Filter { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Resend.OpenApiClient.Models.GetSegmentResponseSuccess_filter Filter { get; set; }
+        public global::Soenneker.Resend.OpenApiClient.Models.GetSegmentResponseSuccessFilterProperty Filter { get; set; }
 #endif
         /// <summary>The ID of the segment.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -84,7 +84,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
             {
                 { "audience_id", n => { AudienceId = n.GetStringValue(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
-                { "filter", n => { Filter = n.GetObjectValue<global::Soenneker.Resend.OpenApiClient.Models.GetSegmentResponseSuccess_filter>(global::Soenneker.Resend.OpenApiClient.Models.GetSegmentResponseSuccess_filter.CreateFromDiscriminatorValue); } },
+                { "filter", n => { Filter = n.GetObjectValue<global::Soenneker.Resend.OpenApiClient.Models.GetSegmentResponseSuccessFilterProperty>(global::Soenneker.Resend.OpenApiClient.Models.GetSegmentResponseSuccessFilterProperty.CreateFromDiscriminatorValue); } },
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "object", n => { Object = n.GetStringValue(); } },
@@ -99,7 +99,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("audience_id", AudienceId);
             writer.WriteDateTimeOffsetValue("created_at", CreatedAt);
-            writer.WriteObjectValue<global::Soenneker.Resend.OpenApiClient.Models.GetSegmentResponseSuccess_filter>("filter", Filter);
+            writer.WriteObjectValue<global::Soenneker.Resend.OpenApiClient.Models.GetSegmentResponseSuccessFilterProperty>("filter", Filter);
             writer.WriteStringValue("id", Id);
             writer.WriteStringValue("name", Name);
             writer.WriteStringValue("object", Object);

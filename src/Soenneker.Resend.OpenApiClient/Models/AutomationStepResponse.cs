@@ -18,10 +18,10 @@ namespace Soenneker.Resend.OpenApiClient.Models
         /// <summary>&quot;Configuration for the step. Shape depends on `type`. For `delay` steps, config contains `{ duration: string }` with a human-readable duration (e.g. `\&quot;30 minutes\&quot;`). For `wait_for_event` steps, config contains `{ event_name: string, timeout?: string, filter_rule?: object }` where `timeout` is a human-readable duration.&quot;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Resend.OpenApiClient.Models.AutomationStepResponse_config? Config { get; set; }
+        public global::Soenneker.Resend.OpenApiClient.Models.AutomationStepResponseConfigProperty? Config { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Resend.OpenApiClient.Models.AutomationStepResponse_config Config { get; set; }
+        public global::Soenneker.Resend.OpenApiClient.Models.AutomationStepResponseConfigProperty Config { get; set; }
 #endif
         /// <summary>The unique key of this step within the automation graph.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -32,7 +32,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
         public string Key { get; set; }
 #endif
         /// <summary>The type of automation step.</summary>
-        public global::Soenneker.Resend.OpenApiClient.Models.AutomationStepResponse_type? Type { get; set; }
+        public global::Soenneker.Resend.OpenApiClient.Models.AutomationStepResponseType? Type { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Resend.OpenApiClient.Models.AutomationStepResponse"/> and sets the default values.
         /// </summary>
@@ -58,9 +58,9 @@ namespace Soenneker.Resend.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "config", n => { Config = n.GetObjectValue<global::Soenneker.Resend.OpenApiClient.Models.AutomationStepResponse_config>(global::Soenneker.Resend.OpenApiClient.Models.AutomationStepResponse_config.CreateFromDiscriminatorValue); } },
+                { "config", n => { Config = n.GetObjectValue<global::Soenneker.Resend.OpenApiClient.Models.AutomationStepResponseConfigProperty>(global::Soenneker.Resend.OpenApiClient.Models.AutomationStepResponseConfigProperty.CreateFromDiscriminatorValue); } },
                 { "key", n => { Key = n.GetStringValue(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.Resend.OpenApiClient.Models.AutomationStepResponse_type>(); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.Resend.OpenApiClient.Models.AutomationStepResponseType>(); } },
             };
         }
         /// <summary>
@@ -70,9 +70,9 @@ namespace Soenneker.Resend.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.Resend.OpenApiClient.Models.AutomationStepResponse_config>("config", Config);
+            writer.WriteObjectValue<global::Soenneker.Resend.OpenApiClient.Models.AutomationStepResponseConfigProperty>("config", Config);
             writer.WriteStringValue("key", Key);
-            writer.WriteEnumValue<global::Soenneker.Resend.OpenApiClient.Models.AutomationStepResponse_type>("type", Type);
+            writer.WriteEnumValue<global::Soenneker.Resend.OpenApiClient.Models.AutomationStepResponseType>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

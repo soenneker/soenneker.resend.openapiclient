@@ -40,6 +40,8 @@ tags:
     description: Create and manage Automations through the Resend API.
   - name: Events
     description: Create and manage Events through the Resend API.
+  - name: OAuth
+    description: List and manage OAuth grants through the Resend API.
 paths:
   /emails:
     post:
@@ -463,6 +465,80 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/VerifyDomainResponse'
+  /domains/claim:
+    post:
+      tags:
+        - Domains
+      summary: Claim a domain
+      description: >-
+        Start a claim for a domain that another Resend account has already
+        verified. The domain is recreated under your account with fresh DKIM
+        keys, so the previous account's DNS records cannot be reused. Returns a
+        TXT record to add to your DNS to prove ownership. Uses the same request
+        body as creating a domain.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateDomainClaimRequest'
+      responses:
+        '201':
+          description: Claim created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DomainClaim'
+        '200':
+          description: An identical pending claim already existed and was returned unchanged.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DomainClaim'
+  /domains/{domain_id}/claim:
+    get:
+      tags:
+        - Domains
+      summary: Retrieve a domain claim
+      description: Retrieve the latest claim for the placeholder domain created by the claim.
+      parameters:
+        - name: domain_id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The ID of the placeholder domain created by the claim.
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DomainClaim'
+  /domains/{domain_id}/claim/verify:
+    post:
+      tags:
+        - Domains
+      summary: Verify a domain claim
+      description: >-
+        Trigger asynchronous DNS verification and ownership transfer for a
+        domain claim. The claim stays `pending` while verification runs; poll
+        the retrieve endpoint for status. Once `completed`, the transferred
+        domain has new DKIM records that must be added to DNS and verified via
+        the standard domain verify endpoint.
+      parameters:
+        - name: domain_id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The ID of the placeholder domain created by the claim.
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DomainClaim'
   /api-keys:
     post:
       tags:
@@ -514,6 +590,41 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/DeleteApiKeyResponse'
+  /oauth/grants:
+    get:
+      tags:
+        - OAuth
+      summary: Retrieve a list of OAuth grants
+      parameters:
+        - $ref: '#/components/parameters/PaginationLimit'
+        - $ref: '#/components/parameters/PaginationAfter'
+        - $ref: '#/components/parameters/PaginationBefore'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListOAuthGrantsResponse'
+  /oauth/grants/{oauth_grant_id}:
+    delete:
+      tags:
+        - OAuth
+      summary: Revoke an OAuth grant
+      parameters:
+        - name: oauth_grant_id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The OAuth grant ID.
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RevokeOAuthGrantResponse'
   /templates:
     post:
       tags:
@@ -755,6 +866,70 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ListContactsResponseSuccess'
+  /contacts/imports:
+    post:
+      tags:
+        - Contacts
+      summary: Create a contact import
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/CreateContactImportOptions'
+      responses:
+        '201':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateContactImportResponseSuccess'
+    get:
+      tags:
+        - Contacts
+      summary: Retrieve a list of contact imports
+      parameters:
+        - name: status
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - queued
+              - in_progress
+              - completed
+              - failed
+          description: Filter contact imports by status.
+        - $ref: '#/components/parameters/PaginationLimit'
+        - $ref: '#/components/parameters/PaginationAfter'
+        - $ref: '#/components/parameters/PaginationBefore'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListContactImportsResponseSuccess'
+  /contacts/imports/{id}:
+    get:
+      tags:
+        - Contacts
+      summary: Retrieve a single contact import
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+          description: The Contact Import ID.
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetContactImportResponseSuccess'
   /contacts/{id}:
     get:
       tags:
@@ -2162,6 +2337,10 @@ components:
           type: string
           description: The ID of the email.
           example: '4ef9a417-02e9-4d39-ad75-9611e0fcc33c'
+        message_id:
+          type: string
+          description: The Message-ID header value of the email.
+          example: '<202301010000.4ef9a417@email.example.com>'
         to:
           type: array
           items:
@@ -2451,6 +2630,125 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/DomainRecord'
+    CreateDomainClaimRequest:
+      type: object
+      required:
+        - name
+      properties:
+        name:
+          type: string
+          description: The name of the domain you want to claim.
+        region:
+          type: string
+          enum:
+            - us-east-1
+            - eu-west-1
+            - sa-east-1
+            - ap-northeast-1
+          default: us-east-1
+          description: The region where emails will be sent from. Possible values are us-east-1 | eu-west-1 | sa-east-1 | ap-northeast-1
+        custom_return_path:
+          type: string
+          default: send
+          description: For advanced use cases, choose a subdomain for the Return-Path address. Defaults to 'send' (i.e., send.yourdomain.tld).
+        open_tracking:
+          type: boolean
+          description: Track the open rate of each email.
+        click_tracking:
+          type: boolean
+          description: Track clicks within the body of each HTML email.
+        tracking_subdomain:
+          type: string
+          description: The subdomain to use for click and open tracking.
+    DomainClaimRecord:
+      type: object
+      description: The TXT record to add to your DNS to prove ownership of the claimed domain.
+      properties:
+        type:
+          type: string
+          enum:
+            - TXT
+          description: The DNS record type. Always TXT for domain claims.
+          example: 'TXT'
+        name:
+          type: string
+          description: The name of the DNS record (the domain being claimed).
+          example: 'example.com'
+        value:
+          type: string
+          description: The value of the TXT record.
+          example: 'resend-domain-verification=abc123'
+        ttl:
+          type: string
+          description: The time to live for the record.
+          example: 'Auto'
+    DomainClaim:
+      type: object
+      properties:
+        object:
+          type: string
+          description: The type of object.
+          example: 'domain_claim'
+        id:
+          type: string
+          description: The ID of the claim.
+          example: 'd91cd9bd-1176-453e-8fc1-35364d380206'
+        name:
+          type: string
+          description: The name of the domain being claimed.
+          example: 'example.com'
+        status:
+          type: string
+          enum:
+            - pending
+            - verified
+            - completed
+            - blocked
+            - expired
+            - superseded
+            - canceled
+            - failed
+          description: The status of the claim.
+          example: 'pending'
+        domain_id:
+          type: [string, "null"]
+          description: The ID of the placeholder domain created for the claim.
+          example: 'a1b2c3d4-1176-453e-8fc1-35364d380206'
+        region:
+          type: [string, "null"]
+          enum:
+            - us-east-1
+            - eu-west-1
+            - sa-east-1
+            - ap-northeast-1
+            - null
+          description: The region where the claimed domain will send from.
+          example: 'us-east-1'
+        record:
+          $ref: '#/components/schemas/DomainClaimRecord'
+        blocked_reason:
+          type: [string, "null"]
+          enum:
+            - grace_period
+            - recent_owner_activity
+            - pending_scheduled_emails
+            - null
+          description: Why the claim is currently blocked, if applicable.
+          example: null
+        failure_reason:
+          type: [string, "null"]
+          description: Why the claim failed, if applicable.
+          example: null
+        created_at:
+          type: string
+          format: date-time
+          description: The date and time the claim was created.
+          example: '2023-04-26T20:21:26.347412+00:00'
+        expires_at:
+          type: string
+          format: date-time
+          description: The date and time the claim expires if not verified.
+          example: '2023-05-03T20:21:26.347412+00:00'
     VerifyDomainResponse:
       type: object
       properties:
@@ -2594,6 +2892,73 @@ components:
           type: [string, "null"]
           format: date-time
           description: The date and time the API key was last used.
+    ListOAuthGrantsResponse:
+      type: object
+      properties:
+        object:
+          type: string
+          description: Type of the response object.
+          example: 'list'
+        has_more:
+          type: boolean
+          description: Indicates if there are more results available.
+          example: false
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/OAuthGrant'
+    OAuthGrant:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The ID of the OAuth grant.
+        client_id:
+          type: string
+          description: The ID of the OAuth client the grant was issued to.
+        scopes:
+          type: array
+          items:
+            type: string
+          description: The scopes granted to the OAuth client.
+        created_at:
+          type: string
+          format: date-time
+          description: The date and time the OAuth grant was created.
+        revoked_at:
+          type: [string, "null"]
+          format: date-time
+          description: The date and time the OAuth grant was revoked, or null if it is still active.
+        revoked_reason:
+          type: [string, "null"]
+          description: The reason the OAuth grant was revoked, or null if it is still active.
+        client:
+          type: object
+          description: The OAuth client the grant was issued to.
+          properties:
+            name:
+              type: string
+              description: The name of the OAuth client.
+            logo_uri:
+              type: [string, "null"]
+              description: The URL of the OAuth client's logo.
+    RevokeOAuthGrantResponse:
+      type: object
+      properties:
+        object:
+          type: string
+          description: The type of object.
+          example: 'oauth_grant'
+        id:
+          type: string
+          description: The ID of the OAuth grant.
+        revoked_at:
+          type: string
+          format: date-time
+          description: The date and time the OAuth grant was revoked.
+        revoked_reason:
+          type: string
+          description: The reason the OAuth grant was revoked.
     DeleteApiKeyResponse:
       type: object
       properties:
@@ -2880,6 +3245,122 @@ components:
                 type: boolean
                 description: Indicates if the contact is unsubscribed.
                 example: false
+    CreateContactImportOptions:
+      type: object
+      required:
+        - file
+      properties:
+        file:
+          type: string
+          format: binary
+          description: CSV file to import. Maximum size is 50MB.
+        column_map:
+          type: string
+          description: JSON-encoded object mapping contact fields and custom property keys to CSV column names. Supports `email`, `first_name`, `last_name`, `unsubscribed`, and `properties`. Custom property mappings can include `type` as `string`, `number`, or `boolean`; defaults to `string`.
+          example: '{"email":"Email","first_name":"First Name","last_name":"Last Name","unsubscribed":"Unsubscribed","properties":{"plan":{"column":"Plan","type":"string"}}}'
+        on_conflict:
+          type: string
+          enum:
+            - upsert
+            - skip
+          default: skip
+          description: Strategy to use when an imported contact already exists.
+          example: skip
+        segments:
+          type: string
+          description: JSON-encoded array of segments to add imported contacts to.
+          example: '[{"id":"78261eea-8f8b-4381-83c6-79fa7120f1cf"}]'
+        topics:
+          type: string
+          description: JSON-encoded array of topic subscriptions to apply to imported contacts. Each `subscription` must be `opt_in` or `opt_out`.
+          example: '[{"id":"b6d24b8e-af0b-4c3c-be0c-359bbd97381e","subscription":"opt_in"}]'
+    CreateContactImportResponseSuccess:
+      type: object
+      properties:
+        object:
+          type: string
+          description: Type of the response object.
+          example: contact_import
+        id:
+          type: string
+          format: uuid
+          description: Unique identifier for the created contact import.
+          example: 479e3145-dd38-476b-932c-529ceb705947
+    ContactImportCounts:
+      type: object
+      properties:
+        total:
+          type: integer
+          description: Total number of rows processed by the import.
+          example: 100
+        created:
+          type: integer
+          description: Number of contacts created by the import.
+          example: 80
+        updated:
+          type: integer
+          description: Number of contacts updated by the import.
+          example: 10
+        skipped:
+          type: integer
+          description: Number of rows skipped by the import.
+          example: 5
+        failed:
+          type: integer
+          description: Number of rows that failed during the import.
+          example: 5
+    ContactImport:
+      type: object
+      properties:
+        object:
+          type: string
+          description: Type of the response object.
+          example: contact_import
+        id:
+          type: string
+          format: uuid
+          description: Unique identifier for the contact import.
+          example: 479e3145-dd38-476b-932c-529ceb705947
+        status:
+          type: string
+          enum:
+            - queued
+            - in_progress
+            - completed
+            - failed
+          description: Current status of the contact import.
+          example: completed
+        created_at:
+          type: string
+          format: date-time
+          description: Timestamp indicating when the contact import was created.
+          example: "2023-10-06T23:47:56.678Z"
+        completed_at:
+          type: [string, "null"]
+          format: date-time
+          description: Timestamp indicating when the contact import completed.
+          example: "2023-10-06T23:50:56.678Z"
+        counts:
+          $ref: '#/components/schemas/ContactImportCounts'
+    GetContactImportResponseSuccess:
+      allOf:
+        - $ref: '#/components/schemas/ContactImport'
+    ListContactImportsResponseSuccess:
+      type: object
+      properties:
+        object:
+          type: string
+          description: Type of the response object.
+          example: list
+        has_more:
+          type: boolean
+          description: Indicates if there are more results available.
+          example: false
+        data:
+          type: array
+          description: Array containing contact imports.
+          items:
+            $ref: '#/components/schemas/ContactImport'
     CreateBroadcastOptions:
       type: object
       required:
@@ -3269,7 +3750,7 @@ components:
         message_id:
           type: string
           description: The unique message ID from the email headers.
-          example: '<message-id@example.com>'
+          example: '<message-id@email.example.com>'
         bcc:
           type: [array, "null"]
           items:
@@ -3374,7 +3855,7 @@ components:
               message_id:
                 type: string
                 description: The unique message ID from the email headers.
-                example: '<message-id@example.com>'
+                example: '<message-id@email.example.com>'
               bcc:
                 type: [array, "null"]
                 items:

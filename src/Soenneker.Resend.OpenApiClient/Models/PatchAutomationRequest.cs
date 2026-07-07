@@ -32,7 +32,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
         public string Name { get; set; }
 #endif
         /// <summary>The status of the automation.</summary>
-        public global::Soenneker.Resend.OpenApiClient.Models.PatchAutomationRequest_status? Status { get; set; }
+        public global::Soenneker.Resend.OpenApiClient.Models.PatchAutomationRequestStatus? Status { get; set; }
         /// <summary>The steps that compose the automation workflow. Must be provided together with `connections`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -68,7 +68,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
             {
                 { "connections", n => { Connections = n.GetCollectionOfObjectValues<global::Soenneker.Resend.OpenApiClient.Models.AutomationConnection>(global::Soenneker.Resend.OpenApiClient.Models.AutomationConnection.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
-                { "status", n => { Status = n.GetEnumValue<global::Soenneker.Resend.OpenApiClient.Models.PatchAutomationRequest_status>(); } },
+                { "status", n => { Status = n.GetEnumValue<global::Soenneker.Resend.OpenApiClient.Models.PatchAutomationRequestStatus>(); } },
                 { "steps", n => { Steps = n.GetCollectionOfObjectValues<global::Soenneker.Resend.OpenApiClient.Models.AutomationStep>(global::Soenneker.Resend.OpenApiClient.Models.AutomationStep.CreateFromDiscriminatorValue)?.AsList(); } },
             };
         }
@@ -81,7 +81,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfObjectValues<global::Soenneker.Resend.OpenApiClient.Models.AutomationConnection>("connections", Connections);
             writer.WriteStringValue("name", Name);
-            writer.WriteEnumValue<global::Soenneker.Resend.OpenApiClient.Models.PatchAutomationRequest_status>("status", Status);
+            writer.WriteEnumValue<global::Soenneker.Resend.OpenApiClient.Models.PatchAutomationRequestStatus>("status", Status);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Resend.OpenApiClient.Models.AutomationStep>("steps", Steps);
             writer.WriteAdditionalData(AdditionalData);
         }

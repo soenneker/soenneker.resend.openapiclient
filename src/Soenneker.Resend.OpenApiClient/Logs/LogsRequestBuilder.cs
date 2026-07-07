@@ -20,14 +20,14 @@ namespace Soenneker.Resend.OpenApiClient.Logs
     {
         /// <summary>Gets an item from the Soenneker.Resend.OpenApiClient.logs.item collection</summary>
         /// <param name="position">The ID of the log.</param>
-        /// <returns>A <see cref="global::Soenneker.Resend.OpenApiClient.Logs.Item.WithLog_ItemRequestBuilder"/></returns>
-        public global::Soenneker.Resend.OpenApiClient.Logs.Item.WithLog_ItemRequestBuilder this[Guid position]
+        /// <returns>A <see cref="global::Soenneker.Resend.OpenApiClient.Logs.Item.WithLogItemRequestBuilder"/></returns>
+        public global::Soenneker.Resend.OpenApiClient.Logs.Item.WithLogItemRequestBuilder this[Guid position]
         {
             get
             {
                 var urlTplParams = new Dictionary<string, object>(PathParameters);
-                urlTplParams.Add("log_id", position);
-                return new global::Soenneker.Resend.OpenApiClient.Logs.Item.WithLog_ItemRequestBuilder(urlTplParams, RequestAdapter);
+                urlTplParams.Add("logId", position);
+                return new global::Soenneker.Resend.OpenApiClient.Logs.Item.WithLogItemRequestBuilder(urlTplParams, RequestAdapter);
             }
         }
         /// <summary>

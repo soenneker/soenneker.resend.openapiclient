@@ -13,21 +13,21 @@ using System;
 namespace Soenneker.Resend.OpenApiClient.Automations.Item.Runs
 {
     /// <summary>
-    /// Builds and executes requests for operations under \automations\{automation_id}\runs
+    /// Builds and executes requests for operations under \automations\{automationId}\runs
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class RunsRequestBuilder : BaseRequestBuilder
     {
         /// <summary>Gets an item from the Soenneker.Resend.OpenApiClient.automations.item.runs.item collection</summary>
         /// <param name="position">The ID of the automation run.</param>
-        /// <returns>A <see cref="global::Soenneker.Resend.OpenApiClient.Automations.Item.Runs.Item.WithRun_ItemRequestBuilder"/></returns>
-        public global::Soenneker.Resend.OpenApiClient.Automations.Item.Runs.Item.WithRun_ItemRequestBuilder this[Guid position]
+        /// <returns>A <see cref="global::Soenneker.Resend.OpenApiClient.Automations.Item.Runs.Item.WithRunItemRequestBuilder"/></returns>
+        public global::Soenneker.Resend.OpenApiClient.Automations.Item.Runs.Item.WithRunItemRequestBuilder this[Guid position]
         {
             get
             {
                 var urlTplParams = new Dictionary<string, object>(PathParameters);
-                urlTplParams.Add("run_id", position);
-                return new global::Soenneker.Resend.OpenApiClient.Automations.Item.Runs.Item.WithRun_ItemRequestBuilder(urlTplParams, RequestAdapter);
+                urlTplParams.Add("runId", position);
+                return new global::Soenneker.Resend.OpenApiClient.Automations.Item.Runs.Item.WithRunItemRequestBuilder(urlTplParams, RequestAdapter);
             }
         }
         /// <summary>
@@ -35,7 +35,7 @@ namespace Soenneker.Resend.OpenApiClient.Automations.Item.Runs
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public RunsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/automations/{automation_id}/runs{?after*,before*,limit*,status*}", pathParameters)
+        public RunsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/automations/{automationId}/runs{?after*,before*,limit*,status*}", pathParameters)
         {
         }
         /// <summary>
@@ -43,7 +43,7 @@ namespace Soenneker.Resend.OpenApiClient.Automations.Item.Runs
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public RunsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/automations/{automation_id}/runs{?after*,before*,limit*,status*}", rawUrl)
+        public RunsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/automations/{automationId}/runs{?after*,before*,limit*,status*}", rawUrl)
         {
         }
         /// <summary>

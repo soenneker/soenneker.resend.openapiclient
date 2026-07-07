@@ -32,14 +32,14 @@ namespace Soenneker.Resend.OpenApiClient.Emails
         }
         /// <summary>Gets an item from the Soenneker.Resend.OpenApiClient.emails.item collection</summary>
         /// <param name="position">The ID of the email.</param>
-        /// <returns>A <see cref="global::Soenneker.Resend.OpenApiClient.Emails.Item.WithEmail_ItemRequestBuilder"/></returns>
-        public global::Soenneker.Resend.OpenApiClient.Emails.Item.WithEmail_ItemRequestBuilder this[string position]
+        /// <returns>A <see cref="global::Soenneker.Resend.OpenApiClient.Emails.Item.WithEmailItemRequestBuilder"/></returns>
+        public global::Soenneker.Resend.OpenApiClient.Emails.Item.WithEmailItemRequestBuilder this[string position]
         {
             get
             {
                 var urlTplParams = new Dictionary<string, object>(PathParameters);
-                urlTplParams.Add("email_id", position);
-                return new global::Soenneker.Resend.OpenApiClient.Emails.Item.WithEmail_ItemRequestBuilder(urlTplParams, RequestAdapter);
+                urlTplParams.Add("emailId", position);
+                return new global::Soenneker.Resend.OpenApiClient.Emails.Item.WithEmailItemRequestBuilder(urlTplParams, RequestAdapter);
             }
         }
         /// <summary>

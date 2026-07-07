@@ -17,10 +17,10 @@ namespace Soenneker.Resend.OpenApiClient.Models
         /// <summary>The default value to use when the property is not set for a contact. Must match the type of the property.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Resend.OpenApiClient.Models.UnionBranch? FallbackValue { get; set; }
+        public global::Soenneker.Resend.OpenApiClient.Models.UpdateContactPropertyOptionsFallbackValue? FallbackValue { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Resend.OpenApiClient.Models.UnionBranch FallbackValue { get; set; }
+        public global::Soenneker.Resend.OpenApiClient.Models.UpdateContactPropertyOptionsFallbackValue FallbackValue { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Resend.OpenApiClient.Models.UpdateContactPropertyOptions"/> and sets the default values.
@@ -47,7 +47,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "fallback_value", n => { FallbackValue = n.GetObjectValue<global::Soenneker.Resend.OpenApiClient.Models.UnionBranch>(global::Soenneker.Resend.OpenApiClient.Models.UnionBranch.CreateFromDiscriminatorValue); } },
+                { "fallback_value", n => { FallbackValue = n.GetObjectValue<global::Soenneker.Resend.OpenApiClient.Models.UpdateContactPropertyOptionsFallbackValue>(global::Soenneker.Resend.OpenApiClient.Models.UpdateContactPropertyOptionsFallbackValue.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -57,7 +57,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.Resend.OpenApiClient.Models.UnionBranch>("fallback_value", FallbackValue);
+            writer.WriteObjectValue<global::Soenneker.Resend.OpenApiClient.Models.UpdateContactPropertyOptionsFallbackValue>("fallback_value", FallbackValue);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

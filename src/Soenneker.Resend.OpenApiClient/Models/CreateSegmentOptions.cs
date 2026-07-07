@@ -26,10 +26,10 @@ namespace Soenneker.Resend.OpenApiClient.Models
         /// <summary>Filter conditions for the segment.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Resend.OpenApiClient.Models.CreateSegmentOptions_filter? Filter { get; set; }
+        public global::Soenneker.Resend.OpenApiClient.Models.CreateSegmentOptionsFilterProperty? Filter { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Resend.OpenApiClient.Models.CreateSegmentOptions_filter Filter { get; set; }
+        public global::Soenneker.Resend.OpenApiClient.Models.CreateSegmentOptionsFilterProperty Filter { get; set; }
 #endif
         /// <summary>The name of the segment.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -65,7 +65,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "audience_id", n => { AudienceId = n.GetStringValue(); } },
-                { "filter", n => { Filter = n.GetObjectValue<global::Soenneker.Resend.OpenApiClient.Models.CreateSegmentOptions_filter>(global::Soenneker.Resend.OpenApiClient.Models.CreateSegmentOptions_filter.CreateFromDiscriminatorValue); } },
+                { "filter", n => { Filter = n.GetObjectValue<global::Soenneker.Resend.OpenApiClient.Models.CreateSegmentOptionsFilterProperty>(global::Soenneker.Resend.OpenApiClient.Models.CreateSegmentOptionsFilterProperty.CreateFromDiscriminatorValue); } },
                 { "name", n => { Name = n.GetStringValue(); } },
             };
         }
@@ -77,7 +77,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("audience_id", AudienceId);
-            writer.WriteObjectValue<global::Soenneker.Resend.OpenApiClient.Models.CreateSegmentOptions_filter>("filter", Filter);
+            writer.WriteObjectValue<global::Soenneker.Resend.OpenApiClient.Models.CreateSegmentOptionsFilterProperty>("filter", Filter);
             writer.WriteStringValue("name", Name);
             writer.WriteAdditionalData(AdditionalData);
         }

@@ -20,14 +20,14 @@ namespace Soenneker.Resend.OpenApiClient.Automations
     {
         /// <summary>Gets an item from the Soenneker.Resend.OpenApiClient.automations.item collection</summary>
         /// <param name="position">The ID of the automation.</param>
-        /// <returns>A <see cref="global::Soenneker.Resend.OpenApiClient.Automations.Item.WithAutomation_ItemRequestBuilder"/></returns>
-        public global::Soenneker.Resend.OpenApiClient.Automations.Item.WithAutomation_ItemRequestBuilder this[Guid position]
+        /// <returns>A <see cref="global::Soenneker.Resend.OpenApiClient.Automations.Item.WithAutomationItemRequestBuilder"/></returns>
+        public global::Soenneker.Resend.OpenApiClient.Automations.Item.WithAutomationItemRequestBuilder this[Guid position]
         {
             get
             {
                 var urlTplParams = new Dictionary<string, object>(PathParameters);
-                urlTplParams.Add("automation_id", position);
-                return new global::Soenneker.Resend.OpenApiClient.Automations.Item.WithAutomation_ItemRequestBuilder(urlTplParams, RequestAdapter);
+                urlTplParams.Add("automationId", position);
+                return new global::Soenneker.Resend.OpenApiClient.Automations.Item.WithAutomationItemRequestBuilder(urlTplParams, RequestAdapter);
             }
         }
         /// <summary>
@@ -165,7 +165,7 @@ namespace Soenneker.Resend.OpenApiClient.Automations
             public int? Limit { get; set; }
             /// <summary>Filter automations by status.</summary>
             [QueryParameter("status")]
-            public global::Soenneker.Resend.OpenApiClient.Automations.GetStatusQueryParameterType? Status { get; set; }
+            public global::Soenneker.Resend.OpenApiClient.Models.GetAutomationsStatusParameter? Status { get; set; }
         }
     }
 }

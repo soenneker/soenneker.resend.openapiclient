@@ -16,9 +16,9 @@ namespace Soenneker.Resend.OpenApiClient.Models
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Enable or disable receiving emails to this domain.</summary>
-        public global::Soenneker.Resend.OpenApiClient.Models.DomainCapabilities_receiving? Receiving { get; set; }
+        public global::Soenneker.Resend.OpenApiClient.Models.DomainCapabilitiesReceiving? Receiving { get; set; }
         /// <summary>Enable or disable sending emails from this domain.</summary>
-        public global::Soenneker.Resend.OpenApiClient.Models.DomainCapabilities_sending? Sending { get; set; }
+        public global::Soenneker.Resend.OpenApiClient.Models.DomainCapabilitiesSending? Sending { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Resend.OpenApiClient.Models.DomainCapabilities"/> and sets the default values.
         /// </summary>
@@ -44,8 +44,8 @@ namespace Soenneker.Resend.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "receiving", n => { Receiving = n.GetEnumValue<global::Soenneker.Resend.OpenApiClient.Models.DomainCapabilities_receiving>(); } },
-                { "sending", n => { Sending = n.GetEnumValue<global::Soenneker.Resend.OpenApiClient.Models.DomainCapabilities_sending>(); } },
+                { "receiving", n => { Receiving = n.GetEnumValue<global::Soenneker.Resend.OpenApiClient.Models.DomainCapabilitiesReceiving>(); } },
+                { "sending", n => { Sending = n.GetEnumValue<global::Soenneker.Resend.OpenApiClient.Models.DomainCapabilitiesSending>(); } },
             };
         }
         /// <summary>
@@ -55,8 +55,8 @@ namespace Soenneker.Resend.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<global::Soenneker.Resend.OpenApiClient.Models.DomainCapabilities_receiving>("receiving", Receiving);
-            writer.WriteEnumValue<global::Soenneker.Resend.OpenApiClient.Models.DomainCapabilities_sending>("sending", Sending);
+            writer.WriteEnumValue<global::Soenneker.Resend.OpenApiClient.Models.DomainCapabilitiesReceiving>("receiving", Receiving);
+            writer.WriteEnumValue<global::Soenneker.Resend.OpenApiClient.Models.DomainCapabilitiesSending>("sending", Sending);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

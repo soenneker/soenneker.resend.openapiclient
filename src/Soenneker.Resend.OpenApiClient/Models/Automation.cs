@@ -55,7 +55,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
         public string Object { get; set; }
 #endif
         /// <summary>The current status of the automation.</summary>
-        public global::Soenneker.Resend.OpenApiClient.Models.Automation_status? Status { get; set; }
+        public global::Soenneker.Resend.OpenApiClient.Models.AutomationStatus? Status { get; set; }
         /// <summary>The steps in the active version of the automation.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -102,7 +102,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "object", n => { Object = n.GetStringValue(); } },
-                { "status", n => { Status = n.GetEnumValue<global::Soenneker.Resend.OpenApiClient.Models.Automation_status>(); } },
+                { "status", n => { Status = n.GetEnumValue<global::Soenneker.Resend.OpenApiClient.Models.AutomationStatus>(); } },
                 { "steps", n => { Steps = n.GetCollectionOfObjectValues<global::Soenneker.Resend.OpenApiClient.Models.AutomationStepResponse>(global::Soenneker.Resend.OpenApiClient.Models.AutomationStepResponse.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "updated_at", n => { UpdatedAt = n.GetStringValue(); } },
             };
@@ -119,7 +119,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
             writer.WriteStringValue("id", Id);
             writer.WriteStringValue("name", Name);
             writer.WriteStringValue("object", Object);
-            writer.WriteEnumValue<global::Soenneker.Resend.OpenApiClient.Models.Automation_status>("status", Status);
+            writer.WriteEnumValue<global::Soenneker.Resend.OpenApiClient.Models.AutomationStatus>("status", Status);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Resend.OpenApiClient.Models.AutomationStepResponse>("steps", Steps);
             writer.WriteStringValue("updated_at", UpdatedAt);
             writer.WriteAdditionalData(AdditionalData);

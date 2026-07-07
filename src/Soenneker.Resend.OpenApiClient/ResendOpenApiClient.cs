@@ -15,6 +15,7 @@ using Soenneker.Resend.OpenApiClient.Domains;
 using Soenneker.Resend.OpenApiClient.Emails;
 using Soenneker.Resend.OpenApiClient.Events;
 using Soenneker.Resend.OpenApiClient.Logs;
+using Soenneker.Resend.OpenApiClient.Oauth;
 using Soenneker.Resend.OpenApiClient.Segments;
 using Soenneker.Resend.OpenApiClient.Templates;
 using Soenneker.Resend.OpenApiClient.Topics;
@@ -75,6 +76,11 @@ namespace Soenneker.Resend.OpenApiClient
         public global::Soenneker.Resend.OpenApiClient.Logs.LogsRequestBuilder Logs
         {
             get => new global::Soenneker.Resend.OpenApiClient.Logs.LogsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The oauth property</summary>
+        public global::Soenneker.Resend.OpenApiClient.Oauth.OauthRequestBuilder Oauth
+        {
+            get => new global::Soenneker.Resend.OpenApiClient.Oauth.OauthRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The segments property</summary>
         public global::Soenneker.Resend.OpenApiClient.Segments.SegmentsRequestBuilder Segments

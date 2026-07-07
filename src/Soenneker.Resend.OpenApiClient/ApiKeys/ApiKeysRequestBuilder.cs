@@ -20,14 +20,14 @@ namespace Soenneker.Resend.OpenApiClient.ApiKeys
     {
         /// <summary>Gets an item from the Soenneker.Resend.OpenApiClient.apiKeys.item collection</summary>
         /// <param name="position">The API key ID.</param>
-        /// <returns>A <see cref="global::Soenneker.Resend.OpenApiClient.ApiKeys.Item.WithApi_key_ItemRequestBuilder"/></returns>
-        public global::Soenneker.Resend.OpenApiClient.ApiKeys.Item.WithApi_key_ItemRequestBuilder this[string position]
+        /// <returns>A <see cref="global::Soenneker.Resend.OpenApiClient.ApiKeys.Item.WithApiKeyItemRequestBuilder"/></returns>
+        public global::Soenneker.Resend.OpenApiClient.ApiKeys.Item.WithApiKeyItemRequestBuilder this[string position]
         {
             get
             {
                 var urlTplParams = new Dictionary<string, object>(PathParameters);
-                urlTplParams.Add("api_key_id", position);
-                return new global::Soenneker.Resend.OpenApiClient.ApiKeys.Item.WithApi_key_ItemRequestBuilder(urlTplParams, RequestAdapter);
+                urlTplParams.Add("apiKeyId", position);
+                return new global::Soenneker.Resend.OpenApiClient.ApiKeys.Item.WithApiKeyItemRequestBuilder(urlTplParams, RequestAdapter);
             }
         }
         /// <summary>

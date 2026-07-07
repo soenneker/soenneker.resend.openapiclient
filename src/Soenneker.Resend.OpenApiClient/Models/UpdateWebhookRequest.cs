@@ -31,7 +31,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
         public List<string> Events { get; set; }
 #endif
         /// <summary>The status of the webhook.</summary>
-        public global::Soenneker.Resend.OpenApiClient.Models.UpdateWebhookRequest_status? Status { get; set; }
+        public global::Soenneker.Resend.OpenApiClient.Models.UpdateWebhookRequestStatus? Status { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Resend.OpenApiClient.Models.UpdateWebhookRequest"/> and sets the default values.
         /// </summary>
@@ -59,7 +59,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
             {
                 { "endpoint", n => { Endpoint = n.GetStringValue(); } },
                 { "events", n => { Events = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
-                { "status", n => { Status = n.GetEnumValue<global::Soenneker.Resend.OpenApiClient.Models.UpdateWebhookRequest_status>(); } },
+                { "status", n => { Status = n.GetEnumValue<global::Soenneker.Resend.OpenApiClient.Models.UpdateWebhookRequestStatus>(); } },
             };
         }
         /// <summary>
@@ -71,7 +71,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("endpoint", Endpoint);
             writer.WriteCollectionOfPrimitiveValues<string>("events", Events);
-            writer.WriteEnumValue<global::Soenneker.Resend.OpenApiClient.Models.UpdateWebhookRequest_status>("status", Status);
+            writer.WriteEnumValue<global::Soenneker.Resend.OpenApiClient.Models.UpdateWebhookRequestStatus>("status", Status);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

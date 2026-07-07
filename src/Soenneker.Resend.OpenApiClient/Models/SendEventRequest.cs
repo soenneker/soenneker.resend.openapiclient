@@ -35,10 +35,10 @@ namespace Soenneker.Resend.OpenApiClient.Models
         /// <summary>An optional payload of key/value pairs to include with the event.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Resend.OpenApiClient.Models.SendEventRequest_payload? Payload { get; set; }
+        public global::Soenneker.Resend.OpenApiClient.Models.SendEventRequestPayloadProperty? Payload { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Resend.OpenApiClient.Models.SendEventRequest_payload Payload { get; set; }
+        public global::Soenneker.Resend.OpenApiClient.Models.SendEventRequestPayloadProperty Payload { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Resend.OpenApiClient.Models.SendEventRequest"/> and sets the default values.
@@ -68,7 +68,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
                 { "contact_id", n => { ContactId = n.GetGuidValue(); } },
                 { "email", n => { Email = n.GetStringValue(); } },
                 { "event", n => { Event = n.GetStringValue(); } },
-                { "payload", n => { Payload = n.GetObjectValue<global::Soenneker.Resend.OpenApiClient.Models.SendEventRequest_payload>(global::Soenneker.Resend.OpenApiClient.Models.SendEventRequest_payload.CreateFromDiscriminatorValue); } },
+                { "payload", n => { Payload = n.GetObjectValue<global::Soenneker.Resend.OpenApiClient.Models.SendEventRequestPayloadProperty>(global::Soenneker.Resend.OpenApiClient.Models.SendEventRequestPayloadProperty.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -81,7 +81,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
             writer.WriteGuidValue("contact_id", ContactId);
             writer.WriteStringValue("email", Email);
             writer.WriteStringValue("event", Event);
-            writer.WriteObjectValue<global::Soenneker.Resend.OpenApiClient.Models.SendEventRequest_payload>("payload", Payload);
+            writer.WriteObjectValue<global::Soenneker.Resend.OpenApiClient.Models.SendEventRequestPayloadProperty>("payload", Payload);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

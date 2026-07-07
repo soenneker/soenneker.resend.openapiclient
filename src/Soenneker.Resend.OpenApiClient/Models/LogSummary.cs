@@ -27,7 +27,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
         /// <summary>The log ID.</summary>
         public Guid? Id { get; set; }
         /// <summary>The HTTP method used.</summary>
-        public global::Soenneker.Resend.OpenApiClient.Models.LogSummary_method? Method { get; set; }
+        public global::Soenneker.Resend.OpenApiClient.Models.LogSummaryMethod? Method { get; set; }
         /// <summary>The HTTP status code of the response.</summary>
         public int? ResponseStatus { get; set; }
         /// <summary>The user agent of the request.</summary>
@@ -66,7 +66,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "endpoint", n => { Endpoint = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
-                { "method", n => { Method = n.GetEnumValue<global::Soenneker.Resend.OpenApiClient.Models.LogSummary_method>(); } },
+                { "method", n => { Method = n.GetEnumValue<global::Soenneker.Resend.OpenApiClient.Models.LogSummaryMethod>(); } },
                 { "response_status", n => { ResponseStatus = n.GetIntValue(); } },
                 { "user_agent", n => { UserAgent = n.GetStringValue(); } },
             };
@@ -81,7 +81,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
             writer.WriteDateTimeOffsetValue("created_at", CreatedAt);
             writer.WriteStringValue("endpoint", Endpoint);
             writer.WriteGuidValue("id", Id);
-            writer.WriteEnumValue<global::Soenneker.Resend.OpenApiClient.Models.LogSummary_method>("method", Method);
+            writer.WriteEnumValue<global::Soenneker.Resend.OpenApiClient.Models.LogSummaryMethod>("method", Method);
             writer.WriteIntValue("response_status", ResponseStatus);
             writer.WriteStringValue("user_agent", UserAgent);
             writer.WriteAdditionalData(AdditionalData);

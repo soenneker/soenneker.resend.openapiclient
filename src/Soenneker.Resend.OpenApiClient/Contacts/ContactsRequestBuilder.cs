@@ -3,6 +3,7 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.Resend.OpenApiClient.Contacts.Imports;
 using Soenneker.Resend.OpenApiClient.Contacts.Item;
 using Soenneker.Resend.OpenApiClient.Models;
 using System.Collections.Generic;
@@ -18,16 +19,21 @@ namespace Soenneker.Resend.OpenApiClient.Contacts
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ContactsRequestBuilder : BaseRequestBuilder
     {
+        /// <summary>The imports property</summary>
+        public global::Soenneker.Resend.OpenApiClient.Contacts.Imports.ImportsRequestBuilder Imports
+        {
+            get => new global::Soenneker.Resend.OpenApiClient.Contacts.Imports.ImportsRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>Gets an item from the Soenneker.Resend.OpenApiClient.contacts.item collection</summary>
         /// <param name="position">The Contact ID or email address.</param>
-        /// <returns>A <see cref="global::Soenneker.Resend.OpenApiClient.Contacts.Item.Contact_ItemRequestBuilder"/></returns>
-        public global::Soenneker.Resend.OpenApiClient.Contacts.Item.Contact_ItemRequestBuilder this[string position]
+        /// <returns>A <see cref="global::Soenneker.Resend.OpenApiClient.Contacts.Item.ContactItemRequestBuilder"/></returns>
+        public global::Soenneker.Resend.OpenApiClient.Contacts.Item.ContactItemRequestBuilder this[string position]
         {
             get
             {
                 var urlTplParams = new Dictionary<string, object>(PathParameters);
-                urlTplParams.Add("contact_%2Did", position);
-                return new global::Soenneker.Resend.OpenApiClient.Contacts.Item.Contact_ItemRequestBuilder(urlTplParams, RequestAdapter);
+                urlTplParams.Add("contact%2Did", position);
+                return new global::Soenneker.Resend.OpenApiClient.Contacts.Item.ContactItemRequestBuilder(urlTplParams, RequestAdapter);
             }
         }
         /// <summary>

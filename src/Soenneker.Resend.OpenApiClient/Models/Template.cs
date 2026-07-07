@@ -85,7 +85,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
         public List<string> ReplyTo { get; set; }
 #endif
         /// <summary>The publication status of the template.</summary>
-        public global::Soenneker.Resend.OpenApiClient.Models.Template_status? Status { get; set; }
+        public global::Soenneker.Resend.OpenApiClient.Models.TemplateStatus? Status { get; set; }
         /// <summary>Email subject.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -148,7 +148,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
                 { "object", n => { Object = n.GetStringValue(); } },
                 { "published_at", n => { PublishedAt = n.GetDateTimeOffsetValue(); } },
                 { "reply_to", n => { ReplyTo = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
-                { "status", n => { Status = n.GetEnumValue<global::Soenneker.Resend.OpenApiClient.Models.Template_status>(); } },
+                { "status", n => { Status = n.GetEnumValue<global::Soenneker.Resend.OpenApiClient.Models.TemplateStatus>(); } },
                 { "subject", n => { Subject = n.GetStringValue(); } },
                 { "text", n => { Text = n.GetStringValue(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
@@ -173,7 +173,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
             writer.WriteStringValue("object", Object);
             writer.WriteDateTimeOffsetValue("published_at", PublishedAt);
             writer.WriteCollectionOfPrimitiveValues<string>("reply_to", ReplyTo);
-            writer.WriteEnumValue<global::Soenneker.Resend.OpenApiClient.Models.Template_status>("status", Status);
+            writer.WriteEnumValue<global::Soenneker.Resend.OpenApiClient.Models.TemplateStatus>("status", Status);
             writer.WriteStringValue("subject", Subject);
             writer.WriteStringValue("text", Text);
             writer.WriteDateTimeOffsetValue("updated_at", UpdatedAt);

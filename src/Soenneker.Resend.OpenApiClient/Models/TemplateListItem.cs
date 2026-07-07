@@ -43,7 +43,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
         /// <summary>Timestamp indicating when the template was published.</summary>
         public DateTimeOffset? PublishedAt { get; set; }
         /// <summary>The publication status of the template.</summary>
-        public global::Soenneker.Resend.OpenApiClient.Models.TemplateListItem_status? Status { get; set; }
+        public global::Soenneker.Resend.OpenApiClient.Models.TemplateListItemStatus? Status { get; set; }
         /// <summary>Timestamp indicating when the template was last updated.</summary>
         public DateTimeOffset? UpdatedAt { get; set; }
         /// <summary>
@@ -76,7 +76,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "published_at", n => { PublishedAt = n.GetDateTimeOffsetValue(); } },
-                { "status", n => { Status = n.GetEnumValue<global::Soenneker.Resend.OpenApiClient.Models.TemplateListItem_status>(); } },
+                { "status", n => { Status = n.GetEnumValue<global::Soenneker.Resend.OpenApiClient.Models.TemplateListItemStatus>(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
             };
         }
@@ -92,7 +92,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
             writer.WriteStringValue("id", Id);
             writer.WriteStringValue("name", Name);
             writer.WriteDateTimeOffsetValue("published_at", PublishedAt);
-            writer.WriteEnumValue<global::Soenneker.Resend.OpenApiClient.Models.TemplateListItem_status>("status", Status);
+            writer.WriteEnumValue<global::Soenneker.Resend.OpenApiClient.Models.TemplateListItemStatus>("status", Status);
             writer.WriteDateTimeOffsetValue("updated_at", UpdatedAt);
             writer.WriteAdditionalData(AdditionalData);
         }

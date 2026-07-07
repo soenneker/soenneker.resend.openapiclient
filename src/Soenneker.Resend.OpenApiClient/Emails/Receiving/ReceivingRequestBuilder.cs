@@ -20,14 +20,14 @@ namespace Soenneker.Resend.OpenApiClient.Emails.Receiving
     {
         /// <summary>Gets an item from the Soenneker.Resend.OpenApiClient.emails.receiving.item collection</summary>
         /// <param name="position">The ID of the received email.</param>
-        /// <returns>A <see cref="global::Soenneker.Resend.OpenApiClient.Emails.Receiving.Item.WithEmail_ItemRequestBuilder"/></returns>
-        public global::Soenneker.Resend.OpenApiClient.Emails.Receiving.Item.WithEmail_ItemRequestBuilder this[Guid position]
+        /// <returns>A <see cref="global::Soenneker.Resend.OpenApiClient.Emails.Receiving.Item.WithEmailItemRequestBuilder"/></returns>
+        public global::Soenneker.Resend.OpenApiClient.Emails.Receiving.Item.WithEmailItemRequestBuilder this[Guid position]
         {
             get
             {
                 var urlTplParams = new Dictionary<string, object>(PathParameters);
-                urlTplParams.Add("email_id", position);
-                return new global::Soenneker.Resend.OpenApiClient.Emails.Receiving.Item.WithEmail_ItemRequestBuilder(urlTplParams, RequestAdapter);
+                urlTplParams.Add("emailId", position);
+                return new global::Soenneker.Resend.OpenApiClient.Emails.Receiving.Item.WithEmailItemRequestBuilder(urlTplParams, RequestAdapter);
             }
         }
         /// <summary>

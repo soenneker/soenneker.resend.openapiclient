@@ -43,9 +43,9 @@ namespace Soenneker.Resend.OpenApiClient.Models
         /// <summary>Track the open rate of each email.</summary>
         public bool? OpenTracking { get; set; }
         /// <summary>The region where emails will be sent from. Possible values are us-east-1 | eu-west-1 | sa-east-1 | ap-northeast-1</summary>
-        public global::Soenneker.Resend.OpenApiClient.Models.CreateDomainRequest_region? Region { get; set; }
+        public global::Soenneker.Resend.OpenApiClient.Models.CreateDomainRequestRegion? Region { get; set; }
         /// <summary>TLS mode. Opportunistic attempts secure connection but falls back to unencrypted. Enforced requires TLS or email won&apos;t be sent.</summary>
-        public global::Soenneker.Resend.OpenApiClient.Models.CreateDomainRequest_tls? Tls { get; set; }
+        public global::Soenneker.Resend.OpenApiClient.Models.CreateDomainRequestTls? Tls { get; set; }
         /// <summary>The subdomain to use for click and open tracking.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -60,8 +60,6 @@ namespace Soenneker.Resend.OpenApiClient.Models
         public CreateDomainRequest()
         {
             AdditionalData = new Dictionary<string, object>();
-            Region = global::Soenneker.Resend.OpenApiClient.Models.CreateDomainRequest_region.UsEast1;
-            Tls = global::Soenneker.Resend.OpenApiClient.Models.CreateDomainRequest_tls.Opportunistic;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -86,8 +84,8 @@ namespace Soenneker.Resend.OpenApiClient.Models
                 { "custom_return_path", n => { CustomReturnPath = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "open_tracking", n => { OpenTracking = n.GetBoolValue(); } },
-                { "region", n => { Region = n.GetEnumValue<global::Soenneker.Resend.OpenApiClient.Models.CreateDomainRequest_region>(); } },
-                { "tls", n => { Tls = n.GetEnumValue<global::Soenneker.Resend.OpenApiClient.Models.CreateDomainRequest_tls>(); } },
+                { "region", n => { Region = n.GetEnumValue<global::Soenneker.Resend.OpenApiClient.Models.CreateDomainRequestRegion>(); } },
+                { "tls", n => { Tls = n.GetEnumValue<global::Soenneker.Resend.OpenApiClient.Models.CreateDomainRequestTls>(); } },
                 { "tracking_subdomain", n => { TrackingSubdomain = n.GetStringValue(); } },
             };
         }
@@ -103,8 +101,8 @@ namespace Soenneker.Resend.OpenApiClient.Models
             writer.WriteStringValue("custom_return_path", CustomReturnPath);
             writer.WriteStringValue("name", Name);
             writer.WriteBoolValue("open_tracking", OpenTracking);
-            writer.WriteEnumValue<global::Soenneker.Resend.OpenApiClient.Models.CreateDomainRequest_region>("region", Region);
-            writer.WriteEnumValue<global::Soenneker.Resend.OpenApiClient.Models.CreateDomainRequest_tls>("tls", Tls);
+            writer.WriteEnumValue<global::Soenneker.Resend.OpenApiClient.Models.CreateDomainRequestRegion>("region", Region);
+            writer.WriteEnumValue<global::Soenneker.Resend.OpenApiClient.Models.CreateDomainRequestTls>("tls", Tls);
             writer.WriteStringValue("tracking_subdomain", TrackingSubdomain);
             writer.WriteAdditionalData(AdditionalData);
         }

@@ -32,7 +32,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
         public string To { get; set; }
 #endif
         /// <summary>The type of connection. Defaults to `default`.</summary>
-        public global::Soenneker.Resend.OpenApiClient.Models.AutomationConnection_type? Type { get; set; }
+        public global::Soenneker.Resend.OpenApiClient.Models.AutomationConnectionType? Type { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Resend.OpenApiClient.Models.AutomationConnection"/> and sets the default values.
         /// </summary>
@@ -60,7 +60,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
             {
                 { "from", n => { From = n.GetStringValue(); } },
                 { "to", n => { To = n.GetStringValue(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.Resend.OpenApiClient.Models.AutomationConnection_type>(); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.Resend.OpenApiClient.Models.AutomationConnectionType>(); } },
             };
         }
         /// <summary>
@@ -72,7 +72,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("from", From);
             writer.WriteStringValue("to", To);
-            writer.WriteEnumValue<global::Soenneker.Resend.OpenApiClient.Models.AutomationConnection_type>("type", Type);
+            writer.WriteEnumValue<global::Soenneker.Resend.OpenApiClient.Models.AutomationConnectionType>("type", Type);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

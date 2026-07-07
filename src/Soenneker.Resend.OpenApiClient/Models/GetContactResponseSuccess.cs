@@ -59,10 +59,10 @@ namespace Soenneker.Resend.OpenApiClient.Models
         /// <summary>A map of custom property keys and values.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Resend.OpenApiClient.Models.GetContactResponseSuccess_properties? Properties { get; set; }
+        public global::Soenneker.Resend.OpenApiClient.Models.GetContactResponseSuccessPropertiesProperty? Properties { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Resend.OpenApiClient.Models.GetContactResponseSuccess_properties Properties { get; set; }
+        public global::Soenneker.Resend.OpenApiClient.Models.GetContactResponseSuccessPropertiesProperty Properties { get; set; }
 #endif
         /// <summary>Indicates if the contact is unsubscribed.</summary>
         public bool? Unsubscribed { get; set; }
@@ -97,7 +97,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "last_name", n => { LastName = n.GetStringValue(); } },
                 { "object", n => { Object = n.GetStringValue(); } },
-                { "properties", n => { Properties = n.GetObjectValue<global::Soenneker.Resend.OpenApiClient.Models.GetContactResponseSuccess_properties>(global::Soenneker.Resend.OpenApiClient.Models.GetContactResponseSuccess_properties.CreateFromDiscriminatorValue); } },
+                { "properties", n => { Properties = n.GetObjectValue<global::Soenneker.Resend.OpenApiClient.Models.GetContactResponseSuccessPropertiesProperty>(global::Soenneker.Resend.OpenApiClient.Models.GetContactResponseSuccessPropertiesProperty.CreateFromDiscriminatorValue); } },
                 { "unsubscribed", n => { Unsubscribed = n.GetBoolValue(); } },
             };
         }
@@ -114,7 +114,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
             writer.WriteStringValue("id", Id);
             writer.WriteStringValue("last_name", LastName);
             writer.WriteStringValue("object", Object);
-            writer.WriteObjectValue<global::Soenneker.Resend.OpenApiClient.Models.GetContactResponseSuccess_properties>("properties", Properties);
+            writer.WriteObjectValue<global::Soenneker.Resend.OpenApiClient.Models.GetContactResponseSuccessPropertiesProperty>("properties", Properties);
             writer.WriteBoolValue("unsubscribed", Unsubscribed);
             writer.WriteAdditionalData(AdditionalData);
         }

@@ -61,7 +61,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
         public string Region { get; set; }
 #endif
         /// <summary>The status of the domain.</summary>
-        public global::Soenneker.Resend.OpenApiClient.Models.CreateDomainResponse_status? Status { get; set; }
+        public global::Soenneker.Resend.OpenApiClient.Models.CreateDomainResponseStatus? Status { get; set; }
         /// <summary>The subdomain used for click and open tracking.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -103,7 +103,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
                 { "open_tracking", n => { OpenTracking = n.GetBoolValue(); } },
                 { "records", n => { Records = n.GetCollectionOfObjectValues<global::Soenneker.Resend.OpenApiClient.Models.DomainRecord>(global::Soenneker.Resend.OpenApiClient.Models.DomainRecord.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "region", n => { Region = n.GetStringValue(); } },
-                { "status", n => { Status = n.GetEnumValue<global::Soenneker.Resend.OpenApiClient.Models.CreateDomainResponse_status>(); } },
+                { "status", n => { Status = n.GetEnumValue<global::Soenneker.Resend.OpenApiClient.Models.CreateDomainResponseStatus>(); } },
                 { "tracking_subdomain", n => { TrackingSubdomain = n.GetStringValue(); } },
             };
         }
@@ -122,7 +122,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
             writer.WriteBoolValue("open_tracking", OpenTracking);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Resend.OpenApiClient.Models.DomainRecord>("records", Records);
             writer.WriteStringValue("region", Region);
-            writer.WriteEnumValue<global::Soenneker.Resend.OpenApiClient.Models.CreateDomainResponse_status>("status", Status);
+            writer.WriteEnumValue<global::Soenneker.Resend.OpenApiClient.Models.CreateDomainResponseStatus>("status", Status);
             writer.WriteStringValue("tracking_subdomain", TrackingSubdomain);
             writer.WriteAdditionalData(AdditionalData);
         }

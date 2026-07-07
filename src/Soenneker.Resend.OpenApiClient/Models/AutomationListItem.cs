@@ -39,7 +39,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
         public string Name { get; set; }
 #endif
         /// <summary>The current status of the automation.</summary>
-        public global::Soenneker.Resend.OpenApiClient.Models.AutomationListItem_status? Status { get; set; }
+        public global::Soenneker.Resend.OpenApiClient.Models.AutomationListItemStatus? Status { get; set; }
         /// <summary>The date and time the automation was last updated.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -76,7 +76,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
                 { "created_at", n => { CreatedAt = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
-                { "status", n => { Status = n.GetEnumValue<global::Soenneker.Resend.OpenApiClient.Models.AutomationListItem_status>(); } },
+                { "status", n => { Status = n.GetEnumValue<global::Soenneker.Resend.OpenApiClient.Models.AutomationListItemStatus>(); } },
                 { "updated_at", n => { UpdatedAt = n.GetStringValue(); } },
             };
         }
@@ -90,7 +90,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
             writer.WriteStringValue("created_at", CreatedAt);
             writer.WriteStringValue("id", Id);
             writer.WriteStringValue("name", Name);
-            writer.WriteEnumValue<global::Soenneker.Resend.OpenApiClient.Models.AutomationListItem_status>("status", Status);
+            writer.WriteEnumValue<global::Soenneker.Resend.OpenApiClient.Models.AutomationListItemStatus>("status", Status);
             writer.WriteStringValue("updated_at", UpdatedAt);
             writer.WriteAdditionalData(AdditionalData);
         }

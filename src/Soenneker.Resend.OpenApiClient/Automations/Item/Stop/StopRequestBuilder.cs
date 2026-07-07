@@ -12,7 +12,7 @@ using System;
 namespace Soenneker.Resend.OpenApiClient.Automations.Item.Stop
 {
     /// <summary>
-    /// Builds and executes requests for operations under \automations\{automation_id}\stop
+    /// Builds and executes requests for operations under \automations\{automationId}\stop
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class StopRequestBuilder : BaseRequestBuilder
@@ -22,7 +22,7 @@ namespace Soenneker.Resend.OpenApiClient.Automations.Item.Stop
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public StopRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/automations/{automation_id}/stop", pathParameters)
+        public StopRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/automations/{automationId}/stop", pathParameters)
         {
         }
         /// <summary>
@@ -30,7 +30,7 @@ namespace Soenneker.Resend.OpenApiClient.Automations.Item.Stop
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public StopRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/automations/{automation_id}/stop", rawUrl)
+        public StopRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/automations/{automationId}/stop", rawUrl)
         {
         }
         /// <summary>

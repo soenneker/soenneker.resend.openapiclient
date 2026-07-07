@@ -47,7 +47,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
         public string StartedAt { get; set; }
 #endif
         /// <summary>The current status of the automation run.</summary>
-        public global::Soenneker.Resend.OpenApiClient.Models.AutomationRunListItem_status? Status { get; set; }
+        public global::Soenneker.Resend.OpenApiClient.Models.AutomationRunListItemStatus? Status { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Resend.OpenApiClient.Models.AutomationRunListItem"/> and sets the default values.
         /// </summary>
@@ -77,7 +77,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
                 { "created_at", n => { CreatedAt = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "started_at", n => { StartedAt = n.GetStringValue(); } },
-                { "status", n => { Status = n.GetEnumValue<global::Soenneker.Resend.OpenApiClient.Models.AutomationRunListItem_status>(); } },
+                { "status", n => { Status = n.GetEnumValue<global::Soenneker.Resend.OpenApiClient.Models.AutomationRunListItemStatus>(); } },
             };
         }
         /// <summary>
@@ -91,7 +91,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
             writer.WriteStringValue("created_at", CreatedAt);
             writer.WriteStringValue("id", Id);
             writer.WriteStringValue("started_at", StartedAt);
-            writer.WriteEnumValue<global::Soenneker.Resend.OpenApiClient.Models.AutomationRunListItem_status>("status", Status);
+            writer.WriteEnumValue<global::Soenneker.Resend.OpenApiClient.Models.AutomationRunListItemStatus>("status", Status);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

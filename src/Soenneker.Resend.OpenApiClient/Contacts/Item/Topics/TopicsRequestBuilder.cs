@@ -12,7 +12,7 @@ using System;
 namespace Soenneker.Resend.OpenApiClient.Contacts.Item.Topics
 {
     /// <summary>
-    /// Builds and executes requests for operations under \contacts\{contact_-id}\topics
+    /// Builds and executes requests for operations under \contacts\{contact-id}\topics
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class TopicsRequestBuilder : BaseRequestBuilder
@@ -22,7 +22,7 @@ namespace Soenneker.Resend.OpenApiClient.Contacts.Item.Topics
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public TopicsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/contacts/{contact_%2Did}/topics{?after*,before*,limit*}", pathParameters)
+        public TopicsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/contacts/{contact%2Did}/topics{?after*,before*,limit*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,7 +30,7 @@ namespace Soenneker.Resend.OpenApiClient.Contacts.Item.Topics
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public TopicsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/contacts/{contact_%2Did}/topics{?after*,before*,limit*}", rawUrl)
+        public TopicsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/contacts/{contact%2Did}/topics{?after*,before*,limit*}", rawUrl)
         {
         }
         /// <summary>

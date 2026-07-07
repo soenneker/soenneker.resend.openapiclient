@@ -13,21 +13,21 @@ using System;
 namespace Soenneker.Resend.OpenApiClient.Emails.Receiving.Item.Attachments
 {
     /// <summary>
-    /// Builds and executes requests for operations under \emails\receiving\{email_id}\attachments
+    /// Builds and executes requests for operations under \emails\receiving\{emailId}\attachments
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class AttachmentsRequestBuilder : BaseRequestBuilder
     {
         /// <summary>Gets an item from the Soenneker.Resend.OpenApiClient.emails.receiving.item.attachments.item collection</summary>
         /// <param name="position">The ID of the attachment.</param>
-        /// <returns>A <see cref="global::Soenneker.Resend.OpenApiClient.Emails.Receiving.Item.Attachments.Item.WithAttachment_ItemRequestBuilder"/></returns>
-        public global::Soenneker.Resend.OpenApiClient.Emails.Receiving.Item.Attachments.Item.WithAttachment_ItemRequestBuilder this[Guid position]
+        /// <returns>A <see cref="global::Soenneker.Resend.OpenApiClient.Emails.Receiving.Item.Attachments.Item.WithAttachmentItemRequestBuilder"/></returns>
+        public global::Soenneker.Resend.OpenApiClient.Emails.Receiving.Item.Attachments.Item.WithAttachmentItemRequestBuilder this[Guid position]
         {
             get
             {
                 var urlTplParams = new Dictionary<string, object>(PathParameters);
-                urlTplParams.Add("attachment_id", position);
-                return new global::Soenneker.Resend.OpenApiClient.Emails.Receiving.Item.Attachments.Item.WithAttachment_ItemRequestBuilder(urlTplParams, RequestAdapter);
+                urlTplParams.Add("attachmentId", position);
+                return new global::Soenneker.Resend.OpenApiClient.Emails.Receiving.Item.Attachments.Item.WithAttachmentItemRequestBuilder(urlTplParams, RequestAdapter);
             }
         }
         /// <summary>
@@ -35,7 +35,7 @@ namespace Soenneker.Resend.OpenApiClient.Emails.Receiving.Item.Attachments
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public AttachmentsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/emails/receiving/{email_id}/attachments{?after*,before*,limit*}", pathParameters)
+        public AttachmentsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/emails/receiving/{emailId}/attachments{?after*,before*,limit*}", pathParameters)
         {
         }
         /// <summary>
@@ -43,7 +43,7 @@ namespace Soenneker.Resend.OpenApiClient.Emails.Receiving.Item.Attachments
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public AttachmentsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/emails/receiving/{email_id}/attachments{?after*,before*,limit*}", rawUrl)
+        public AttachmentsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/emails/receiving/{emailId}/attachments{?after*,before*,limit*}", rawUrl)
         {
         }
         /// <summary>

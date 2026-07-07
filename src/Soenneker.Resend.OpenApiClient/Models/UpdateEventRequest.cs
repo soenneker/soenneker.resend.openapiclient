@@ -17,10 +17,10 @@ namespace Soenneker.Resend.OpenApiClient.Models
         /// <summary>A flat key/type map defining the event payload schema. Set to `null` to clear the schema. Supported types are `string`, `number`, `boolean`, and `date`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Resend.OpenApiClient.Models.UpdateEventRequest_schema? Schema { get; set; }
+        public global::Soenneker.Resend.OpenApiClient.Models.UpdateEventRequestSchemaProperty? Schema { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Resend.OpenApiClient.Models.UpdateEventRequest_schema Schema { get; set; }
+        public global::Soenneker.Resend.OpenApiClient.Models.UpdateEventRequestSchemaProperty Schema { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Resend.OpenApiClient.Models.UpdateEventRequest"/> and sets the default values.
@@ -47,7 +47,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "schema", n => { Schema = n.GetObjectValue<global::Soenneker.Resend.OpenApiClient.Models.UpdateEventRequest_schema>(global::Soenneker.Resend.OpenApiClient.Models.UpdateEventRequest_schema.CreateFromDiscriminatorValue); } },
+                { "schema", n => { Schema = n.GetObjectValue<global::Soenneker.Resend.OpenApiClient.Models.UpdateEventRequestSchemaProperty>(global::Soenneker.Resend.OpenApiClient.Models.UpdateEventRequestSchemaProperty.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -57,7 +57,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.Resend.OpenApiClient.Models.UpdateEventRequest_schema>("schema", Schema);
+            writer.WriteObjectValue<global::Soenneker.Resend.OpenApiClient.Models.UpdateEventRequestSchemaProperty>("schema", Schema);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

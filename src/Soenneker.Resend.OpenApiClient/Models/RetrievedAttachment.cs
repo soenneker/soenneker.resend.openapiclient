@@ -15,7 +15,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>How the attachment should be displayed.</summary>
-        public global::Soenneker.Resend.OpenApiClient.Models.RetrievedAttachment_content_disposition? ContentDisposition { get; set; }
+        public global::Soenneker.Resend.OpenApiClient.Models.RetrievedAttachmentContentDisposition? ContentDisposition { get; set; }
         /// <summary>The content ID for inline attachments.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -87,7 +87,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "content_disposition", n => { ContentDisposition = n.GetEnumValue<global::Soenneker.Resend.OpenApiClient.Models.RetrievedAttachment_content_disposition>(); } },
+                { "content_disposition", n => { ContentDisposition = n.GetEnumValue<global::Soenneker.Resend.OpenApiClient.Models.RetrievedAttachmentContentDisposition>(); } },
                 { "content_id", n => { ContentId = n.GetStringValue(); } },
                 { "content_type", n => { ContentType = n.GetStringValue(); } },
                 { "download_url", n => { DownloadUrl = n.GetStringValue(); } },
@@ -105,7 +105,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<global::Soenneker.Resend.OpenApiClient.Models.RetrievedAttachment_content_disposition>("content_disposition", ContentDisposition);
+            writer.WriteEnumValue<global::Soenneker.Resend.OpenApiClient.Models.RetrievedAttachmentContentDisposition>("content_disposition", ContentDisposition);
             writer.WriteStringValue("content_id", ContentId);
             writer.WriteStringValue("content_type", ContentType);
             writer.WriteStringValue("download_url", DownloadUrl);

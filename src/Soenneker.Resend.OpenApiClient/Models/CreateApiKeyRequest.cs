@@ -31,7 +31,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
         public string Name { get; set; }
 #endif
         /// <summary>The API key can have full access to Resend’s API or be only restricted to send emails. * full_access - Can create, delete, get, and update any resource. * sending_access - Can only send emails.</summary>
-        public global::Soenneker.Resend.OpenApiClient.Models.CreateApiKeyRequest_permission? Permission { get; set; }
+        public global::Soenneker.Resend.OpenApiClient.Models.CreateApiKeyRequestPermission? Permission { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Resend.OpenApiClient.Models.CreateApiKeyRequest"/> and sets the default values.
         /// </summary>
@@ -59,7 +59,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
             {
                 { "domain_id", n => { DomainId = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
-                { "permission", n => { Permission = n.GetEnumValue<global::Soenneker.Resend.OpenApiClient.Models.CreateApiKeyRequest_permission>(); } },
+                { "permission", n => { Permission = n.GetEnumValue<global::Soenneker.Resend.OpenApiClient.Models.CreateApiKeyRequestPermission>(); } },
             };
         }
         /// <summary>
@@ -71,7 +71,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("domain_id", DomainId);
             writer.WriteStringValue("name", Name);
-            writer.WriteEnumValue<global::Soenneker.Resend.OpenApiClient.Models.CreateApiKeyRequest_permission>("permission", Permission);
+            writer.WriteEnumValue<global::Soenneker.Resend.OpenApiClient.Models.CreateApiKeyRequestPermission>("permission", Permission);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

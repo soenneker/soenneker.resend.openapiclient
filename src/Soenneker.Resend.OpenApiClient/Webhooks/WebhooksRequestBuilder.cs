@@ -20,14 +20,14 @@ namespace Soenneker.Resend.OpenApiClient.Webhooks
     {
         /// <summary>Gets an item from the Soenneker.Resend.OpenApiClient.webhooks.item collection</summary>
         /// <param name="position">The Webhook ID.</param>
-        /// <returns>A <see cref="global::Soenneker.Resend.OpenApiClient.Webhooks.Item.WithWebhook_ItemRequestBuilder"/></returns>
-        public global::Soenneker.Resend.OpenApiClient.Webhooks.Item.WithWebhook_ItemRequestBuilder this[Guid position]
+        /// <returns>A <see cref="global::Soenneker.Resend.OpenApiClient.Webhooks.Item.WithWebhookItemRequestBuilder"/></returns>
+        public global::Soenneker.Resend.OpenApiClient.Webhooks.Item.WithWebhookItemRequestBuilder this[Guid position]
         {
             get
             {
                 var urlTplParams = new Dictionary<string, object>(PathParameters);
-                urlTplParams.Add("webhook_id", position);
-                return new global::Soenneker.Resend.OpenApiClient.Webhooks.Item.WithWebhook_ItemRequestBuilder(urlTplParams, RequestAdapter);
+                urlTplParams.Add("webhookId", position);
+                return new global::Soenneker.Resend.OpenApiClient.Webhooks.Item.WithWebhookItemRequestBuilder(urlTplParams, RequestAdapter);
             }
         }
         /// <summary>

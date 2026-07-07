@@ -31,7 +31,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
         public string Name { get; set; }
 #endif
         /// <summary>The visibility of the topic.</summary>
-        public global::Soenneker.Resend.OpenApiClient.Models.UpdateTopicOptions_visibility? Visibility { get; set; }
+        public global::Soenneker.Resend.OpenApiClient.Models.UpdateTopicOptionsVisibility? Visibility { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Resend.OpenApiClient.Models.UpdateTopicOptions"/> and sets the default values.
         /// </summary>
@@ -59,7 +59,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
             {
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
-                { "visibility", n => { Visibility = n.GetEnumValue<global::Soenneker.Resend.OpenApiClient.Models.UpdateTopicOptions_visibility>(); } },
+                { "visibility", n => { Visibility = n.GetEnumValue<global::Soenneker.Resend.OpenApiClient.Models.UpdateTopicOptionsVisibility>(); } },
             };
         }
         /// <summary>
@@ -71,7 +71,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("description", Description);
             writer.WriteStringValue("name", Name);
-            writer.WriteEnumValue<global::Soenneker.Resend.OpenApiClient.Models.UpdateTopicOptions_visibility>("visibility", Visibility);
+            writer.WriteEnumValue<global::Soenneker.Resend.OpenApiClient.Models.UpdateTopicOptionsVisibility>("visibility", Visibility);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

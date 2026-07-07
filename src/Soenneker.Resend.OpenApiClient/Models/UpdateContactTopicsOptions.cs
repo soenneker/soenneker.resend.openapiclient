@@ -17,10 +17,10 @@ namespace Soenneker.Resend.OpenApiClient.Models
         /// <summary>The topics property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Resend.OpenApiClient.Models.UpdateContactTopicsOptions_topics>? Topics { get; set; }
+        public List<global::Soenneker.Resend.OpenApiClient.Models.UpdateContactTopicsOptionsTopicsItem>? Topics { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.Resend.OpenApiClient.Models.UpdateContactTopicsOptions_topics> Topics { get; set; }
+        public List<global::Soenneker.Resend.OpenApiClient.Models.UpdateContactTopicsOptionsTopicsItem> Topics { get; set; }
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Resend.OpenApiClient.Models.UpdateContactTopicsOptions"/> and sets the default values.
@@ -47,7 +47,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "topics", n => { Topics = n.GetCollectionOfObjectValues<global::Soenneker.Resend.OpenApiClient.Models.UpdateContactTopicsOptions_topics>(global::Soenneker.Resend.OpenApiClient.Models.UpdateContactTopicsOptions_topics.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "topics", n => { Topics = n.GetCollectionOfObjectValues<global::Soenneker.Resend.OpenApiClient.Models.UpdateContactTopicsOptionsTopicsItem>(global::Soenneker.Resend.OpenApiClient.Models.UpdateContactTopicsOptionsTopicsItem.CreateFromDiscriminatorValue)?.AsList(); } },
             };
         }
         /// <summary>
@@ -57,7 +57,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteCollectionOfObjectValues<global::Soenneker.Resend.OpenApiClient.Models.UpdateContactTopicsOptions_topics>("topics", Topics);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.Resend.OpenApiClient.Models.UpdateContactTopicsOptionsTopicsItem>("topics", Topics);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

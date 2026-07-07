@@ -25,9 +25,9 @@ namespace Soenneker.Resend.OpenApiClient.Models
         /// <summary>The priority of the record (only applicable for MX records).</summary>
         public int? Priority { get; set; }
         /// <summary>The type of record (SPF for sending, DKIM for sending, Receiving for inbound emails, Tracking &amp; TrackingCAA for click and open tracking).</summary>
-        public global::Soenneker.Resend.OpenApiClient.Models.DomainRecord_record? Record { get; set; }
+        public global::Soenneker.Resend.OpenApiClient.Models.DomainRecordRecord? Record { get; set; }
         /// <summary>The status of the record.</summary>
-        public global::Soenneker.Resend.OpenApiClient.Models.DomainRecord_status? Status { get; set; }
+        public global::Soenneker.Resend.OpenApiClient.Models.DomainRecordStatus? Status { get; set; }
         /// <summary>The time to live for the record.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -37,7 +37,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
         public string Ttl { get; set; }
 #endif
         /// <summary>The DNS record type.</summary>
-        public global::Soenneker.Resend.OpenApiClient.Models.DomainRecord_type? Type { get; set; }
+        public global::Soenneker.Resend.OpenApiClient.Models.DomainRecordType? Type { get; set; }
         /// <summary>The value of the record.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -73,10 +73,10 @@ namespace Soenneker.Resend.OpenApiClient.Models
             {
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "priority", n => { Priority = n.GetIntValue(); } },
-                { "record", n => { Record = n.GetEnumValue<global::Soenneker.Resend.OpenApiClient.Models.DomainRecord_record>(); } },
-                { "status", n => { Status = n.GetEnumValue<global::Soenneker.Resend.OpenApiClient.Models.DomainRecord_status>(); } },
+                { "record", n => { Record = n.GetEnumValue<global::Soenneker.Resend.OpenApiClient.Models.DomainRecordRecord>(); } },
+                { "status", n => { Status = n.GetEnumValue<global::Soenneker.Resend.OpenApiClient.Models.DomainRecordStatus>(); } },
                 { "ttl", n => { Ttl = n.GetStringValue(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.Resend.OpenApiClient.Models.DomainRecord_type>(); } },
+                { "type", n => { Type = n.GetEnumValue<global::Soenneker.Resend.OpenApiClient.Models.DomainRecordType>(); } },
                 { "value", n => { Value = n.GetStringValue(); } },
             };
         }
@@ -89,10 +89,10 @@ namespace Soenneker.Resend.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("name", Name);
             writer.WriteIntValue("priority", Priority);
-            writer.WriteEnumValue<global::Soenneker.Resend.OpenApiClient.Models.DomainRecord_record>("record", Record);
-            writer.WriteEnumValue<global::Soenneker.Resend.OpenApiClient.Models.DomainRecord_status>("status", Status);
+            writer.WriteEnumValue<global::Soenneker.Resend.OpenApiClient.Models.DomainRecordRecord>("record", Record);
+            writer.WriteEnumValue<global::Soenneker.Resend.OpenApiClient.Models.DomainRecordStatus>("status", Status);
             writer.WriteStringValue("ttl", Ttl);
-            writer.WriteEnumValue<global::Soenneker.Resend.OpenApiClient.Models.DomainRecord_type>("type", Type);
+            writer.WriteEnumValue<global::Soenneker.Resend.OpenApiClient.Models.DomainRecordType>("type", Type);
             writer.WriteStringValue("value", Value);
             writer.WriteAdditionalData(AdditionalData);
         }

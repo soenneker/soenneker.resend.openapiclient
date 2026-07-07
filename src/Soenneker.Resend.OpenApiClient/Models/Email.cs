@@ -57,7 +57,15 @@ namespace Soenneker.Resend.OpenApiClient.Models
         public string Id { get; set; }
 #endif
         /// <summary>The status of the email.</summary>
-        public global::Soenneker.Resend.OpenApiClient.Models.Email_last_event? LastEvent { get; set; }
+        public global::Soenneker.Resend.OpenApiClient.Models.EmailLastEvent? LastEvent { get; set; }
+        /// <summary>The Message-ID header value of the email.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? MessageId { get; set; }
+#nullable restore
+#else
+        public string MessageId { get; set; }
+#endif
         /// <summary>The type of object.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -129,7 +137,8 @@ namespace Soenneker.Resend.OpenApiClient.Models
                 { "from", n => { From = n.GetStringValue(); } },
                 { "html", n => { Html = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
-                { "last_event", n => { LastEvent = n.GetEnumValue<global::Soenneker.Resend.OpenApiClient.Models.Email_last_event>(); } },
+                { "last_event", n => { LastEvent = n.GetEnumValue<global::Soenneker.Resend.OpenApiClient.Models.EmailLastEvent>(); } },
+                { "message_id", n => { MessageId = n.GetStringValue(); } },
                 { "object", n => { Object = n.GetStringValue(); } },
                 { "reply_to", n => { ReplyTo = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "subject", n => { Subject = n.GetStringValue(); } },
@@ -150,7 +159,8 @@ namespace Soenneker.Resend.OpenApiClient.Models
             writer.WriteStringValue("from", From);
             writer.WriteStringValue("html", Html);
             writer.WriteStringValue("id", Id);
-            writer.WriteEnumValue<global::Soenneker.Resend.OpenApiClient.Models.Email_last_event>("last_event", LastEvent);
+            writer.WriteEnumValue<global::Soenneker.Resend.OpenApiClient.Models.EmailLastEvent>("last_event", LastEvent);
+            writer.WriteStringValue("message_id", MessageId);
             writer.WriteStringValue("object", Object);
             writer.WriteCollectionOfPrimitiveValues<string>("reply_to", ReplyTo);
             writer.WriteStringValue("subject", Subject);

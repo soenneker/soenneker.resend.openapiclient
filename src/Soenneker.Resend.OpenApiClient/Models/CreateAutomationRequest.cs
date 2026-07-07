@@ -31,7 +31,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
         public string Name { get; set; }
 #endif
         /// <summary>The initial status of the automation. Defaults to `disabled`.</summary>
-        public global::Soenneker.Resend.OpenApiClient.Models.CreateAutomationRequest_status? Status { get; set; }
+        public global::Soenneker.Resend.OpenApiClient.Models.CreateAutomationRequestStatus? Status { get; set; }
         /// <summary>The steps that compose the automation workflow. Must include at least one `trigger` step.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -46,7 +46,6 @@ namespace Soenneker.Resend.OpenApiClient.Models
         public CreateAutomationRequest()
         {
             AdditionalData = new Dictionary<string, object>();
-            Status = global::Soenneker.Resend.OpenApiClient.Models.CreateAutomationRequest_status.Disabled;
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -68,7 +67,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
             {
                 { "connections", n => { Connections = n.GetCollectionOfObjectValues<global::Soenneker.Resend.OpenApiClient.Models.AutomationConnection>(global::Soenneker.Resend.OpenApiClient.Models.AutomationConnection.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
-                { "status", n => { Status = n.GetEnumValue<global::Soenneker.Resend.OpenApiClient.Models.CreateAutomationRequest_status>(); } },
+                { "status", n => { Status = n.GetEnumValue<global::Soenneker.Resend.OpenApiClient.Models.CreateAutomationRequestStatus>(); } },
                 { "steps", n => { Steps = n.GetCollectionOfObjectValues<global::Soenneker.Resend.OpenApiClient.Models.AutomationStep>(global::Soenneker.Resend.OpenApiClient.Models.AutomationStep.CreateFromDiscriminatorValue)?.AsList(); } },
             };
         }
@@ -81,7 +80,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfObjectValues<global::Soenneker.Resend.OpenApiClient.Models.AutomationConnection>("connections", Connections);
             writer.WriteStringValue("name", Name);
-            writer.WriteEnumValue<global::Soenneker.Resend.OpenApiClient.Models.CreateAutomationRequest_status>("status", Status);
+            writer.WriteEnumValue<global::Soenneker.Resend.OpenApiClient.Models.CreateAutomationRequestStatus>("status", Status);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Resend.OpenApiClient.Models.AutomationStep>("steps", Steps);
             writer.WriteAdditionalData(AdditionalData);
         }

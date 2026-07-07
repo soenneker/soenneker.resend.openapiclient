@@ -17,10 +17,10 @@ namespace Soenneker.Resend.OpenApiClient.Models
         /// <summary>Array containing broadcast information.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Resend.OpenApiClient.Models.ListBroadcastsResponseSuccess_data>? Data { get; set; }
+        public List<global::Soenneker.Resend.OpenApiClient.Models.ListBroadcastsResponseSuccessDataItem>? Data { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.Resend.OpenApiClient.Models.ListBroadcastsResponseSuccess_data> Data { get; set; }
+        public List<global::Soenneker.Resend.OpenApiClient.Models.ListBroadcastsResponseSuccessDataItem> Data { get; set; }
 #endif
         /// <summary>Indicates if there are more results available.</summary>
         public bool? HasMore { get; set; }
@@ -57,7 +57,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "data", n => { Data = n.GetCollectionOfObjectValues<global::Soenneker.Resend.OpenApiClient.Models.ListBroadcastsResponseSuccess_data>(global::Soenneker.Resend.OpenApiClient.Models.ListBroadcastsResponseSuccess_data.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "data", n => { Data = n.GetCollectionOfObjectValues<global::Soenneker.Resend.OpenApiClient.Models.ListBroadcastsResponseSuccessDataItem>(global::Soenneker.Resend.OpenApiClient.Models.ListBroadcastsResponseSuccessDataItem.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "has_more", n => { HasMore = n.GetBoolValue(); } },
                 { "object", n => { Object = n.GetStringValue(); } },
             };
@@ -69,7 +69,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteCollectionOfObjectValues<global::Soenneker.Resend.OpenApiClient.Models.ListBroadcastsResponseSuccess_data>("data", Data);
+            writer.WriteCollectionOfObjectValues<global::Soenneker.Resend.OpenApiClient.Models.ListBroadcastsResponseSuccessDataItem>("data", Data);
             writer.WriteBoolValue("has_more", HasMore);
             writer.WriteStringValue("object", Object);
             writer.WriteAdditionalData(AdditionalData);

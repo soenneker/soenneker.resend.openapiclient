@@ -54,20 +54,20 @@ namespace Soenneker.Resend.OpenApiClient.Events.Item
         /// <summary>
         /// Retrieve a single event
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Resend.OpenApiClient.Models.Event"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Resend.OpenApiClient.Models.EventType"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::Soenneker.Resend.OpenApiClient.Models.Event?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Resend.OpenApiClient.Models.EventType?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::Soenneker.Resend.OpenApiClient.Models.Event> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::Soenneker.Resend.OpenApiClient.Models.EventType> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Resend.OpenApiClient.Models.Event>(requestInfo, global::Soenneker.Resend.OpenApiClient.Models.Event.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Resend.OpenApiClient.Models.EventType>(requestInfo, global::Soenneker.Resend.OpenApiClient.Models.EventType.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Update an event

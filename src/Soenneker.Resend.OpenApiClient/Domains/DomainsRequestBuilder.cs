@@ -3,6 +3,7 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.Resend.OpenApiClient.Domains.Claim;
 using Soenneker.Resend.OpenApiClient.Domains.Item;
 using Soenneker.Resend.OpenApiClient.Models;
 using System.Collections.Generic;
@@ -18,16 +19,21 @@ namespace Soenneker.Resend.OpenApiClient.Domains
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class DomainsRequestBuilder : BaseRequestBuilder
     {
+        /// <summary>The claim property</summary>
+        public global::Soenneker.Resend.OpenApiClient.Domains.Claim.ClaimRequestBuilder Claim
+        {
+            get => new global::Soenneker.Resend.OpenApiClient.Domains.Claim.ClaimRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>Gets an item from the Soenneker.Resend.OpenApiClient.domains.item collection</summary>
         /// <param name="position">The ID of the domain.</param>
-        /// <returns>A <see cref="global::Soenneker.Resend.OpenApiClient.Domains.Item.WithDomain_ItemRequestBuilder"/></returns>
-        public global::Soenneker.Resend.OpenApiClient.Domains.Item.WithDomain_ItemRequestBuilder this[string position]
+        /// <returns>A <see cref="global::Soenneker.Resend.OpenApiClient.Domains.Item.WithDomainItemRequestBuilder"/></returns>
+        public global::Soenneker.Resend.OpenApiClient.Domains.Item.WithDomainItemRequestBuilder this[string position]
         {
             get
             {
                 var urlTplParams = new Dictionary<string, object>(PathParameters);
-                urlTplParams.Add("domain_id", position);
-                return new global::Soenneker.Resend.OpenApiClient.Domains.Item.WithDomain_ItemRequestBuilder(urlTplParams, RequestAdapter);
+                urlTplParams.Add("domainId", position);
+                return new global::Soenneker.Resend.OpenApiClient.Domains.Item.WithDomainItemRequestBuilder(urlTplParams, RequestAdapter);
             }
         }
         /// <summary>

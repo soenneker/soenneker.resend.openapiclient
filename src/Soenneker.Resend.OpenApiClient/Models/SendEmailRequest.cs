@@ -25,18 +25,18 @@ namespace Soenneker.Resend.OpenApiClient.Models
         /// <summary>Bcc recipient email address. For multiple addresses, send as an array of strings.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Resend.OpenApiClient.Models.UnionBranch? Bcc { get; set; }
+        public global::Soenneker.Resend.OpenApiClient.Models.SendEmailRequestBcc? Bcc { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Resend.OpenApiClient.Models.UnionBranch Bcc { get; set; }
+        public global::Soenneker.Resend.OpenApiClient.Models.SendEmailRequestBcc Bcc { get; set; }
 #endif
         /// <summary>Cc recipient email address. For multiple addresses, send as an array of strings.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Resend.OpenApiClient.Models.UnionBranch? Cc { get; set; }
+        public global::Soenneker.Resend.OpenApiClient.Models.SendEmailRequestCc? Cc { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Resend.OpenApiClient.Models.UnionBranch Cc { get; set; }
+        public global::Soenneker.Resend.OpenApiClient.Models.SendEmailRequestCc Cc { get; set; }
 #endif
         /// <summary>Sender email address. To include a friendly name, use the format &quot;Your Name &lt;sender@domain.com&gt;&quot;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -49,10 +49,10 @@ namespace Soenneker.Resend.OpenApiClient.Models
         /// <summary>Custom headers to add to the email.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Resend.OpenApiClient.Models.SendEmailRequest_headers? Headers { get; set; }
+        public global::Soenneker.Resend.OpenApiClient.Models.SendEmailRequestHeadersProperty? Headers { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Resend.OpenApiClient.Models.SendEmailRequest_headers Headers { get; set; }
+        public global::Soenneker.Resend.OpenApiClient.Models.SendEmailRequestHeadersProperty Headers { get; set; }
 #endif
         /// <summary>The HTML version of the message.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -65,10 +65,10 @@ namespace Soenneker.Resend.OpenApiClient.Models
         /// <summary>Reply-to email address. For multiple addresses, send as an array of strings.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Resend.OpenApiClient.Models.UnionBranch? ReplyTo { get; set; }
+        public global::Soenneker.Resend.OpenApiClient.Models.SendEmailRequestReplyTo? ReplyTo { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Resend.OpenApiClient.Models.UnionBranch ReplyTo { get; set; }
+        public global::Soenneker.Resend.OpenApiClient.Models.SendEmailRequestReplyTo ReplyTo { get; set; }
 #endif
         /// <summary>Schedule email to be sent later. The date should be in ISO 8601 format.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -94,13 +94,13 @@ namespace Soenneker.Resend.OpenApiClient.Models
 #else
         public List<global::Soenneker.Resend.OpenApiClient.Models.Tag> Tags { get; set; }
 #endif
-        /// <summary>The template property</summary>
+        /// <summary>Use a published template to send the email. If provided, do not include html or text.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Resend.OpenApiClient.Models.SendEmailRequest_template? Template { get; set; }
+        public global::Soenneker.Resend.OpenApiClient.Models.SendEmailRequestTemplate? Template { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Resend.OpenApiClient.Models.SendEmailRequest_template Template { get; set; }
+        public global::Soenneker.Resend.OpenApiClient.Models.SendEmailRequestTemplate Template { get; set; }
 #endif
         /// <summary>The plain text version of the message.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -113,10 +113,10 @@ namespace Soenneker.Resend.OpenApiClient.Models
         /// <summary>Recipient email address. For multiple addresses, send as an array of strings. Max 50.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Resend.OpenApiClient.Models.UnionBranch? To { get; set; }
+        public global::Soenneker.Resend.OpenApiClient.Models.SendEmailRequestTo? To { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Resend.OpenApiClient.Models.UnionBranch To { get; set; }
+        public global::Soenneker.Resend.OpenApiClient.Models.SendEmailRequestTo To { get; set; }
 #endif
         /// <summary>The topic ID to scope the email to. If the recipient is a contact and opted-in to the topic, the email is sent. If opted-out, the email is not sent. If the recipient is not a contact, the email is sent if the topic&apos;s default subscription is opt_in.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -152,18 +152,18 @@ namespace Soenneker.Resend.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "attachments", n => { Attachments = n.GetCollectionOfObjectValues<global::Soenneker.Resend.OpenApiClient.Models.Attachment>(global::Soenneker.Resend.OpenApiClient.Models.Attachment.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "bcc", n => { Bcc = n.GetObjectValue<global::Soenneker.Resend.OpenApiClient.Models.UnionBranch>(global::Soenneker.Resend.OpenApiClient.Models.UnionBranch.CreateFromDiscriminatorValue); } },
-                { "cc", n => { Cc = n.GetObjectValue<global::Soenneker.Resend.OpenApiClient.Models.UnionBranch>(global::Soenneker.Resend.OpenApiClient.Models.UnionBranch.CreateFromDiscriminatorValue); } },
+                { "bcc", n => { Bcc = n.GetObjectValue<global::Soenneker.Resend.OpenApiClient.Models.SendEmailRequestBcc>(global::Soenneker.Resend.OpenApiClient.Models.SendEmailRequestBcc.CreateFromDiscriminatorValue); } },
+                { "cc", n => { Cc = n.GetObjectValue<global::Soenneker.Resend.OpenApiClient.Models.SendEmailRequestCc>(global::Soenneker.Resend.OpenApiClient.Models.SendEmailRequestCc.CreateFromDiscriminatorValue); } },
                 { "from", n => { From = n.GetStringValue(); } },
-                { "headers", n => { Headers = n.GetObjectValue<global::Soenneker.Resend.OpenApiClient.Models.SendEmailRequest_headers>(global::Soenneker.Resend.OpenApiClient.Models.SendEmailRequest_headers.CreateFromDiscriminatorValue); } },
+                { "headers", n => { Headers = n.GetObjectValue<global::Soenneker.Resend.OpenApiClient.Models.SendEmailRequestHeadersProperty>(global::Soenneker.Resend.OpenApiClient.Models.SendEmailRequestHeadersProperty.CreateFromDiscriminatorValue); } },
                 { "html", n => { Html = n.GetStringValue(); } },
-                { "reply_to", n => { ReplyTo = n.GetObjectValue<global::Soenneker.Resend.OpenApiClient.Models.UnionBranch>(global::Soenneker.Resend.OpenApiClient.Models.UnionBranch.CreateFromDiscriminatorValue); } },
+                { "reply_to", n => { ReplyTo = n.GetObjectValue<global::Soenneker.Resend.OpenApiClient.Models.SendEmailRequestReplyTo>(global::Soenneker.Resend.OpenApiClient.Models.SendEmailRequestReplyTo.CreateFromDiscriminatorValue); } },
                 { "scheduled_at", n => { ScheduledAt = n.GetStringValue(); } },
                 { "subject", n => { Subject = n.GetStringValue(); } },
                 { "tags", n => { Tags = n.GetCollectionOfObjectValues<global::Soenneker.Resend.OpenApiClient.Models.Tag>(global::Soenneker.Resend.OpenApiClient.Models.Tag.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "template", n => { Template = n.GetObjectValue<global::Soenneker.Resend.OpenApiClient.Models.SendEmailRequest_template>(global::Soenneker.Resend.OpenApiClient.Models.SendEmailRequest_template.CreateFromDiscriminatorValue); } },
+                { "template", n => { Template = n.GetObjectValue<global::Soenneker.Resend.OpenApiClient.Models.SendEmailRequestTemplate>(global::Soenneker.Resend.OpenApiClient.Models.SendEmailRequestTemplate.CreateFromDiscriminatorValue); } },
                 { "text", n => { Text = n.GetStringValue(); } },
-                { "to", n => { To = n.GetObjectValue<global::Soenneker.Resend.OpenApiClient.Models.UnionBranch>(global::Soenneker.Resend.OpenApiClient.Models.UnionBranch.CreateFromDiscriminatorValue); } },
+                { "to", n => { To = n.GetObjectValue<global::Soenneker.Resend.OpenApiClient.Models.SendEmailRequestTo>(global::Soenneker.Resend.OpenApiClient.Models.SendEmailRequestTo.CreateFromDiscriminatorValue); } },
                 { "topic_id", n => { TopicId = n.GetStringValue(); } },
             };
         }
@@ -175,18 +175,18 @@ namespace Soenneker.Resend.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfObjectValues<global::Soenneker.Resend.OpenApiClient.Models.Attachment>("attachments", Attachments);
-            writer.WriteObjectValue<global::Soenneker.Resend.OpenApiClient.Models.UnionBranch>("bcc", Bcc);
-            writer.WriteObjectValue<global::Soenneker.Resend.OpenApiClient.Models.UnionBranch>("cc", Cc);
+            writer.WriteObjectValue<global::Soenneker.Resend.OpenApiClient.Models.SendEmailRequestBcc>("bcc", Bcc);
+            writer.WriteObjectValue<global::Soenneker.Resend.OpenApiClient.Models.SendEmailRequestCc>("cc", Cc);
             writer.WriteStringValue("from", From);
-            writer.WriteObjectValue<global::Soenneker.Resend.OpenApiClient.Models.SendEmailRequest_headers>("headers", Headers);
+            writer.WriteObjectValue<global::Soenneker.Resend.OpenApiClient.Models.SendEmailRequestHeadersProperty>("headers", Headers);
             writer.WriteStringValue("html", Html);
-            writer.WriteObjectValue<global::Soenneker.Resend.OpenApiClient.Models.UnionBranch>("reply_to", ReplyTo);
+            writer.WriteObjectValue<global::Soenneker.Resend.OpenApiClient.Models.SendEmailRequestReplyTo>("reply_to", ReplyTo);
             writer.WriteStringValue("scheduled_at", ScheduledAt);
             writer.WriteStringValue("subject", Subject);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Resend.OpenApiClient.Models.Tag>("tags", Tags);
-            writer.WriteObjectValue<global::Soenneker.Resend.OpenApiClient.Models.SendEmailRequest_template>("template", Template);
+            writer.WriteObjectValue<global::Soenneker.Resend.OpenApiClient.Models.SendEmailRequestTemplate>("template", Template);
             writer.WriteStringValue("text", Text);
-            writer.WriteObjectValue<global::Soenneker.Resend.OpenApiClient.Models.UnionBranch>("to", To);
+            writer.WriteObjectValue<global::Soenneker.Resend.OpenApiClient.Models.SendEmailRequestTo>("to", To);
             writer.WriteStringValue("topic_id", TopicId);
             writer.WriteAdditionalData(AdditionalData);
         }
