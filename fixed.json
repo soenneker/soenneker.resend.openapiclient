@@ -3036,6 +3036,196 @@
           }
         }
       }
+    },
+    "/suppressions": {
+      "post": {
+        "tags": [
+          "Suppressions"
+        ],
+        "summary": "Create a suppression",
+        "operationId": "PostSuppressions",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateSuppressionOptions"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateSuppressionResponseSuccess"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Suppressions"
+        ],
+        "summary": "Retrieve a list of suppressions",
+        "operationId": "GetSuppressions",
+        "parameters": [
+          {
+            "name": "origin",
+            "in": "query",
+            "description": "Filter suppressions by origin.",
+            "schema": {
+              "$ref": "#/components/schemas/GetSuppressionsOriginParameter"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/PaginationLimit"
+          },
+          {
+            "$ref": "#/components/parameters/PaginationAfter"
+          },
+          {
+            "$ref": "#/components/parameters/PaginationBefore"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListSuppressionsResponseSuccess"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/suppressions/batch/add": {
+      "post": {
+        "tags": [
+          "Suppressions"
+        ],
+        "summary": "Add up to 100 suppressions at once",
+        "operationId": "PostSuppressionsBatchAdd",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BatchAddSuppressionsOptions"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BatchAddSuppressionsResponseSuccess"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/suppressions/batch/remove": {
+      "post": {
+        "tags": [
+          "Suppressions"
+        ],
+        "summary": "Remove up to 100 suppressions at once",
+        "operationId": "PostSuppressionsBatchRemove",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BatchRemoveSuppressionsOptions"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BatchRemoveSuppressionsResponseSuccess"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/suppressions/{suppression}": {
+      "get": {
+        "tags": [
+          "Suppressions"
+        ],
+        "summary": "Retrieve a single suppression by ID or email",
+        "operationId": "GetSuppressionsBySuppression",
+        "parameters": [
+          {
+            "name": "suppression",
+            "in": "path",
+            "description": "The Suppression ID or email address.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetSuppressionResponseSuccess"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Suppressions"
+        ],
+        "summary": "Remove a single suppression by ID or email",
+        "operationId": "DeleteSuppressionsBySuppression",
+        "parameters": [
+          {
+            "name": "suppression",
+            "in": "path",
+            "description": "The Suppression ID or email address.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RemoveSuppressionResponseSuccess"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
@@ -4618,8 +4808,10 @@
           "filename": {
             "type": "string",
             "description": "The filename of the attachment.",
-            "nullable": true,
-            "example": "document.pdf"
+            "example": "document.pdf",
+            "unrecognizedKeywords": {
+              "nullable": true
+            }
           },
           "content_type": {
             "type": "string",
@@ -7683,6 +7875,177 @@
           }
         }
       },
+      "CreateSuppressionOptions": {
+        "required": [
+          "email"
+        ],
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "description": "Email address to suppress.",
+            "example": "steve.wozniak@gmail.com"
+          }
+        }
+      },
+      "CreateSuppressionResponseSuccess": {
+        "type": "object",
+        "properties": {
+          "object": {
+            "type": "string",
+            "description": "Type of the response object.",
+            "example": "suppression"
+          },
+          "id": {
+            "type": "string",
+            "description": "Unique identifier for the created suppression.",
+            "example": "e169aa45-1ecf-4183-9955-b1499d5701d3"
+          }
+        }
+      },
+      "BatchAddSuppressionsOptions": {
+        "required": [
+          "emails"
+        ],
+        "type": "object",
+        "properties": {
+          "emails": {
+            "maxItems": 100,
+            "minItems": 1,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Email addresses to suppress."
+          }
+        }
+      },
+      "BatchAddSuppressionsResponseSuccess": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BatchAddSuppressionsResponseSuccessDataItem"
+            },
+            "description": "Array containing the created suppressions."
+          }
+        }
+      },
+      "BatchRemoveSuppressionsOptions": {
+        "type": "object",
+        "properties": {
+          "emails": {
+            "maxItems": 100,
+            "minItems": 1,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Email addresses to remove from the suppression list."
+          },
+          "ids": {
+            "maxItems": 100,
+            "minItems": 1,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Suppression IDs to remove from the suppression list."
+          }
+        },
+        "description": "Provide either \u0060emails\u0060 or \u0060ids\u0060, but not both."
+      },
+      "BatchRemoveSuppressionsResponseSuccess": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BatchRemoveSuppressionsResponseSuccessDataItem"
+            },
+            "description": "Array containing the removed suppressions."
+          }
+        }
+      },
+      "RemoveSuppressionResponseSuccess": {
+        "type": "object",
+        "properties": {
+          "object": {
+            "type": "string",
+            "description": "Type of the response object.",
+            "example": "suppression"
+          },
+          "id": {
+            "type": "string",
+            "description": "Unique identifier for the removed suppression.",
+            "example": "e169aa45-1ecf-4183-9955-b1499d5701d3"
+          },
+          "deleted": {
+            "type": "boolean",
+            "description": "Indicates whether the suppression was successfully deleted.",
+            "example": true
+          }
+        }
+      },
+      "GetSuppressionResponseSuccess": {
+        "type": "object",
+        "properties": {
+          "object": {
+            "type": "string",
+            "description": "Type of the response object.",
+            "example": "suppression"
+          },
+          "id": {
+            "type": "string",
+            "description": "Unique identifier for the suppression.",
+            "example": "e169aa45-1ecf-4183-9955-b1499d5701d3"
+          },
+          "email": {
+            "type": "string",
+            "description": "Email address that is suppressed.",
+            "example": "steve.wozniak@gmail.com"
+          },
+          "origin": {
+            "$ref": "#/components/schemas/GetSuppressionResponseSuccessOrigin"
+          },
+          "source_id": {
+            "type": "string",
+            "description": "Identifier of the event that caused the suppression, such as the email that bounced or complained.",
+            "example": "479e3145-dd38-476b-932c-529ceb705947",
+            "unrecognizedKeywords": {
+              "nullable": true
+            }
+          },
+          "created_at": {
+            "type": "string",
+            "description": "Timestamp indicating when the suppression was created.",
+            "format": "date-time",
+            "example": "2023-10-06T23:47:56.678Z"
+          }
+        }
+      },
+      "ListSuppressionsResponseSuccess": {
+        "type": "object",
+        "properties": {
+          "object": {
+            "type": "string",
+            "description": "Type of the response object.",
+            "example": "list"
+          },
+          "has_more": {
+            "type": "boolean",
+            "description": "Indicates if there are more results available."
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ListSuppressionsResponseSuccessDataItem"
+            },
+            "description": "Array containing suppression information."
+          }
+        }
+      },
       "EmailTemplateInputVariablesAdditionalProperties": {
         "type": "object",
         "oneOf": [
@@ -8029,8 +8392,10 @@
           "filename": {
             "type": "string",
             "description": "The filename of the attachment.",
-            "nullable": true,
-            "example": "document.pdf"
+            "example": "document.pdf",
+            "unrecognizedKeywords": {
+              "nullable": true
+            }
           },
           "content_type": {
             "type": "string",
@@ -8081,7 +8446,9 @@
           "filename": {
             "type": "string",
             "description": "The filename of the attachment.",
-            "nullable": true
+            "unrecognizedKeywords": {
+              "nullable": true
+            }
           },
           "content_type": {
             "type": "string",
@@ -8413,6 +8780,73 @@
           }
         }
       },
+      "BatchAddSuppressionsResponseSuccessDataItem": {
+        "type": "object",
+        "properties": {
+          "object": {
+            "type": "string",
+            "description": "Type of the object.",
+            "example": "suppression"
+          },
+          "id": {
+            "type": "string",
+            "description": "Unique identifier for the suppression.",
+            "example": "e169aa45-1ecf-4183-9955-b1499d5701d3"
+          }
+        }
+      },
+      "BatchRemoveSuppressionsResponseSuccessDataItem": {
+        "type": "object",
+        "properties": {
+          "object": {
+            "type": "string",
+            "description": "Type of the object.",
+            "example": "suppression"
+          },
+          "id": {
+            "type": "string",
+            "description": "Unique identifier for the suppression.",
+            "example": "e169aa45-1ecf-4183-9955-b1499d5701d3"
+          },
+          "deleted": {
+            "type": "boolean",
+            "description": "Indicates whether the suppression was successfully deleted.",
+            "example": true
+          }
+        }
+      },
+      "ListSuppressionsResponseSuccessDataItem": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique identifier for the suppression.",
+            "example": "e169aa45-1ecf-4183-9955-b1499d5701d3"
+          },
+          "email": {
+            "type": "string",
+            "description": "Email address that is suppressed.",
+            "example": "steve.wozniak@gmail.com"
+          },
+          "origin": {
+            "$ref": "#/components/schemas/ListSuppressionsResponseSuccessDataItemOrigin"
+          },
+          "source_id": {
+            "type": "string",
+            "description": "Identifier of the event that caused the suppression, such as the email that bounced or complained.",
+            "example": "479e3145-dd38-476b-932c-529ceb705947",
+            "unrecognizedKeywords": {
+              "nullable": true
+            }
+          },
+          "created_at": {
+            "type": "string",
+            "description": "Timestamp indicating when the suppression was created.",
+            "format": "date-time",
+            "example": "2023-10-06T23:47:56.678Z"
+          }
+        }
+      },
       "ListReceivedEmailsResponseDataItemAttachmentsItem": {
         "type": "object",
         "properties": {
@@ -8424,7 +8858,9 @@
           "filename": {
             "type": "string",
             "description": "The filename of the attachment.",
-            "nullable": true
+            "unrecognizedKeywords": {
+              "nullable": true
+            }
           },
           "content_type": {
             "type": "string",
@@ -9346,8 +9782,10 @@
         "type": "string",
         "additionalProperties": false,
         "description": "How the attachment should be displayed.",
-        "nullable": true,
         "example": "attachment",
+        "unrecognizedKeywords": {
+          "nullable": true
+        },
         "x-ms-enum": {
           "name": "RetrievedAttachmentContentDisposition",
           "modelAsString": false,
@@ -10325,6 +10763,35 @@
           ]
         }
       },
+      "GetSuppressionResponseSuccessOrigin": {
+        "enum": [
+          "bounce",
+          "complaint",
+          "manual"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "Origin of the suppression.",
+        "example": "manual",
+        "x-ms-enum": {
+          "name": "GetSuppressionResponseSuccessOrigin",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "bounce",
+              "name": "Bounce"
+            },
+            {
+              "value": "complaint",
+              "name": "Complaint"
+            },
+            {
+              "value": "manual",
+              "name": "Manual"
+            }
+          ]
+        }
+      },
       "CreateContactOptionsTopicsItemSubscription": {
         "enum": [
           "opt_in",
@@ -10356,8 +10823,10 @@
         "type": "string",
         "additionalProperties": false,
         "description": "How the attachment should be displayed.",
-        "nullable": true,
         "example": "attachment",
+        "unrecognizedKeywords": {
+          "nullable": true
+        },
         "x-ms-enum": {
           "name": "ListAttachmentsResponseDataItemContentDisposition",
           "modelAsString": false,
@@ -10381,7 +10850,9 @@
         "type": "string",
         "additionalProperties": false,
         "description": "How the attachment should be displayed.",
-        "nullable": true,
+        "unrecognizedKeywords": {
+          "nullable": true
+        },
         "x-ms-enum": {
           "name": "GetReceivedEmailResponseAttachmentsItemContentDisposition",
           "modelAsString": false,
@@ -10512,6 +10983,35 @@
           ]
         }
       },
+      "ListSuppressionsResponseSuccessDataItemOrigin": {
+        "enum": [
+          "bounce",
+          "complaint",
+          "manual"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "Origin of the suppression.",
+        "example": "manual",
+        "x-ms-enum": {
+          "name": "ListSuppressionsResponseSuccessDataItemOrigin",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "bounce",
+              "name": "Bounce"
+            },
+            {
+              "value": "complaint",
+              "name": "Complaint"
+            },
+            {
+              "value": "manual",
+              "name": "Manual"
+            }
+          ]
+        }
+      },
       "ListReceivedEmailsResponseDataItemAttachmentsItemContentDisposition": {
         "enum": [
           "inline",
@@ -10520,7 +11020,9 @@
         "type": "string",
         "additionalProperties": false,
         "description": "How the attachment should be displayed.",
-        "nullable": true,
+        "unrecognizedKeywords": {
+          "nullable": true
+        },
         "x-ms-enum": {
           "name": "ListReceivedEmailsResponseDataItemAttachmentsItemContentDisposition",
           "modelAsString": false,
@@ -10586,6 +11088,33 @@
             {
               "value": "disabled",
               "name": "Disabled"
+            }
+          ]
+        }
+      },
+      "GetSuppressionsOriginParameter": {
+        "enum": [
+          "bounce",
+          "complaint",
+          "manual"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "x-ms-enum": {
+          "name": "GetSuppressionsOriginParameter",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "bounce",
+              "name": "Bounce"
+            },
+            {
+              "value": "complaint",
+              "name": "Complaint"
+            },
+            {
+              "value": "manual",
+              "name": "Manual"
             }
           ]
         }
@@ -10689,6 +11218,10 @@
     {
       "name": "Contact Properties",
       "description": "Create and manage Contact Properties through the Resend API."
+    },
+    {
+      "name": "Suppressions",
+      "description": "Create and manage Suppressions through the Resend API."
     },
     {
       "name": "Logs",

@@ -17,6 +17,7 @@ using Soenneker.Resend.OpenApiClient.Events;
 using Soenneker.Resend.OpenApiClient.Logs;
 using Soenneker.Resend.OpenApiClient.Oauth;
 using Soenneker.Resend.OpenApiClient.Segments;
+using Soenneker.Resend.OpenApiClient.Suppressions;
 using Soenneker.Resend.OpenApiClient.Templates;
 using Soenneker.Resend.OpenApiClient.Topics;
 using Soenneker.Resend.OpenApiClient.Webhooks;
@@ -86,6 +87,11 @@ namespace Soenneker.Resend.OpenApiClient
         public global::Soenneker.Resend.OpenApiClient.Segments.SegmentsRequestBuilder Segments
         {
             get => new global::Soenneker.Resend.OpenApiClient.Segments.SegmentsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The suppressions property</summary>
+        public global::Soenneker.Resend.OpenApiClient.Suppressions.SuppressionsRequestBuilder Suppressions
+        {
+            get => new global::Soenneker.Resend.OpenApiClient.Suppressions.SuppressionsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The templates property</summary>
         public global::Soenneker.Resend.OpenApiClient.Templates.TemplatesRequestBuilder Templates
