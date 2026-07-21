@@ -3,7 +3,6 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
-using Soenneker.Resend.OpenApiClient.Broadcasts.Item.Metrics;
 using Soenneker.Resend.OpenApiClient.Broadcasts.Item.Send;
 using Soenneker.Resend.OpenApiClient.Models;
 using System.Collections.Generic;
@@ -19,11 +18,6 @@ namespace Soenneker.Resend.OpenApiClient.Broadcasts.Item
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class BroadcastsItemRequestBuilder : BaseRequestBuilder
     {
-        /// <summary>The metrics property</summary>
-        public global::Soenneker.Resend.OpenApiClient.Broadcasts.Item.Metrics.MetricsRequestBuilder Metrics
-        {
-            get => new global::Soenneker.Resend.OpenApiClient.Broadcasts.Item.Metrics.MetricsRequestBuilder(PathParameters, RequestAdapter);
-        }
         /// <summary>The send property</summary>
         public global::Soenneker.Resend.OpenApiClient.Broadcasts.Item.Send.SendRequestBuilder Send
         {
