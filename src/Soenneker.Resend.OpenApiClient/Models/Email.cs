@@ -22,14 +22,6 @@ namespace Soenneker.Resend.OpenApiClient.Models
 #else
         public List<string> Bcc { get; set; }
 #endif
-        /// <summary>Details about the bounce, present only when `last_event` is `bounced`.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.Resend.OpenApiClient.Models.EmailBounce? Bounce { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.Resend.OpenApiClient.Models.EmailBounce Bounce { get; set; }
-#endif
         /// <summary>The email addresses of the carbon copy recipients.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -140,7 +132,6 @@ namespace Soenneker.Resend.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "bcc", n => { Bcc = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
-                { "bounce", n => { Bounce = n.GetObjectValue<global::Soenneker.Resend.OpenApiClient.Models.EmailBounce>(global::Soenneker.Resend.OpenApiClient.Models.EmailBounce.CreateFromDiscriminatorValue); } },
                 { "cc", n => { Cc = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "from", n => { From = n.GetStringValue(); } },
@@ -163,7 +154,6 @@ namespace Soenneker.Resend.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfPrimitiveValues<string>("bcc", Bcc);
-            writer.WriteObjectValue<global::Soenneker.Resend.OpenApiClient.Models.EmailBounce>("bounce", Bounce);
             writer.WriteCollectionOfPrimitiveValues<string>("cc", Cc);
             writer.WriteDateTimeOffsetValue("created_at", CreatedAt);
             writer.WriteStringValue("from", From);

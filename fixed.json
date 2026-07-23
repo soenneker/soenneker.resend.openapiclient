@@ -3439,9 +3439,6 @@
           },
           "last_event": {
             "$ref": "#/components/schemas/EmailLastEvent"
-          },
-          "bounce": {
-            "$ref": "#/components/schemas/EmailBounce"
           }
         }
       },
@@ -8246,29 +8243,6 @@
           "variableName2": 123
         }
       },
-      "EmailBounce": {
-        "type": "object",
-        "properties": {
-          "message": {
-            "type": "string",
-            "description": "A human-readable message describing the bounce."
-          },
-          "type": {
-            "$ref": "#/components/schemas/EmailBounceType"
-          },
-          "subType": {
-            "$ref": "#/components/schemas/EmailBounceSubType"
-          },
-          "diagnosticCode": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            },
-            "description": "Diagnostic codes returned by the receiving mail server for each bounced recipient."
-          }
-        },
-        "description": "Details about the bounce, present only when \u0060last_event\u0060 is \u0060bounced\u0060."
-      },
       "CreateBatchEmailsResponseDataItem": {
         "type": "object",
         "properties": {
@@ -10817,32 +10791,6 @@
             }
           ]
         }
-      },
-      "EmailBounceType": {
-        "enum": [
-          "Undetermined",
-          "Transient",
-          "Permanent"
-        ],
-        "type": "string",
-        "additionalProperties": false,
-        "description": "The type of bounce, as reported by AWS SES.",
-        "example": "Permanent"
-      },
-      "EmailBounceSubType": {
-        "enum": [
-          "Undetermined",
-          "General",
-          "NoEmail",
-          "MailboxFull",
-          "MessageTooLarge",
-          "ContentRejected",
-          "AttachmentRejected"
-        ],
-        "type": "string",
-        "additionalProperties": false,
-        "description": "The subtype of the bounce, as reported by AWS SES.",
-        "example": "General"
       },
       "CreateContactOptionsTopicsItemSubscription": {
         "enum": [
