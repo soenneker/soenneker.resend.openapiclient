@@ -15,7 +15,13 @@ namespace Soenneker.Resend.OpenApiClient.Models
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Timestamp indicating when the contact import completed.</summary>
-        public DateTimeOffset? CompletedAt { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? CompletedAt { get; set; }
+#nullable restore
+#else
+        public string CompletedAt { get; set; }
+#endif
         /// <summary>The counts property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -25,7 +31,13 @@ namespace Soenneker.Resend.OpenApiClient.Models
         public global::Soenneker.Resend.OpenApiClient.Models.ContactImportCounts Counts { get; set; }
 #endif
         /// <summary>Timestamp indicating when the contact import was created.</summary>
-        public DateTimeOffset? CreatedAt { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? CreatedAt { get; set; }
+#nullable restore
+#else
+        public string CreatedAt { get; set; }
+#endif
         /// <summary>Unique identifier for the contact import.</summary>
         public Guid? Id { get; set; }
         /// <summary>Type of the response object.</summary>
@@ -63,9 +75,9 @@ namespace Soenneker.Resend.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "completed_at", n => { CompletedAt = n.GetDateTimeOffsetValue(); } },
+                { "completed_at", n => { CompletedAt = n.GetStringValue(); } },
                 { "counts", n => { Counts = n.GetObjectValue<global::Soenneker.Resend.OpenApiClient.Models.ContactImportCounts>(global::Soenneker.Resend.OpenApiClient.Models.ContactImportCounts.CreateFromDiscriminatorValue); } },
-                { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
+                { "created_at", n => { CreatedAt = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "object", n => { Object = n.GetStringValue(); } },
                 { "status", n => { Status = n.GetEnumValue<global::Soenneker.Resend.OpenApiClient.Models.ContactImportStatus>(); } },
@@ -78,9 +90,9 @@ namespace Soenneker.Resend.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteDateTimeOffsetValue("completed_at", CompletedAt);
+            writer.WriteStringValue("completed_at", CompletedAt);
             writer.WriteObjectValue<global::Soenneker.Resend.OpenApiClient.Models.ContactImportCounts>("counts", Counts);
-            writer.WriteDateTimeOffsetValue("created_at", CreatedAt);
+            writer.WriteStringValue("created_at", CreatedAt);
             writer.WriteGuidValue("id", Id);
             writer.WriteStringValue("object", Object);
             writer.WriteEnumValue<global::Soenneker.Resend.OpenApiClient.Models.ContactImportStatus>("status", Status);

@@ -24,7 +24,13 @@ namespace Soenneker.Resend.OpenApiClient.Models
         public string AudienceId { get; set; }
 #endif
         /// <summary>Timestamp indicating when the broadcast was created.</summary>
-        public DateTimeOffset? CreatedAt { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? CreatedAt { get; set; }
+#nullable restore
+#else
+        public string CreatedAt { get; set; }
+#endif
         /// <summary>Unique identifier for the broadcast.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -42,7 +48,13 @@ namespace Soenneker.Resend.OpenApiClient.Models
         public string Name { get; set; }
 #endif
         /// <summary>Timestamp indicating when the broadcast is scheduled to be sent.</summary>
-        public DateTimeOffset? ScheduledAt { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? ScheduledAt { get; set; }
+#nullable restore
+#else
+        public string ScheduledAt { get; set; }
+#endif
         /// <summary>Unique identifier of the segment this broadcast will be sent to.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -52,7 +64,13 @@ namespace Soenneker.Resend.OpenApiClient.Models
         public string SegmentId { get; set; }
 #endif
         /// <summary>Timestamp indicating when the broadcast was sent.</summary>
-        public DateTimeOffset? SentAt { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? SentAt { get; set; }
+#nullable restore
+#else
+        public string SentAt { get; set; }
+#endif
         /// <summary>The status of the broadcast.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -95,12 +113,12 @@ namespace Soenneker.Resend.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "audience_id", n => { AudienceId = n.GetStringValue(); } },
-                { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
+                { "created_at", n => { CreatedAt = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
-                { "scheduled_at", n => { ScheduledAt = n.GetDateTimeOffsetValue(); } },
+                { "scheduled_at", n => { ScheduledAt = n.GetStringValue(); } },
                 { "segment_id", n => { SegmentId = n.GetStringValue(); } },
-                { "sent_at", n => { SentAt = n.GetDateTimeOffsetValue(); } },
+                { "sent_at", n => { SentAt = n.GetStringValue(); } },
                 { "status", n => { Status = n.GetStringValue(); } },
                 { "topic_id", n => { TopicId = n.GetStringValue(); } },
             };
@@ -113,12 +131,12 @@ namespace Soenneker.Resend.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("audience_id", AudienceId);
-            writer.WriteDateTimeOffsetValue("created_at", CreatedAt);
+            writer.WriteStringValue("created_at", CreatedAt);
             writer.WriteStringValue("id", Id);
             writer.WriteStringValue("name", Name);
-            writer.WriteDateTimeOffsetValue("scheduled_at", ScheduledAt);
+            writer.WriteStringValue("scheduled_at", ScheduledAt);
             writer.WriteStringValue("segment_id", SegmentId);
-            writer.WriteDateTimeOffsetValue("sent_at", SentAt);
+            writer.WriteStringValue("sent_at", SentAt);
             writer.WriteStringValue("status", Status);
             writer.WriteStringValue("topic_id", TopicId);
             writer.WriteAdditionalData(AdditionalData);

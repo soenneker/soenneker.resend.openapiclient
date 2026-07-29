@@ -15,7 +15,13 @@ namespace Soenneker.Resend.OpenApiClient.Models
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Timestamp indicating when the variable was created.</summary>
-        public DateTimeOffset? CreatedAt { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? CreatedAt { get; set; }
+#nullable restore
+#else
+        public string CreatedAt { get; set; }
+#endif
         /// <summary>The fallback value of the variable.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -43,7 +49,13 @@ namespace Soenneker.Resend.OpenApiClient.Models
         /// <summary>The type of the variable.</summary>
         public global::Soenneker.Resend.OpenApiClient.Models.TemplateVariableType? Type { get; set; }
         /// <summary>Timestamp indicating when the variable was last updated.</summary>
-        public DateTimeOffset? UpdatedAt { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? UpdatedAt { get; set; }
+#nullable restore
+#else
+        public string UpdatedAt { get; set; }
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Resend.OpenApiClient.Models.TemplateVariable"/> and sets the default values.
         /// </summary>
@@ -69,12 +81,12 @@ namespace Soenneker.Resend.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
+                { "created_at", n => { CreatedAt = n.GetStringValue(); } },
                 { "fallback_value", n => { FallbackValue = n.GetObjectValue<global::Soenneker.Resend.OpenApiClient.Models.TemplateVariableFallbackValue>(global::Soenneker.Resend.OpenApiClient.Models.TemplateVariableFallbackValue.CreateFromDiscriminatorValue); } },
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "key", n => { Key = n.GetStringValue(); } },
                 { "type", n => { Type = n.GetEnumValue<global::Soenneker.Resend.OpenApiClient.Models.TemplateVariableType>(); } },
-                { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
+                { "updated_at", n => { UpdatedAt = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -84,12 +96,12 @@ namespace Soenneker.Resend.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteDateTimeOffsetValue("created_at", CreatedAt);
+            writer.WriteStringValue("created_at", CreatedAt);
             writer.WriteObjectValue<global::Soenneker.Resend.OpenApiClient.Models.TemplateVariableFallbackValue>("fallback_value", FallbackValue);
             writer.WriteStringValue("id", Id);
             writer.WriteStringValue("key", Key);
             writer.WriteEnumValue<global::Soenneker.Resend.OpenApiClient.Models.TemplateVariableType>("type", Type);
-            writer.WriteDateTimeOffsetValue("updated_at", UpdatedAt);
+            writer.WriteStringValue("updated_at", UpdatedAt);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -23,7 +23,13 @@ namespace Soenneker.Resend.OpenApiClient.Models
         public string Alias { get; set; }
 #endif
         /// <summary>Timestamp indicating when the template was created.</summary>
-        public DateTimeOffset? CreatedAt { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? CreatedAt { get; set; }
+#nullable restore
+#else
+        public string CreatedAt { get; set; }
+#endif
         /// <summary>The ID of the current version of the template.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -75,7 +81,13 @@ namespace Soenneker.Resend.OpenApiClient.Models
         public string Object { get; set; }
 #endif
         /// <summary>Timestamp indicating when the template was published.</summary>
-        public DateTimeOffset? PublishedAt { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? PublishedAt { get; set; }
+#nullable restore
+#else
+        public string PublishedAt { get; set; }
+#endif
         /// <summary>Reply-to email addresses.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -103,7 +115,13 @@ namespace Soenneker.Resend.OpenApiClient.Models
         public string Text { get; set; }
 #endif
         /// <summary>Timestamp indicating when the template was last updated.</summary>
-        public DateTimeOffset? UpdatedAt { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? UpdatedAt { get; set; }
+#nullable restore
+#else
+        public string UpdatedAt { get; set; }
+#endif
         /// <summary>The variables property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -138,7 +156,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "alias", n => { Alias = n.GetStringValue(); } },
-                { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
+                { "created_at", n => { CreatedAt = n.GetStringValue(); } },
                 { "current_version_id", n => { CurrentVersionId = n.GetStringValue(); } },
                 { "from", n => { From = n.GetStringValue(); } },
                 { "has_unpublished_versions", n => { HasUnpublishedVersions = n.GetBoolValue(); } },
@@ -146,12 +164,12 @@ namespace Soenneker.Resend.OpenApiClient.Models
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "object", n => { Object = n.GetStringValue(); } },
-                { "published_at", n => { PublishedAt = n.GetDateTimeOffsetValue(); } },
+                { "published_at", n => { PublishedAt = n.GetStringValue(); } },
                 { "reply_to", n => { ReplyTo = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "status", n => { Status = n.GetEnumValue<global::Soenneker.Resend.OpenApiClient.Models.TemplateStatus>(); } },
                 { "subject", n => { Subject = n.GetStringValue(); } },
                 { "text", n => { Text = n.GetStringValue(); } },
-                { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
+                { "updated_at", n => { UpdatedAt = n.GetStringValue(); } },
                 { "variables", n => { Variables = n.GetCollectionOfObjectValues<global::Soenneker.Resend.OpenApiClient.Models.TemplateVariable>(global::Soenneker.Resend.OpenApiClient.Models.TemplateVariable.CreateFromDiscriminatorValue)?.AsList(); } },
             };
         }
@@ -163,7 +181,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("alias", Alias);
-            writer.WriteDateTimeOffsetValue("created_at", CreatedAt);
+            writer.WriteStringValue("created_at", CreatedAt);
             writer.WriteStringValue("current_version_id", CurrentVersionId);
             writer.WriteStringValue("from", From);
             writer.WriteBoolValue("has_unpublished_versions", HasUnpublishedVersions);
@@ -171,12 +189,12 @@ namespace Soenneker.Resend.OpenApiClient.Models
             writer.WriteStringValue("id", Id);
             writer.WriteStringValue("name", Name);
             writer.WriteStringValue("object", Object);
-            writer.WriteDateTimeOffsetValue("published_at", PublishedAt);
+            writer.WriteStringValue("published_at", PublishedAt);
             writer.WriteCollectionOfPrimitiveValues<string>("reply_to", ReplyTo);
             writer.WriteEnumValue<global::Soenneker.Resend.OpenApiClient.Models.TemplateStatus>("status", Status);
             writer.WriteStringValue("subject", Subject);
             writer.WriteStringValue("text", Text);
-            writer.WriteDateTimeOffsetValue("updated_at", UpdatedAt);
+            writer.WriteStringValue("updated_at", UpdatedAt);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Resend.OpenApiClient.Models.TemplateVariable>("variables", Variables);
             writer.WriteAdditionalData(AdditionalData);
         }

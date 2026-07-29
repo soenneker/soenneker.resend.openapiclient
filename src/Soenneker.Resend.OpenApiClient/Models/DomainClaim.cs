@@ -17,7 +17,13 @@ namespace Soenneker.Resend.OpenApiClient.Models
         /// <summary>Why the claim is currently blocked, if applicable.</summary>
         public global::Soenneker.Resend.OpenApiClient.Models.DomainClaimBlockedReason? BlockedReason { get; set; }
         /// <summary>The date and time the claim was created.</summary>
-        public DateTimeOffset? CreatedAt { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? CreatedAt { get; set; }
+#nullable restore
+#else
+        public string CreatedAt { get; set; }
+#endif
         /// <summary>The ID of the placeholder domain created for the claim.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -27,7 +33,13 @@ namespace Soenneker.Resend.OpenApiClient.Models
         public string DomainId { get; set; }
 #endif
         /// <summary>The date and time the claim expires if not verified.</summary>
-        public DateTimeOffset? ExpiresAt { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? ExpiresAt { get; set; }
+#nullable restore
+#else
+        public string ExpiresAt { get; set; }
+#endif
         /// <summary>Why the claim failed, if applicable.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -98,9 +110,9 @@ namespace Soenneker.Resend.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "blocked_reason", n => { BlockedReason = n.GetEnumValue<global::Soenneker.Resend.OpenApiClient.Models.DomainClaimBlockedReason>(); } },
-                { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
+                { "created_at", n => { CreatedAt = n.GetStringValue(); } },
                 { "domain_id", n => { DomainId = n.GetStringValue(); } },
-                { "expires_at", n => { ExpiresAt = n.GetDateTimeOffsetValue(); } },
+                { "expires_at", n => { ExpiresAt = n.GetStringValue(); } },
                 { "failure_reason", n => { FailureReason = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
@@ -118,9 +130,9 @@ namespace Soenneker.Resend.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteEnumValue<global::Soenneker.Resend.OpenApiClient.Models.DomainClaimBlockedReason>("blocked_reason", BlockedReason);
-            writer.WriteDateTimeOffsetValue("created_at", CreatedAt);
+            writer.WriteStringValue("created_at", CreatedAt);
             writer.WriteStringValue("domain_id", DomainId);
-            writer.WriteDateTimeOffsetValue("expires_at", ExpiresAt);
+            writer.WriteStringValue("expires_at", ExpiresAt);
             writer.WriteStringValue("failure_reason", FailureReason);
             writer.WriteStringValue("id", Id);
             writer.WriteStringValue("name", Name);

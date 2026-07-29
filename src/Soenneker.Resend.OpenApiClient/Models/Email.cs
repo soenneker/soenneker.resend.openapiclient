@@ -31,7 +31,13 @@ namespace Soenneker.Resend.OpenApiClient.Models
         public List<string> Cc { get; set; }
 #endif
         /// <summary>The date and time the email was created.</summary>
-        public DateTimeOffset? CreatedAt { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? CreatedAt { get; set; }
+#nullable restore
+#else
+        public string CreatedAt { get; set; }
+#endif
         /// <summary>The email address of the sender.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -133,7 +139,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
             {
                 { "bcc", n => { Bcc = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "cc", n => { Cc = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
-                { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
+                { "created_at", n => { CreatedAt = n.GetStringValue(); } },
                 { "from", n => { From = n.GetStringValue(); } },
                 { "html", n => { Html = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
@@ -155,7 +161,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfPrimitiveValues<string>("bcc", Bcc);
             writer.WriteCollectionOfPrimitiveValues<string>("cc", Cc);
-            writer.WriteDateTimeOffsetValue("created_at", CreatedAt);
+            writer.WriteStringValue("created_at", CreatedAt);
             writer.WriteStringValue("from", From);
             writer.WriteStringValue("html", Html);
             writer.WriteStringValue("id", Id);

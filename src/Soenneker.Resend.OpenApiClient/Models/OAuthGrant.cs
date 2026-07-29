@@ -31,7 +31,13 @@ namespace Soenneker.Resend.OpenApiClient.Models
         public string ClientId { get; set; }
 #endif
         /// <summary>The date and time the OAuth grant was created.</summary>
-        public DateTimeOffset? CreatedAt { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? CreatedAt { get; set; }
+#nullable restore
+#else
+        public string CreatedAt { get; set; }
+#endif
         /// <summary>The ID of the OAuth grant.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -41,7 +47,13 @@ namespace Soenneker.Resend.OpenApiClient.Models
         public string Id { get; set; }
 #endif
         /// <summary>The date and time the OAuth grant was revoked, or null if it is still active.</summary>
-        public DateTimeOffset? RevokedAt { get; set; }
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? RevokedAt { get; set; }
+#nullable restore
+#else
+        public string RevokedAt { get; set; }
+#endif
         /// <summary>The reason the OAuth grant was revoked, or null if it is still active.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -85,9 +97,9 @@ namespace Soenneker.Resend.OpenApiClient.Models
             {
                 { "client", n => { Client = n.GetObjectValue<global::Soenneker.Resend.OpenApiClient.Models.OAuthGrantClient>(global::Soenneker.Resend.OpenApiClient.Models.OAuthGrantClient.CreateFromDiscriminatorValue); } },
                 { "client_id", n => { ClientId = n.GetStringValue(); } },
-                { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
+                { "created_at", n => { CreatedAt = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
-                { "revoked_at", n => { RevokedAt = n.GetDateTimeOffsetValue(); } },
+                { "revoked_at", n => { RevokedAt = n.GetStringValue(); } },
                 { "revoked_reason", n => { RevokedReason = n.GetStringValue(); } },
                 { "scopes", n => { Scopes = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
             };
@@ -101,9 +113,9 @@ namespace Soenneker.Resend.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.Resend.OpenApiClient.Models.OAuthGrantClient>("client", Client);
             writer.WriteStringValue("client_id", ClientId);
-            writer.WriteDateTimeOffsetValue("created_at", CreatedAt);
+            writer.WriteStringValue("created_at", CreatedAt);
             writer.WriteStringValue("id", Id);
-            writer.WriteDateTimeOffsetValue("revoked_at", RevokedAt);
+            writer.WriteStringValue("revoked_at", RevokedAt);
             writer.WriteStringValue("revoked_reason", RevokedReason);
             writer.WriteCollectionOfPrimitiveValues<string>("scopes", Scopes);
             writer.WriteAdditionalData(AdditionalData);
