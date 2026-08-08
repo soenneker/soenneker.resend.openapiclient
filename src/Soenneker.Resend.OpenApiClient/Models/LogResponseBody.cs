@@ -8,29 +8,29 @@ using System;
 namespace Soenneker.Resend.OpenApiClient.Models
 {
     /// <summary>
-    /// An optional flat key/type map defining the event payload schema. Supported types are `string`, `number`, `boolean`, and `date`.
+    /// The response body returned by the API.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class CreateEventRequestSchemaProperty : IAdditionalDataHolder, IParsable
+    public partial class LogResponseBody : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.Resend.OpenApiClient.Models.CreateEventRequestSchemaProperty"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.Resend.OpenApiClient.Models.LogResponseBody"/> and sets the default values.
         /// </summary>
-        public CreateEventRequestSchemaProperty()
+        public LogResponseBody()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Resend.OpenApiClient.Models.CreateEventRequestSchemaProperty"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Resend.OpenApiClient.Models.LogResponseBody"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.Resend.OpenApiClient.Models.CreateEventRequestSchemaProperty CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.Resend.OpenApiClient.Models.LogResponseBody CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Resend.OpenApiClient.Models.CreateEventRequestSchemaProperty();
+            return new global::Soenneker.Resend.OpenApiClient.Models.LogResponseBody();
         }
         /// <summary>
         /// The deserialization information for the current model

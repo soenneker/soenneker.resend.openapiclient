@@ -8,29 +8,29 @@ using System;
 namespace Soenneker.Resend.OpenApiClient.Models
 {
     /// <summary>
-    /// The error produced by the step, if any.
+    /// A flat key/type map defining the event payload schema. Set to `null` to clear the schema. Supported types are `string`, `number`, `boolean`, and `date`.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class AutomationRunStepErrorProperty : IAdditionalDataHolder, IParsable
+    public partial class UpdateEventRequestSchema : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.Resend.OpenApiClient.Models.AutomationRunStepErrorProperty"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.Resend.OpenApiClient.Models.UpdateEventRequestSchema"/> and sets the default values.
         /// </summary>
-        public AutomationRunStepErrorProperty()
+        public UpdateEventRequestSchema()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Resend.OpenApiClient.Models.AutomationRunStepErrorProperty"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Resend.OpenApiClient.Models.UpdateEventRequestSchema"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.Resend.OpenApiClient.Models.AutomationRunStepErrorProperty CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.Resend.OpenApiClient.Models.UpdateEventRequestSchema CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Resend.OpenApiClient.Models.AutomationRunStepErrorProperty();
+            return new global::Soenneker.Resend.OpenApiClient.Models.UpdateEventRequestSchema();
         }
         /// <summary>
         /// The deserialization information for the current model

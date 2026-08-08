@@ -3758,6 +3758,7 @@
           "domain_id": {
             "type": "string",
             "description": "The ID of the placeholder domain created for the claim.",
+            "nullable": true,
             "example": "a1b2c3d4-1176-453e-8fc1-35364d380206"
           },
           "region": {
@@ -3772,6 +3773,7 @@
           "failure_reason": {
             "type": "string",
             "description": "Why the claim failed, if applicable.",
+            "nullable": true,
             "example": null
           },
           "created_at": {
@@ -3960,6 +3962,7 @@
           "last_used_at": {
             "type": "string",
             "description": "The date and time the API key was last used.",
+            "nullable": true,
             "example": "2023-10-06 23:47:56.678\u002B00"
           }
         }
@@ -4011,11 +4014,13 @@
           "revoked_at": {
             "type": "string",
             "description": "The date and time the OAuth grant was revoked, or null if it is still active.",
+            "nullable": true,
             "example": "2023-10-06 23:47:56.678\u002B00"
           },
           "revoked_reason": {
             "type": "string",
-            "description": "The reason the OAuth grant was revoked, or null if it is still active."
+            "description": "The reason the OAuth grant was revoked, or null if it is still active.",
+            "nullable": true
           },
           "client": {
             "$ref": "#/components/schemas/OAuthGrantClient"
@@ -4434,6 +4439,7 @@
           "completed_at": {
             "type": "string",
             "description": "Timestamp indicating when the contact import completed.",
+            "nullable": true,
             "example": "2023-10-06 23:50:56.678\u002B00"
           },
           "counts": {
@@ -4466,6 +4472,7 @@
           "completed_at": {
             "type": "string",
             "description": "Timestamp indicating when the contact import completed.",
+            "nullable": true,
             "example": "2023-10-06 23:50:56.678\u002B00"
           },
           "counts": {
@@ -4611,11 +4618,13 @@
           "audience_id": {
             "type": "string",
             "description": "\u0022Deprecated: use \u0060segment_id\u0060 instead. Unique identifier of the segment this broadcast will be sent to.\u0022",
+            "nullable": true,
             "deprecated": true
           },
           "segment_id": {
             "type": "string",
-            "description": "Unique identifier of the segment this broadcast will be sent to."
+            "description": "Unique identifier of the segment this broadcast will be sent to.",
+            "nullable": true
           },
           "from": {
             "type": "string",
@@ -4662,16 +4671,19 @@
           "text": {
             "type": "string",
             "description": "The plain text version of the broadcast content.",
+            "nullable": true,
             "example": "Hello {{{FIRST_NAME|there}}}!"
           },
           "html": {
             "type": "string",
             "description": "The HTML version of the broadcast content.",
+            "nullable": true,
             "example": "\u003Cp\u003EHello {{{FIRST_NAME|there}}}!\u003C/p\u003E"
           },
           "topic_id": {
             "type": "string",
             "description": "The topic ID that the broadcast is scoped to.",
+            "nullable": true,
             "example": "b6d24b8e-af0b-4c3c-be0c-359bbd97381e"
           }
         }
@@ -4896,6 +4908,7 @@
               "type": "string"
             },
             "description": "The BCC recipients.",
+            "nullable": true,
             "example": []
           },
           "cc": {
@@ -4904,6 +4917,7 @@
               "type": "string"
             },
             "description": "The CC recipients.",
+            "nullable": true,
             "example": []
           },
           "reply_to": {
@@ -4912,20 +4926,23 @@
               "type": "string"
             },
             "description": "The reply-to addresses.",
+            "nullable": true,
             "example": []
           },
           "html": {
             "type": "string",
             "description": "The HTML content of the email.",
+            "nullable": true,
             "example": "\u003Cp\u003EEmail content\u003C/p\u003E"
           },
           "text": {
             "type": "string",
             "description": "The plain text content of the email.",
+            "nullable": true,
             "example": "Email content"
           },
           "headers": {
-            "$ref": "#/components/schemas/GetReceivedEmailResponseHeadersProperty"
+            "$ref": "#/components/schemas/GetReceivedEmailResponseHeaders"
           },
           "created_at": {
             "type": "string",
@@ -5031,7 +5048,8 @@
             "items": {
               "type": "string"
             },
-            "description": "Array of event types subscribed to."
+            "description": "Array of event types subscribed to.",
+            "nullable": true
           },
           "status": {
             "type": "string",
@@ -5219,7 +5237,8 @@
             "items": {
               "type": "string"
             },
-            "description": "Reply-to email addresses."
+            "description": "Reply-to email addresses.",
+            "nullable": true
           },
           "html": {
             "type": "string",
@@ -5251,6 +5270,7 @@
           "published_at": {
             "type": "string",
             "description": "Timestamp indicating when the template was published.",
+            "nullable": true,
             "example": "2023-10-06 23:47:56.678\u002B00"
           },
           "has_unpublished_versions": {
@@ -5276,6 +5296,7 @@
           "published_at": {
             "type": "string",
             "description": "Timestamp indicating when the template was published.",
+            "nullable": true,
             "example": "2023-10-06 23:47:56.678\u002B00"
           },
           "created_at": {
@@ -6011,7 +6032,8 @@
           },
           "user_agent": {
             "type": "string",
-            "description": "The user agent of the request."
+            "description": "The user agent of the request.",
+            "nullable": true
           }
         }
       },
@@ -6046,13 +6068,14 @@
           },
           "user_agent": {
             "type": "string",
-            "description": "The user agent of the request."
+            "description": "The user agent of the request.",
+            "nullable": true
           },
           "request_body": {
-            "$ref": "#/components/schemas/LogRequestBodyProperty"
+            "$ref": "#/components/schemas/LogRequestBody"
           },
           "response_body": {
-            "$ref": "#/components/schemas/LogResponseBodyProperty"
+            "$ref": "#/components/schemas/LogResponseBody"
           }
         }
       },
@@ -6375,18 +6398,20 @@
           "started_at": {
             "type": "string",
             "description": "The date and time the step started executing.",
+            "nullable": true,
             "example": "2023-10-06 23:47:56.678\u002B00"
           },
           "completed_at": {
             "type": "string",
             "description": "The date and time the step completed executing.",
+            "nullable": true,
             "example": "2023-10-06 23:47:56.678\u002B00"
           },
           "output": {
-            "$ref": "#/components/schemas/AutomationRunStepOutputProperty"
+            "$ref": "#/components/schemas/AutomationRunStepOutput"
           },
           "error": {
-            "$ref": "#/components/schemas/AutomationRunStepErrorProperty"
+            "$ref": "#/components/schemas/AutomationRunStepError"
           },
           "created_at": {
             "type": "string",
@@ -6414,11 +6439,13 @@
           "started_at": {
             "type": "string",
             "description": "The date and time the run started.",
+            "nullable": true,
             "example": "2023-10-06 23:47:56.678\u002B00"
           },
           "completed_at": {
             "type": "string",
             "description": "The date and time the run completed.",
+            "nullable": true,
             "example": "2023-10-06 23:47:56.678\u002B00"
           },
           "created_at": {
@@ -6448,11 +6475,13 @@
           "started_at": {
             "type": "string",
             "description": "The date and time the run started.",
+            "nullable": true,
             "example": "2023-10-06 23:47:56.678\u002B00"
           },
           "completed_at": {
             "type": "string",
             "description": "The date and time the run completed.",
+            "nullable": true,
             "example": "2023-10-06 23:47:56.678\u002B00"
           },
           "created_at": {
@@ -6501,7 +6530,7 @@
             "description": "The event name."
           },
           "schema": {
-            "$ref": "#/components/schemas/EventTypeSchemaProperty"
+            "$ref": "#/components/schemas/EventTypeSchema"
           },
           "created_at": {
             "type": "string",
@@ -6511,6 +6540,7 @@
           "updated_at": {
             "type": "string",
             "description": "The date and time the event was last updated.",
+            "nullable": true,
             "example": "2023-10-06 23:47:56.678\u002B00"
           }
         }
@@ -6528,7 +6558,7 @@
             "description": "The event name."
           },
           "schema": {
-            "$ref": "#/components/schemas/EventSummarySchemaProperty"
+            "$ref": "#/components/schemas/EventSummarySchema"
           },
           "created_at": {
             "type": "string",
@@ -6538,6 +6568,7 @@
           "updated_at": {
             "type": "string",
             "description": "The date and time the event was last updated.",
+            "nullable": true,
             "example": "2023-10-06 23:47:56.678\u002B00"
           }
         }
@@ -6553,7 +6584,7 @@
             "description": "The name of the event. Cannot start with the reserved \u0060resend:\u0060 prefix."
           },
           "schema": {
-            "$ref": "#/components/schemas/CreateEventRequestSchemaProperty"
+            "$ref": "#/components/schemas/CreateEventRequestSchema"
           }
         }
       },
@@ -6601,7 +6632,7 @@
         "type": "object",
         "properties": {
           "schema": {
-            "$ref": "#/components/schemas/UpdateEventRequestSchemaProperty"
+            "$ref": "#/components/schemas/UpdateEventRequestSchema"
           }
         }
       },
@@ -8291,7 +8322,8 @@
           },
           "logo_uri": {
             "type": "string",
-            "description": "The URL of the OAuth client\u0027s logo."
+            "description": "The URL of the OAuth client\u0027s logo.",
+            "nullable": true
           }
         },
         "description": "The OAuth client the grant was issued to."
@@ -8457,6 +8489,7 @@
       "GetReceivedEmailResponseHeaders": {
         "type": "object",
         "description": "The email headers.",
+        "nullable": true,
         "example": {
           "X-Custom-Header": "value"
         }
@@ -8517,6 +8550,7 @@
           "subject": {
             "type": "string",
             "description": "The email subject.",
+            "nullable": true,
             "example": "Hello World"
           },
           "message_id": {
@@ -8529,21 +8563,24 @@
             "items": {
               "type": "string"
             },
-            "description": "The BCC recipients."
+            "description": "The BCC recipients.",
+            "nullable": true
           },
           "cc": {
             "type": "array",
             "items": {
               "type": "string"
             },
-            "description": "The CC recipients."
+            "description": "The CC recipients.",
+            "nullable": true
           },
           "reply_to": {
             "type": "array",
             "items": {
               "type": "string"
             },
-            "description": "The reply-to addresses."
+            "description": "The reply-to addresses.",
+            "nullable": true
           },
           "created_at": {
             "type": "string",
@@ -8579,7 +8616,8 @@
             "items": {
               "type": "string"
             },
-            "description": "Array of event types subscribed to."
+            "description": "Array of event types subscribed to.",
+            "nullable": true
           },
           "status": {
             "type": "string",
@@ -8741,11 +8779,13 @@
       },
       "LogRequestBody": {
         "type": "object",
-        "description": "The request body sent to the API."
+        "description": "The request body sent to the API.",
+        "nullable": true
       },
       "LogResponseBody": {
         "type": "object",
-        "description": "The response body returned by the API."
+        "description": "The response body returned by the API.",
+        "nullable": true
       },
       "AutomationStepConfig": {
         "type": "object",
@@ -8757,27 +8797,33 @@
       },
       "AutomationRunStepOutput": {
         "type": "object",
-        "description": "The output produced by the step, if any."
+        "description": "The output produced by the step, if any.",
+        "nullable": true
       },
       "AutomationRunStepError": {
         "type": "object",
-        "description": "The error produced by the step, if any."
+        "description": "The error produced by the step, if any.",
+        "nullable": true
       },
       "EventTypeSchema": {
         "type": "object",
-        "description": "A flat key/type map defining the event payload schema. Supported types are \u0060string\u0060, \u0060number\u0060, \u0060boolean\u0060, and \u0060date\u0060."
+        "description": "A flat key/type map defining the event payload schema. Supported types are \u0060string\u0060, \u0060number\u0060, \u0060boolean\u0060, and \u0060date\u0060.",
+        "nullable": true
       },
       "EventSummarySchema": {
         "type": "object",
-        "description": "A flat key/type map defining the event payload schema. Supported types are \u0060string\u0060, \u0060number\u0060, \u0060boolean\u0060, and \u0060date\u0060."
+        "description": "A flat key/type map defining the event payload schema. Supported types are \u0060string\u0060, \u0060number\u0060, \u0060boolean\u0060, and \u0060date\u0060.",
+        "nullable": true
       },
       "CreateEventRequestSchema": {
         "type": "object",
-        "description": "An optional flat key/type map defining the event payload schema. Supported types are \u0060string\u0060, \u0060number\u0060, \u0060boolean\u0060, and \u0060date\u0060."
+        "description": "An optional flat key/type map defining the event payload schema. Supported types are \u0060string\u0060, \u0060number\u0060, \u0060boolean\u0060, and \u0060date\u0060.",
+        "nullable": true
       },
       "UpdateEventRequestSchema": {
         "type": "object",
-        "description": "A flat key/type map defining the event payload schema. Set to \u0060null\u0060 to clear the schema. Supported types are \u0060string\u0060, \u0060number\u0060, \u0060boolean\u0060, and \u0060date\u0060."
+        "description": "A flat key/type map defining the event payload schema. Set to \u0060null\u0060 to clear the schema. Supported types are \u0060string\u0060, \u0060number\u0060, \u0060boolean\u0060, and \u0060date\u0060.",
+        "nullable": true
       },
       "SendEventRequestPayload": {
         "type": "object",
@@ -9043,10 +9089,6 @@
         "type": "object",
         "description": "A map of custom property keys and values to update."
       },
-      "GetReceivedEmailResponseHeadersProperty": {
-        "type": "object",
-        "description": "The email headers."
-      },
       "CreateSegmentOptionsFilterProperty": {
         "type": "object",
         "description": "Filter conditions for the segment."
@@ -9055,14 +9097,6 @@
         "type": "object",
         "description": "Filter conditions for the segment."
       },
-      "LogRequestBodyProperty": {
-        "type": "object",
-        "description": "The request body sent to the API."
-      },
-      "LogResponseBodyProperty": {
-        "type": "object",
-        "description": "The response body returned by the API."
-      },
       "AutomationStepConfigProperty": {
         "type": "object",
         "description": "\u0022Configuration for the step. Shape depends on \u0060type\u0060: - **trigger**: \u0060{ event_name: string }\u0060 - **send_email**: \u0060{ template: { id: string, variables?: object }, subject?: string, from?: string, reply_to?: string }\u0060 - **delay**: \u0060{ duration: string }\u0060 \u2014 a human-readable duration (e.g. \u0060\\\u002230 minutes\\\u0022\u0060) - **wait_for_event**: \u0060{ event_name: string, timeout?: string, filter_rule?: object }\u0060 \u2014 \u0060timeout\u0060 is a human-readable duration (e.g. \u0060\\\u00221 hour\\\u0022\u0060) - **condition**: A rule tree with \u0060type\u0060 (\u0060rule\u0060, \u0060and\u0060, \u0060or\u0060), \u0060field\u0060, \u0060operator\u0060, and \u0060value\u0060 - **contact_update**: \u0060{ first_name?: string|object, last_name?: string|object, unsubscribed?: boolean|object, properties?: object }\u0060 - **contact_delete**: \u0060{}\u0060 - **add_to_segment**: \u0060{ segment_id: string }\u0060\n\u0022"
@@ -9070,30 +9104,6 @@
       "AutomationStepResponseConfigProperty": {
         "type": "object",
         "description": "\u0022Configuration for the step. Shape depends on \u0060type\u0060. For \u0060delay\u0060 steps, config contains \u0060{ duration: string }\u0060 with a human-readable duration (e.g. \u0060\\\u002230 minutes\\\u0022\u0060). For \u0060wait_for_event\u0060 steps, config contains \u0060{ event_name: string, timeout?: string, filter_rule?: object }\u0060 where \u0060timeout\u0060 is a human-readable duration.\n\u0022"
-      },
-      "AutomationRunStepOutputProperty": {
-        "type": "object",
-        "description": "The output produced by the step, if any."
-      },
-      "AutomationRunStepErrorProperty": {
-        "type": "object",
-        "description": "The error produced by the step, if any."
-      },
-      "EventTypeSchemaProperty": {
-        "type": "object",
-        "description": "A flat key/type map defining the event payload schema. Supported types are \u0060string\u0060, \u0060number\u0060, \u0060boolean\u0060, and \u0060date\u0060."
-      },
-      "EventSummarySchemaProperty": {
-        "type": "object",
-        "description": "A flat key/type map defining the event payload schema. Supported types are \u0060string\u0060, \u0060number\u0060, \u0060boolean\u0060, and \u0060date\u0060."
-      },
-      "CreateEventRequestSchemaProperty": {
-        "type": "object",
-        "description": "An optional flat key/type map defining the event payload schema. Supported types are \u0060string\u0060, \u0060number\u0060, \u0060boolean\u0060, and \u0060date\u0060."
-      },
-      "UpdateEventRequestSchemaProperty": {
-        "type": "object",
-        "description": "A flat key/type map defining the event payload schema. Set to \u0060null\u0060 to clear the schema. Supported types are \u0060string\u0060, \u0060number\u0060, \u0060boolean\u0060, and \u0060date\u0060."
       },
       "SendEventRequestPayloadProperty": {
         "type": "object",
@@ -9620,6 +9630,7 @@
         "type": "string",
         "additionalProperties": false,
         "description": "The region where the claimed domain will send from.",
+        "nullable": true,
         "example": "us-east-1",
         "x-ms-enum": {
           "name": "DomainClaimRegion",
@@ -9653,6 +9664,7 @@
         "type": "string",
         "additionalProperties": false,
         "description": "Why the claim is currently blocked, if applicable.",
+        "nullable": true,
         "example": null,
         "x-ms-enum": {
           "name": "DomainClaimBlockedReason",
