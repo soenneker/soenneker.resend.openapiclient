@@ -22,6 +22,8 @@ namespace Soenneker.Resend.OpenApiClient.Models
 #else
         public global::Soenneker.Resend.OpenApiClient.Models.DomainCapabilities Capabilities { get; set; }
 #endif
+        /// <summary>Whether click tracking is enabled for this domain.</summary>
+        public bool? ClickTracking { get; set; }
         /// <summary>The date and time the domain was created.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -46,6 +48,8 @@ namespace Soenneker.Resend.OpenApiClient.Models
 #else
         public string Name { get; set; }
 #endif
+        /// <summary>Whether open tracking is enabled for this domain.</summary>
+        public bool? OpenTracking { get; set; }
         /// <summary>The region where the domain is hosted.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -82,9 +86,11 @@ namespace Soenneker.Resend.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "capabilities", n => { Capabilities = n.GetObjectValue<global::Soenneker.Resend.OpenApiClient.Models.DomainCapabilities>(global::Soenneker.Resend.OpenApiClient.Models.DomainCapabilities.CreateFromDiscriminatorValue); } },
+                { "click_tracking", n => { ClickTracking = n.GetBoolValue(); } },
                 { "created_at", n => { CreatedAt = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
+                { "open_tracking", n => { OpenTracking = n.GetBoolValue(); } },
                 { "region", n => { Region = n.GetStringValue(); } },
                 { "status", n => { Status = n.GetEnumValue<global::Soenneker.Resend.OpenApiClient.Models.ListDomainsItemStatus>(); } },
             };
@@ -97,9 +103,11 @@ namespace Soenneker.Resend.OpenApiClient.Models
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.Resend.OpenApiClient.Models.DomainCapabilities>("capabilities", Capabilities);
+            writer.WriteBoolValue("click_tracking", ClickTracking);
             writer.WriteStringValue("created_at", CreatedAt);
             writer.WriteStringValue("id", Id);
             writer.WriteStringValue("name", Name);
+            writer.WriteBoolValue("open_tracking", OpenTracking);
             writer.WriteStringValue("region", Region);
             writer.WriteEnumValue<global::Soenneker.Resend.OpenApiClient.Models.ListDomainsItemStatus>("status", Status);
             writer.WriteAdditionalData(AdditionalData);

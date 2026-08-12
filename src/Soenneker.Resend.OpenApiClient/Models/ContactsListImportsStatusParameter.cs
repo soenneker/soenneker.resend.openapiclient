@@ -5,20 +5,24 @@ namespace Soenneker.Resend.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public enum GetSuppressionsOriginParameter
+    public enum ContactsListImportsStatusParameter
     #pragma warning restore CS1591
     {
-        [EnumMember(Value = "bounce")]
+        [EnumMember(Value = "queued")]
         #pragma warning disable CS1591
-        Bounce,
+        Queued,
         #pragma warning restore CS1591
-        [EnumMember(Value = "complaint")]
+        [EnumMember(Value = "in_progress")]
         #pragma warning disable CS1591
-        Complaint,
+        InProgress,
         #pragma warning restore CS1591
-        [EnumMember(Value = "manual")]
+        [EnumMember(Value = "completed")]
         #pragma warning disable CS1591
-        Manual,
+        Completed,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "failed")]
+        #pragma warning disable CS1591
+        Failed,
         #pragma warning restore CS1591
     }
 }

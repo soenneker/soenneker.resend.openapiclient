@@ -17,7 +17,7 @@
           "Emails"
         ],
         "summary": "Send an email",
-        "operationId": "PostEmails",
+        "operationId": "EmailsSend",
         "parameters": [
           {
             "name": "Idempotency-Key",
@@ -56,7 +56,7 @@
           "Emails"
         ],
         "summary": "Retrieve a list of emails",
-        "operationId": "GetEmails",
+        "operationId": "EmailsList",
         "parameters": [
           {
             "$ref": "#/components/parameters/PaginationLimit"
@@ -88,7 +88,7 @@
           "Emails"
         ],
         "summary": "Retrieve a single email",
-        "operationId": "GetEmailsByEmailId",
+        "operationId": "EmailsGet",
         "parameters": [
           {
             "name": "emailId",
@@ -118,7 +118,7 @@
           "Emails"
         ],
         "summary": "Update a single email",
-        "operationId": "PatchEmailsByEmailId",
+        "operationId": "EmailsUpdate",
         "parameters": [
           {
             "name": "emailId",
@@ -150,7 +150,7 @@
           "Emails"
         ],
         "summary": "Cancel the schedule of the e-mail.",
-        "operationId": "PostEmailsByEmailIdCancel",
+        "operationId": "EmailsCancel",
         "parameters": [
           {
             "name": "emailId",
@@ -182,7 +182,7 @@
           "Emails"
         ],
         "summary": "Trigger up to 100 batch emails at once.",
-        "operationId": "PostEmailsBatch",
+        "operationId": "EmailsSendBatch",
         "parameters": [
           {
             "name": "Idempotency-Key",
@@ -198,7 +198,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/PostEmailsBatchRequestRequestBody"
+                "$ref": "#/components/schemas/EmailsSendBatchRequestRequestBody"
               }
             }
           }
@@ -223,7 +223,7 @@
           "Emails"
         ],
         "summary": "Retrieve a list of attachments for a sent email",
-        "operationId": "GetEmailsByEmailIdAttachments",
+        "operationId": "EmailsListAttachments",
         "parameters": [
           {
             "name": "emailId",
@@ -282,7 +282,7 @@
           "Emails"
         ],
         "summary": "Retrieve a single attachment for a sent email",
-        "operationId": "GetEmailsByEmailIdAttachmentsByAttachmentId",
+        "operationId": "EmailsGetAttachment",
         "parameters": [
           {
             "name": "emailId",
@@ -325,7 +325,7 @@
           "Receiving Emails"
         ],
         "summary": "Retrieve a list of received emails",
-        "operationId": "GetEmailsReceiving",
+        "operationId": "EmailsListReceiving",
         "parameters": [
           {
             "name": "limit",
@@ -374,7 +374,7 @@
           "Receiving Emails"
         ],
         "summary": "Retrieve a single received email",
-        "operationId": "GetEmailsReceivingByEmailId",
+        "operationId": "EmailsGetReceiving",
         "parameters": [
           {
             "name": "emailId",
@@ -407,7 +407,7 @@
           "Receiving Emails"
         ],
         "summary": "Retrieve a list of attachments for a received email",
-        "operationId": "GetEmailsReceivingByEmailIdAttachments",
+        "operationId": "EmailsListReceivingAttachments",
         "parameters": [
           {
             "name": "emailId",
@@ -466,7 +466,7 @@
           "Receiving Emails"
         ],
         "summary": "Retrieve a single attachment for a received email",
-        "operationId": "GetEmailsReceivingByEmailIdAttachmentsByAttachmentId",
+        "operationId": "EmailsGetReceivingAttachment",
         "parameters": [
           {
             "name": "emailId",
@@ -509,7 +509,7 @@
           "Domains"
         ],
         "summary": "Create a new domain",
-        "operationId": "PostDomains",
+        "operationId": "DomainsCreate",
         "requestBody": {
           "content": {
             "application/json": {
@@ -537,7 +537,7 @@
           "Domains"
         ],
         "summary": "Retrieve a list of domains",
-        "operationId": "GetDomains",
+        "operationId": "DomainsList",
         "parameters": [
           {
             "$ref": "#/components/parameters/PaginationLimit"
@@ -569,7 +569,7 @@
           "Domains"
         ],
         "summary": "Retrieve a single domain",
-        "operationId": "GetDomainsByDomainId",
+        "operationId": "DomainsGet",
         "parameters": [
           {
             "name": "domainId",
@@ -599,7 +599,7 @@
           "Domains"
         ],
         "summary": "Update an existing domain",
-        "operationId": "PatchDomainsByDomainId",
+        "operationId": "DomainsUpdate",
         "parameters": [
           {
             "name": "domainId",
@@ -638,7 +638,7 @@
           "Domains"
         ],
         "summary": "Remove an existing domain",
-        "operationId": "DeleteDomainsByDomainId",
+        "operationId": "DomainsRemove",
         "parameters": [
           {
             "name": "domainId",
@@ -671,7 +671,7 @@
         ],
         "summary": "Verify an existing domain",
         "description": "Triggers verification of the domain\u0027s DNS records including DKIM, SPF, and the tracking CNAME (if a tracking subdomain is configured).",
-        "operationId": "PostDomainsByDomainIdVerify",
+        "operationId": "DomainsVerify",
         "parameters": [
           {
             "name": "domainId",
@@ -704,7 +704,7 @@
         ],
         "summary": "Claim a domain",
         "description": "Start a claim for a domain that another Resend account has already verified. The domain is recreated under your account with fresh DKIM keys, so the previous account\u0027s DNS records cannot be reused. Returns a TXT record to add to your DNS to prove ownership. Uses the same request body as creating a domain.",
-        "operationId": "PostDomainsClaim",
+        "operationId": "DomainsCreateClaim",
         "requestBody": {
           "content": {
             "application/json": {
@@ -745,7 +745,7 @@
         ],
         "summary": "Retrieve a domain claim",
         "description": "Retrieve the latest claim for the placeholder domain created by the claim.",
-        "operationId": "GetDomainsByDomainIdClaim",
+        "operationId": "DomainsGetClaim",
         "parameters": [
           {
             "name": "domainId",
@@ -778,7 +778,7 @@
         ],
         "summary": "Verify a domain claim",
         "description": "Trigger asynchronous DNS verification and ownership transfer for a domain claim. The claim stays \u0060pending\u0060 while verification runs; poll the retrieve endpoint for status. Once \u0060completed\u0060, the transferred domain has new DKIM records that must be added to DNS and verified via the standard domain verify endpoint.",
-        "operationId": "PostDomainsByDomainIdClaimVerify",
+        "operationId": "DomainsVerifyClaim",
         "parameters": [
           {
             "name": "domainId",
@@ -810,7 +810,7 @@
           "API Keys"
         ],
         "summary": "Create a new API key",
-        "operationId": "PostApiKeys",
+        "operationId": "ApiKeysCreate",
         "requestBody": {
           "content": {
             "application/json": {
@@ -838,7 +838,7 @@
           "API Keys"
         ],
         "summary": "Retrieve a list of API keys",
-        "operationId": "GetApiKeys",
+        "operationId": "ApiKeysList",
         "parameters": [
           {
             "$ref": "#/components/parameters/PaginationLimit"
@@ -870,7 +870,7 @@
           "API Keys"
         ],
         "summary": "Remove an existing API key",
-        "operationId": "DeleteApiKeysByApiKeyId",
+        "operationId": "ApiKeysRemove",
         "parameters": [
           {
             "name": "apiKeyId",
@@ -902,7 +902,7 @@
           "OAuth"
         ],
         "summary": "Retrieve a list of OAuth grants",
-        "operationId": "GetOAuthGrants",
+        "operationId": "OAuthListGrants",
         "parameters": [
           {
             "$ref": "#/components/parameters/PaginationLimit"
@@ -934,7 +934,7 @@
           "OAuth"
         ],
         "summary": "Revoke an OAuth grant",
-        "operationId": "DeleteOAuthGrantsByOAuthGrantId",
+        "operationId": "OAuthRevokeGrant",
         "parameters": [
           {
             "name": "oAuthGrantId",
@@ -966,7 +966,7 @@
           "Templates"
         ],
         "summary": "Create a template",
-        "operationId": "PostTemplates",
+        "operationId": "TemplatesCreate",
         "requestBody": {
           "content": {
             "application/json": {
@@ -994,7 +994,7 @@
           "Templates"
         ],
         "summary": "Retrieve a list of templates",
-        "operationId": "GetTemplates",
+        "operationId": "TemplatesList",
         "parameters": [
           {
             "$ref": "#/components/parameters/PaginationLimit"
@@ -1026,7 +1026,7 @@
           "Templates"
         ],
         "summary": "Retrieve a single template",
-        "operationId": "GetTemplatesById",
+        "operationId": "TemplatesGet",
         "parameters": [
           {
             "name": "id",
@@ -1056,7 +1056,7 @@
           "Templates"
         ],
         "summary": "Update an existing template",
-        "operationId": "PatchTemplatesById",
+        "operationId": "TemplatesUpdate",
         "parameters": [
           {
             "name": "id",
@@ -1095,7 +1095,7 @@
           "Templates"
         ],
         "summary": "Remove an existing template",
-        "operationId": "DeleteTemplatesById",
+        "operationId": "TemplatesRemove",
         "parameters": [
           {
             "name": "id",
@@ -1127,7 +1127,7 @@
           "Templates"
         ],
         "summary": "Publish a template",
-        "operationId": "PostTemplatesByIdPublish",
+        "operationId": "TemplatesPublish",
         "parameters": [
           {
             "name": "id",
@@ -1159,7 +1159,7 @@
           "Templates"
         ],
         "summary": "Duplicate a template",
-        "operationId": "PostTemplatesByIdDuplicate",
+        "operationId": "TemplatesDuplicate",
         "parameters": [
           {
             "name": "id",
@@ -1191,7 +1191,7 @@
           "Contacts"
         ],
         "summary": "Create a new contact",
-        "operationId": "PostContacts",
+        "operationId": "ContactsCreate",
         "requestBody": {
           "content": {
             "application/json": {
@@ -1219,7 +1219,7 @@
           "Contacts"
         ],
         "summary": "Retrieve a list of contacts",
-        "operationId": "GetContacts",
+        "operationId": "ContactsList",
         "parameters": [
           {
             "name": "segment_id",
@@ -1259,7 +1259,7 @@
           "Contacts"
         ],
         "summary": "Create a contact import",
-        "operationId": "PostContactsImports",
+        "operationId": "ContactsCreateImport",
         "requestBody": {
           "content": {
             "multipart/form-data": {
@@ -1287,14 +1287,14 @@
           "Contacts"
         ],
         "summary": "Retrieve a list of contact imports",
-        "operationId": "GetContactsImports",
+        "operationId": "ContactsListImports",
         "parameters": [
           {
             "name": "status",
             "in": "query",
             "description": "Filter contact imports by status.",
             "schema": {
-              "$ref": "#/components/schemas/GetContactsImportsStatusParameter"
+              "$ref": "#/components/schemas/ContactsListImportsStatusParameter"
             }
           },
           {
@@ -1327,7 +1327,7 @@
           "Contacts"
         ],
         "summary": "Retrieve a single contact import",
-        "operationId": "GetContactsImportsById",
+        "operationId": "ContactsGetImport",
         "parameters": [
           {
             "name": "id",
@@ -1360,7 +1360,7 @@
           "Contacts"
         ],
         "summary": "Retrieve a single contact by ID or email",
-        "operationId": "GetContactsById",
+        "operationId": "ContactsGet",
         "parameters": [
           {
             "name": "id",
@@ -1390,7 +1390,7 @@
           "Contacts"
         ],
         "summary": "Update a single contact by ID or email",
-        "operationId": "PatchContactsById",
+        "operationId": "ContactsUpdate",
         "parameters": [
           {
             "name": "id",
@@ -1429,7 +1429,7 @@
           "Contacts"
         ],
         "summary": "Remove an existing contact by ID or email",
-        "operationId": "DeleteContactsById",
+        "operationId": "ContactsRemove",
         "parameters": [
           {
             "name": "id",
@@ -1461,7 +1461,7 @@
           "Broadcasts"
         ],
         "summary": "Create a broadcast",
-        "operationId": "PostBroadcasts",
+        "operationId": "BroadcastsCreate",
         "requestBody": {
           "content": {
             "application/json": {
@@ -1489,7 +1489,7 @@
           "Broadcasts"
         ],
         "summary": "Retrieve a list of broadcasts",
-        "operationId": "GetBroadcasts",
+        "operationId": "BroadcastsList",
         "parameters": [
           {
             "$ref": "#/components/parameters/PaginationLimit"
@@ -1521,7 +1521,7 @@
           "Broadcasts"
         ],
         "summary": "Remove an existing broadcast that is in the draft status",
-        "operationId": "DeleteBroadcastsById",
+        "operationId": "BroadcastsRemove",
         "parameters": [
           {
             "name": "id",
@@ -1551,7 +1551,7 @@
           "Broadcasts"
         ],
         "summary": "Retrieve a single broadcast",
-        "operationId": "GetBroadcastsById",
+        "operationId": "BroadcastsGet",
         "parameters": [
           {
             "name": "id",
@@ -1581,7 +1581,7 @@
           "Broadcasts"
         ],
         "summary": "Update an existing broadcast",
-        "operationId": "PatchBroadcastsById",
+        "operationId": "BroadcastsUpdate",
         "parameters": [
           {
             "name": "id",
@@ -1622,7 +1622,7 @@
           "Broadcasts"
         ],
         "summary": "Send or schedule a broadcast",
-        "operationId": "PostBroadcastsByIdSend",
+        "operationId": "BroadcastsSend",
         "parameters": [
           {
             "name": "id",
@@ -1664,7 +1664,7 @@
         ],
         "summary": "Cancel a broadcast",
         "description": "Cancels a broadcast that is queued or scheduled. Canceling a queued broadcast stops it mid-send; emails already sent are not affected, but no further emails will go out.",
-        "operationId": "PostBroadcastsByIdCancel",
+        "operationId": "BroadcastsCancel",
         "parameters": [
           {
             "name": "id",
@@ -1697,7 +1697,7 @@
           "Webhooks"
         ],
         "summary": "Create a new webhook",
-        "operationId": "PostWebhooks",
+        "operationId": "WebhooksCreate",
         "requestBody": {
           "content": {
             "application/json": {
@@ -1725,7 +1725,7 @@
           "Webhooks"
         ],
         "summary": "Retrieve a list of webhooks",
-        "operationId": "GetWebhooks",
+        "operationId": "WebhooksList",
         "parameters": [
           {
             "name": "limit",
@@ -1774,7 +1774,7 @@
           "Webhooks"
         ],
         "summary": "Retrieve a single webhook",
-        "operationId": "GetWebhooksByWebhookId",
+        "operationId": "WebhooksGet",
         "parameters": [
           {
             "name": "webhookId",
@@ -1805,7 +1805,7 @@
           "Webhooks"
         ],
         "summary": "Update an existing webhook",
-        "operationId": "PatchWebhooksByWebhookId",
+        "operationId": "WebhooksUpdate",
         "parameters": [
           {
             "name": "webhookId",
@@ -1845,7 +1845,7 @@
           "Webhooks"
         ],
         "summary": "Remove an existing webhook",
-        "operationId": "DeleteWebhooksByWebhookId",
+        "operationId": "WebhooksRemove",
         "parameters": [
           {
             "name": "webhookId",
@@ -1878,7 +1878,7 @@
           "Segments"
         ],
         "summary": "Create a new segment",
-        "operationId": "PostSegments",
+        "operationId": "SegmentsCreate",
         "requestBody": {
           "content": {
             "application/json": {
@@ -1906,7 +1906,7 @@
           "Segments"
         ],
         "summary": "Retrieve a list of segments",
-        "operationId": "GetSegments",
+        "operationId": "SegmentsList",
         "parameters": [
           {
             "$ref": "#/components/parameters/PaginationLimit"
@@ -1938,7 +1938,7 @@
           "Segments"
         ],
         "summary": "Retrieve a single segment",
-        "operationId": "GetSegmentsById",
+        "operationId": "SegmentsGet",
         "parameters": [
           {
             "name": "id",
@@ -1968,7 +1968,7 @@
           "Segments"
         ],
         "summary": "Remove an existing segment",
-        "operationId": "DeleteSegmentsById",
+        "operationId": "SegmentsRemove",
         "parameters": [
           {
             "name": "id",
@@ -2000,7 +2000,7 @@
           "Topics"
         ],
         "summary": "Create a new topic",
-        "operationId": "PostTopics",
+        "operationId": "TopicsCreate",
         "requestBody": {
           "content": {
             "application/json": {
@@ -2028,7 +2028,7 @@
           "Topics"
         ],
         "summary": "Retrieve a list of topics",
-        "operationId": "GetTopics",
+        "operationId": "TopicsList",
         "parameters": [
           {
             "$ref": "#/components/parameters/PaginationLimit"
@@ -2060,7 +2060,7 @@
           "Topics"
         ],
         "summary": "Retrieve a single topic",
-        "operationId": "GetTopicsById",
+        "operationId": "TopicsGet",
         "parameters": [
           {
             "name": "id",
@@ -2090,7 +2090,7 @@
           "Topics"
         ],
         "summary": "Update an existing topic",
-        "operationId": "PatchTopicsById",
+        "operationId": "TopicsUpdate",
         "parameters": [
           {
             "name": "id",
@@ -2129,7 +2129,7 @@
           "Topics"
         ],
         "summary": "Remove an existing topic",
-        "operationId": "DeleteTopicsById",
+        "operationId": "TopicsRemove",
         "parameters": [
           {
             "name": "id",
@@ -2161,7 +2161,7 @@
           "Contact Properties"
         ],
         "summary": "Create a new contact property",
-        "operationId": "PostContactProperties",
+        "operationId": "ContactPropertiesCreate",
         "requestBody": {
           "content": {
             "application/json": {
@@ -2189,7 +2189,7 @@
           "Contact Properties"
         ],
         "summary": "Retrieve a list of contact properties",
-        "operationId": "GetContactProperties",
+        "operationId": "ContactPropertiesList",
         "parameters": [
           {
             "$ref": "#/components/parameters/PaginationLimit"
@@ -2221,7 +2221,7 @@
           "Contact Properties"
         ],
         "summary": "Retrieve a single contact property",
-        "operationId": "GetContactPropertiesById",
+        "operationId": "ContactPropertiesGet",
         "parameters": [
           {
             "name": "id",
@@ -2251,7 +2251,7 @@
           "Contact Properties"
         ],
         "summary": "Update an existing contact property",
-        "operationId": "PatchContactPropertiesById",
+        "operationId": "ContactPropertiesUpdate",
         "parameters": [
           {
             "name": "id",
@@ -2290,7 +2290,7 @@
           "Contact Properties"
         ],
         "summary": "Remove an existing contact property",
-        "operationId": "DeleteContactPropertiesById",
+        "operationId": "ContactPropertiesRemove",
         "parameters": [
           {
             "name": "id",
@@ -2322,7 +2322,7 @@
           "Contacts"
         ],
         "summary": "Retrieve a list of segments for a contact",
-        "operationId": "GetContactsByContactIdSegments",
+        "operationId": "ContactsListSegments",
         "parameters": [
           {
             "name": "contactId",
@@ -2363,7 +2363,7 @@
           "Contacts"
         ],
         "summary": "Add a contact to a segment",
-        "operationId": "PostContactsByContactIdSegmentsBySegmentId",
+        "operationId": "ContactsAddSegment",
         "parameters": [
           {
             "name": "contactId",
@@ -2402,7 +2402,7 @@
           "Contacts"
         ],
         "summary": "Remove a contact from a segment",
-        "operationId": "DeleteContactsByContactIdSegmentsBySegmentId",
+        "operationId": "ContactsRemoveSegment",
         "parameters": [
           {
             "name": "contactId",
@@ -2443,7 +2443,7 @@
           "Contacts"
         ],
         "summary": "Retrieve topics for a contact",
-        "operationId": "GetContactsByContactIdTopics",
+        "operationId": "ContactsListTopics",
         "parameters": [
           {
             "name": "contactId",
@@ -2482,7 +2482,7 @@
           "Contacts"
         ],
         "summary": "Update topics for a contact",
-        "operationId": "PatchContactsByContactIdTopics",
+        "operationId": "ContactsUpdateTopics",
         "parameters": [
           {
             "name": "contactId",
@@ -2523,7 +2523,7 @@
           "Logs"
         ],
         "summary": "Retrieve a list of logs",
-        "operationId": "GetLogs",
+        "operationId": "LogsList",
         "parameters": [
           {
             "$ref": "#/components/parameters/PaginationLimit"
@@ -2555,7 +2555,7 @@
           "Logs"
         ],
         "summary": "Retrieve a single log",
-        "operationId": "GetLogsByLogId",
+        "operationId": "LogsGet",
         "parameters": [
           {
             "name": "logId",
@@ -2588,7 +2588,7 @@
           "Automations"
         ],
         "summary": "Create an automation",
-        "operationId": "PostAutomations",
+        "operationId": "AutomationsCreate",
         "requestBody": {
           "content": {
             "application/json": {
@@ -2616,14 +2616,14 @@
           "Automations"
         ],
         "summary": "Retrieve a list of automations",
-        "operationId": "GetAutomations",
+        "operationId": "AutomationsList",
         "parameters": [
           {
             "name": "status",
             "in": "query",
             "description": "Filter automations by status.",
             "schema": {
-              "$ref": "#/components/schemas/GetAutomationsStatusParameter"
+              "$ref": "#/components/schemas/AutomationsListStatusParameter"
             }
           },
           {
@@ -2656,7 +2656,7 @@
           "Automations"
         ],
         "summary": "Retrieve a single automation",
-        "operationId": "GetAutomationsByAutomationId",
+        "operationId": "AutomationsGet",
         "parameters": [
           {
             "name": "automationId",
@@ -2687,7 +2687,7 @@
           "Automations"
         ],
         "summary": "Update an automation",
-        "operationId": "PatchAutomationsByAutomationId",
+        "operationId": "AutomationsUpdate",
         "parameters": [
           {
             "name": "automationId",
@@ -2727,7 +2727,7 @@
           "Automations"
         ],
         "summary": "Delete an automation",
-        "operationId": "DeleteAutomationsByAutomationId",
+        "operationId": "AutomationsRemove",
         "parameters": [
           {
             "name": "automationId",
@@ -2760,7 +2760,7 @@
           "Automations"
         ],
         "summary": "Stop an automation",
-        "operationId": "PostAutomationsByAutomationIdStop",
+        "operationId": "AutomationsStop",
         "parameters": [
           {
             "name": "automationId",
@@ -2793,7 +2793,7 @@
           "Automations"
         ],
         "summary": "Retrieve a list of automation runs",
-        "operationId": "GetAutomationsByAutomationIdRuns",
+        "operationId": "AutomationsListRuns",
         "parameters": [
           {
             "name": "automationId",
@@ -2843,7 +2843,7 @@
           "Automations"
         ],
         "summary": "Retrieve a single automation run",
-        "operationId": "GetAutomationsByAutomationIdRunsByRunId",
+        "operationId": "AutomationsGetRun",
         "parameters": [
           {
             "name": "automationId",
@@ -2886,7 +2886,7 @@
           "Events"
         ],
         "summary": "Create an event",
-        "operationId": "PostEvents",
+        "operationId": "EventsCreate",
         "requestBody": {
           "content": {
             "application/json": {
@@ -2914,7 +2914,7 @@
           "Events"
         ],
         "summary": "Retrieve a list of events",
-        "operationId": "GetEvents",
+        "operationId": "EventsList",
         "parameters": [
           {
             "$ref": "#/components/parameters/PaginationLimit"
@@ -2946,7 +2946,7 @@
           "Events"
         ],
         "summary": "Send an event",
-        "operationId": "PostEventsSend",
+        "operationId": "EventsSend",
         "requestBody": {
           "content": {
             "application/json": {
@@ -2976,7 +2976,7 @@
           "Events"
         ],
         "summary": "Retrieve a single event",
-        "operationId": "GetEventsByIdentifier",
+        "operationId": "EventsGet",
         "parameters": [
           {
             "name": "identifier",
@@ -3006,7 +3006,7 @@
           "Events"
         ],
         "summary": "Update an event",
-        "operationId": "PatchEventsByIdentifier",
+        "operationId": "EventsUpdate",
         "parameters": [
           {
             "name": "identifier",
@@ -3045,7 +3045,7 @@
           "Events"
         ],
         "summary": "Delete an event",
-        "operationId": "DeleteEventsByIdentifier",
+        "operationId": "EventsRemove",
         "parameters": [
           {
             "name": "identifier",
@@ -3077,7 +3077,7 @@
           "Suppressions"
         ],
         "summary": "Create a suppression",
-        "operationId": "PostSuppressions",
+        "operationId": "SuppressionsAdd",
         "requestBody": {
           "content": {
             "application/json": {
@@ -3105,14 +3105,14 @@
           "Suppressions"
         ],
         "summary": "Retrieve a list of suppressions",
-        "operationId": "GetSuppressions",
+        "operationId": "SuppressionsList",
         "parameters": [
           {
             "name": "origin",
             "in": "query",
             "description": "Filter suppressions by origin.",
             "schema": {
-              "$ref": "#/components/schemas/GetSuppressionsOriginParameter"
+              "$ref": "#/components/schemas/SuppressionsListOriginParameter"
             }
           },
           {
@@ -3145,7 +3145,7 @@
           "Suppressions"
         ],
         "summary": "Add up to 100 suppressions at once",
-        "operationId": "PostSuppressionsBatchAdd",
+        "operationId": "SuppressionsBatchAdd",
         "requestBody": {
           "content": {
             "application/json": {
@@ -3175,7 +3175,7 @@
           "Suppressions"
         ],
         "summary": "Remove up to 100 suppressions at once",
-        "operationId": "PostSuppressionsBatchRemove",
+        "operationId": "SuppressionsBatchRemove",
         "requestBody": {
           "content": {
             "application/json": {
@@ -3205,7 +3205,7 @@
           "Suppressions"
         ],
         "summary": "Retrieve a single suppression by ID or email",
-        "operationId": "GetSuppressionsBySuppression",
+        "operationId": "SuppressionsGet",
         "parameters": [
           {
             "name": "suppression",
@@ -3235,7 +3235,7 @@
           "Suppressions"
         ],
         "summary": "Remove a single suppression by ID or email",
-        "operationId": "DeleteSuppressionsBySuppression",
+        "operationId": "SuppressionsRemove",
         "parameters": [
           {
             "name": "suppression",
@@ -3883,6 +3883,14 @@
             "type": "string",
             "description": "The region where the domain is hosted.",
             "example": "us-east-1"
+          },
+          "open_tracking": {
+            "type": "boolean",
+            "description": "Whether open tracking is enabled for this domain."
+          },
+          "click_tracking": {
+            "type": "boolean",
+            "description": "Whether click tracking is enabled for this domain."
           },
           "capabilities": {
             "$ref": "#/components/schemas/DomainCapabilities"
@@ -8998,7 +9006,7 @@
           }
         }
       },
-      "PostEmailsBatchRequest": {
+      "EmailsSendBatchRequest": {
         "type": "array",
         "items": {
           "$ref": "#/components/schemas/SendEmailRequest"
@@ -9102,7 +9110,7 @@
         "type": "object",
         "description": "Placeholder schema for path example refs"
       },
-      "PostEmailsBatchRequestRequestBody": {
+      "EmailsSendBatchRequestRequestBody": {
         "type": "array",
         "items": {
           "$ref": "#/components/schemas/SendEmailRequest"
@@ -11123,7 +11131,7 @@
           ]
         }
       },
-      "GetContactsImportsStatusParameter": {
+      "ContactsListImportsStatusParameter": {
         "enum": [
           "queued",
           "in_progress",
@@ -11133,7 +11141,7 @@
         "type": "string",
         "additionalProperties": false,
         "x-ms-enum": {
-          "name": "GetContactsImportsStatusParameter",
+          "name": "ContactsListImportsStatusParameter",
           "modelAsString": false,
           "values": [
             {
@@ -11155,7 +11163,7 @@
           ]
         }
       },
-      "GetAutomationsStatusParameter": {
+      "AutomationsListStatusParameter": {
         "enum": [
           "enabled",
           "disabled"
@@ -11163,7 +11171,7 @@
         "type": "string",
         "additionalProperties": false,
         "x-ms-enum": {
-          "name": "GetAutomationsStatusParameter",
+          "name": "AutomationsListStatusParameter",
           "modelAsString": false,
           "values": [
             {
@@ -11177,7 +11185,7 @@
           ]
         }
       },
-      "GetSuppressionsOriginParameter": {
+      "SuppressionsListOriginParameter": {
         "enum": [
           "bounce",
           "complaint",
@@ -11186,7 +11194,7 @@
         "type": "string",
         "additionalProperties": false,
         "x-ms-enum": {
-          "name": "GetSuppressionsOriginParameter",
+          "name": "SuppressionsListOriginParameter",
           "modelAsString": false,
           "values": [
             {

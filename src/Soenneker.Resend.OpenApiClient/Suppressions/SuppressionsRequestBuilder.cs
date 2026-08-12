@@ -171,7 +171,7 @@ namespace Soenneker.Resend.OpenApiClient.Suppressions
             public int? Limit { get; set; }
             /// <summary>Filter suppressions by origin.</summary>
             [QueryParameter("origin")]
-            public global::Soenneker.Resend.OpenApiClient.Models.GetSuppressionsOriginParameter? Origin { get; set; }
+            public global::Soenneker.Resend.OpenApiClient.Models.SuppressionsListOriginParameter? Origin { get; set; }
         }
     }
 }

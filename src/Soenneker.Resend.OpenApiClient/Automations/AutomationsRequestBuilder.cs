@@ -165,7 +165,7 @@ namespace Soenneker.Resend.OpenApiClient.Automations
             public int? Limit { get; set; }
             /// <summary>Filter automations by status.</summary>
             [QueryParameter("status")]
-            public global::Soenneker.Resend.OpenApiClient.Models.GetAutomationsStatusParameter? Status { get; set; }
+            public global::Soenneker.Resend.OpenApiClient.Models.AutomationsListStatusParameter? Status { get; set; }
         }
     }
 }

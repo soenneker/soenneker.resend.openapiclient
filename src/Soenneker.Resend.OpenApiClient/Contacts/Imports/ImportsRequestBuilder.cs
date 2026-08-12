@@ -165,7 +165,7 @@ namespace Soenneker.Resend.OpenApiClient.Contacts.Imports
             public int? Limit { get; set; }
             /// <summary>Filter contact imports by status.</summary>
             [QueryParameter("status")]
-            public global::Soenneker.Resend.OpenApiClient.Models.GetContactsImportsStatusParameter? Status { get; set; }
+            public global::Soenneker.Resend.OpenApiClient.Models.ContactsListImportsStatusParameter? Status { get; set; }
         }
     }
 }
