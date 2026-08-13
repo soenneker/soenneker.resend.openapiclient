@@ -3,6 +3,7 @@
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
+using Soenneker.Resend.OpenApiClient.Automations.Item.Duplicate;
 using Soenneker.Resend.OpenApiClient.Automations.Item.Runs;
 using Soenneker.Resend.OpenApiClient.Automations.Item.Stop;
 using Soenneker.Resend.OpenApiClient.Models;
@@ -19,6 +20,11 @@ namespace Soenneker.Resend.OpenApiClient.Automations.Item
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class WithAutomationItemRequestBuilder : BaseRequestBuilder
     {
+        /// <summary>The duplicate property</summary>
+        public global::Soenneker.Resend.OpenApiClient.Automations.Item.Duplicate.DuplicateRequestBuilder Duplicate
+        {
+            get => new global::Soenneker.Resend.OpenApiClient.Automations.Item.Duplicate.DuplicateRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The runs property</summary>
         public global::Soenneker.Resend.OpenApiClient.Automations.Item.Runs.RunsRequestBuilder Runs
         {
