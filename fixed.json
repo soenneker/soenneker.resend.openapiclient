@@ -1200,6 +1200,125 @@
         }
       }
     },
+    "/audiences": {
+      "post": {
+        "tags": [
+          "Audiences"
+        ],
+        "summary": "Create a list of contacts",
+        "description": "Deprecated: Use Segments instead. These endpoints still work, but will be removed in the future.",
+        "operationId": "AudiencesCreate",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateAudienceOptions"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateAudienceResponseSuccess"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": true
+      },
+      "get": {
+        "tags": [
+          "Audiences"
+        ],
+        "summary": "Retrieve a list of audiences",
+        "description": "Deprecated: Use Segments instead. These endpoints still work, but will be removed in the future.",
+        "operationId": "AudiencesList",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListAudiencesResponseSuccess"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": true
+      }
+    },
+    "/audiences/{id}": {
+      "delete": {
+        "tags": [
+          "Audiences"
+        ],
+        "summary": "Remove an existing audience",
+        "description": "Deprecated: Use Segments instead. These endpoints still work, but will be removed in the future.",
+        "operationId": "AudiencesRemove",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The Audience ID.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RemoveAudienceResponseSuccess"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": true
+      },
+      "get": {
+        "tags": [
+          "Audiences"
+        ],
+        "summary": "Retrieve a single audience",
+        "description": "Deprecated: Use Segments instead. These endpoints still work, but will be removed in the future.",
+        "operationId": "AudiencesGet",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The Audience ID.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetAudienceResponseSuccess"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": true
+      }
+    },
     "/contacts": {
       "post": {
         "tags": [
@@ -1285,7 +1404,8 @@
                 "$ref": "#/components/schemas/CreateContactImportOptions"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "201": {
@@ -2886,7 +3006,7 @@
           {
             "name": "status",
             "in": "query",
-            "description": "\u0022Filter runs by status. Comma-separated list of: running, completed, failed, cancelled.\u0022",
+            "description": "Filter runs by status. Comma-separated list of: running, completed, failed, cancelled.",
             "schema": {
               "type": "string"
             }
@@ -3169,7 +3289,8 @@
                 "$ref": "#/components/schemas/CreateSuppressionOptions"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "201": {
@@ -3240,7 +3361,8 @@
                 "$ref": "#/components/schemas/BatchAddSuppressionsOptions"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "201": {
@@ -3270,7 +3392,8 @@
                 "$ref": "#/components/schemas/BatchRemoveSuppressionsOptions"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -3839,7 +3962,7 @@
         "type": "object",
         "properties": {
           "type": {
-            "$ref": "#/components/schemas/DomainClaimRecordType"
+            "$ref": "#/components/schemas/TxtType"
           },
           "name": {
             "type": "string",
@@ -4215,83 +4338,104 @@
           }
         }
       },
-      "SendEmailRequestTemplate": {
+      "CreateAudienceOptions": {
         "required": [
-          "id"
+          "name"
         ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "The name of the audience you want to create."
+          }
+        },
+        "deprecated": true
+      },
+      "CreateAudienceResponseSuccess": {
         "type": "object",
         "properties": {
           "id": {
             "type": "string",
-            "description": "The id of the published email template."
+            "description": "The ID of the audience.",
+            "example": "78261eea-8f8b-4381-83c6-79fa7120f1cf"
           },
-          "variables": {
-            "$ref": "#/components/schemas/SendEmailRequestTemplateVariables"
+          "object": {
+            "type": "string",
+            "description": "The object of the audience.",
+            "example": "audience"
+          },
+          "name": {
+            "type": "string",
+            "description": "The name of the audience.",
+            "example": "Registered Users"
           }
         },
-        "description": "Use a published template to send the email. If provided, do not include html or text."
+        "deprecated": true
       },
-      "SendEmailRequestReplyTo": {
+      "GetAudienceResponseSuccess": {
         "type": "object",
-        "oneOf": [
-          {
-            "type": "string"
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "The ID of the audience.",
+            "example": "78261eea-8f8b-4381-83c6-79fa7120f1cf"
           },
-          {
+          "object": {
+            "type": "string",
+            "description": "The object of the audience.",
+            "example": "audience"
+          },
+          "name": {
+            "type": "string",
+            "description": "The name of the audience.",
+            "example": "Registered Users"
+          },
+          "created_at": {
+            "type": "string",
+            "description": "The date that the object was created.",
+            "example": "2023-10-06 22:59:55.977\u002B00"
+          }
+        },
+        "deprecated": true
+      },
+      "RemoveAudienceResponseSuccess": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "The ID of the audience.",
+            "example": "78261eea-8f8b-4381-83c6-79fa7120f1cf"
+          },
+          "object": {
+            "type": "string",
+            "description": "The object of the audience.",
+            "example": "audience"
+          },
+          "deleted": {
+            "type": "boolean",
+            "description": "The deleted attribute indicates that the corresponding audience has been deleted.",
+            "example": true
+          }
+        },
+        "deprecated": true
+      },
+      "ListAudiencesResponseSuccess": {
+        "type": "object",
+        "properties": {
+          "object": {
+            "type": "string",
+            "description": "Type of the response object.",
+            "example": "list"
+          },
+          "data": {
             "type": "array",
             "items": {
-              "type": "string"
-            }
+              "$ref": "#/components/schemas/ListAudiencesResponseSuccessDataItem"
+            },
+            "description": "Array containing audience information."
           }
-        ],
-        "description": "Reply-to email address. For multiple addresses, send as an array of strings."
-      },
-      "SendEmailRequestCc": {
-        "type": "object",
-        "oneOf": [
-          {
-            "type": "string"
-          },
-          {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          }
-        ],
-        "description": "Cc recipient email address. For multiple addresses, send as an array of strings."
-      },
-      "SendEmailRequestBcc": {
-        "type": "object",
-        "oneOf": [
-          {
-            "type": "string"
-          },
-          {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          }
-        ],
-        "description": "Bcc recipient email address. For multiple addresses, send as an array of strings."
-      },
-      "SendEmailRequestTo": {
-        "type": "object",
-        "oneOf": [
-          {
-            "type": "string"
-          },
-          {
-            "maxItems": 50,
-            "minItems": 1,
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          }
-        ],
-        "description": "Recipient email address. For multiple addresses, send as an array of strings. Max 50."
+        },
+        "deprecated": true
       },
       "CreateContactOptions": {
         "required": [
@@ -4769,7 +4913,7 @@
               "null",
               "string"
             ],
-            "description": "\u0022Deprecated: use \u0060segment_id\u0060 instead. Unique identifier of the segment this broadcast will be sent to.\u0022",
+            "description": "Deprecated: use \u0060segment_id\u0060 instead. Unique identifier of the segment this broadcast will be sent to.",
             "deprecated": true
           },
           "segment_id": {
@@ -7560,9 +7704,7 @@
         "type": "object",
         "properties": {
           "type": {
-            "const": "email.sent",
-            "type": "string",
-            "description": "The event type."
+            "$ref": "#/components/schemas/EmailSentType"
           },
           "created_at": {
             "type": "string",
@@ -7584,9 +7726,7 @@
         "type": "object",
         "properties": {
           "type": {
-            "const": "email.delivered",
-            "type": "string",
-            "description": "The event type."
+            "$ref": "#/components/schemas/EmailDeliveredType"
           },
           "created_at": {
             "type": "string",
@@ -7608,9 +7748,7 @@
         "type": "object",
         "properties": {
           "type": {
-            "const": "email.delivery_delayed",
-            "type": "string",
-            "description": "The event type."
+            "$ref": "#/components/schemas/EmailDeliveryDelayedType"
           },
           "created_at": {
             "type": "string",
@@ -7632,9 +7770,7 @@
         "type": "object",
         "properties": {
           "type": {
-            "const": "email.bounced",
-            "type": "string",
-            "description": "The event type."
+            "$ref": "#/components/schemas/EmailBouncedType"
           },
           "created_at": {
             "type": "string",
@@ -7656,9 +7792,7 @@
         "type": "object",
         "properties": {
           "type": {
-            "const": "email.complained",
-            "type": "string",
-            "description": "The event type."
+            "$ref": "#/components/schemas/EmailComplainedType"
           },
           "created_at": {
             "type": "string",
@@ -7680,9 +7814,7 @@
         "type": "object",
         "properties": {
           "type": {
-            "const": "email.opened",
-            "type": "string",
-            "description": "The event type."
+            "$ref": "#/components/schemas/EmailOpenedType"
           },
           "created_at": {
             "type": "string",
@@ -7704,9 +7836,7 @@
         "type": "object",
         "properties": {
           "type": {
-            "const": "email.clicked",
-            "type": "string",
-            "description": "The event type."
+            "$ref": "#/components/schemas/EmailClickedType"
           },
           "created_at": {
             "type": "string",
@@ -7728,9 +7858,7 @@
         "type": "object",
         "properties": {
           "type": {
-            "const": "email.failed",
-            "type": "string",
-            "description": "The event type."
+            "$ref": "#/components/schemas/EmailFailedType"
           },
           "created_at": {
             "type": "string",
@@ -7752,9 +7880,7 @@
         "type": "object",
         "properties": {
           "type": {
-            "const": "email.scheduled",
-            "type": "string",
-            "description": "The event type."
+            "$ref": "#/components/schemas/EmailScheduledType"
           },
           "created_at": {
             "type": "string",
@@ -7776,9 +7902,7 @@
         "type": "object",
         "properties": {
           "type": {
-            "const": "email.suppressed",
-            "type": "string",
-            "description": "The event type."
+            "$ref": "#/components/schemas/EmailSuppressedType"
           },
           "created_at": {
             "type": "string",
@@ -7800,9 +7924,7 @@
         "type": "object",
         "properties": {
           "type": {
-            "const": "email.received",
-            "type": "string",
-            "description": "The event type."
+            "$ref": "#/components/schemas/EmailReceivedType"
           },
           "created_at": {
             "type": "string",
@@ -7824,9 +7946,7 @@
         "type": "object",
         "properties": {
           "type": {
-            "const": "contact.created",
-            "type": "string",
-            "description": "The event type."
+            "$ref": "#/components/schemas/ContactCreatedType"
           },
           "created_at": {
             "type": "string",
@@ -7848,9 +7968,7 @@
         "type": "object",
         "properties": {
           "type": {
-            "const": "contact.updated",
-            "type": "string",
-            "description": "The event type."
+            "$ref": "#/components/schemas/ContactUpdatedType"
           },
           "created_at": {
             "type": "string",
@@ -7872,9 +7990,7 @@
         "type": "object",
         "properties": {
           "type": {
-            "const": "contact.deleted",
-            "type": "string",
-            "description": "The event type."
+            "$ref": "#/components/schemas/ContactDeletedType"
           },
           "created_at": {
             "type": "string",
@@ -7896,9 +8012,7 @@
         "type": "object",
         "properties": {
           "type": {
-            "const": "domain.created",
-            "type": "string",
-            "description": "The event type."
+            "$ref": "#/components/schemas/DomainCreatedType"
           },
           "created_at": {
             "type": "string",
@@ -7920,9 +8034,7 @@
         "type": "object",
         "properties": {
           "type": {
-            "const": "domain.updated",
-            "type": "string",
-            "description": "The event type."
+            "$ref": "#/components/schemas/DomainUpdatedType"
           },
           "created_at": {
             "type": "string",
@@ -7944,9 +8056,7 @@
         "type": "object",
         "properties": {
           "type": {
-            "const": "domain.deleted",
-            "type": "string",
-            "description": "The event type."
+            "$ref": "#/components/schemas/DomainDeletedType"
           },
           "created_at": {
             "type": "string",
@@ -8129,6 +8239,84 @@
           }
         }
       },
+      "SendEmailRequestTo": {
+        "type": "object",
+        "oneOf": [
+          {
+            "type": "string"
+          },
+          {
+            "maxItems": 50,
+            "minItems": 1,
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        ],
+        "description": "Recipient email address. For multiple addresses, send as an array of strings. Max 50."
+      },
+      "SendEmailRequestBcc": {
+        "type": "object",
+        "oneOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        ],
+        "description": "Bcc recipient email address. For multiple addresses, send as an array of strings."
+      },
+      "SendEmailRequestCc": {
+        "type": "object",
+        "oneOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        ],
+        "description": "Cc recipient email address. For multiple addresses, send as an array of strings."
+      },
+      "SendEmailRequestReplyTo": {
+        "type": "object",
+        "oneOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        ],
+        "description": "Reply-to email address. For multiple addresses, send as an array of strings."
+      },
+      "SendEmailRequestTemplate": {
+        "required": [
+          "id"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "The id of the published email template."
+          },
+          "variables": {
+            "$ref": "#/components/schemas/SendEmailRequestTemplateVariables"
+          }
+        },
+        "description": "Use a published template to send the email. If provided, do not include html or text."
+      },
       "EmailTemplateInputVariablesAdditionalProperties": {
         "type": "object",
         "oneOf": [
@@ -8141,9 +8329,6 @@
         ]
       },
       "TemplateVariableFallbackValue": {
-        "required": [
-          "type"
-        ],
         "type": "object",
         "oneOf": [
           {
@@ -8162,27 +8347,9 @@
             "$ref": "#/components/schemas/TemplateVariableFallbackValueBranch5"
           }
         ],
-        "properties": {
-          "type": {
-            "type": "string",
-            "description": "Union discriminator"
-          }
-        },
-        "description": "The fallback value of the variable.",
-        "discriminator": {
-          "propertyName": "type",
-          "mapping": {
-            "TemplateVariableFallbackValue_1": "#/components/schemas/TemplateVariableFallbackValueBranch1",
-            "TemplateVariableFallbackValue_2": "#/components/schemas/TemplateVariableFallbackValueBranch2",
-            "TemplateVariableFallbackValue_3": "#/components/schemas/TemplateVariableFallbackValueBranch3",
-            "TemplateVariableFallbackValue_5": "#/components/schemas/TemplateVariableFallbackValueBranch5"
-          }
-        }
+        "description": "The fallback value of the variable."
       },
       "TemplateVariableInputFallbackValue": {
-        "required": [
-          "type"
-        ],
         "type": "object",
         "oneOf": [
           {
@@ -8201,22 +8368,7 @@
             "$ref": "#/components/schemas/TemplateVariableInputFallbackValueBranch5"
           }
         ],
-        "properties": {
-          "type": {
-            "type": "string",
-            "description": "Union discriminator"
-          }
-        },
-        "description": "The fallback value of the variable.",
-        "discriminator": {
-          "propertyName": "type",
-          "mapping": {
-            "TemplateVariableInputFallbackValue_1": "#/components/schemas/TemplateVariableInputFallbackValueBranch1",
-            "TemplateVariableInputFallbackValue_2": "#/components/schemas/TemplateVariableInputFallbackValueBranch2",
-            "TemplateVariableInputFallbackValue_3": "#/components/schemas/TemplateVariableInputFallbackValueBranch3",
-            "TemplateVariableInputFallbackValue_5": "#/components/schemas/TemplateVariableInputFallbackValueBranch5"
-          }
-        }
+        "description": "The fallback value of the variable."
       },
       "CreateContactPropertyOptionsFallbackValue": {
         "type": "object",
@@ -8351,6 +8503,26 @@
           }
         },
         "description": "The OAuth client the grant was issued to."
+      },
+      "ListAudiencesResponseSuccessDataItem": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique identifier for the audience.",
+            "example": "78261eea-8f8b-4381-83c6-79fa7120f1cf"
+          },
+          "name": {
+            "type": "string",
+            "description": "Name of the audience.",
+            "example": "Registered Users"
+          },
+          "created_at": {
+            "type": "string",
+            "description": "Timestamp indicating when the audience was created.",
+            "example": "2023-10-06 22:59:55.977\u002B00"
+          }
+        }
       },
       "CreateContactOptionsProperties": {
         "type": "object",
@@ -8829,11 +9001,11 @@
       },
       "AutomationStepConfig": {
         "type": "object",
-        "description": "\u0022Configuration for the step. Shape depends on \u0060type\u0060: - **trigger**: \u0060{ event_name: string }\u0060 - **send_email**: \u0060{ template: { id: string, variables?: object }, subject?: string, from?: string, reply_to?: string }\u0060 - **delay**: \u0060{ duration: string }\u0060 \u2014 a human-readable duration (e.g. \u0060\\\u002230 minutes\\\u0022\u0060) - **wait_for_event**: \u0060{ event_name: string, timeout?: string, filter_rule?: object }\u0060 \u2014 \u0060timeout\u0060 is a human-readable duration (e.g. \u0060\\\u00221 hour\\\u0022\u0060) - **condition**: A rule tree with \u0060type\u0060 (\u0060rule\u0060, \u0060and\u0060, \u0060or\u0060), \u0060field\u0060, \u0060operator\u0060, and \u0060value\u0060 - **contact_update**: \u0060{ first_name?: string|object, last_name?: string|object, unsubscribed?: boolean|object, properties?: object }\u0060 - **contact_delete**: \u0060{}\u0060 - **add_to_segment**: \u0060{ segment_id: string }\u0060\n\u0022"
+        "description": "Configuration for the step. Shape depends on \u0060type\u0060: - **trigger**: \u0060{ event_name: string }\u0060 - **send_email**: \u0060{ template: { id: string, variables?: object }, subject?: string, from?: string, reply_to?: string }\u0060 - **delay**: \u0060{ duration: string }\u0060 \u2014 a human-readable duration (e.g. \u0060\u002230 minutes\u0022\u0060) - **wait_for_event**: \u0060{ event_name: string, timeout?: string, filter_rule?: object }\u0060 \u2014 \u0060timeout\u0060 is a human-readable duration (e.g. \u0060\u00221 hour\u0022\u0060) - **condition**: A rule tree with \u0060type\u0060 (\u0060rule\u0060, \u0060and\u0060, \u0060or\u0060), \u0060field\u0060, \u0060operator\u0060, and \u0060value\u0060 - **contact_update**: \u0060{ first_name?: string|object, last_name?: string|object, unsubscribed?: boolean|object, properties?: object }\u0060 - **contact_delete**: \u0060{}\u0060 - **add_to_segment**: \u0060{ segment_id: string }\u0060\n"
       },
       "AutomationStepResponseConfig": {
         "type": "object",
-        "description": "\u0022Configuration for the step. Shape depends on \u0060type\u0060. For \u0060delay\u0060 steps, config contains \u0060{ duration: string }\u0060 with a human-readable duration (e.g. \u0060\\\u002230 minutes\\\u0022\u0060). For \u0060wait_for_event\u0060 steps, config contains \u0060{ event_name: string, timeout?: string, filter_rule?: object }\u0060 where \u0060timeout\u0060 is a human-readable duration.\n\u0022"
+        "description": "Configuration for the step. Shape depends on \u0060type\u0060. For \u0060delay\u0060 steps, config contains \u0060{ duration: string }\u0060 with a human-readable duration (e.g. \u0060\u002230 minutes\u0022\u0060). For \u0060wait_for_event\u0060 steps, config contains \u0060{ event_name: string, timeout?: string, filter_rule?: object }\u0060 where \u0060timeout\u0060 is a human-readable duration.\n"
       },
       "AutomationRunStepOutput": {
         "type": [
@@ -9007,6 +9179,10 @@
           "$ref": "#/components/schemas/SendEmailRequest"
         }
       },
+      "ExamplePayload": {
+        "type": "object",
+        "description": "Placeholder schema for path example refs"
+      },
       "TemplateVariableFallbackValueBranch1": {
         "required": [
           "value"
@@ -9101,113 +9277,17 @@
           }
         }
       },
-      "ExamplePayload": {
-        "type": "object",
-        "description": "Placeholder schema for path example refs"
-      },
       "EmailsSendBatchRequestRequestBody": {
         "type": "array",
         "items": {
           "$ref": "#/components/schemas/SendEmailRequest"
         }
       },
-      "PostOpenApiFixerWebhooksEvent0201Response": {
-        "title": "DefaultResponse",
-        "type": "object",
-        "description": "Default response schema"
-      },
-      "PostOpenApiFixerWebhooksEvent1201Response": {
-        "title": "DefaultResponse",
-        "type": "object",
-        "description": "Default response schema"
-      },
-      "PostOpenApiFixerWebhooksEvent2201Response": {
-        "title": "DefaultResponse",
-        "type": "object",
-        "description": "Default response schema"
-      },
-      "PostOpenApiFixerWebhooksEvent3201Response": {
-        "title": "DefaultResponse",
-        "type": "object",
-        "description": "Default response schema"
-      },
-      "PostOpenApiFixerWebhooksEvent4201Response": {
-        "title": "DefaultResponse",
-        "type": "object",
-        "description": "Default response schema"
-      },
-      "PostOpenApiFixerWebhooksEvent5201Response": {
-        "title": "DefaultResponse",
-        "type": "object",
-        "description": "Default response schema"
-      },
-      "PostOpenApiFixerWebhooksEvent6201Response": {
-        "title": "DefaultResponse",
-        "type": "object",
-        "description": "Default response schema"
-      },
-      "PostOpenApiFixerWebhooksEvent7201Response": {
-        "title": "DefaultResponse",
-        "type": "object",
-        "description": "Default response schema"
-      },
-      "PostOpenApiFixerWebhooksEvent8201Response": {
-        "title": "DefaultResponse",
-        "type": "object",
-        "description": "Default response schema"
-      },
-      "PostOpenApiFixerWebhooksEvent9201Response": {
-        "title": "DefaultResponse",
-        "type": "object",
-        "description": "Default response schema"
-      },
-      "PostOpenApiFixerWebhooksEvent10201Response": {
-        "title": "DefaultResponse",
-        "type": "object",
-        "description": "Default response schema"
-      },
-      "PostOpenApiFixerWebhooksEvent11201Response": {
-        "title": "DefaultResponse",
-        "type": "object",
-        "description": "Default response schema"
-      },
-      "PostOpenApiFixerWebhooksEvent12201Response": {
-        "title": "DefaultResponse",
-        "type": "object",
-        "description": "Default response schema"
-      },
-      "PostOpenApiFixerWebhooksEvent13201Response": {
-        "title": "DefaultResponse",
-        "type": "object",
-        "description": "Default response schema"
-      },
-      "PostOpenApiFixerWebhooksEvent14201Response": {
-        "title": "DefaultResponse",
-        "type": "object",
-        "description": "Default response schema"
-      },
-      "PostOpenApiFixerWebhooksEvent15201Response": {
-        "title": "DefaultResponse",
-        "type": "object",
-        "description": "Default response schema"
-      },
-      "PostOpenApiFixerWebhooksEvent16201Response": {
-        "title": "DefaultResponse",
-        "type": "object",
-        "description": "Default response schema"
-      },
       "SendEmailRequestHeadersProperty": {
         "type": "object",
         "description": "Custom headers to add to the email."
       },
       "EmailTemplateInputVariablesProperty": {
-        "type": "object",
-        "additionalProperties": {
-          "$ref": "#/components/schemas/EmailTemplateInputVariablesAdditionalProperties"
-        },
-        "description": "Template variables object with key/value pairs."
-      },
-      "SendEmailRequestTemplateVariables": {
         "type": "object",
         "additionalProperties": {
           "$ref": "#/components/schemas/EmailTemplateInputVariablesAdditionalProperties"
@@ -9248,11 +9328,11 @@
       },
       "AutomationStepConfigProperty": {
         "type": "object",
-        "description": "\u0022Configuration for the step. Shape depends on \u0060type\u0060: - **trigger**: \u0060{ event_name: string }\u0060 - **send_email**: \u0060{ template: { id: string, variables?: object }, subject?: string, from?: string, reply_to?: string }\u0060 - **delay**: \u0060{ duration: string }\u0060 \u2014 a human-readable duration (e.g. \u0060\\\u002230 minutes\\\u0022\u0060) - **wait_for_event**: \u0060{ event_name: string, timeout?: string, filter_rule?: object }\u0060 \u2014 \u0060timeout\u0060 is a human-readable duration (e.g. \u0060\\\u00221 hour\\\u0022\u0060) - **condition**: A rule tree with \u0060type\u0060 (\u0060rule\u0060, \u0060and\u0060, \u0060or\u0060), \u0060field\u0060, \u0060operator\u0060, and \u0060value\u0060 - **contact_update**: \u0060{ first_name?: string|object, last_name?: string|object, unsubscribed?: boolean|object, properties?: object }\u0060 - **contact_delete**: \u0060{}\u0060 - **add_to_segment**: \u0060{ segment_id: string }\u0060\n\u0022"
+        "description": "Configuration for the step. Shape depends on \u0060type\u0060: - **trigger**: \u0060{ event_name: string }\u0060 - **send_email**: \u0060{ template: { id: string, variables?: object }, subject?: string, from?: string, reply_to?: string }\u0060 - **delay**: \u0060{ duration: string }\u0060 \u2014 a human-readable duration (e.g. \u0060\u002230 minutes\u0022\u0060) - **wait_for_event**: \u0060{ event_name: string, timeout?: string, filter_rule?: object }\u0060 \u2014 \u0060timeout\u0060 is a human-readable duration (e.g. \u0060\u00221 hour\u0022\u0060) - **condition**: A rule tree with \u0060type\u0060 (\u0060rule\u0060, \u0060and\u0060, \u0060or\u0060), \u0060field\u0060, \u0060operator\u0060, and \u0060value\u0060 - **contact_update**: \u0060{ first_name?: string|object, last_name?: string|object, unsubscribed?: boolean|object, properties?: object }\u0060 - **contact_delete**: \u0060{}\u0060 - **add_to_segment**: \u0060{ segment_id: string }\u0060\n"
       },
       "AutomationStepResponseConfigProperty": {
         "type": "object",
-        "description": "\u0022Configuration for the step. Shape depends on \u0060type\u0060. For \u0060delay\u0060 steps, config contains \u0060{ duration: string }\u0060 with a human-readable duration (e.g. \u0060\\\u002230 minutes\\\u0022\u0060). For \u0060wait_for_event\u0060 steps, config contains \u0060{ event_name: string, timeout?: string, filter_rule?: object }\u0060 where \u0060timeout\u0060 is a human-readable duration.\n\u0022"
+        "description": "Configuration for the step. Shape depends on \u0060type\u0060. For \u0060delay\u0060 steps, config contains \u0060{ duration: string }\u0060 with a human-readable duration (e.g. \u0060\u002230 minutes\u0022\u0060). For \u0060wait_for_event\u0060 steps, config contains \u0060{ event_name: string, timeout?: string, filter_rule?: object }\u0060 where \u0060timeout\u0060 is a human-readable duration.\n"
       },
       "AutomationRunStepOutputProperty": {
         "type": "object",
@@ -9316,6 +9396,13 @@
           "type": "string"
         },
         "description": "Tag key-value pairs associated with the email."
+      },
+      "SendEmailRequestTemplateVariables": {
+        "type": "object",
+        "additionalProperties": {
+          "$ref": "#/components/schemas/EmailTemplateInputVariablesAdditionalProperties"
+        },
+        "description": "Template variables object with key/value pairs."
       },
       "TemplateVariableFallbackValueBranch5ValueItem": {
         "type": "object"
@@ -9720,7 +9807,7 @@
           ]
         }
       },
-      "DomainClaimRecordType": {
+      "TxtType": {
         "enum": [
           "TXT"
         ],
@@ -9729,7 +9816,7 @@
         "description": "The DNS record type. Always TXT for domain claims.",
         "example": "TXT",
         "x-ms-enum": {
-          "name": "DomainClaimRecordType",
+          "name": "TxtType",
           "modelAsString": false,
           "values": [
             {
@@ -10978,6 +11065,312 @@
           ]
         }
       },
+      "EmailSentType": {
+        "const": null,
+        "enum": [
+          "email.sent"
+        ],
+        "type": "string",
+        "description": "The event type.",
+        "x-ms-enum": {
+          "name": "EmailSentType",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "email.sent",
+              "name": "EmailSent"
+            }
+          ]
+        }
+      },
+      "EmailDeliveredType": {
+        "const": null,
+        "enum": [
+          "email.delivered"
+        ],
+        "type": "string",
+        "description": "The event type.",
+        "x-ms-enum": {
+          "name": "EmailDeliveredType",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "email.delivered",
+              "name": "EmailDelivered"
+            }
+          ]
+        }
+      },
+      "EmailDeliveryDelayedType": {
+        "const": null,
+        "enum": [
+          "email.delivery_delayed"
+        ],
+        "type": "string",
+        "description": "The event type.",
+        "x-ms-enum": {
+          "name": "EmailDeliveryDelayedType",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "email.delivery_delayed",
+              "name": "EmailDeliveryDelayed"
+            }
+          ]
+        }
+      },
+      "EmailBouncedType": {
+        "const": null,
+        "enum": [
+          "email.bounced"
+        ],
+        "type": "string",
+        "description": "The event type.",
+        "x-ms-enum": {
+          "name": "EmailBouncedType",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "email.bounced",
+              "name": "EmailBounced"
+            }
+          ]
+        }
+      },
+      "EmailComplainedType": {
+        "const": null,
+        "enum": [
+          "email.complained"
+        ],
+        "type": "string",
+        "description": "The event type.",
+        "x-ms-enum": {
+          "name": "EmailComplainedType",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "email.complained",
+              "name": "EmailComplained"
+            }
+          ]
+        }
+      },
+      "EmailOpenedType": {
+        "const": null,
+        "enum": [
+          "email.opened"
+        ],
+        "type": "string",
+        "description": "The event type.",
+        "x-ms-enum": {
+          "name": "EmailOpenedType",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "email.opened",
+              "name": "EmailOpened"
+            }
+          ]
+        }
+      },
+      "EmailClickedType": {
+        "const": null,
+        "enum": [
+          "email.clicked"
+        ],
+        "type": "string",
+        "description": "The event type.",
+        "x-ms-enum": {
+          "name": "EmailClickedType",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "email.clicked",
+              "name": "EmailClicked"
+            }
+          ]
+        }
+      },
+      "EmailFailedType": {
+        "const": null,
+        "enum": [
+          "email.failed"
+        ],
+        "type": "string",
+        "description": "The event type.",
+        "x-ms-enum": {
+          "name": "EmailFailedType",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "email.failed",
+              "name": "EmailFailed"
+            }
+          ]
+        }
+      },
+      "EmailScheduledType": {
+        "const": null,
+        "enum": [
+          "email.scheduled"
+        ],
+        "type": "string",
+        "description": "The event type.",
+        "x-ms-enum": {
+          "name": "EmailScheduledType",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "email.scheduled",
+              "name": "EmailScheduled"
+            }
+          ]
+        }
+      },
+      "EmailSuppressedType": {
+        "const": null,
+        "enum": [
+          "email.suppressed"
+        ],
+        "type": "string",
+        "description": "The event type.",
+        "x-ms-enum": {
+          "name": "EmailSuppressedType",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "email.suppressed",
+              "name": "EmailSuppressed"
+            }
+          ]
+        }
+      },
+      "EmailReceivedType": {
+        "const": null,
+        "enum": [
+          "email.received"
+        ],
+        "type": "string",
+        "description": "The event type.",
+        "x-ms-enum": {
+          "name": "EmailReceivedType",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "email.received",
+              "name": "EmailReceived"
+            }
+          ]
+        }
+      },
+      "ContactCreatedType": {
+        "const": null,
+        "enum": [
+          "contact.created"
+        ],
+        "type": "string",
+        "description": "The event type.",
+        "x-ms-enum": {
+          "name": "ContactCreatedType",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "contact.created",
+              "name": "ContactCreated"
+            }
+          ]
+        }
+      },
+      "ContactUpdatedType": {
+        "const": null,
+        "enum": [
+          "contact.updated"
+        ],
+        "type": "string",
+        "description": "The event type.",
+        "x-ms-enum": {
+          "name": "ContactUpdatedType",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "contact.updated",
+              "name": "ContactUpdated"
+            }
+          ]
+        }
+      },
+      "ContactDeletedType": {
+        "const": null,
+        "enum": [
+          "contact.deleted"
+        ],
+        "type": "string",
+        "description": "The event type.",
+        "x-ms-enum": {
+          "name": "ContactDeletedType",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "contact.deleted",
+              "name": "ContactDeleted"
+            }
+          ]
+        }
+      },
+      "DomainCreatedType": {
+        "const": null,
+        "enum": [
+          "domain.created"
+        ],
+        "type": "string",
+        "description": "The event type.",
+        "x-ms-enum": {
+          "name": "DomainCreatedType",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "domain.created",
+              "name": "DomainCreated"
+            }
+          ]
+        }
+      },
+      "DomainUpdatedType": {
+        "const": null,
+        "enum": [
+          "domain.updated"
+        ],
+        "type": "string",
+        "description": "The event type.",
+        "x-ms-enum": {
+          "name": "DomainUpdatedType",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "domain.updated",
+              "name": "DomainUpdated"
+            }
+          ]
+        }
+      },
+      "DomainDeletedType": {
+        "const": null,
+        "enum": [
+          "domain.deleted"
+        ],
+        "type": "string",
+        "description": "The event type.",
+        "x-ms-enum": {
+          "name": "DomainDeletedType",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "domain.deleted",
+              "name": "DomainDeleted"
+            }
+          ]
+        }
+      },
       "GetSuppressionResponseSuccessOrigin": {
         "enum": [
           "bounce",
@@ -11367,12 +11760,6 @@
       "bearerAuth": {
         "type": "http",
         "scheme": "bearer"
-      },
-      "assets_jwt": {
-        "type": "http",
-        "description": "JWT used for assets upload",
-        "scheme": "bearer",
-        "bearerFormat": "JWT"
       }
     }
   },
@@ -11471,18 +11858,12 @@
                 "$ref": "#/components/schemas/EmailSentEvent"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
-          "201": {
-            "description": "Default",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/PostOpenApiFixerWebhooksEvent0201Response"
-                }
-              }
-            }
+          "2XX": {
+            "description": "Return any 2xx status code to acknowledge receipt of the event."
           }
         }
       }
@@ -11502,18 +11883,12 @@
                 "$ref": "#/components/schemas/EmailDeliveredEvent"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
-          "201": {
-            "description": "Default",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/PostOpenApiFixerWebhooksEvent1201Response"
-                }
-              }
-            }
+          "2XX": {
+            "description": "Return any 2xx status code to acknowledge receipt of the event."
           }
         }
       }
@@ -11533,18 +11908,12 @@
                 "$ref": "#/components/schemas/EmailDeliveryDelayedEvent"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
-          "201": {
-            "description": "Default",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/PostOpenApiFixerWebhooksEvent2201Response"
-                }
-              }
-            }
+          "2XX": {
+            "description": "Return any 2xx status code to acknowledge receipt of the event."
           }
         }
       }
@@ -11564,18 +11933,12 @@
                 "$ref": "#/components/schemas/EmailBouncedEvent"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
-          "201": {
-            "description": "Default",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/PostOpenApiFixerWebhooksEvent3201Response"
-                }
-              }
-            }
+          "2XX": {
+            "description": "Return any 2xx status code to acknowledge receipt of the event."
           }
         }
       }
@@ -11595,18 +11958,12 @@
                 "$ref": "#/components/schemas/EmailComplainedEvent"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
-          "201": {
-            "description": "Default",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/PostOpenApiFixerWebhooksEvent4201Response"
-                }
-              }
-            }
+          "2XX": {
+            "description": "Return any 2xx status code to acknowledge receipt of the event."
           }
         }
       }
@@ -11626,18 +11983,12 @@
                 "$ref": "#/components/schemas/EmailOpenedEvent"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
-          "201": {
-            "description": "Default",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/PostOpenApiFixerWebhooksEvent5201Response"
-                }
-              }
-            }
+          "2XX": {
+            "description": "Return any 2xx status code to acknowledge receipt of the event."
           }
         }
       }
@@ -11657,18 +12008,12 @@
                 "$ref": "#/components/schemas/EmailClickedEvent"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
-          "201": {
-            "description": "Default",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/PostOpenApiFixerWebhooksEvent6201Response"
-                }
-              }
-            }
+          "2XX": {
+            "description": "Return any 2xx status code to acknowledge receipt of the event."
           }
         }
       }
@@ -11688,18 +12033,12 @@
                 "$ref": "#/components/schemas/EmailFailedEvent"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
-          "201": {
-            "description": "Default",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/PostOpenApiFixerWebhooksEvent7201Response"
-                }
-              }
-            }
+          "2XX": {
+            "description": "Return any 2xx status code to acknowledge receipt of the event."
           }
         }
       }
@@ -11719,18 +12058,12 @@
                 "$ref": "#/components/schemas/EmailScheduledEvent"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
-          "201": {
-            "description": "Default",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/PostOpenApiFixerWebhooksEvent8201Response"
-                }
-              }
-            }
+          "2XX": {
+            "description": "Return any 2xx status code to acknowledge receipt of the event."
           }
         }
       }
@@ -11750,18 +12083,12 @@
                 "$ref": "#/components/schemas/EmailSuppressedEvent"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
-          "201": {
-            "description": "Default",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/PostOpenApiFixerWebhooksEvent9201Response"
-                }
-              }
-            }
+          "2XX": {
+            "description": "Return any 2xx status code to acknowledge receipt of the event."
           }
         }
       }
@@ -11781,18 +12108,12 @@
                 "$ref": "#/components/schemas/EmailReceivedEvent"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
-          "201": {
-            "description": "Default",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/PostOpenApiFixerWebhooksEvent10201Response"
-                }
-              }
-            }
+          "2XX": {
+            "description": "Return any 2xx status code to acknowledge receipt of the event."
           }
         }
       }
@@ -11803,7 +12124,7 @@
           "Webhook Events"
         ],
         "summary": "Contact created",
-        "description": "\u0022Occurs whenever a contact was successfully created. Note: when importing multiple contacts via CSV, this event is not triggered.\u0022",
+        "description": "Occurs whenever a contact was successfully created. Note: when importing multiple contacts via CSV, this event is not triggered.",
         "operationId": "PostOpenApiFixerWebhooksEvent11",
         "requestBody": {
           "content": {
@@ -11812,18 +12133,12 @@
                 "$ref": "#/components/schemas/ContactCreatedEvent"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
-          "201": {
-            "description": "Default",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/PostOpenApiFixerWebhooksEvent11201Response"
-                }
-              }
-            }
+          "2XX": {
+            "description": "Return any 2xx status code to acknowledge receipt of the event."
           }
         }
       }
@@ -11843,18 +12158,12 @@
                 "$ref": "#/components/schemas/ContactUpdatedEvent"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
-          "201": {
-            "description": "Default",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/PostOpenApiFixerWebhooksEvent12201Response"
-                }
-              }
-            }
+          "2XX": {
+            "description": "Return any 2xx status code to acknowledge receipt of the event."
           }
         }
       }
@@ -11874,18 +12183,12 @@
                 "$ref": "#/components/schemas/ContactDeletedEvent"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
-          "201": {
-            "description": "Default",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/PostOpenApiFixerWebhooksEvent13201Response"
-                }
-              }
-            }
+          "2XX": {
+            "description": "Return any 2xx status code to acknowledge receipt of the event."
           }
         }
       }
@@ -11905,18 +12208,12 @@
                 "$ref": "#/components/schemas/DomainCreatedEvent"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
-          "201": {
-            "description": "Default",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/PostOpenApiFixerWebhooksEvent14201Response"
-                }
-              }
-            }
+          "2XX": {
+            "description": "Return any 2xx status code to acknowledge receipt of the event."
           }
         }
       }
@@ -11936,18 +12233,12 @@
                 "$ref": "#/components/schemas/DomainUpdatedEvent"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
-          "201": {
-            "description": "Default",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/PostOpenApiFixerWebhooksEvent15201Response"
-                }
-              }
-            }
+          "2XX": {
+            "description": "Return any 2xx status code to acknowledge receipt of the event."
           }
         }
       }
@@ -11967,18 +12258,12 @@
                 "$ref": "#/components/schemas/DomainDeletedEvent"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
-          "201": {
-            "description": "Default",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/PostOpenApiFixerWebhooksEvent16201Response"
-                }
-              }
-            }
+          "2XX": {
+            "description": "Return any 2xx status code to acknowledge receipt of the event."
           }
         }
       }

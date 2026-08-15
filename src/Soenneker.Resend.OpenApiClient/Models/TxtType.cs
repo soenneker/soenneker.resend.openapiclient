@@ -5,7 +5,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
 {
     /// <summary>The DNS record type. Always TXT for domain claims.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public enum DomainClaimRecordType
+    public enum TxtType
     {
         [EnumMember(Value = "TXT")]
         #pragma warning disable CS1591

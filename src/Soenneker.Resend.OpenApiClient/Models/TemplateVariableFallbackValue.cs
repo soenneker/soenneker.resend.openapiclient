@@ -61,21 +61,21 @@ namespace Soenneker.Resend.OpenApiClient.Models
         public static global::Soenneker.Resend.OpenApiClient.Models.TemplateVariableFallbackValue CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            var mappingValue = parseNode.GetChildNode("type")?.GetStringValue();
+            var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
             var result = new global::Soenneker.Resend.OpenApiClient.Models.TemplateVariableFallbackValue();
-            if("TemplateVariableFallbackValue_1".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            if("TemplateVariableFallbackValueBranch1".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.TemplateVariableFallbackValueBranch1 = new global::Soenneker.Resend.OpenApiClient.Models.TemplateVariableFallbackValueBranch1();
             }
-            else if("TemplateVariableFallbackValue_2".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("TemplateVariableFallbackValueBranch2".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.TemplateVariableFallbackValueBranch2 = new global::Soenneker.Resend.OpenApiClient.Models.TemplateVariableFallbackValueBranch2();
             }
-            else if("TemplateVariableFallbackValue_3".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("TemplateVariableFallbackValueBranch3".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.TemplateVariableFallbackValueBranch3 = new global::Soenneker.Resend.OpenApiClient.Models.TemplateVariableFallbackValueBranch3();
             }
-            else if("TemplateVariableFallbackValue_5".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if("TemplateVariableFallbackValueBranch5".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
             {
                 result.TemplateVariableFallbackValueBranch5 = new global::Soenneker.Resend.OpenApiClient.Models.TemplateVariableFallbackValueBranch5();
             }

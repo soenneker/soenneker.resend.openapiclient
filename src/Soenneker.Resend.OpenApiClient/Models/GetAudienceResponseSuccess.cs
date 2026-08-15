@@ -7,15 +7,31 @@ using System.IO;
 using System;
 namespace Soenneker.Resend.OpenApiClient.Models
 {
-    /// <summary>
-    /// The TXT record to add to your DNS to prove ownership of the claimed domain.
-    /// </summary>
+    [Obsolete("")]
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class DomainClaimRecord : IAdditionalDataHolder, IParsable
+    #pragma warning disable CS1591
+    public partial class GetAudienceResponseSuccess : IAdditionalDataHolder, IParsable
+    #pragma warning restore CS1591
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The name of the DNS record (the domain being claimed).</summary>
+        /// <summary>The date that the object was created.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? CreatedAt { get; set; }
+#nullable restore
+#else
+        public string CreatedAt { get; set; }
+#endif
+        /// <summary>The ID of the audience.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Id { get; set; }
+#nullable restore
+#else
+        public string Id { get; set; }
+#endif
+        /// <summary>The name of the audience.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Name { get; set; }
@@ -23,40 +39,30 @@ namespace Soenneker.Resend.OpenApiClient.Models
 #else
         public string Name { get; set; }
 #endif
-        /// <summary>The time to live for the record.</summary>
+        /// <summary>The object of the audience.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Ttl { get; set; }
+        public string? Object { get; set; }
 #nullable restore
 #else
-        public string Ttl { get; set; }
-#endif
-        /// <summary>The DNS record type. Always TXT for domain claims.</summary>
-        public global::Soenneker.Resend.OpenApiClient.Models.TxtType? Type { get; set; }
-        /// <summary>The value of the TXT record.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Value { get; set; }
-#nullable restore
-#else
-        public string Value { get; set; }
+        public string Object { get; set; }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.Resend.OpenApiClient.Models.DomainClaimRecord"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.Resend.OpenApiClient.Models.GetAudienceResponseSuccess"/> and sets the default values.
         /// </summary>
-        public DomainClaimRecord()
+        public GetAudienceResponseSuccess()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Resend.OpenApiClient.Models.DomainClaimRecord"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Resend.OpenApiClient.Models.GetAudienceResponseSuccess"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.Resend.OpenApiClient.Models.DomainClaimRecord CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.Resend.OpenApiClient.Models.GetAudienceResponseSuccess CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Resend.OpenApiClient.Models.DomainClaimRecord();
+            return new global::Soenneker.Resend.OpenApiClient.Models.GetAudienceResponseSuccess();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -66,10 +72,10 @@ namespace Soenneker.Resend.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "created_at", n => { CreatedAt = n.GetStringValue(); } },
+                { "id", n => { Id = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
-                { "ttl", n => { Ttl = n.GetStringValue(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.Resend.OpenApiClient.Models.TxtType>(); } },
-                { "value", n => { Value = n.GetStringValue(); } },
+                { "object", n => { Object = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -79,10 +85,10 @@ namespace Soenneker.Resend.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteStringValue("created_at", CreatedAt);
+            writer.WriteStringValue("id", Id);
             writer.WriteStringValue("name", Name);
-            writer.WriteStringValue("ttl", Ttl);
-            writer.WriteEnumValue<global::Soenneker.Resend.OpenApiClient.Models.TxtType>("type", Type);
-            writer.WriteStringValue("value", Value);
+            writer.WriteStringValue("object", Object);
             writer.WriteAdditionalData(AdditionalData);
         }
     }
