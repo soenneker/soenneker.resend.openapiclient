@@ -51,10 +51,10 @@ namespace Soenneker.Resend.OpenApiClient.Models
         /// <summary>The email headers.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Resend.OpenApiClient.Models.GetReceivedEmailResponseHeaders? Headers { get; set; }
+        public global::Soenneker.Resend.OpenApiClient.Models.GetReceivedEmailResponseHeadersProperty? Headers { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Resend.OpenApiClient.Models.GetReceivedEmailResponseHeaders Headers { get; set; }
+        public global::Soenneker.Resend.OpenApiClient.Models.GetReceivedEmailResponseHeadersProperty Headers { get; set; }
 #endif
         /// <summary>The HTML content of the email.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -144,7 +144,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
                 { "cc", n => { Cc = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "from", n => { From = n.GetStringValue(); } },
-                { "headers", n => { Headers = n.GetObjectValue<global::Soenneker.Resend.OpenApiClient.Models.GetReceivedEmailResponseHeaders>(global::Soenneker.Resend.OpenApiClient.Models.GetReceivedEmailResponseHeaders.CreateFromDiscriminatorValue); } },
+                { "headers", n => { Headers = n.GetObjectValue<global::Soenneker.Resend.OpenApiClient.Models.GetReceivedEmailResponseHeadersProperty>(global::Soenneker.Resend.OpenApiClient.Models.GetReceivedEmailResponseHeadersProperty.CreateFromDiscriminatorValue); } },
                 { "html", n => { Html = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "message_id", n => { MessageId = n.GetStringValue(); } },
@@ -167,7 +167,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
             writer.WriteCollectionOfPrimitiveValues<string>("cc", Cc);
             writer.WriteDateTimeOffsetValue("created_at", CreatedAt);
             writer.WriteStringValue("from", From);
-            writer.WriteObjectValue<global::Soenneker.Resend.OpenApiClient.Models.GetReceivedEmailResponseHeaders>("headers", Headers);
+            writer.WriteObjectValue<global::Soenneker.Resend.OpenApiClient.Models.GetReceivedEmailResponseHeadersProperty>("headers", Headers);
             writer.WriteStringValue("html", Html);
             writer.WriteGuidValue("id", Id);
             writer.WriteStringValue("message_id", MessageId);

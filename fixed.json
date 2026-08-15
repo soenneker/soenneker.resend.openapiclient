@@ -5126,7 +5126,7 @@
             "example": "Email content"
           },
           "headers": {
-            "$ref": "#/components/schemas/GetReceivedEmailResponseHeaders"
+            "$ref": "#/components/schemas/GetReceivedEmailResponseHeadersProperty"
           },
           "created_at": {
             "type": "string",
@@ -6268,10 +6268,10 @@
             "description": "The user agent of the request."
           },
           "request_body": {
-            "$ref": "#/components/schemas/LogRequestBody"
+            "$ref": "#/components/schemas/LogRequestBodyProperty"
           },
           "response_body": {
-            "$ref": "#/components/schemas/LogResponseBody"
+            "$ref": "#/components/schemas/LogResponseBodyProperty"
           }
         }
       },
@@ -6622,10 +6622,10 @@
             "example": "2023-10-06 23:47:56.678\u002B00"
           },
           "output": {
-            "$ref": "#/components/schemas/AutomationRunStepOutput"
+            "$ref": "#/components/schemas/AutomationRunStepOutputProperty"
           },
           "error": {
-            "$ref": "#/components/schemas/AutomationRunStepError"
+            "$ref": "#/components/schemas/AutomationRunStepErrorProperty"
           },
           "created_at": {
             "type": "string",
@@ -6752,7 +6752,7 @@
             "description": "The event name."
           },
           "schema": {
-            "$ref": "#/components/schemas/EventTypeSchema"
+            "$ref": "#/components/schemas/EventTypeSchemaProperty"
           },
           "created_at": {
             "type": "string",
@@ -6782,7 +6782,7 @@
             "description": "The event name."
           },
           "schema": {
-            "$ref": "#/components/schemas/EventSummarySchema"
+            "$ref": "#/components/schemas/EventSummarySchemaProperty"
           },
           "created_at": {
             "type": "string",
@@ -6810,7 +6810,7 @@
             "description": "The name of the event. Cannot start with the reserved \u0060resend:\u0060 prefix."
           },
           "schema": {
-            "$ref": "#/components/schemas/CreateEventRequestSchema"
+            "$ref": "#/components/schemas/CreateEventRequestSchemaProperty"
           }
         }
       },
@@ -6858,7 +6858,7 @@
         "type": "object",
         "properties": {
           "schema": {
-            "$ref": "#/components/schemas/UpdateEventRequestSchema"
+            "$ref": "#/components/schemas/UpdateEventRequestSchemaProperty"
           }
         }
       },
@@ -9226,6 +9226,10 @@
         "type": "object",
         "description": "A map of custom property keys and values to update."
       },
+      "GetReceivedEmailResponseHeadersProperty": {
+        "type": "object",
+        "description": "The email headers."
+      },
       "CreateSegmentOptionsFilterProperty": {
         "type": "object",
         "description": "Filter conditions for the segment."
@@ -9234,6 +9238,14 @@
         "type": "object",
         "description": "Filter conditions for the segment."
       },
+      "LogRequestBodyProperty": {
+        "type": "object",
+        "description": "The request body sent to the API."
+      },
+      "LogResponseBodyProperty": {
+        "type": "object",
+        "description": "The response body returned by the API."
+      },
       "AutomationStepConfigProperty": {
         "type": "object",
         "description": "\u0022Configuration for the step. Shape depends on \u0060type\u0060: - **trigger**: \u0060{ event_name: string }\u0060 - **send_email**: \u0060{ template: { id: string, variables?: object }, subject?: string, from?: string, reply_to?: string }\u0060 - **delay**: \u0060{ duration: string }\u0060 \u2014 a human-readable duration (e.g. \u0060\\\u002230 minutes\\\u0022\u0060) - **wait_for_event**: \u0060{ event_name: string, timeout?: string, filter_rule?: object }\u0060 \u2014 \u0060timeout\u0060 is a human-readable duration (e.g. \u0060\\\u00221 hour\\\u0022\u0060) - **condition**: A rule tree with \u0060type\u0060 (\u0060rule\u0060, \u0060and\u0060, \u0060or\u0060), \u0060field\u0060, \u0060operator\u0060, and \u0060value\u0060 - **contact_update**: \u0060{ first_name?: string|object, last_name?: string|object, unsubscribed?: boolean|object, properties?: object }\u0060 - **contact_delete**: \u0060{}\u0060 - **add_to_segment**: \u0060{ segment_id: string }\u0060\n\u0022"
@@ -9241,6 +9253,30 @@
       "AutomationStepResponseConfigProperty": {
         "type": "object",
         "description": "\u0022Configuration for the step. Shape depends on \u0060type\u0060. For \u0060delay\u0060 steps, config contains \u0060{ duration: string }\u0060 with a human-readable duration (e.g. \u0060\\\u002230 minutes\\\u0022\u0060). For \u0060wait_for_event\u0060 steps, config contains \u0060{ event_name: string, timeout?: string, filter_rule?: object }\u0060 where \u0060timeout\u0060 is a human-readable duration.\n\u0022"
+      },
+      "AutomationRunStepOutputProperty": {
+        "type": "object",
+        "description": "The output produced by the step, if any."
+      },
+      "AutomationRunStepErrorProperty": {
+        "type": "object",
+        "description": "The error produced by the step, if any."
+      },
+      "EventTypeSchemaProperty": {
+        "type": "object",
+        "description": "A flat key/type map defining the event payload schema. Supported types are \u0060string\u0060, \u0060number\u0060, \u0060boolean\u0060, and \u0060date\u0060."
+      },
+      "EventSummarySchemaProperty": {
+        "type": "object",
+        "description": "A flat key/type map defining the event payload schema. Supported types are \u0060string\u0060, \u0060number\u0060, \u0060boolean\u0060, and \u0060date\u0060."
+      },
+      "CreateEventRequestSchemaProperty": {
+        "type": "object",
+        "description": "An optional flat key/type map defining the event payload schema. Supported types are \u0060string\u0060, \u0060number\u0060, \u0060boolean\u0060, and \u0060date\u0060."
+      },
+      "UpdateEventRequestSchemaProperty": {
+        "type": "object",
+        "description": "A flat key/type map defining the event payload schema. Set to \u0060null\u0060 to clear the schema. Supported types are \u0060string\u0060, \u0060number\u0060, \u0060boolean\u0060, and \u0060date\u0060."
       },
       "SendEventRequestPayloadProperty": {
         "type": "object",

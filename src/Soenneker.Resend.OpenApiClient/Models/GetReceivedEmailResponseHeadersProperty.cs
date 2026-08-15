@@ -8,29 +8,29 @@ using System;
 namespace Soenneker.Resend.OpenApiClient.Models
 {
     /// <summary>
-    /// The error produced by the step, if any.
+    /// The email headers.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class AutomationRunStepError : IAdditionalDataHolder, IParsable
+    public partial class GetReceivedEmailResponseHeadersProperty : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.Resend.OpenApiClient.Models.AutomationRunStepError"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.Resend.OpenApiClient.Models.GetReceivedEmailResponseHeadersProperty"/> and sets the default values.
         /// </summary>
-        public AutomationRunStepError()
+        public GetReceivedEmailResponseHeadersProperty()
         {
             AdditionalData = new Dictionary<string, object>();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Resend.OpenApiClient.Models.AutomationRunStepError"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Resend.OpenApiClient.Models.GetReceivedEmailResponseHeadersProperty"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::Soenneker.Resend.OpenApiClient.Models.AutomationRunStepError CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::Soenneker.Resend.OpenApiClient.Models.GetReceivedEmailResponseHeadersProperty CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Resend.OpenApiClient.Models.AutomationRunStepError();
+            return new global::Soenneker.Resend.OpenApiClient.Models.GetReceivedEmailResponseHeadersProperty();
         }
         /// <summary>
         /// The deserialization information for the current model
