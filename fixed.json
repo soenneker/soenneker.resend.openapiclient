@@ -179,6 +179,47 @@
         }
       }
     },
+    "/emails/{emailId}/share": {
+      "post": {
+        "tags": [
+          "Emails"
+        ],
+        "summary": "Create a shareable link for a sent or received email.",
+        "operationId": "EmailsShare",
+        "parameters": [
+          {
+            "name": "emailId",
+            "in": "path",
+            "description": "The ID of the email.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ShareEmailOptions"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ShareEmailResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/emails/batch": {
       "post": {
         "tags": [
@@ -874,6 +915,45 @@
       }
     },
     "/api-keys/{apiKeyId}": {
+      "patch": {
+        "tags": [
+          "API Keys"
+        ],
+        "summary": "Update an existing API key",
+        "operationId": "ApiKeysUpdate",
+        "parameters": [
+          {
+            "name": "apiKeyId",
+            "in": "path",
+            "description": "The API key ID.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateApiKeyRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UpdateApiKeyResponse"
+                }
+              }
+            }
+          }
+        }
+      },
       "delete": {
         "tags": [
           "API Keys"
@@ -3610,6 +3690,35 @@
           }
         }
       },
+      "ShareEmailOptions": {
+        "type": "object",
+        "properties": {
+          "expires_in": {
+            "type": "string",
+            "description": "How long the link stays valid for, as a duration like \u006010m\u0060, \u00602 hours\u0060, or \u00601 day\u0060. Defaults to \u006048h\u0060 and cannot exceed 48 hours."
+          }
+        }
+      },
+      "ShareEmailResponse": {
+        "type": "object",
+        "properties": {
+          "object": {
+            "type": "string",
+            "description": "The type of object.",
+            "example": "email"
+          },
+          "id": {
+            "type": "string",
+            "description": "The ID of the email.",
+            "example": "4ef9a417-02e9-4d39-ad75-9611e0fcc33c"
+          },
+          "url": {
+            "type": "string",
+            "description": "The shareable link, valid until it expires.",
+            "example": "https://resend.com/shared?token=eyJhbGciOiJIUzI1NiJ9..."
+          }
+        }
+      },
       "Email": {
         "type": "object",
         "properties": {
@@ -4335,6 +4444,32 @@
             "type": "boolean",
             "description": "Indicates whether the API key was successfully deleted.",
             "example": true
+          }
+        }
+      },
+      "UpdateApiKeyRequest": {
+        "required": [
+          "name"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "The API key name."
+          }
+        }
+      },
+      "UpdateApiKeyResponse": {
+        "type": "object",
+        "properties": {
+          "object": {
+            "type": "string",
+            "description": "The type of object.",
+            "example": "api_key"
+          },
+          "id": {
+            "type": "string",
+            "description": "The ID of the API key."
           }
         }
       },

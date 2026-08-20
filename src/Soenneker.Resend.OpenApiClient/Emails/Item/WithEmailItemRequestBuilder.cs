@@ -5,6 +5,7 @@ using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.Resend.OpenApiClient.Emails.Item.Attachments;
 using Soenneker.Resend.OpenApiClient.Emails.Item.Cancel;
+using Soenneker.Resend.OpenApiClient.Emails.Item.Share;
 using Soenneker.Resend.OpenApiClient.Models;
 using System.Collections.Generic;
 using System.IO;
@@ -28,6 +29,11 @@ namespace Soenneker.Resend.OpenApiClient.Emails.Item
         public global::Soenneker.Resend.OpenApiClient.Emails.Item.Cancel.CancelRequestBuilder Cancel
         {
             get => new global::Soenneker.Resend.OpenApiClient.Emails.Item.Cancel.CancelRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The share property</summary>
+        public global::Soenneker.Resend.OpenApiClient.Emails.Item.Share.ShareRequestBuilder Share
+        {
+            get => new global::Soenneker.Resend.OpenApiClient.Emails.Item.Share.ShareRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Resend.OpenApiClient.Emails.Item.WithEmailItemRequestBuilder"/> and sets the default values.
