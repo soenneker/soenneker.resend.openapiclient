@@ -547,6 +547,125 @@
         }
       }
     },
+    "/emails/metrics": {
+      "get": {
+        "tags": [
+          "Emails"
+        ],
+        "summary": "Retrieve account-level email metrics",
+        "operationId": "EmailsMetrics",
+        "parameters": [
+          {
+            "name": "start_date",
+            "in": "query",
+            "description": "The start of the date range, as an ISO 8601 date or datetime. Must be on or before \u0060end_date\u0060. Defaults to 6 days before \u0060end_date\u0060.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "end_date",
+            "in": "query",
+            "description": "The end of the date range, as an ISO 8601 date or datetime. Values in the future are clamped to the current time. Defaults to now.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "timezone",
+            "in": "query",
+            "description": "The IANA timezone (e.g. \u0060America/New_York\u0060) used to bucket periods when \u0060period\u0060 is in \u0060dimensions\u0060.",
+            "schema": {
+              "type": "string",
+              "default": "UTC"
+            }
+          },
+          {
+            "name": "granularity",
+            "in": "query",
+            "description": "The bucket size used when \u0060period\u0060 is in \u0060dimensions\u0060. The date range can\u0027t produce more than 10,000 periods at the chosen granularity.",
+            "schema": {
+              "$ref": "#/components/schemas/EmailsMetricsGranularityParameter"
+            }
+          },
+          {
+            "name": "metrics",
+            "in": "query",
+            "description": "List of metrics to include in the response. Defaults to all metrics. Accepts a comma-separated value, the parameter repeated, or a mix of both.",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/EmailsMetricsMetricsParameterItem"
+              }
+            }
+          },
+          {
+            "name": "dimensions",
+            "in": "query",
+            "description": "List of dimensions to break the response down by. \u0060email\u0060 cannot be combined with \u0060broadcast\u0060. Defaults to \u0060[]\u0060, returning a single \u0060totals\u0060 row for the whole range, with no \u0060data\u0060. Accepts a comma-separated value, the parameter repeated, or a mix of both.",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/EmailsMetricsDimensionsParameterItem"
+              }
+            }
+          },
+          {
+            "name": "domain_id",
+            "in": "query",
+            "description": "List of sending domain IDs to restrict the response to, up to 100. Accepts a comma-separated value, the parameter repeated, or a mix of both.",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "format": "uuid"
+              }
+            }
+          },
+          {
+            "name": "email_id",
+            "in": "query",
+            "description": "List of email IDs to restrict the response to, up to 100. Cannot be combined with the \u0060broadcast\u0060 dimension or \u0060broadcast_id\u0060. Accepts a comma-separated value, the parameter repeated, or a mix of both.",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "format": "uuid"
+              }
+            }
+          },
+          {
+            "name": "broadcast_id",
+            "in": "query",
+            "description": "List of broadcast IDs to restrict the response to, up to 100. Cannot be combined with the \u0060email\u0060 dimension or \u0060email_id\u0060. Accepts a comma-separated value, the parameter repeated, or a mix of both.",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "format": "uuid"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetEmailsMetricsResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/domains": {
       "post": {
         "tags": [
@@ -1908,6 +2027,122 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/CancelBroadcastResponseSuccess"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/broadcasts/{id}/recipients": {
+      "get": {
+        "tags": [
+          "Broadcasts"
+        ],
+        "summary": "Retrieve broadcast recipients",
+        "description": "Retrieve the recipients of a broadcast for a given event type, such as who opened, clicked, or bounced.",
+        "operationId": "BroadcastsRecipients",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The Broadcast ID.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "type",
+            "in": "query",
+            "description": "The recipient event type to filter by.",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/BroadcastsRecipientsTypeParameter"
+            }
+          },
+          {
+            "name": "email",
+            "in": "query",
+            "description": "Filter recipients by email address.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "bounce_type",
+            "in": "query",
+            "description": "Filter bounced recipients by bounce type. Only valid when \u0060type\u0060 is \u0060bounced\u0060.",
+            "schema": {
+              "$ref": "#/components/schemas/BroadcastsRecipientsBounceTypeParameter"
+            }
+          },
+          {
+            "description": "Number of items to return.",
+            "$ref": "#/components/parameters/PaginationLimit"
+          },
+          {
+            "description": "Return items after this cursor.",
+            "$ref": "#/components/parameters/PaginationAfter"
+          },
+          {
+            "description": "Return items before this cursor.",
+            "$ref": "#/components/parameters/PaginationBefore"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListBroadcastRecipientsResponseSuccess"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/broadcasts/{id}/clicked-links": {
+      "get": {
+        "tags": [
+          "Broadcasts"
+        ],
+        "summary": "Retrieve a broadcast\u0027s clicked links",
+        "operationId": "BroadcastsListClickedLinks",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The Broadcast ID.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "description": "Number of items to return.",
+            "$ref": "#/components/parameters/PaginationLimit"
+          },
+          {
+            "description": "Return items after this cursor.",
+            "$ref": "#/components/parameters/PaginationAfter"
+          },
+          {
+            "description": "Return items before this cursor.",
+            "$ref": "#/components/parameters/PaginationBefore"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListBroadcastClickedLinksResponseSuccess"
                 }
               }
             }
@@ -3816,6 +4051,89 @@
           }
         }
       },
+      "GetEmailsMetricsResponse": {
+        "type": "object",
+        "properties": {
+          "object": {
+            "type": "string",
+            "description": "Type of the response object.",
+            "example": "metrics"
+          },
+          "start_date": {
+            "type": "string",
+            "description": "The start of the requested date range, as an ISO 8601 datetime.",
+            "example": "2026-07-01T00:00:00.000Z"
+          },
+          "end_date": {
+            "type": "string",
+            "description": "The end of the requested date range, as an ISO 8601 datetime.",
+            "example": "2026-07-08T00:00:00.000Z"
+          },
+          "metrics": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "The metrics included in the response."
+          },
+          "dimensions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/GetEmailsMetricsResponseDimensionsItem"
+            },
+            "description": "The dimensions the response is broken down by."
+          },
+          "granularity": {
+            "$ref": "#/components/schemas/GetEmailsMetricsResponseGranularity"
+          },
+          "totals": {
+            "$ref": "#/components/schemas/GetEmailsMetricsResponseTotalsProperty"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/EmailMetricsDataRow"
+            },
+            "description": "One row per unique combination of the requested \u0060dimensions\u0060. Omitted when \u0060dimensions\u0060 is empty."
+          }
+        }
+      },
+      "EmailMetricsDataRow": {
+        "type": "object",
+        "properties": {
+          "period": {
+            "type": "string",
+            "description": "Present when \u0060period\u0060 is in \u0060dimensions\u0060."
+          },
+          "domain_id": {
+            "type": "string",
+            "description": "Present when \u0060domain\u0060 is in \u0060dimensions\u0060.",
+            "format": "uuid"
+          },
+          "domain_name": {
+            "type": "string",
+            "description": "Present when \u0060domain\u0060 is in \u0060dimensions\u0060."
+          },
+          "email_id": {
+            "type": "string",
+            "description": "Present when \u0060email\u0060 is in \u0060dimensions\u0060.",
+            "format": "uuid"
+          },
+          "broadcast_id": {
+            "type": "string",
+            "description": "Present when \u0060broadcast\u0060 is in \u0060dimensions\u0060.",
+            "format": "uuid"
+          },
+          "broadcast_name": {
+            "type": "string",
+            "description": "Present when \u0060broadcast\u0060 is in \u0060dimensions\u0060."
+          }
+        },
+        "additionalProperties": {
+          "type": "number"
+        },
+        "description": "A single breakdown row. Which dimension fields are present depends on the requested \u0060dimensions\u0060; which metric fields are present depends on the requested \u0060metrics\u0060."
+      },
       "CreateBatchEmailsResponse": {
         "type": "object",
         "properties": {
@@ -5241,6 +5559,50 @@
             "type": "string",
             "description": "The object type of the response.",
             "example": "broadcast"
+          }
+        }
+      },
+      "ListBroadcastRecipientsResponseSuccess": {
+        "type": "object",
+        "properties": {
+          "object": {
+            "type": "string",
+            "description": "Type of the response object.",
+            "example": "list"
+          },
+          "has_more": {
+            "type": "boolean",
+            "description": "Indicates if there are more results available.",
+            "example": false
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ListBroadcastRecipientsResponseSuccessDataItem"
+            },
+            "description": "Array containing broadcast recipients."
+          }
+        }
+      },
+      "ListBroadcastClickedLinksResponseSuccess": {
+        "type": "object",
+        "properties": {
+          "object": {
+            "type": "string",
+            "description": "Type of the response object.",
+            "example": "list"
+          },
+          "has_more": {
+            "type": "boolean",
+            "description": "Indicates if there are more results available.",
+            "example": false
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ListBroadcastClickedLinksResponseSuccessDataItem"
+            },
+            "description": "Array containing the broadcast\u0027s clicked links."
           }
         }
       },
@@ -8613,6 +8975,13 @@
           "variableName2": 123
         }
       },
+      "GetEmailsMetricsResponseTotals": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "number"
+        },
+        "description": "The requested metrics, totaled over the whole date range."
+      },
       "CreateBatchEmailsResponseDataItem": {
         "type": "object",
         "properties": {
@@ -8766,6 +9135,69 @@
             "type": "string",
             "description": "The topic ID that the broadcast is scoped to.",
             "example": "b6d24b8e-af0b-4c3c-be0c-359bbd97381e"
+          }
+        }
+      },
+      "ListBroadcastRecipientsResponseSuccessDataItem": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Opaque cursor identifying this row, used for pagination.",
+            "example": "b2Zmc2V0OjA"
+          },
+          "contact_id": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "The ID of the contact associated with this recipient, if one exists.",
+            "example": "e169aa45-1ecf-4183-9955-b1499d5701d3"
+          },
+          "email": {
+            "type": "string",
+            "description": "The recipient\u0027s email address.",
+            "example": "steve.wozniak@gmail.com"
+          },
+          "count": {
+            "type": "integer",
+            "description": "The number of times this recipient triggered the event. Only present when \u0060type\u0060 is \u0060opened\u0060 or \u0060clicked\u0060.",
+            "example": 3
+          },
+          "bounce_type": {
+            "$ref": "#/components/schemas/ListBroadcastRecipientsResponseSuccessDataItemBounceType"
+          },
+          "clicked_links": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ListBroadcastRecipientsResponseSuccessDataItemClickedLinksItem"
+            },
+            "description": "The links this recipient clicked. Only present when \u0060type\u0060 is \u0060clicked\u0060."
+          }
+        }
+      },
+      "ListBroadcastClickedLinksResponseSuccessDataItem": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "An opaque cursor for this row, used only for pagination. It does not identify any entity in Resend.",
+            "example": "b2Zmc2V0OjA"
+          },
+          "url": {
+            "type": "string",
+            "description": "The URL that was clicked.",
+            "example": "https://resend.com/pricing"
+          },
+          "clicks": {
+            "type": "integer",
+            "description": "Total number of clicks on this URL.",
+            "example": 42
+          },
+          "unique_clicks": {
+            "type": "integer",
+            "description": "Number of unique clicks on this URL.",
+            "example": 30
           }
         }
       },
@@ -9276,6 +9708,21 @@
           }
         }
       },
+      "ListBroadcastRecipientsResponseSuccessDataItemClickedLinksItem": {
+        "type": "object",
+        "properties": {
+          "url": {
+            "type": "string",
+            "description": "The clicked URL.",
+            "example": "https://resend.com/pricing"
+          },
+          "clicks": {
+            "type": "integer",
+            "description": "The number of times this recipient clicked this URL.",
+            "example": 2
+          }
+        }
+      },
       "ListReceivedEmailsResponseDataItemAttachmentsItem": {
         "type": "object",
         "properties": {
@@ -9428,6 +9875,13 @@
           "$ref": "#/components/schemas/EmailTemplateInputVariablesAdditionalProperties"
         },
         "description": "Template variables object with key/value pairs."
+      },
+      "GetEmailsMetricsResponseTotalsProperty": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "number"
+        },
+        "description": "The requested metrics, totaled over the whole date range."
       },
       "CreateContactOptionsPropertiesProperty": {
         "type": "object",
@@ -9615,6 +10069,71 @@
             {
               "value": "suppressed",
               "name": "Suppressed"
+            }
+          ]
+        }
+      },
+      "GetEmailsMetricsResponseDimensionsItem": {
+        "enum": [
+          "period",
+          "domain",
+          "email",
+          "broadcast"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "x-ms-enum": {
+          "name": "GetEmailsMetricsResponseDimensionsItem",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "period",
+              "name": "Period"
+            },
+            {
+              "value": "domain",
+              "name": "Domain"
+            },
+            {
+              "value": "email",
+              "name": "Email"
+            },
+            {
+              "value": "broadcast",
+              "name": "Broadcast"
+            }
+          ]
+        }
+      },
+      "GetEmailsMetricsResponseGranularity": {
+        "enum": [
+          "hourly",
+          "daily",
+          "weekly",
+          "monthly"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "The bucket size used when \u0060period\u0060 is in \u0060dimensions\u0060.",
+        "x-ms-enum": {
+          "name": "GetEmailsMetricsResponseGranularity",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "hourly",
+              "name": "Hourly"
+            },
+            {
+              "value": "daily",
+              "name": "Daily"
+            },
+            {
+              "value": "weekly",
+              "name": "Weekly"
+            },
+            {
+              "value": "monthly",
+              "name": "Monthly"
             }
           ]
         }
@@ -11558,6 +12077,34 @@
           ]
         }
       },
+      "ListBroadcastRecipientsResponseSuccessDataItemBounceType": {
+        "enum": [
+          "permanent",
+          "transient",
+          "undetermined"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "The type of bounce. Only present when \u0060type\u0060 is \u0060bounced\u0060.",
+        "x-ms-enum": {
+          "name": "ListBroadcastRecipientsResponseSuccessDataItemBounceType",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "permanent",
+              "name": "Permanent"
+            },
+            {
+              "value": "transient",
+              "name": "Transient"
+            },
+            {
+              "value": "undetermined",
+              "name": "Undetermined"
+            }
+          ]
+        }
+      },
       "ListAttachmentsResponseDataItemContentDisposition": {
         "enum": [
           "inline",
@@ -11781,6 +12328,192 @@
           ]
         }
       },
+      "EmailsMetricsGranularityParameter": {
+        "enum": [
+          "hourly",
+          "daily",
+          "weekly",
+          "monthly"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "x-ms-enum": {
+          "name": "EmailsMetricsGranularityParameter",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "hourly",
+              "name": "Hourly"
+            },
+            {
+              "value": "daily",
+              "name": "Daily"
+            },
+            {
+              "value": "weekly",
+              "name": "Weekly"
+            },
+            {
+              "value": "monthly",
+              "name": "Monthly"
+            }
+          ]
+        }
+      },
+      "EmailsMetricsMetricsParameterItem": {
+        "enum": [
+          "received",
+          "delivered",
+          "complained",
+          "suppressed",
+          "bounced",
+          "bounced_transient",
+          "bounced_permanent",
+          "bounced_undetermined",
+          "opened",
+          "clicked",
+          "unsubscribed",
+          "delivery_delayed",
+          "failed",
+          "sent",
+          "unique_opened",
+          "unique_clicked",
+          "delivery_rate",
+          "open_rate",
+          "click_rate",
+          "bounce_rate",
+          "complaint_rate",
+          "unsubscribe_rate"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "x-ms-enum": {
+          "name": "EmailsMetricsMetricsParameterItem",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "received",
+              "name": "Received"
+            },
+            {
+              "value": "delivered",
+              "name": "Delivered"
+            },
+            {
+              "value": "complained",
+              "name": "Complained"
+            },
+            {
+              "value": "suppressed",
+              "name": "Suppressed"
+            },
+            {
+              "value": "bounced",
+              "name": "Bounced"
+            },
+            {
+              "value": "bounced_transient",
+              "name": "BouncedTransient"
+            },
+            {
+              "value": "bounced_permanent",
+              "name": "BouncedPermanent"
+            },
+            {
+              "value": "bounced_undetermined",
+              "name": "BouncedUndetermined"
+            },
+            {
+              "value": "opened",
+              "name": "Opened"
+            },
+            {
+              "value": "clicked",
+              "name": "Clicked"
+            },
+            {
+              "value": "unsubscribed",
+              "name": "Unsubscribed"
+            },
+            {
+              "value": "delivery_delayed",
+              "name": "DeliveryDelayed"
+            },
+            {
+              "value": "failed",
+              "name": "Failed"
+            },
+            {
+              "value": "sent",
+              "name": "Sent"
+            },
+            {
+              "value": "unique_opened",
+              "name": "UniqueOpened"
+            },
+            {
+              "value": "unique_clicked",
+              "name": "UniqueClicked"
+            },
+            {
+              "value": "delivery_rate",
+              "name": "DeliveryRate"
+            },
+            {
+              "value": "open_rate",
+              "name": "OpenRate"
+            },
+            {
+              "value": "click_rate",
+              "name": "ClickRate"
+            },
+            {
+              "value": "bounce_rate",
+              "name": "BounceRate"
+            },
+            {
+              "value": "complaint_rate",
+              "name": "ComplaintRate"
+            },
+            {
+              "value": "unsubscribe_rate",
+              "name": "UnsubscribeRate"
+            }
+          ]
+        }
+      },
+      "EmailsMetricsDimensionsParameterItem": {
+        "enum": [
+          "period",
+          "domain",
+          "email",
+          "broadcast"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "x-ms-enum": {
+          "name": "EmailsMetricsDimensionsParameterItem",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "period",
+              "name": "Period"
+            },
+            {
+              "value": "domain",
+              "name": "Domain"
+            },
+            {
+              "value": "email",
+              "name": "Email"
+            },
+            {
+              "value": "broadcast",
+              "name": "Broadcast"
+            }
+          ]
+        }
+      },
       "ContactsListImportsStatusParameter": {
         "enum": [
           "queued",
@@ -11809,6 +12542,85 @@
             {
               "value": "failed",
               "name": "Failed"
+            }
+          ]
+        }
+      },
+      "BroadcastsRecipientsTypeParameter": {
+        "enum": [
+          "sent",
+          "delivered",
+          "opened",
+          "clicked",
+          "bounced",
+          "complained",
+          "unsubscribed",
+          "suppressed"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "x-ms-enum": {
+          "name": "BroadcastsRecipientsTypeParameter",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "sent",
+              "name": "Sent"
+            },
+            {
+              "value": "delivered",
+              "name": "Delivered"
+            },
+            {
+              "value": "opened",
+              "name": "Opened"
+            },
+            {
+              "value": "clicked",
+              "name": "Clicked"
+            },
+            {
+              "value": "bounced",
+              "name": "Bounced"
+            },
+            {
+              "value": "complained",
+              "name": "Complained"
+            },
+            {
+              "value": "unsubscribed",
+              "name": "Unsubscribed"
+            },
+            {
+              "value": "suppressed",
+              "name": "Suppressed"
+            }
+          ]
+        }
+      },
+      "BroadcastsRecipientsBounceTypeParameter": {
+        "enum": [
+          "permanent",
+          "transient",
+          "undetermined"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "x-ms-enum": {
+          "name": "BroadcastsRecipientsBounceTypeParameter",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "permanent",
+              "name": "Permanent"
+            },
+            {
+              "value": "transient",
+              "name": "Transient"
+            },
+            {
+              "value": "undetermined",
+              "name": "Undetermined"
             }
           ]
         }

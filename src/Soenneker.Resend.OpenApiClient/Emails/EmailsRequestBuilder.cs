@@ -5,6 +5,7 @@ using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.Resend.OpenApiClient.Emails.Batch;
 using Soenneker.Resend.OpenApiClient.Emails.Item;
+using Soenneker.Resend.OpenApiClient.Emails.Metrics;
 using Soenneker.Resend.OpenApiClient.Emails.Receiving;
 using Soenneker.Resend.OpenApiClient.Models;
 using System.Collections.Generic;
@@ -24,6 +25,11 @@ namespace Soenneker.Resend.OpenApiClient.Emails
         public global::Soenneker.Resend.OpenApiClient.Emails.Batch.BatchRequestBuilder Batch
         {
             get => new global::Soenneker.Resend.OpenApiClient.Emails.Batch.BatchRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The metrics property</summary>
+        public global::Soenneker.Resend.OpenApiClient.Emails.Metrics.MetricsRequestBuilder Metrics
+        {
+            get => new global::Soenneker.Resend.OpenApiClient.Emails.Metrics.MetricsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The receiving property</summary>
         public global::Soenneker.Resend.OpenApiClient.Emails.Receiving.ReceivingRequestBuilder Receiving

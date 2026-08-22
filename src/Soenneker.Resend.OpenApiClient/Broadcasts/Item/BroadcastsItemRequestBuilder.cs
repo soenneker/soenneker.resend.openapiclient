@@ -4,6 +4,8 @@ using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.Resend.OpenApiClient.Broadcasts.Item.Cancel;
+using Soenneker.Resend.OpenApiClient.Broadcasts.Item.ClickedLinks;
+using Soenneker.Resend.OpenApiClient.Broadcasts.Item.Recipients;
 using Soenneker.Resend.OpenApiClient.Broadcasts.Item.Send;
 using Soenneker.Resend.OpenApiClient.Models;
 using System.Collections.Generic;
@@ -23,6 +25,16 @@ namespace Soenneker.Resend.OpenApiClient.Broadcasts.Item
         public global::Soenneker.Resend.OpenApiClient.Broadcasts.Item.Cancel.CancelRequestBuilder Cancel
         {
             get => new global::Soenneker.Resend.OpenApiClient.Broadcasts.Item.Cancel.CancelRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The clickedLinks property</summary>
+        public global::Soenneker.Resend.OpenApiClient.Broadcasts.Item.ClickedLinks.ClickedLinksRequestBuilder ClickedLinks
+        {
+            get => new global::Soenneker.Resend.OpenApiClient.Broadcasts.Item.ClickedLinks.ClickedLinksRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The recipients property</summary>
+        public global::Soenneker.Resend.OpenApiClient.Broadcasts.Item.Recipients.RecipientsRequestBuilder Recipients
+        {
+            get => new global::Soenneker.Resend.OpenApiClient.Broadcasts.Item.Recipients.RecipientsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The send property</summary>
         public global::Soenneker.Resend.OpenApiClient.Broadcasts.Item.Send.SendRequestBuilder Send
