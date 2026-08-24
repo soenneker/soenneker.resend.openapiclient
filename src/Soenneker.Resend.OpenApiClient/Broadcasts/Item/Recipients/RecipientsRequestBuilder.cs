@@ -108,7 +108,7 @@ namespace Soenneker.Resend.OpenApiClient.Broadcasts.Item.Recipients
             /// <summary>Filter bounced recipients by bounce type. Only valid when `type` is `bounced`.</summary>
             [QueryParameter("bounce_type")]
             public global::Soenneker.Resend.OpenApiClient.Models.BroadcastsRecipientsBounceTypeParameter? BounceType { get; set; }
-            /// <summary>Filter recipients by email address.</summary>
+            /// <summary>Filter recipients whose email address contains this value.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("email")]

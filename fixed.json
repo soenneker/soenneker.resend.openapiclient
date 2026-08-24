@@ -2065,7 +2065,7 @@
           {
             "name": "email",
             "in": "query",
-            "description": "Filter recipients by email address.",
+            "description": "Filter recipients whose email address contains this value.",
             "schema": {
               "type": "string"
             }
