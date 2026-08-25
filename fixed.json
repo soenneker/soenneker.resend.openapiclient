@@ -3,7 +3,7 @@
   "info": {
     "title": "Resend",
     "description": "Resend is the email platform for developers.",
-    "version": "1.5.0"
+    "version": "1.5.1"
   },
   "servers": [
     {
@@ -4975,12 +4975,18 @@
             "example": "steve.wozniak@gmail.com"
           },
           "first_name": {
-            "type": "string",
+            "type": [
+              "null",
+              "string"
+            ],
             "description": "First name of the contact.",
             "example": "Steve"
           },
           "last_name": {
-            "type": "string",
+            "type": [
+              "null",
+              "string"
+            ],
             "description": "Last name of the contact.",
             "example": "Wozniak"
           },
@@ -5749,6 +5755,13 @@
             },
             "description": "The reply-to addresses.",
             "example": []
+          },
+          "received_for": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "The recipient addresses the email was forwarded for, taken from the \u0060for\u0060 clause of the message\u0027s \u0060Received\u0060 headers."
           },
           "html": {
             "type": [
@@ -8088,6 +8101,13 @@
             },
             "description": "CC recipients."
           },
+          "received_for": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "The recipient addresses the email was forwarded for, taken from the \u0060for\u0060 clause of the message\u0027s \u0060Received\u0060 headers."
+          },
           "attachments": {
             "type": "array",
             "items": {
@@ -8139,11 +8159,17 @@
             "description": "Contact\u0027s email address."
           },
           "first_name": {
-            "type": "string",
+            "type": [
+              "null",
+              "string"
+            ],
             "description": "Contact\u0027s first name."
           },
           "last_name": {
-            "type": "string",
+            "type": [
+              "null",
+              "string"
+            ],
             "description": "Contact\u0027s last name."
           },
           "unsubscribed": {
@@ -9066,12 +9092,18 @@
             "example": "steve.wozniak@gmail.com"
           },
           "first_name": {
-            "type": "string",
+            "type": [
+              "null",
+              "string"
+            ],
             "description": "First name of the contact.",
             "example": "Steve"
           },
           "last_name": {
-            "type": "string",
+            "type": [
+              "null",
+              "string"
+            ],
             "description": "Last name of the contact.",
             "example": "Wozniak"
           },

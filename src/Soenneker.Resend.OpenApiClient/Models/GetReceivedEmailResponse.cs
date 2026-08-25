@@ -82,6 +82,14 @@ namespace Soenneker.Resend.OpenApiClient.Models
 #else
         public string Object { get; set; }
 #endif
+        /// <summary>The recipient addresses the email was forwarded for, taken from the `for` clause of the message&apos;s `Received` headers.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<string>? ReceivedFor { get; set; }
+#nullable restore
+#else
+        public List<string> ReceivedFor { get; set; }
+#endif
         /// <summary>The reply-to addresses.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -149,6 +157,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "message_id", n => { MessageId = n.GetStringValue(); } },
                 { "object", n => { Object = n.GetStringValue(); } },
+                { "received_for", n => { ReceivedFor = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "reply_to", n => { ReplyTo = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "subject", n => { Subject = n.GetStringValue(); } },
                 { "text", n => { Text = n.GetStringValue(); } },
@@ -172,6 +181,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
             writer.WriteGuidValue("id", Id);
             writer.WriteStringValue("message_id", MessageId);
             writer.WriteStringValue("object", Object);
+            writer.WriteCollectionOfPrimitiveValues<string>("received_for", ReceivedFor);
             writer.WriteCollectionOfPrimitiveValues<string>("reply_to", ReplyTo);
             writer.WriteStringValue("subject", Subject);
             writer.WriteStringValue("text", Text);
