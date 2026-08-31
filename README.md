@@ -5,14 +5,7 @@
 
 # ![](https://user-images.githubusercontent.com/4441470/224455560-91ed3ee7-f510-4041-a8d2-3fc093025112.png) Soenneker.Resend.OpenApiClient
 
-A modern, type-safe .NET client for the Resend API, automatically generated from their OpenAPI schema and updated daily. This client provides a seamless way to interact with Resend's email delivery platform in your .NET applications.
-
-## Features
-
-- ?? **Fully Generated**: Automatically generated from Resend's OpenAPI schema
-- ?? **Daily Updates**: Always up-to-date with the latest Resend API features
-- ?? **Type-Safe**: Full IntelliSense support and compile-time type checking
-- ?? **Well-Documented**: XML documentation included for all types and methods
+Generated request builders and models for Resend email, domains, contacts, audiences, broadcasts, templates, topics, events, logs, webhooks, and API keys.
 
 ## Installation
 
@@ -20,36 +13,30 @@ A modern, type-safe .NET client for the Resend API, automatically generated from
 dotnet add package Soenneker.Resend.OpenApiClient
 ```
 
-## Quick Start
+## Usage
 
 ```csharp
+using Microsoft.Kiota.Abstractions.Authentication;
+using Microsoft.Kiota.Http.HttpClientLibrary;
 using Soenneker.Resend.OpenApiClient;
-using Soenneker.Resend.OpenApiClient.Models;
 
-// Initialize the client with your API key
-var client = new ResendOpenApiClient(new HttpClientRequestAdapter(new ApiKeyAuthenticationProvider("re_123...")));
+using var httpClient = new HttpClient();
+httpClient.DefaultRequestHeaders.Authorization =
+    new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", apiKey);
+httpClient.DefaultRequestHeaders.UserAgent.ParseAdd("MyApplication/1.0");
 
-// Create an email request
-var emailRequest = new SendEmailRequest
+var adapter = new HttpClientRequestAdapter(
+    new AnonymousAuthenticationProvider(),
+    httpClient: httpClient)
 {
-    From = "onboarding@resend.dev",
-    To = new List<string> { "user@example.com" },
-    Subject = "Hello World",
-    Html = "<p>Congrats on sending your first email!</p>"
+    BaseUrl = "https://api.resend.com"
 };
 
-// Send the email
-var response = await client.Emails.PostAsync(emailRequest);
+var client = new ResendOpenApiClient(adapter);
+var domains = await client.Domains.GetAsync(
+    cancellationToken: cancellationToken);
 ```
 
-## API Capabilities
+Resend API keys use the bearer scheme. Resend also requires a `User-Agent` header for direct HTTP requests. The anonymous Kiota authentication provider is intentional because the supplied `HttpClient` already carries both required headers.
 
-The client supports all Resend API endpoints, including:
-
-- ?? Email sending and management
-- ?? Email templates
-- ?? API key management
-- ?? Domain management
-- ?? Email analytics
-- ?? Broadcast management
-- ?? Audience management
+List endpoints support cursor pagination. Use their `limit`, `after`, and `before` query parameters where exposed rather than assuming a response contains every item.
