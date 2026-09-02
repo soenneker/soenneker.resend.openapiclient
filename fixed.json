@@ -5094,7 +5094,7 @@
           "segments": {
             "type": "array",
             "items": {
-              "type": "string"
+              "$ref": "#/components/schemas/CreateContactOptionsSegmentsItem"
             },
             "description": "Array of segment IDs to add the contact to."
           },
@@ -9341,6 +9341,15 @@
       "CreateContactOptionsProperties": {
         "type": "object",
         "description": "A map of custom property keys and values to create."
+      },
+      "CreateContactOptionsSegmentsItem": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "The segment ID"
+          }
+        }
       },
       "CreateContactOptionsTopicsItem": {
         "type": "object",
