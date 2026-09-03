@@ -5,6 +5,7 @@ using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.Resend.OpenApiClient.Models;
 using Soenneker.Resend.OpenApiClient.Webhooks.Item.Events.Item.Attempts;
+using Soenneker.Resend.OpenApiClient.Webhooks.Item.Events.Item.Replay;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
@@ -22,6 +23,11 @@ namespace Soenneker.Resend.OpenApiClient.Webhooks.Item.Events.Item
         public global::Soenneker.Resend.OpenApiClient.Webhooks.Item.Events.Item.Attempts.AttemptsRequestBuilder Attempts
         {
             get => new global::Soenneker.Resend.OpenApiClient.Webhooks.Item.Events.Item.Attempts.AttemptsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The replay property</summary>
+        public global::Soenneker.Resend.OpenApiClient.Webhooks.Item.Events.Item.Replay.ReplayRequestBuilder Replay
+        {
+            get => new global::Soenneker.Resend.OpenApiClient.Webhooks.Item.Events.Item.Replay.ReplayRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Resend.OpenApiClient.Webhooks.Item.Events.Item.WithEventItemRequestBuilder"/> and sets the default values.

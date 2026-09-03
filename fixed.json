@@ -2414,6 +2414,49 @@
         }
       }
     },
+    "/webhooks/{webhookId}/events/{eventId}/replay": {
+      "post": {
+        "tags": [
+          "Webhooks"
+        ],
+        "summary": "Replay a webhook event",
+        "description": "Queues one more delivery of the event to the webhook. The event must be retrievable through the get event endpoint and the webhook must be enabled; a disabled webhook returns a 422 validation_error. A manual replay does not schedule automatic retries.",
+        "operationId": "WebhooksReplayEvent",
+        "parameters": [
+          {
+            "name": "webhookId",
+            "in": "path",
+            "description": "The Webhook ID.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "eventId",
+            "in": "path",
+            "description": "The Webhook Event ID.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReplayWebhookEventResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/webhooks/{webhookId}/events/{eventId}/attempts": {
       "get": {
         "tags": [
@@ -6242,6 +6285,21 @@
               "$ref": "#/components/schemas/ListWebhookEventAttemptsResponseDataItem"
             },
             "description": "Array containing webhook event attempt information."
+          }
+        }
+      },
+      "ReplayWebhookEventResponse": {
+        "type": "object",
+        "properties": {
+          "object": {
+            "type": "string",
+            "description": "The type of object.",
+            "example": "webhook_event"
+          },
+          "id": {
+            "type": "string",
+            "description": "The ID of the replayed webhook event.",
+            "example": "msg_1srOrx2ZWZBpBUvZwXKQmoEYga2"
           }
         }
       },
