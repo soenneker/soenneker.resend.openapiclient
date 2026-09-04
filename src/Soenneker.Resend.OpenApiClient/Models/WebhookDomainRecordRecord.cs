@@ -3,29 +3,29 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.Resend.OpenApiClient.Models
 {
-    /// <summary>The region where the claimed domain will send from.</summary>
+    /// <summary>The purpose of the DNS record (SPF and DKIM for sending; Receiving MX for inbound emails; Tracking and TrackingCAA for click and open tracking).</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public enum DomainClaimRegion
+    public enum WebhookDomainRecordRecord
     {
-        [EnumMember(Value = "us-east-1")]
+        [EnumMember(Value = "SPF")]
         #pragma warning disable CS1591
-        UsEast1,
+        Spf,
         #pragma warning restore CS1591
-        [EnumMember(Value = "eu-west-1")]
+        [EnumMember(Value = "DKIM")]
         #pragma warning disable CS1591
-        EuWest1,
+        Dkim,
         #pragma warning restore CS1591
-        [EnumMember(Value = "sa-east-1")]
+        [EnumMember(Value = "Receiving MX")]
         #pragma warning disable CS1591
-        SaEast1,
+        ReceivingMx,
         #pragma warning restore CS1591
-        [EnumMember(Value = "ap-northeast-1")]
+        [EnumMember(Value = "Tracking")]
         #pragma warning disable CS1591
-        ApNortheast1,
+        Tracking,
         #pragma warning restore CS1591
-        [EnumMember(Value = "openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464")]
+        [EnumMember(Value = "TrackingCAA")]
         #pragma warning disable CS1591
-        OpenapiJsonNullSentinelValue2BF936000FE44250987AE5DDB203E464,
+        TrackingCaa,
         #pragma warning restore CS1591
     }
 }

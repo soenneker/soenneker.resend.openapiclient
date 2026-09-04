@@ -3,29 +3,29 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.Resend.OpenApiClient.Models
 {
-    /// <summary>The region where the claimed domain will send from.</summary>
+    /// <summary>Verification status of this specific record.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public enum DomainClaimRegion
+    public enum WebhookDomainRecordStatus
     {
-        [EnumMember(Value = "us-east-1")]
+        [EnumMember(Value = "pending")]
         #pragma warning disable CS1591
-        UsEast1,
+        Pending,
         #pragma warning restore CS1591
-        [EnumMember(Value = "eu-west-1")]
+        [EnumMember(Value = "verified")]
         #pragma warning disable CS1591
-        EuWest1,
+        Verified,
         #pragma warning restore CS1591
-        [EnumMember(Value = "sa-east-1")]
+        [EnumMember(Value = "failed")]
         #pragma warning disable CS1591
-        SaEast1,
+        Failed,
         #pragma warning restore CS1591
-        [EnumMember(Value = "ap-northeast-1")]
+        [EnumMember(Value = "temporary_failure")]
         #pragma warning disable CS1591
-        ApNortheast1,
+        TemporaryFailure,
         #pragma warning restore CS1591
-        [EnumMember(Value = "openapi-json-null-sentinel-value-2BF93600-0FE4-4250-987A-E5DDB203E464")]
+        [EnumMember(Value = "not_started")]
         #pragma warning disable CS1591
-        OpenapiJsonNullSentinelValue2BF936000FE44250987AE5DDB203E464,
+        NotStarted,
         #pragma warning restore CS1591
     }
 }
