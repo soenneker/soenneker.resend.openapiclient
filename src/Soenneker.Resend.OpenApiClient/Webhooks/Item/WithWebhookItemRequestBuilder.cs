@@ -5,6 +5,7 @@ using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.Resend.OpenApiClient.Models;
 using Soenneker.Resend.OpenApiClient.Webhooks.Item.Events;
+using Soenneker.Resend.OpenApiClient.Webhooks.Item.SigningSecret;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
@@ -22,6 +23,11 @@ namespace Soenneker.Resend.OpenApiClient.Webhooks.Item
         public global::Soenneker.Resend.OpenApiClient.Webhooks.Item.Events.EventsRequestBuilder Events
         {
             get => new global::Soenneker.Resend.OpenApiClient.Webhooks.Item.Events.EventsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The signingSecret property</summary>
+        public global::Soenneker.Resend.OpenApiClient.Webhooks.Item.SigningSecret.SigningSecretRequestBuilder SigningSecret
+        {
+            get => new global::Soenneker.Resend.OpenApiClient.Webhooks.Item.SigningSecret.SigningSecretRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Resend.OpenApiClient.Webhooks.Item.WithWebhookItemRequestBuilder"/> and sets the default values.
