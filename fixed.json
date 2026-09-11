@@ -2034,6 +2034,40 @@
         }
       }
     },
+    "/broadcasts/{id}/duplicate": {
+      "post": {
+        "tags": [
+          "Broadcasts"
+        ],
+        "summary": "Duplicate a broadcast",
+        "description": "Creates a new draft broadcast with the same segment, topic, sender, subject, reply-to, preview text, and content as the source. The copy is named after the source with \u0022 (copy)\u0022 appended, truncated to 70 characters.",
+        "operationId": "BroadcastsDuplicate",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The Broadcast ID.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DuplicateBroadcastResponseSuccess"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/broadcasts/{id}/recipients": {
       "get": {
         "tags": [
@@ -5809,6 +5843,21 @@
             "type": "string",
             "description": "The ID of the broadcast.",
             "example": "78261eea-8f8b-4381-83c6-79fa7120f1cf"
+          },
+          "object": {
+            "type": "string",
+            "description": "The object type of the response.",
+            "example": "broadcast"
+          }
+        }
+      },
+      "DuplicateBroadcastResponseSuccess": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "The ID of the duplicated broadcast.",
+            "example": "1f85ae38-f5b9-4c1f-8766-667a53970fea"
           },
           "object": {
             "type": "string",

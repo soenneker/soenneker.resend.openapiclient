@@ -5,6 +5,7 @@ using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.Resend.OpenApiClient.Broadcasts.Item.Cancel;
 using Soenneker.Resend.OpenApiClient.Broadcasts.Item.ClickedLinks;
+using Soenneker.Resend.OpenApiClient.Broadcasts.Item.Duplicate;
 using Soenneker.Resend.OpenApiClient.Broadcasts.Item.Recipients;
 using Soenneker.Resend.OpenApiClient.Broadcasts.Item.Send;
 using Soenneker.Resend.OpenApiClient.Models;
@@ -30,6 +31,11 @@ namespace Soenneker.Resend.OpenApiClient.Broadcasts.Item
         public global::Soenneker.Resend.OpenApiClient.Broadcasts.Item.ClickedLinks.ClickedLinksRequestBuilder ClickedLinks
         {
             get => new global::Soenneker.Resend.OpenApiClient.Broadcasts.Item.ClickedLinks.ClickedLinksRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The duplicate property</summary>
+        public global::Soenneker.Resend.OpenApiClient.Broadcasts.Item.Duplicate.DuplicateRequestBuilder Duplicate
+        {
+            get => new global::Soenneker.Resend.OpenApiClient.Broadcasts.Item.Duplicate.DuplicateRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The recipients property</summary>
         public global::Soenneker.Resend.OpenApiClient.Broadcasts.Item.Recipients.RecipientsRequestBuilder Recipients
