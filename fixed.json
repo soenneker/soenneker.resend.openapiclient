@@ -8664,6 +8664,42 @@
           }
         }
       },
+      "SuppressionEventData": {
+        "required": [
+          "id",
+          "email",
+          "origin",
+          "source_id",
+          "created_at"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique identifier for the suppression."
+          },
+          "email": {
+            "type": "string",
+            "description": "Email address that is suppressed."
+          },
+          "origin": {
+            "$ref": "#/components/schemas/SuppressionEventDataOrigin"
+          },
+          "source_id": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "Identifier of the event that caused the suppression, such as the email that bounced or complained. Null for manually added suppressions."
+          },
+          "created_at": {
+            "type": "string",
+            "description": "Timestamp when the suppression was created.",
+            "format": "date-time",
+            "example": "2023-10-06T23:47:56.678Z"
+          }
+        }
+      },
       "EmailSentEvent": {
         "required": [
           "type",
@@ -9035,6 +9071,50 @@
           },
           "data": {
             "$ref": "#/components/schemas/DomainEventData"
+          }
+        }
+      },
+      "SuppressionAddedEvent": {
+        "required": [
+          "type",
+          "created_at",
+          "data"
+        ],
+        "type": "object",
+        "properties": {
+          "type": {
+            "$ref": "#/components/schemas/SuppressionAddedType"
+          },
+          "created_at": {
+            "type": "string",
+            "description": "Timestamp when the event was emitted.",
+            "format": "date-time",
+            "example": "2023-10-06T23:47:56.678Z"
+          },
+          "data": {
+            "$ref": "#/components/schemas/SuppressionEventData"
+          }
+        }
+      },
+      "SuppressionRemovedEvent": {
+        "required": [
+          "type",
+          "created_at",
+          "data"
+        ],
+        "type": "object",
+        "properties": {
+          "type": {
+            "$ref": "#/components/schemas/SuppressionRemovedType"
+          },
+          "created_at": {
+            "type": "string",
+            "description": "Timestamp when the event was emitted.",
+            "format": "date-time",
+            "example": "2023-10-06T23:47:56.678Z"
+          },
+          "data": {
+            "$ref": "#/components/schemas/SuppressionEventData"
           }
         }
       },
@@ -12311,6 +12391,34 @@
           ]
         }
       },
+      "SuppressionEventDataOrigin": {
+        "enum": [
+          "bounce",
+          "complaint",
+          "manual"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "Origin of the suppression.",
+        "x-ms-enum": {
+          "name": "SuppressionEventDataOrigin",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "bounce",
+              "name": "Bounce"
+            },
+            {
+              "value": "complaint",
+              "name": "Complaint"
+            },
+            {
+              "value": "manual",
+              "name": "Manual"
+            }
+          ]
+        }
+      },
       "EmailSentType": {
         "const": null,
         "enum": [
@@ -12613,6 +12721,42 @@
             {
               "value": "domain.deleted",
               "name": "DomainDeleted"
+            }
+          ]
+        }
+      },
+      "SuppressionAddedType": {
+        "const": null,
+        "enum": [
+          "suppression.added"
+        ],
+        "type": "string",
+        "description": "The event type.",
+        "x-ms-enum": {
+          "name": "SuppressionAddedType",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "suppression.added",
+              "name": "SuppressionAdded"
+            }
+          ]
+        }
+      },
+      "SuppressionRemovedType": {
+        "const": null,
+        "enum": [
+          "suppression.removed"
+        ],
+        "type": "string",
+        "description": "The event type.",
+        "x-ms-enum": {
+          "name": "SuppressionRemovedType",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "suppression.removed",
+              "name": "SuppressionRemoved"
             }
           ]
         }
@@ -13829,6 +13973,56 @@
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/DomainDeletedEvent"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "2XX": {
+            "description": "Return any 2xx status code to acknowledge receipt of the event."
+          }
+        }
+      }
+    },
+    "suppression.added": {
+      "post": {
+        "tags": [
+          "Webhook Events"
+        ],
+        "summary": "Suppression added",
+        "description": "Occurs whenever an email address was added to the suppression list.",
+        "operationId": "PostOpenApiFixerWebhooksEvent17",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SuppressionAddedEvent"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "2XX": {
+            "description": "Return any 2xx status code to acknowledge receipt of the event."
+          }
+        }
+      }
+    },
+    "suppression.removed": {
+      "post": {
+        "tags": [
+          "Webhook Events"
+        ],
+        "summary": "Suppression removed",
+        "description": "Occurs whenever an email address was removed from the suppression list.",
+        "operationId": "PostOpenApiFixerWebhooksEvent18",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SuppressionRemovedEvent"
               }
             }
           },
