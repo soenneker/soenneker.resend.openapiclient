@@ -41,7 +41,7 @@ namespace Soenneker.Resend.OpenApiClient.Contacts
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public ContactsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/contacts{?after*,before*,limit*,segment_id*}", pathParameters)
+        public ContactsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/contacts{?after*,before*,limit*}", pathParameters)
         {
         }
         /// <summary>
@@ -49,7 +49,7 @@ namespace Soenneker.Resend.OpenApiClient.Contacts
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public ContactsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/contacts{?after*,before*,limit*,segment_id*}", rawUrl)
+        public ContactsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/contacts{?after*,before*,limit*}", rawUrl)
         {
         }
         /// <summary>
@@ -169,16 +169,6 @@ namespace Soenneker.Resend.OpenApiClient.Contacts
             /// <summary>Number of items to return.</summary>
             [QueryParameter("limit")]
             public int? Limit { get; set; }
-            /// <summary>Filter contacts by segment ID.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            [QueryParameter("segment_id")]
-            public string? SegmentId { get; set; }
-#nullable restore
-#else
-            [QueryParameter("segment_id")]
-            public string SegmentId { get; set; }
-#endif
         }
     }
 }

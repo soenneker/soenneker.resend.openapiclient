@@ -1555,14 +1555,6 @@
         "operationId": "ContactsList",
         "parameters": [
           {
-            "name": "segment_id",
-            "in": "query",
-            "description": "Filter contacts by segment ID.",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
             "description": "Number of items to return.",
             "$ref": "#/components/parameters/PaginationLimit"
           },
@@ -2732,6 +2724,51 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/RemoveSegmentResponseSuccess"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/segments/{id}/contacts": {
+      "get": {
+        "tags": [
+          "Segments"
+        ],
+        "summary": "Retrieve a list of contacts in a segment",
+        "operationId": "SegmentsListContacts",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The Segment ID.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "description": "Number of items to return.",
+            "$ref": "#/components/parameters/PaginationLimit"
+          },
+          {
+            "description": "Return items after this cursor.",
+            "$ref": "#/components/parameters/PaginationAfter"
+          },
+          {
+            "description": "Return items before this cursor.",
+            "$ref": "#/components/parameters/PaginationBefore"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListContactsResponseSuccess"
                 }
               }
             }
@@ -4537,9 +4574,7 @@
             "description": "Track clicks within the body of each HTML email."
           },
           "tls": {
-            "type": "string",
-            "description": "enforced | opportunistic.",
-            "default": "opportunistic"
+            "$ref": "#/components/schemas/UpdateDomainOptionsTls"
           },
           "capabilities": {
             "description": "Configure the domain capabilities for sending and receiving emails. At least one capability must be enabled.",
@@ -5358,6 +5393,11 @@
             "type": "string",
             "description": "Type of the response object.",
             "example": "list"
+          },
+          "has_more": {
+            "type": "boolean",
+            "description": "Indicates if there are more results available.",
+            "example": false
           },
           "data": {
             "type": "array",
@@ -9582,6 +9622,19 @@
       },
       "CreateContactOptionsProperties": {
         "type": "object",
+        "additionalProperties": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "type": "string"
+            }
+          ]
+        },
         "description": "A map of custom property keys and values to create."
       },
       "CreateContactOptionsSegmentsItem": {
@@ -9611,6 +9664,22 @@
       },
       "UpdateContactOptionsProperties": {
         "type": "object",
+        "additionalProperties": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "type": "string"
+            }
+          ]
+        },
         "description": "A map of custom property keys and values to update."
       },
       "ListContactsResponseSuccessDataItem": {
@@ -10519,6 +10588,19 @@
       },
       "CreateContactOptionsPropertiesProperty": {
         "type": "object",
+        "additionalProperties": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "type": "string"
+            }
+          ]
+        },
         "description": "A map of custom property keys and values to create."
       },
       "GetContactResponseSuccessPropertiesProperty": {
@@ -10527,6 +10609,22 @@
       },
       "UpdateContactOptionsPropertiesProperty": {
         "type": "object",
+        "additionalProperties": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "type": "string"
+            }
+          ]
+        },
         "description": "A map of custom property keys and values to update."
       },
       "GetReceivedEmailResponseHeadersProperty": {
@@ -10917,6 +11015,29 @@
             {
               "value": "partially_failed",
               "name": "PartiallyFailed"
+            }
+          ]
+        }
+      },
+      "UpdateDomainOptionsTls": {
+        "enum": [
+          "opportunistic",
+          "enforced"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "enforced | opportunistic.",
+        "x-ms-enum": {
+          "name": "UpdateDomainOptionsTls",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "opportunistic",
+              "name": "Opportunistic"
+            },
+            {
+              "value": "enforced",
+              "name": "Enforced"
             }
           ]
         }

@@ -27,13 +27,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
         /// <summary>Track the open rate of each email.</summary>
         public bool? OpenTracking { get; set; }
         /// <summary>enforced | opportunistic.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Tls { get; set; }
-#nullable restore
-#else
-        public string Tls { get; set; }
-#endif
+        public global::Soenneker.Resend.OpenApiClient.Models.UpdateDomainOptionsTls? Tls { get; set; }
         /// <summary>The subdomain to use for click and open tracking.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -48,7 +42,6 @@ namespace Soenneker.Resend.OpenApiClient.Models
         public UpdateDomainOptions()
         {
             AdditionalData = new Dictionary<string, object>();
-            Tls = "opportunistic";
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -71,7 +64,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
                 { "capabilities", n => { Capabilities = n.GetObjectValue<global::Soenneker.Resend.OpenApiClient.Models.DomainCapabilities>(global::Soenneker.Resend.OpenApiClient.Models.DomainCapabilities.CreateFromDiscriminatorValue); } },
                 { "click_tracking", n => { ClickTracking = n.GetBoolValue(); } },
                 { "open_tracking", n => { OpenTracking = n.GetBoolValue(); } },
-                { "tls", n => { Tls = n.GetStringValue(); } },
+                { "tls", n => { Tls = n.GetEnumValue<global::Soenneker.Resend.OpenApiClient.Models.UpdateDomainOptionsTls>(); } },
                 { "tracking_subdomain", n => { TrackingSubdomain = n.GetStringValue(); } },
             };
         }
@@ -85,7 +78,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
             writer.WriteObjectValue<global::Soenneker.Resend.OpenApiClient.Models.DomainCapabilities>("capabilities", Capabilities);
             writer.WriteBoolValue("click_tracking", ClickTracking);
             writer.WriteBoolValue("open_tracking", OpenTracking);
-            writer.WriteStringValue("tls", Tls);
+            writer.WriteEnumValue<global::Soenneker.Resend.OpenApiClient.Models.UpdateDomainOptionsTls>("tls", Tls);
             writer.WriteStringValue("tracking_subdomain", TrackingSubdomain);
             writer.WriteAdditionalData(AdditionalData);
         }
