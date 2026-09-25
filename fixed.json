@@ -4105,6 +4105,28 @@
           }
         }
       }
+    },
+    "/usage": {
+      "get": {
+        "tags": [
+          "Usage"
+        ],
+        "summary": "Retrieve account usage",
+        "description": "Retrieve your account\u0027s current usage and plan limits.",
+        "operationId": "UsageGet",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetUsageResponseSuccess"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
@@ -4453,6 +4475,40 @@
           "type": "number"
         },
         "description": "A single breakdown row. Which dimension fields are present depends on the requested \u0060dimensions\u0060; which metric fields are present depends on the requested \u0060metrics\u0060."
+      },
+      "GetUsageResponseSuccess": {
+        "type": "object",
+        "properties": {
+          "object": {
+            "type": "string",
+            "description": "The type of object.",
+            "example": "usage"
+          },
+          "emails": {
+            "$ref": "#/components/schemas/GetUsageResponseSuccessEmails"
+          },
+          "contacts": {
+            "$ref": "#/components/schemas/GetUsageResponseSuccessContacts"
+          },
+          "segments": {
+            "$ref": "#/components/schemas/GetUsageResponseSuccessSegments"
+          },
+          "broadcasts": {
+            "$ref": "#/components/schemas/GetUsageResponseSuccessBroadcasts"
+          },
+          "ai_credits": {
+            "$ref": "#/components/schemas/GetUsageResponseSuccessAiCredits"
+          },
+          "automation_runs": {
+            "$ref": "#/components/schemas/GetUsageResponseSuccessAutomationRuns"
+          },
+          "domains": {
+            "$ref": "#/components/schemas/GetUsageResponseSuccessDomains"
+          },
+          "rate_limit": {
+            "$ref": "#/components/schemas/GetUsageResponseSuccessRateLimit"
+          }
+        }
       },
       "CreateBatchEmailsResponse": {
         "type": "object",
@@ -9574,6 +9630,128 @@
         },
         "description": "The requested metrics, totaled over the whole date range."
       },
+      "GetUsageResponseSuccessEmails": {
+        "type": "object",
+        "properties": {
+          "daily": {
+            "$ref": "#/components/schemas/GetUsageResponseSuccessEmailsDaily"
+          },
+          "monthly": {
+            "$ref": "#/components/schemas/GetUsageResponseSuccessEmailsMonthly"
+          }
+        }
+      },
+      "GetUsageResponseSuccessContacts": {
+        "type": "object",
+        "properties": {
+          "used": {
+            "type": "integer",
+            "description": "Contacts currently stored."
+          },
+          "limit": {
+            "type": "integer",
+            "description": "The plan limit."
+          }
+        }
+      },
+      "GetUsageResponseSuccessSegments": {
+        "type": "object",
+        "properties": {
+          "used": {
+            "type": "integer",
+            "description": "Segments currently created."
+          },
+          "limit": {
+            "type": [
+              "null",
+              "integer"
+            ],
+            "description": "The plan limit, or \u0060null\u0060 when the account has a contacts subscription."
+          }
+        }
+      },
+      "GetUsageResponseSuccessBroadcasts": {
+        "type": "object",
+        "properties": {
+          "used": {
+            "type": "integer",
+            "description": "Broadcasts sent."
+          },
+          "limit": {
+            "type": "null",
+            "description": "Always \u0060null\u0060; broadcasts aren\u0027t limited."
+          }
+        }
+      },
+      "GetUsageResponseSuccessAiCredits": {
+        "type": "object",
+        "properties": {
+          "used": {
+            "type": "integer",
+            "description": "AI credits consumed in the current period."
+          },
+          "limit": {
+            "type": [
+              "null",
+              "integer"
+            ],
+            "description": "The plan limit, or \u0060null\u0060 when unlimited."
+          },
+          "next_increase_at": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "When the AI credit balance next increases, as an ISO 8601 datetime, or \u0060null\u0060 when unknown."
+          }
+        }
+      },
+      "GetUsageResponseSuccessAutomationRuns": {
+        "type": "object",
+        "properties": {
+          "used": {
+            "type": "integer",
+            "description": "Automation runs in the current billing period."
+          },
+          "limit": {
+            "type": "integer",
+            "description": "The plan limit."
+          },
+          "resets_at": {
+            "type": "string",
+            "description": "When the counter resets, as an ISO 8601 datetime."
+          }
+        }
+      },
+      "GetUsageResponseSuccessDomains": {
+        "type": "object",
+        "properties": {
+          "used": {
+            "type": "integer",
+            "description": "Domains currently added."
+          },
+          "limit": {
+            "type": [
+              "null",
+              "integer"
+            ],
+            "description": "The plan limit, or \u0060null\u0060 when unlimited."
+          }
+        }
+      },
+      "GetUsageResponseSuccessRateLimit": {
+        "type": "object",
+        "properties": {
+          "limit": {
+            "type": "integer",
+            "description": "The number of requests allowed per \u0060duration\u0060."
+          },
+          "duration": {
+            "type": "string",
+            "description": "The rate-limit window, e.g. \u0060\u00271000ms\u0027\u0060."
+          }
+        }
+      },
       "CreateBatchEmailsResponseDataItem": {
         "type": "object",
         "properties": {
@@ -10408,6 +10586,59 @@
             "type": "string",
             "description": "Timestamp indicating when the suppression was created.",
             "example": "2023-10-06 23:47:56.678\u002B00"
+          }
+        }
+      },
+      "GetUsageResponseSuccessEmailsDaily": {
+        "type": "object",
+        "properties": {
+          "used": {
+            "type": "integer",
+            "description": "Emails sent and received in the current day."
+          },
+          "limit": {
+            "type": [
+              "null",
+              "integer"
+            ],
+            "description": "The daily plan limit, or \u0060null\u0060 when the account has a monthly sending subscription."
+          },
+          "sent": {
+            "type": "integer",
+            "description": "Emails sent today."
+          },
+          "received": {
+            "type": "integer",
+            "description": "Emails received today."
+          },
+          "resets_at": {
+            "type": "string",
+            "description": "When the daily counter resets, as an ISO 8601 datetime."
+          }
+        }
+      },
+      "GetUsageResponseSuccessEmailsMonthly": {
+        "type": "object",
+        "properties": {
+          "used": {
+            "type": "integer",
+            "description": "Emails sent and received in the current billing period."
+          },
+          "limit": {
+            "type": "integer",
+            "description": "The monthly plan limit."
+          },
+          "sent": {
+            "type": "integer",
+            "description": "Emails sent this billing period."
+          },
+          "received": {
+            "type": "integer",
+            "description": "Emails received this billing period."
+          },
+          "resets_at": {
+            "type": "string",
+            "description": "When the monthly counter resets, as an ISO 8601 datetime."
           }
         }
       },
@@ -13678,6 +13909,10 @@
     {
       "name": "OAuth",
       "description": "List and manage OAuth grants through the Resend API."
+    },
+    {
+      "name": "Usage",
+      "description": "Retrieve your account usage and plan limits through the Resend API."
     }
   ],
   "webhooks": {

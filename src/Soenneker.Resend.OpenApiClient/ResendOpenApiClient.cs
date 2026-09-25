@@ -21,6 +21,7 @@ using Soenneker.Resend.OpenApiClient.Segments;
 using Soenneker.Resend.OpenApiClient.Suppressions;
 using Soenneker.Resend.OpenApiClient.Templates;
 using Soenneker.Resend.OpenApiClient.Topics;
+using Soenneker.Resend.OpenApiClient.Usage;
 using Soenneker.Resend.OpenApiClient.Webhooks;
 using System.Collections.Generic;
 using System.IO;
@@ -108,6 +109,11 @@ namespace Soenneker.Resend.OpenApiClient
         public global::Soenneker.Resend.OpenApiClient.Topics.TopicsRequestBuilder Topics
         {
             get => new global::Soenneker.Resend.OpenApiClient.Topics.TopicsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The usage property</summary>
+        public global::Soenneker.Resend.OpenApiClient.Usage.UsageRequestBuilder Usage
+        {
+            get => new global::Soenneker.Resend.OpenApiClient.Usage.UsageRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The webhooks property</summary>
         public global::Soenneker.Resend.OpenApiClient.Webhooks.WebhooksRequestBuilder Webhooks
