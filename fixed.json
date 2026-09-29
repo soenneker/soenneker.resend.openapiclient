@@ -8720,6 +8720,26 @@
           }
         }
       },
+      "ContactTopicsEventData": {
+        "required": [
+          "email",
+          "topics"
+        ],
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "description": "Contact\u0027s email address."
+          },
+          "topics": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ContactTopicsEventDataTopicsItem"
+            },
+            "description": "Topics whose subscription changed in this update."
+          }
+        }
+      },
       "DomainEventData": {
         "required": [
           "id",
@@ -8791,6 +8811,54 @@
           "created_at": {
             "type": "string",
             "description": "Timestamp when the suppression was created.",
+            "format": "date-time",
+            "example": "2023-10-06T23:47:56.678Z"
+          }
+        }
+      },
+      "TopicEventData": {
+        "required": [
+          "id",
+          "name",
+          "description",
+          "default_subscription",
+          "deleted",
+          "created_at",
+          "updated_at"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique identifier for the topic."
+          },
+          "name": {
+            "type": "string",
+            "description": "The name of the topic."
+          },
+          "description": {
+            "type": [
+              "null",
+              "string"
+            ],
+            "description": "A description of the topic."
+          },
+          "default_subscription": {
+            "$ref": "#/components/schemas/TopicEventDataDefaultSubscription"
+          },
+          "deleted": {
+            "type": "boolean",
+            "description": "Whether the topic has been deleted."
+          },
+          "created_at": {
+            "type": "string",
+            "description": "Timestamp when the topic was created.",
+            "format": "date-time",
+            "example": "2023-10-06T23:47:56.678Z"
+          },
+          "updated_at": {
+            "type": "string",
+            "description": "Timestamp when the topic was last updated.",
             "format": "date-time",
             "example": "2023-10-06T23:47:56.678Z"
           }
@@ -9104,6 +9172,28 @@
           }
         }
       },
+      "ContactTopicsUpdatedEvent": {
+        "required": [
+          "type",
+          "created_at",
+          "data"
+        ],
+        "type": "object",
+        "properties": {
+          "type": {
+            "$ref": "#/components/schemas/ContactTopicsUpdatedType"
+          },
+          "created_at": {
+            "type": "string",
+            "description": "Timestamp when the event was emitted.",
+            "format": "date-time",
+            "example": "2023-10-06T23:47:56.678Z"
+          },
+          "data": {
+            "$ref": "#/components/schemas/ContactTopicsEventData"
+          }
+        }
+      },
       "DomainCreatedEvent": {
         "required": [
           "type",
@@ -9211,6 +9301,72 @@
           },
           "data": {
             "$ref": "#/components/schemas/SuppressionEventData"
+          }
+        }
+      },
+      "TopicCreatedEvent": {
+        "required": [
+          "type",
+          "created_at",
+          "data"
+        ],
+        "type": "object",
+        "properties": {
+          "type": {
+            "$ref": "#/components/schemas/TopicCreatedType"
+          },
+          "created_at": {
+            "type": "string",
+            "description": "Timestamp when the event was emitted.",
+            "format": "date-time",
+            "example": "2023-10-06T23:47:56.678Z"
+          },
+          "data": {
+            "$ref": "#/components/schemas/TopicEventData"
+          }
+        }
+      },
+      "TopicUpdatedEvent": {
+        "required": [
+          "type",
+          "created_at",
+          "data"
+        ],
+        "type": "object",
+        "properties": {
+          "type": {
+            "$ref": "#/components/schemas/TopicUpdatedType"
+          },
+          "created_at": {
+            "type": "string",
+            "description": "Timestamp when the event was emitted.",
+            "format": "date-time",
+            "example": "2023-10-06T23:47:56.678Z"
+          },
+          "data": {
+            "$ref": "#/components/schemas/TopicEventData"
+          }
+        }
+      },
+      "TopicDeletedEvent": {
+        "required": [
+          "type",
+          "created_at",
+          "data"
+        ],
+        "type": "object",
+        "properties": {
+          "type": {
+            "$ref": "#/components/schemas/TopicDeletedType"
+          },
+          "created_at": {
+            "type": "string",
+            "description": "Timestamp when the event was emitted.",
+            "format": "date-time",
+            "example": "2023-10-06T23:47:56.678Z"
+          },
+          "data": {
+            "$ref": "#/components/schemas/TopicEventData"
           }
         }
       },
@@ -10520,6 +10676,22 @@
           },
           "value": {
             "type": "string"
+          }
+        }
+      },
+      "ContactTopicsEventDataTopicsItem": {
+        "required": [
+          "id",
+          "subscription"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique identifier for the topic."
+          },
+          "subscription": {
+            "$ref": "#/components/schemas/ContactTopicsEventDataTopicsItemSubscription"
           }
         }
       },
@@ -12771,6 +12943,29 @@
           ]
         }
       },
+      "TopicEventDataDefaultSubscription": {
+        "enum": [
+          "opt_in",
+          "opt_out"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "The default subscription status for the topic.",
+        "x-ms-enum": {
+          "name": "TopicEventDataDefaultSubscription",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "opt_in",
+              "name": "OptIn"
+            },
+            {
+              "value": "opt_out",
+              "name": "OptOut"
+            }
+          ]
+        }
+      },
       "EmailSentType": {
         "const": null,
         "enum": [
@@ -13023,6 +13218,24 @@
           ]
         }
       },
+      "ContactTopicsUpdatedType": {
+        "const": null,
+        "enum": [
+          "contact.topics.updated"
+        ],
+        "type": "string",
+        "description": "The event type.",
+        "x-ms-enum": {
+          "name": "ContactTopicsUpdatedType",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "contact.topics.updated",
+              "name": "ContactTopicsUpdated"
+            }
+          ]
+        }
+      },
       "DomainCreatedType": {
         "const": null,
         "enum": [
@@ -13109,6 +13322,60 @@
             {
               "value": "suppression.removed",
               "name": "SuppressionRemoved"
+            }
+          ]
+        }
+      },
+      "TopicCreatedType": {
+        "const": null,
+        "enum": [
+          "topic.created"
+        ],
+        "type": "string",
+        "description": "The event type.",
+        "x-ms-enum": {
+          "name": "TopicCreatedType",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "topic.created",
+              "name": "TopicCreated"
+            }
+          ]
+        }
+      },
+      "TopicUpdatedType": {
+        "const": null,
+        "enum": [
+          "topic.updated"
+        ],
+        "type": "string",
+        "description": "The event type.",
+        "x-ms-enum": {
+          "name": "TopicUpdatedType",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "topic.updated",
+              "name": "TopicUpdated"
+            }
+          ]
+        }
+      },
+      "TopicDeletedType": {
+        "const": null,
+        "enum": [
+          "topic.deleted"
+        ],
+        "type": "string",
+        "description": "The event type.",
+        "x-ms-enum": {
+          "name": "TopicDeletedType",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "topic.deleted",
+              "name": "TopicDeleted"
             }
           ]
         }
@@ -13382,6 +13649,29 @@
         "description": "The subscription status.",
         "x-ms-enum": {
           "name": "UpdateContactTopicsResponseSuccessTopicsItemSubscription",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "opt_in",
+              "name": "OptIn"
+            },
+            {
+              "value": "opt_out",
+              "name": "OptOut"
+            }
+          ]
+        }
+      },
+      "ContactTopicsEventDataTopicsItemSubscription": {
+        "enum": [
+          "opt_in",
+          "opt_out"
+        ],
+        "type": "string",
+        "additionalProperties": false,
+        "description": "The new subscription status for this topic.",
+        "x-ms-enum": {
+          "name": "ContactTopicsEventDataTopicsItemSubscription",
           "modelAsString": false,
           "values": [
             {
@@ -14266,6 +14556,31 @@
         }
       }
     },
+    "contact.topics.updated": {
+      "post": {
+        "tags": [
+          "Webhook Events"
+        ],
+        "summary": "Contact topics updated",
+        "description": "Occurs whenever a contact\u0027s topic subscriptions were updated.",
+        "operationId": "PostOpenApiFixerWebhooksEvent14",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ContactTopicsUpdatedEvent"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "2XX": {
+            "description": "Return any 2xx status code to acknowledge receipt of the event."
+          }
+        }
+      }
+    },
     "domain.created": {
       "post": {
         "tags": [
@@ -14273,7 +14588,7 @@
         ],
         "summary": "Domain created",
         "description": "Occurs when a domain was successfully created.",
-        "operationId": "PostOpenApiFixerWebhooksEvent14",
+        "operationId": "PostOpenApiFixerWebhooksEvent15",
         "requestBody": {
           "content": {
             "application/json": {
@@ -14298,7 +14613,7 @@
         ],
         "summary": "Domain updated",
         "description": "Occurs when a domain was successfully updated.",
-        "operationId": "PostOpenApiFixerWebhooksEvent15",
+        "operationId": "PostOpenApiFixerWebhooksEvent16",
         "requestBody": {
           "content": {
             "application/json": {
@@ -14323,7 +14638,7 @@
         ],
         "summary": "Domain deleted",
         "description": "Occurs when a domain was successfully deleted.",
-        "operationId": "PostOpenApiFixerWebhooksEvent16",
+        "operationId": "PostOpenApiFixerWebhooksEvent17",
         "requestBody": {
           "content": {
             "application/json": {
@@ -14348,7 +14663,7 @@
         ],
         "summary": "Suppression added",
         "description": "Occurs whenever an email address was added to the suppression list.",
-        "operationId": "PostOpenApiFixerWebhooksEvent17",
+        "operationId": "PostOpenApiFixerWebhooksEvent18",
         "requestBody": {
           "content": {
             "application/json": {
@@ -14373,12 +14688,87 @@
         ],
         "summary": "Suppression removed",
         "description": "Occurs whenever an email address was removed from the suppression list.",
-        "operationId": "PostOpenApiFixerWebhooksEvent18",
+        "operationId": "PostOpenApiFixerWebhooksEvent19",
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/SuppressionRemovedEvent"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "2XX": {
+            "description": "Return any 2xx status code to acknowledge receipt of the event."
+          }
+        }
+      }
+    },
+    "topic.created": {
+      "post": {
+        "tags": [
+          "Webhook Events"
+        ],
+        "summary": "Topic created",
+        "description": "Occurs whenever a topic was successfully created.",
+        "operationId": "PostOpenApiFixerWebhooksEvent20",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TopicCreatedEvent"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "2XX": {
+            "description": "Return any 2xx status code to acknowledge receipt of the event."
+          }
+        }
+      }
+    },
+    "topic.updated": {
+      "post": {
+        "tags": [
+          "Webhook Events"
+        ],
+        "summary": "Topic updated",
+        "description": "Occurs whenever a topic was successfully updated.",
+        "operationId": "PostOpenApiFixerWebhooksEvent21",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TopicUpdatedEvent"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "2XX": {
+            "description": "Return any 2xx status code to acknowledge receipt of the event."
+          }
+        }
+      }
+    },
+    "topic.deleted": {
+      "post": {
+        "tags": [
+          "Webhook Events"
+        ],
+        "summary": "Topic deleted",
+        "description": "Occurs whenever a topic was successfully deleted.",
+        "operationId": "PostOpenApiFixerWebhooksEvent22",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TopicDeletedEvent"
               }
             }
           },
