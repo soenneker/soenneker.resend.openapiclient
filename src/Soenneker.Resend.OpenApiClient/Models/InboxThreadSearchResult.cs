@@ -30,6 +30,8 @@ namespace Soenneker.Resend.OpenApiClient.Models
 #else
         public List<string> Cc { get; set; }
 #endif
+        /// <summary>The number of emails in the thread.</summary>
+        public int? EmailCount { get; set; }
         /// <summary>The folder the thread is in. Every thread is in exactly one folder. `inbox` holds threads with at least one received email. `archive` and `spam` hold threads moved there. `trash` holds threads scheduled for deletion in 30 days. `sent` holds threads whose emails are all outbound, and is assigned automatically.</summary>
         public global::Soenneker.Resend.OpenApiClient.Models.InboxThreadFolder? Folder { get; set; }
         /// <summary>The sender email address. Can include the display name.</summary>
@@ -64,8 +66,6 @@ namespace Soenneker.Resend.OpenApiClient.Models
 #endif
         /// <summary>Identifies the email in the thread that matched the search. When `query` has words or phrases, it is the most relevant match. Otherwise, it is the newest. The get, reply and forward thread email endpoints accept it as `email_id`, but it is not equal to the `id` those endpoints return. Null when the search index returns no matched email for the thread.</summary>
         public Guid? MatchedEmailId { get; set; }
-        /// <summary>The number of emails in the thread.</summary>
-        public int? MessageCount { get; set; }
         /// <summary>True only when every email in the thread is read.</summary>
         public bool? Read { get; set; }
         /// <summary>Timestamp when the thread was last active.</summary>
@@ -113,6 +113,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
             {
                 { "bcc", n => { Bcc = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "cc", n => { Cc = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
+                { "email_count", n => { EmailCount = n.GetIntValue(); } },
                 { "folder", n => { Folder = n.GetEnumValue<global::Soenneker.Resend.OpenApiClient.Models.InboxThreadFolder>(); } },
                 { "from", n => { From = n.GetStringValue(); } },
                 { "has_attachment", n => { HasAttachment = n.GetBoolValue(); } },
@@ -121,7 +122,6 @@ namespace Soenneker.Resend.OpenApiClient.Models
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "labels", n => { Labels = n.GetCollectionOfObjectValues<global::Soenneker.Resend.OpenApiClient.Models.InboxThreadLabel>(global::Soenneker.Resend.OpenApiClient.Models.InboxThreadLabel.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "matched_email_id", n => { MatchedEmailId = n.GetGuidValue(); } },
-                { "message_count", n => { MessageCount = n.GetIntValue(); } },
                 { "read", n => { Read = n.GetBoolValue(); } },
                 { "received_at", n => { ReceivedAt = n.GetDateTimeOffsetValue(); } },
                 { "subject", n => { Subject = n.GetStringValue(); } },
@@ -137,6 +137,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfPrimitiveValues<string>("bcc", Bcc);
             writer.WriteCollectionOfPrimitiveValues<string>("cc", Cc);
+            writer.WriteIntValue("email_count", EmailCount);
             writer.WriteEnumValue<global::Soenneker.Resend.OpenApiClient.Models.InboxThreadFolder>("folder", Folder);
             writer.WriteStringValue("from", From);
             writer.WriteBoolValue("has_attachment", HasAttachment);
@@ -145,7 +146,6 @@ namespace Soenneker.Resend.OpenApiClient.Models
             writer.WriteGuidValue("id", Id);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Resend.OpenApiClient.Models.InboxThreadLabel>("labels", Labels);
             writer.WriteGuidValue("matched_email_id", MatchedEmailId);
-            writer.WriteIntValue("message_count", MessageCount);
             writer.WriteBoolValue("read", Read);
             writer.WriteDateTimeOffsetValue("received_at", ReceivedAt);
             writer.WriteStringValue("subject", Subject);

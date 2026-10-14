@@ -38,14 +38,8 @@ namespace Soenneker.Resend.OpenApiClient.Models
 #else
         public string Object { get; set; }
 #endif
-        /// <summary>The tone the agent writes in, such as `friendly and concise`. Null when no tone is set.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Tone { get; set; }
-#nullable restore
-#else
-        public string Tone { get; set; }
-#endif
+        /// <summary>The tone the agent writes in. Null when no tone is set.</summary>
+        public global::Soenneker.Resend.OpenApiClient.Models.InboxAgentTone? Tone { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Resend.OpenApiClient.Models.GetInboxAgentResponseSuccess"/> and sets the default values.
         /// </summary>
@@ -74,7 +68,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
                 { "enabled_actions", n => { EnabledActions = n.GetCollectionOfEnumValues<global::Soenneker.Resend.OpenApiClient.Models.InboxAgentEnabledActionsItem>()?.AsList(); } },
                 { "instructions", n => { Instructions = n.GetStringValue(); } },
                 { "object", n => { Object = n.GetStringValue(); } },
-                { "tone", n => { Tone = n.GetStringValue(); } },
+                { "tone", n => { Tone = n.GetEnumValue<global::Soenneker.Resend.OpenApiClient.Models.InboxAgentTone>(); } },
             };
         }
         /// <summary>
@@ -87,7 +81,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
             writer.WriteCollectionOfEnumValues<global::Soenneker.Resend.OpenApiClient.Models.InboxAgentEnabledActionsItem>("enabled_actions", EnabledActions);
             writer.WriteStringValue("instructions", Instructions);
             writer.WriteStringValue("object", Object);
-            writer.WriteStringValue("tone", Tone);
+            writer.WriteEnumValue<global::Soenneker.Resend.OpenApiClient.Models.InboxAgentTone>("tone", Tone);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

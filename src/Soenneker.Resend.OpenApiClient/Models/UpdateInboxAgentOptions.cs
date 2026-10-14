@@ -31,14 +31,8 @@ namespace Soenneker.Resend.OpenApiClient.Models
 #else
         public string Instructions { get; set; }
 #endif
-        /// <summary>The tone the agent writes in, such as `friendly and concise`. Max 64 characters. Leading and trailing whitespace is trimmed, and the trimmed value must not be empty. Send null to clear the tone.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Tone { get; set; }
-#nullable restore
-#else
-        public string Tone { get; set; }
-#endif
+        /// <summary>The tone the agent writes in. Send null to clear the tone.</summary>
+        public global::Soenneker.Resend.OpenApiClient.Models.UpdateInboxAgentOptionsTone? Tone { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Resend.OpenApiClient.Models.UpdateInboxAgentOptions"/> and sets the default values.
         /// </summary>
@@ -66,7 +60,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
             {
                 { "enabled_actions", n => { EnabledActions = n.GetCollectionOfEnumValues<global::Soenneker.Resend.OpenApiClient.Models.UpdateInboxAgentOptionsEnabledActionsItem>()?.AsList(); } },
                 { "instructions", n => { Instructions = n.GetStringValue(); } },
-                { "tone", n => { Tone = n.GetStringValue(); } },
+                { "tone", n => { Tone = n.GetEnumValue<global::Soenneker.Resend.OpenApiClient.Models.UpdateInboxAgentOptionsTone>(); } },
             };
         }
         /// <summary>
@@ -78,7 +72,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfEnumValues<global::Soenneker.Resend.OpenApiClient.Models.UpdateInboxAgentOptionsEnabledActionsItem>("enabled_actions", EnabledActions);
             writer.WriteStringValue("instructions", Instructions);
-            writer.WriteStringValue("tone", Tone);
+            writer.WriteEnumValue<global::Soenneker.Resend.OpenApiClient.Models.UpdateInboxAgentOptionsTone>("tone", Tone);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

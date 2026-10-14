@@ -11199,12 +11199,7 @@
             "example": "Answer refund questions yourself. Escalate legal threats."
           },
           "tone": {
-            "type": [
-              "null",
-              "string"
-            ],
-            "description": "The tone the agent writes in, such as \u0060friendly and concise\u0060. Null when no tone is set.",
-            "example": "friendly and concise"
+            "$ref": "#/components/schemas/InboxAgentTone"
           },
           "enabled_actions": {
             "type": "array",
@@ -11252,14 +11247,7 @@
             "example": "Answer refund questions yourself. Escalate legal threats."
           },
           "tone": {
-            "maxLength": 64,
-            "minLength": 1,
-            "type": [
-              "null",
-              "string"
-            ],
-            "description": "The tone the agent writes in, such as \u0060friendly and concise\u0060. Max 64 characters. Leading and trailing whitespace is trimmed, and the trimmed value must not be empty. Send null to clear the tone.",
-            "example": "friendly and concise"
+            "$ref": "#/components/schemas/UpdateInboxAgentOptionsTone"
           },
           "enabled_actions": {
             "type": "array",
@@ -11487,7 +11475,7 @@
           "cc",
           "bcc",
           "labels",
-          "message_count",
+          "email_count",
           "has_attachment",
           "has_draft",
           "read",
@@ -11548,7 +11536,7 @@
             },
             "description": "The labels attached to the thread."
           },
-          "message_count": {
+          "email_count": {
             "type": "integer",
             "description": "The number of emails in the thread.",
             "example": 2
@@ -11589,7 +11577,7 @@
           "cc",
           "bcc",
           "labels",
-          "message_count",
+          "email_count",
           "has_attachment",
           "has_draft",
           "read",
@@ -11652,7 +11640,7 @@
             },
             "description": "The labels attached to the thread."
           },
-          "message_count": {
+          "email_count": {
             "type": "integer",
             "description": "The number of emails in the thread.",
             "example": 2
@@ -16451,7 +16439,8 @@
       "RetrievedAttachmentContentDisposition": {
         "enum": [
           "inline",
-          "attachment"
+          "attachment",
+          null
         ],
         "type": [
           "null",
@@ -17965,6 +17954,44 @@
           ]
         }
       },
+      "InboxAgentTone": {
+        "enum": [
+          "concise_professional",
+          "concise_casual",
+          "expanded_professional",
+          "expanded_casual",
+          null
+        ],
+        "type": [
+          "null",
+          "string"
+        ],
+        "additionalProperties": false,
+        "description": "The tone the agent writes in. Null when no tone is set.",
+        "example": "concise_professional",
+        "x-ms-enum": {
+          "name": "InboxAgentTone",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "concise_professional",
+              "name": "ConciseProfessional"
+            },
+            {
+              "value": "concise_casual",
+              "name": "ConciseCasual"
+            },
+            {
+              "value": "expanded_professional",
+              "name": "ExpandedProfessional"
+            },
+            {
+              "value": "expanded_casual",
+              "name": "ExpandedCasual"
+            }
+          ]
+        }
+      },
       "InboxAgentEnabledActionsItem": {
         "enum": [
           "draft_reply",
@@ -18008,6 +18035,44 @@
             {
               "value": "delete_thread",
               "name": "DeleteThread"
+            }
+          ]
+        }
+      },
+      "UpdateInboxAgentOptionsTone": {
+        "enum": [
+          "concise_professional",
+          "concise_casual",
+          "expanded_professional",
+          "expanded_casual",
+          null
+        ],
+        "type": [
+          "null",
+          "string"
+        ],
+        "additionalProperties": false,
+        "description": "The tone the agent writes in. Send null to clear the tone.",
+        "example": "concise_professional",
+        "x-ms-enum": {
+          "name": "UpdateInboxAgentOptionsTone",
+          "modelAsString": false,
+          "values": [
+            {
+              "value": "concise_professional",
+              "name": "ConciseProfessional"
+            },
+            {
+              "value": "concise_casual",
+              "name": "ConciseCasual"
+            },
+            {
+              "value": "expanded_professional",
+              "name": "ExpandedProfessional"
+            },
+            {
+              "value": "expanded_casual",
+              "name": "ExpandedCasual"
             }
           ]
         }
@@ -18674,7 +18739,8 @@
       "ListAttachmentsResponseDataItemContentDisposition": {
         "enum": [
           "inline",
-          "attachment"
+          "attachment",
+          null
         ],
         "type": [
           "null",
@@ -18701,7 +18767,8 @@
       "GetReceivedEmailResponseAttachmentsItemContentDisposition": {
         "enum": [
           "inline",
-          "attachment"
+          "attachment",
+          null
         ],
         "type": [
           "null",
@@ -18928,7 +18995,8 @@
       "ListReceivedEmailsResponseDataItemAttachmentsItemContentDisposition": {
         "enum": [
           "inline",
-          "attachment"
+          "attachment",
+          null
         ],
         "type": [
           "null",

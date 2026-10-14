@@ -31,6 +31,8 @@ namespace Soenneker.Resend.OpenApiClient.Models
 #else
         public List<string> Cc { get; set; }
 #endif
+        /// <summary>The number of emails in the thread.</summary>
+        public int? EmailCount { get; set; }
         /// <summary>The folder the thread is in. Every thread is in exactly one folder. `inbox` holds threads with at least one received email. `archive` and `spam` hold threads moved there. `trash` holds threads scheduled for deletion in 30 days. `sent` holds threads whose emails are all outbound, and is assigned automatically.</summary>
         public global::Soenneker.Resend.OpenApiClient.Models.InboxThreadFolder? Folder { get; set; }
         /// <summary>The sender email address. Can include the display name.</summary>
@@ -55,8 +57,6 @@ namespace Soenneker.Resend.OpenApiClient.Models
 #else
         public List<global::Soenneker.Resend.OpenApiClient.Models.InboxThreadLabel> Labels { get; set; }
 #endif
-        /// <summary>The number of emails in the thread.</summary>
-        public int? MessageCount { get; set; }
         /// <summary>True only when every email in the thread is read.</summary>
         public bool? Read { get; set; }
         /// <summary>Timestamp when the thread was last active.</summary>
@@ -104,13 +104,13 @@ namespace Soenneker.Resend.OpenApiClient.Models
             {
                 { "bcc", n => { Bcc = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "cc", n => { Cc = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
+                { "email_count", n => { EmailCount = n.GetIntValue(); } },
                 { "folder", n => { Folder = n.GetEnumValue<global::Soenneker.Resend.OpenApiClient.Models.InboxThreadFolder>(); } },
                 { "from", n => { From = n.GetStringValue(); } },
                 { "has_attachment", n => { HasAttachment = n.GetBoolValue(); } },
                 { "has_draft", n => { HasDraft = n.GetBoolValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "labels", n => { Labels = n.GetCollectionOfObjectValues<global::Soenneker.Resend.OpenApiClient.Models.InboxThreadLabel>(global::Soenneker.Resend.OpenApiClient.Models.InboxThreadLabel.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "message_count", n => { MessageCount = n.GetIntValue(); } },
                 { "read", n => { Read = n.GetBoolValue(); } },
                 { "received_at", n => { ReceivedAt = n.GetDateTimeOffsetValue(); } },
                 { "subject", n => { Subject = n.GetStringValue(); } },
@@ -126,13 +126,13 @@ namespace Soenneker.Resend.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfPrimitiveValues<string>("bcc", Bcc);
             writer.WriteCollectionOfPrimitiveValues<string>("cc", Cc);
+            writer.WriteIntValue("email_count", EmailCount);
             writer.WriteEnumValue<global::Soenneker.Resend.OpenApiClient.Models.InboxThreadFolder>("folder", Folder);
             writer.WriteStringValue("from", From);
             writer.WriteBoolValue("has_attachment", HasAttachment);
             writer.WriteBoolValue("has_draft", HasDraft);
             writer.WriteGuidValue("id", Id);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Resend.OpenApiClient.Models.InboxThreadLabel>("labels", Labels);
-            writer.WriteIntValue("message_count", MessageCount);
             writer.WriteBoolValue("read", Read);
             writer.WriteDateTimeOffsetValue("received_at", ReceivedAt);
             writer.WriteStringValue("subject", Subject);
