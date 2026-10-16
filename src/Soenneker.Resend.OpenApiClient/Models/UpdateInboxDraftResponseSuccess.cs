@@ -14,45 +14,9 @@ namespace Soenneker.Resend.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The files stored on the draft.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public List<global::Soenneker.Resend.OpenApiClient.Models.InboxDraftAttachment>? Attachments { get; set; }
-#nullable restore
-#else
-        public List<global::Soenneker.Resend.OpenApiClient.Models.InboxDraftAttachment> Attachments { get; set; }
-#endif
-        /// <summary>The BCC recipients.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public List<string>? Bcc { get; set; }
-#nullable restore
-#else
-        public List<string> Bcc { get; set; }
-#endif
-        /// <summary>The CC recipients.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public List<string>? Cc { get; set; }
-#nullable restore
-#else
-        public List<string> Cc { get; set; }
-#endif
-        /// <summary>Timestamp when the draft was created.</summary>
-        public DateTimeOffset? CreatedAt { get; set; }
-        /// <summary>The ID of the outbound email queued when the draft was sent. `null` until the draft is sent.</summary>
-        public Guid? EmailId { get; set; }
-        /// <summary>The HTML body.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Html { get; set; }
-#nullable restore
-#else
-        public string Html { get; set; }
-#endif
         /// <summary>The ID of the draft.</summary>
         public Guid? Id { get; set; }
-        /// <summary>The object type.</summary>
+        /// <summary>The object type. Always `inbox_draft`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Object { get; set; }
@@ -60,38 +24,6 @@ namespace Soenneker.Resend.OpenApiClient.Models
 #else
         public string Object { get; set; }
 #endif
-        /// <summary>The Email ID the draft replies to. `null` otherwise.</summary>
-        public Guid? ReplyToEmailId { get; set; }
-        /// <summary>The subject.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Subject { get; set; }
-#nullable restore
-#else
-        public string Subject { get; set; }
-#endif
-        /// <summary>The plain text body. A reply draft created without a body has an empty string.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Text { get; set; }
-#nullable restore
-#else
-        public string Text { get; set; }
-#endif
-        /// <summary>The Thread ID when the draft is a reply. `null` otherwise.</summary>
-        public Guid? ThreadId { get; set; }
-        /// <summary>The recipients. `null` or empty when no recipients are set.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public List<string>? To { get; set; }
-#nullable restore
-#else
-        public List<string> To { get; set; }
-#endif
-        /// <summary>`reply` when the draft replies to an email in an existing thread. `standalone` when the draft starts a new thread.</summary>
-        public global::Soenneker.Resend.OpenApiClient.Models.InboxDraftType? Type { get; set; }
-        /// <summary>Timestamp when the draft was last saved.</summary>
-        public DateTimeOffset? UpdatedAt { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Resend.OpenApiClient.Models.UpdateInboxDraftResponseSuccess"/> and sets the default values.
         /// </summary>
@@ -117,21 +49,8 @@ namespace Soenneker.Resend.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "attachments", n => { Attachments = n.GetCollectionOfObjectValues<global::Soenneker.Resend.OpenApiClient.Models.InboxDraftAttachment>(global::Soenneker.Resend.OpenApiClient.Models.InboxDraftAttachment.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "bcc", n => { Bcc = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
-                { "cc", n => { Cc = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
-                { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
-                { "email_id", n => { EmailId = n.GetGuidValue(); } },
-                { "html", n => { Html = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "object", n => { Object = n.GetStringValue(); } },
-                { "reply_to_email_id", n => { ReplyToEmailId = n.GetGuidValue(); } },
-                { "subject", n => { Subject = n.GetStringValue(); } },
-                { "text", n => { Text = n.GetStringValue(); } },
-                { "thread_id", n => { ThreadId = n.GetGuidValue(); } },
-                { "to", n => { To = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.Resend.OpenApiClient.Models.InboxDraftType>(); } },
-                { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
             };
         }
         /// <summary>
@@ -141,21 +60,8 @@ namespace Soenneker.Resend.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteCollectionOfObjectValues<global::Soenneker.Resend.OpenApiClient.Models.InboxDraftAttachment>("attachments", Attachments);
-            writer.WriteCollectionOfPrimitiveValues<string>("bcc", Bcc);
-            writer.WriteCollectionOfPrimitiveValues<string>("cc", Cc);
-            writer.WriteDateTimeOffsetValue("created_at", CreatedAt);
-            writer.WriteGuidValue("email_id", EmailId);
-            writer.WriteStringValue("html", Html);
             writer.WriteGuidValue("id", Id);
             writer.WriteStringValue("object", Object);
-            writer.WriteGuidValue("reply_to_email_id", ReplyToEmailId);
-            writer.WriteStringValue("subject", Subject);
-            writer.WriteStringValue("text", Text);
-            writer.WriteGuidValue("thread_id", ThreadId);
-            writer.WriteCollectionOfPrimitiveValues<string>("to", To);
-            writer.WriteEnumValue<global::Soenneker.Resend.OpenApiClient.Models.InboxDraftType>("type", Type);
-            writer.WriteDateTimeOffsetValue("updated_at", UpdatedAt);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

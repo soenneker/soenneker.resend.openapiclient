@@ -5,7 +5,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public enum UpdateInboxAgentOptionsEnabledActionsItem
+    public enum UpdateInboxAgentOptionsActionsItem
     #pragma warning restore CS1591
     {
         [EnumMember(Value = "draft_reply")]
@@ -28,13 +28,13 @@ namespace Soenneker.Resend.OpenApiClient.Models
         #pragma warning disable CS1591
         MarkAsSpam,
         #pragma warning restore CS1591
-        [EnumMember(Value = "archive_thread")]
+        [EnumMember(Value = "archive")]
         #pragma warning disable CS1591
-        ArchiveThread,
+        Archive,
         #pragma warning restore CS1591
-        [EnumMember(Value = "delete_thread")]
+        [EnumMember(Value = "move_to_trash")]
         #pragma warning disable CS1591
-        DeleteThread,
+        MoveToTrash,
         #pragma warning restore CS1591
     }
 }

@@ -4205,12 +4205,10 @@
           {
             "name": "inboxId",
             "in": "path",
-            "description": "The Inbox ID or the inbox email address, such as \u0060support@acme.com\u0060. A value that contains \u0060@\u0060 must be a valid email address, and the match is case-insensitive. Any other value must be a UUID.",
             "required": true,
             "schema": {
               "type": "string"
-            },
-            "example": "b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1"
+            }
           }
         ],
         "responses": {
@@ -4230,20 +4228,17 @@
         "tags": [
           "Inboxes"
         ],
-        "summary": "Update an existing inbox",
+        "summary": "Update an existing inbox by ID or email address",
         "description": "Updates the internal name of the inbox or the name recipients see when mail is sent from it. At least one of \u0060name\u0060 or \u0060from_name\u0060 is required.",
         "operationId": "InboxesUpdate",
         "parameters": [
           {
             "name": "inboxId",
             "in": "path",
-            "description": "The Inbox ID. An email address is not accepted.",
             "required": true,
             "schema": {
-              "type": "string",
-              "format": "uuid"
-            },
-            "example": "b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1"
+              "type": "string"
+            }
           }
         ],
         "requestBody": {
@@ -4273,20 +4268,17 @@
         "tags": [
           "Inboxes"
         ],
-        "summary": "Remove an existing inbox",
+        "summary": "Remove an existing inbox by ID or email address",
         "description": "Removes the inbox. An inbox that does not exist or was already removed returns a 404 not_found.",
         "operationId": "InboxesRemove",
         "parameters": [
           {
             "name": "inboxId",
             "in": "path",
-            "description": "The Inbox ID. An email address is not accepted.",
             "required": true,
             "schema": {
-              "type": "string",
-              "format": "uuid"
-            },
-            "example": "b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1"
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -4309,17 +4301,15 @@
           "Inboxes"
         ],
         "summary": "Retrieve the agent settings for an inbox",
-        "description": "Returns the agent settings of the inbox. An inbox without a configured agent returns empty settings: \u0060instructions\u0060 and \u0060tone\u0060 are null and \u0060enabled_actions\u0060 is an empty array.",
+        "description": "Returns the agent settings of the inbox. An inbox without a configured agent returns empty settings: \u0060instructions\u0060 and \u0060tone\u0060 are null and \u0060actions\u0060 is an empty array.",
         "operationId": "InboxesGetAgent",
         "parameters": [
           {
             "name": "inboxId",
             "in": "path",
-            "description": "The Inbox ID. An email address is not accepted.",
             "required": true,
             "schema": {
-              "type": "string",
-              "format": "uuid"
+              "type": "string"
             }
           }
         ],
@@ -4347,11 +4337,9 @@
           {
             "name": "inboxId",
             "in": "path",
-            "description": "The Inbox ID. An email address is not accepted.",
             "required": true,
             "schema": {
-              "type": "string",
-              "format": "uuid"
+              "type": "string"
             }
           }
         ],
@@ -4391,11 +4379,9 @@
           {
             "name": "inboxId",
             "in": "path",
-            "description": "The Inbox ID. An email address is not accepted.",
             "required": true,
             "schema": {
-              "type": "string",
-              "format": "uuid"
+              "type": "string"
             }
           }
         ],
@@ -4423,11 +4409,9 @@
           {
             "name": "inboxId",
             "in": "path",
-            "description": "The Inbox ID. An email address is not accepted.",
             "required": true,
             "schema": {
-              "type": "string",
-              "format": "uuid"
+              "type": "string"
             }
           }
         ],
@@ -4465,16 +4449,6 @@
         "operationId": "InboxesUpdateLabel",
         "parameters": [
           {
-            "name": "inboxId",
-            "in": "path",
-            "description": "The Inbox ID. An email address is not accepted.",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
-          },
-          {
             "name": "labelId",
             "in": "path",
             "description": "The Label ID.",
@@ -4482,6 +4456,14 @@
             "schema": {
               "type": "string",
               "format": "uuid"
+            }
+          },
+          {
+            "name": "inboxId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
             }
           }
         ],
@@ -4516,16 +4498,6 @@
         "operationId": "InboxesRemoveLabel",
         "parameters": [
           {
-            "name": "inboxId",
-            "in": "path",
-            "description": "The Inbox ID. An email address is not accepted.",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
-          },
-          {
             "name": "labelId",
             "in": "path",
             "description": "The Label ID.",
@@ -4533,6 +4505,14 @@
             "schema": {
               "type": "string",
               "format": "uuid"
+            }
+          },
+          {
+            "name": "inboxId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
             }
           }
         ],
@@ -4559,16 +4539,6 @@
         "description": "Returns the threads in an inbox, most recently active first. A thread is a conversation made up of one or more emails. The \u0060after\u0060 and \u0060before\u0060 cursors take a thread ID, and only one of them can be passed. A cursor that is not a UUID, such as a date, returns a 422 validation_error. A cursor thread that is not in the selected folders returns a 404. To find threads by text, sender, recipient, attachment, or date, use the search threads endpoint.",
         "operationId": "InboxesListThreads",
         "parameters": [
-          {
-            "name": "inboxId",
-            "in": "path",
-            "description": "The Inbox ID. An email address is not accepted.",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
-          },
           {
             "name": "folders",
             "in": "query",
@@ -4621,6 +4591,14 @@
           {
             "description": "Return items before this cursor.",
             "$ref": "#/components/parameters/PaginationBefore"
+          },
+          {
+            "name": "inboxId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -4646,16 +4624,6 @@
         "description": "Finds threads by the text of their emails, who sent or received them, whether they have attachments, and their dates. Results are ordered by latest activity, newest first, and paginate like the list threads endpoint, so a cursor that is not a thread ID returns a 422. Search can be up to about a minute behind new emails. Different parameters combine, so a thread must match all of them. \u0060folders\u0060, \u0060labels\u0060, and \u0060read\u0060 apply to the thread. \u0060query\u0060, \u0060from\u0060, \u0060to\u0060, \u0060cc\u0060, \u0060bcc\u0060, \u0060has_attachment\u0060, \u0060start_date\u0060, and \u0060end_date\u0060 must all match the same email in the thread. When any of these email filters is set, the matching email must itself be in one of \u0060folders\u0060. For \u0060sent\u0060, that means an email the inbox sent. When more than 10,000 threads match, search covers the 10,000 with the newest matching email.",
         "operationId": "InboxesSearchThreads",
         "parameters": [
-          {
-            "name": "inboxId",
-            "in": "path",
-            "description": "The Inbox ID. An email address is not accepted.",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
-          },
           {
             "name": "query",
             "in": "query",
@@ -4800,6 +4768,14 @@
           {
             "description": "Return items before this cursor.",
             "$ref": "#/components/parameters/PaginationBefore"
+          },
+          {
+            "name": "inboxId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -4826,16 +4802,6 @@
         "operationId": "InboxesGetThread",
         "parameters": [
           {
-            "name": "inboxId",
-            "in": "path",
-            "description": "The Inbox ID. An email address is not accepted.",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
-          },
-          {
             "name": "threadId",
             "in": "path",
             "description": "The Thread ID.",
@@ -4843,6 +4809,14 @@
             "schema": {
               "type": "string",
               "format": "uuid"
+            }
+          },
+          {
+            "name": "inboxId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
             }
           }
         ],
@@ -4864,19 +4838,9 @@
           "Inboxes"
         ],
         "summary": "Update an existing inbox thread",
-        "description": "Marks a thread read or unread, moves it to a folder, or adds and removes labels. At least one of \u0060read\u0060, \u0060folder\u0060, \u0060add_label_ids\u0060, or \u0060remove_label_ids\u0060 is required. A label ID cannot be both added and removed in the same request. Removing a label from a thread keeps the label itself. Moving a thread out of \u0060trash\u0060 restores it and clears its deletion deadline. The changes apply in this order: \u0060read\u0060, \u0060folder\u0060, added labels, removed labels. They are not atomic, so a 404 for a label leaves the earlier changes applied.",
+        "description": "Marks a thread read or unread, or moves it to a folder. At least one of \u0060read\u0060 or \u0060folder\u0060 is required. To change the labels of a thread, use the add, set, and remove thread labels endpoints. This endpoint ignores the removed \u0060add_label_ids\u0060 and \u0060remove_label_ids\u0060 fields, so a body with only those fields returns a 422 validation_error. Moving a thread out of \u0060trash\u0060 restores it and clears its deletion deadline. The changes apply in this order: \u0060read\u0060, then \u0060folder\u0060. They are not atomic.",
         "operationId": "InboxesUpdateThread",
         "parameters": [
-          {
-            "name": "inboxId",
-            "in": "path",
-            "description": "The Inbox ID. An email address is not accepted.",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
-          },
           {
             "name": "threadId",
             "in": "path",
@@ -4885,6 +4849,14 @@
             "schema": {
               "type": "string",
               "format": "uuid"
+            }
+          },
+          {
+            "name": "inboxId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
             }
           }
         ],
@@ -4920,16 +4892,6 @@
         "operationId": "InboxesRemoveThread",
         "parameters": [
           {
-            "name": "inboxId",
-            "in": "path",
-            "description": "The Inbox ID. An email address is not accepted.",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
-          },
-          {
             "name": "threadId",
             "in": "path",
             "description": "The Thread ID.",
@@ -4937,6 +4899,14 @@
             "schema": {
               "type": "string",
               "format": "uuid"
+            }
+          },
+          {
+            "name": "inboxId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
             }
           }
         ],
@@ -4954,6 +4924,160 @@
         }
       }
     },
+    "/inboxes/{inboxId}/threads/{threadId}/labels": {
+      "post": {
+        "tags": [
+          "Inboxes"
+        ],
+        "summary": "Add labels to an inbox thread",
+        "description": "Applies one or more labels to the thread. Labels already on the thread stay on it. The response lists every label on the thread after the change. A label ID that is not a label of the inbox returns a 404 \u0060Label not found.\u0060, and nothing changes. A thread that does not exist in the inbox returns a 404 \u0060Thread not found.\u0060. To replace the labels of the thread, use the set thread labels endpoint.",
+        "operationId": "InboxesAddThreadLabels",
+        "parameters": [
+          {
+            "name": "threadId",
+            "in": "path",
+            "description": "The Thread ID.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "inboxId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddInboxThreadLabelsOptions"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AddInboxThreadLabelsResponseSuccess"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Inboxes"
+        ],
+        "summary": "Set the labels of an inbox thread",
+        "description": "Replaces every label on the thread with the given labels, in one atomic change. Labels on the thread that are not in the list are taken off it. The labels themselves are kept. An empty array takes every label off the thread. The response lists every label on the thread after the change. A label ID that is not a label of the inbox returns a 404 \u0060Label not found.\u0060, and nothing changes. A thread that does not exist in the inbox returns a 404 \u0060Thread not found.\u0060.",
+        "operationId": "InboxesSetThreadLabels",
+        "parameters": [
+          {
+            "name": "threadId",
+            "in": "path",
+            "description": "The Thread ID.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "inboxId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SetInboxThreadLabelsOptions"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SetInboxThreadLabelsResponseSuccess"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/inboxes/{inboxId}/threads/{threadId}/labels/{labelId}": {
+      "delete": {
+        "tags": [
+          "Inboxes"
+        ],
+        "summary": "Remove a label from an inbox thread",
+        "description": "Takes one label off the thread. The label itself is kept, and stays on every other thread that carries it. To delete the label, use the remove inbox label endpoint. The response lists every label on the thread after the change. A label that is not on the thread returns a 200 with the current labels. A label ID that is not a label of the inbox returns a 404 \u0060Label not found.\u0060. A thread that does not exist in the inbox returns a 404 \u0060Thread not found.\u0060.",
+        "operationId": "InboxesRemoveThreadLabel",
+        "parameters": [
+          {
+            "name": "threadId",
+            "in": "path",
+            "description": "The Thread ID.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "labelId",
+            "in": "path",
+            "description": "The Label ID.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "inboxId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RemoveInboxThreadLabelResponseSuccess"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/inboxes/{inboxId}/threads/{threadId}/emails": {
       "get": {
         "tags": [
@@ -4963,16 +5087,6 @@
         "description": "Returns the messages of a thread, oldest first. Pass the \u0060id\u0060 of the last message as \u0060after\u0060 to get the next, newer page. Pass the \u0060id\u0060 of the first message as \u0060before\u0060 to get the previous, older page. Passing both \u0060after\u0060 and \u0060before\u0060, or a cursor that is not a UUID, returns a 422. A cursor that is not a message of the thread returns a 404.",
         "operationId": "InboxesListThreadEmails",
         "parameters": [
-          {
-            "name": "inboxId",
-            "in": "path",
-            "description": "The Inbox ID. An email address is not accepted.",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
-          },
           {
             "name": "threadId",
             "in": "path",
@@ -4994,6 +5108,14 @@
           {
             "description": "Return items before this cursor.",
             "$ref": "#/components/parameters/PaginationBefore"
+          },
+          {
+            "name": "inboxId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -5019,16 +5141,6 @@
         "operationId": "InboxesGetThreadEmail",
         "parameters": [
           {
-            "name": "inboxId",
-            "in": "path",
-            "description": "The Inbox ID. An email address is not accepted.",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
-          },
-          {
             "name": "threadId",
             "in": "path",
             "description": "The Thread ID.",
@@ -5046,6 +5158,14 @@
             "schema": {
               "type": "string",
               "format": "uuid"
+            }
+          },
+          {
+            "name": "inboxId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
             }
           }
         ],
@@ -5083,16 +5203,6 @@
             }
           },
           {
-            "name": "inboxId",
-            "in": "path",
-            "description": "The Inbox ID. An email address is not accepted.",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
-          },
-          {
             "name": "threadId",
             "in": "path",
             "description": "The Thread ID.",
@@ -5110,6 +5220,14 @@
             "schema": {
               "type": "string",
               "format": "uuid"
+            }
+          },
+          {
+            "name": "inboxId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
             }
           }
         ],
@@ -5143,7 +5261,7 @@
           "Inboxes"
         ],
         "summary": "Forward a thread email",
-        "description": "Forwards a message from the inbox address right away, with no stored draft. The original message is quoted under a forwarded-message banner, below the optional \u0060html\u0060 or \u0060text\u0060 note. The attachments of the original message are sent with the forward, together with any \u0060attachments\u0060 you add. The request fails when they exceed 10 files or 25 MB of \u0060content\u0060 in total. An original attachment that was sent from a URL (\u0060path\u0060) cannot be forwarded, and the request returns a 422. The whole email, encoded, can be at most 40 MB, or the request returns a 422.",
+        "description": "Forwards a message from the inbox address right away, with no stored draft. The original message is quoted under a forwarded-message banner, below the optional \u0060html\u0060 or \u0060text\u0060 note. The attachments of the original message are sent with the forward, together with any \u0060attachments\u0060 you add. The request returns a 422 when they exceed 25 MB of \u0060content\u0060 in total. An original attachment that was sent from a URL (\u0060path\u0060) cannot be forwarded, and the request returns a 422. The whole email, encoded, can be at most 40 MB, or the request returns a 422.",
         "operationId": "InboxesForwardThreadEmail",
         "parameters": [
           {
@@ -5154,16 +5272,6 @@
               "maxLength": 256,
               "minLength": 1,
               "type": "string"
-            }
-          },
-          {
-            "name": "inboxId",
-            "in": "path",
-            "description": "The Inbox ID. An email address is not accepted.",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
             }
           },
           {
@@ -5184,6 +5292,14 @@
             "schema": {
               "type": "string",
               "format": "uuid"
+            }
+          },
+          {
+            "name": "inboxId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
             }
           }
         ],
@@ -5221,16 +5337,6 @@
         "operationId": "InboxesListDrafts",
         "parameters": [
           {
-            "name": "inboxId",
-            "in": "path",
-            "description": "The Inbox ID. An email address is not accepted.",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
-          },
-          {
             "description": "Number of items to return.",
             "$ref": "#/components/parameters/PaginationLimit"
           },
@@ -5241,6 +5347,14 @@
           {
             "description": "Return items before this cursor.",
             "$ref": "#/components/parameters/PaginationBefore"
+          },
+          {
+            "name": "inboxId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -5261,7 +5375,7 @@
           "Inboxes"
         ],
         "summary": "Create a draft",
-        "description": "Creates an unsent draft on the inbox. Omit \u0060thread_id\u0060 and \u0060reply_to_email_id\u0060 for a draft that starts a new thread. Pass both together for a reply draft in an existing thread. A reply draft without \u0060to\u0060 is addressed to the sender of the email it replies to, or to its Reply-To when set. For an email the inbox sent, it defaults to that email\u0027s \u0060to\u0060 recipients. Send \u0060to: []\u0060 to leave it empty. At least one of \u0060to\u0060, \u0060cc\u0060, \u0060bcc\u0060, \u0060subject\u0060, \u0060text\u0060, \u0060html\u0060 or \u0060attachments\u0060 must be non-empty. The combined recipients of \u0060to\u0060, \u0060cc\u0060 and \u0060bcc\u0060 cannot exceed 50. Attachments are stored on the draft, so each one needs \u0060content\u0060, \u0060filename\u0060 and \u0060content_type\u0060. Returns 201 for a new draft. Only one unsent reply draft can target an email, so a reply draft request for an email that already has one returns 200 with the ID of the existing draft. An unknown \u0060thread_id\u0060, or a \u0060reply_to_email_id\u0060 that is not in that thread, returns a 404. That request ignores every other field, except \u0060attachments\u0060, which replaces the attachments of the existing draft when sent. A reply draft created without \u0060subject\u0060 stores an empty subject and gets no \u0060Re:\u0060 prefix, so set one before you send it.",
+        "description": "Creates an unsent draft on the inbox. Omit \u0060thread_id\u0060 and \u0060reply_to_email_id\u0060 for a draft that starts a new thread. Pass both together for a reply draft in an existing thread. A reply draft without \u0060to\u0060 is addressed to the sender of the email it replies to, or to its Reply-To when set. For an email the inbox sent, it defaults to that email\u0027s \u0060to\u0060 recipients. Send \u0060to: []\u0060 to leave it empty. At least one of \u0060to\u0060, \u0060cc\u0060, \u0060bcc\u0060, \u0060subject\u0060, \u0060text\u0060, \u0060html\u0060 or \u0060attachments\u0060 must be non-empty. The combined recipients of \u0060to\u0060, \u0060cc\u0060 and \u0060bcc\u0060 cannot exceed 50. Attachments are stored on the draft, so each one needs \u0060content\u0060, \u0060filename\u0060 and \u0060content_type\u0060. Returns 201 for a new draft. Only one unsent reply draft can target an email, so a reply draft request for an email that already has one returns 200 with the ID of the existing draft. An unknown \u0060thread_id\u0060, or a \u0060reply_to_email_id\u0060 that is not in that thread, returns a 404. That request ignores every other field, except \u0060attachments\u0060, which replaces the attachments of the existing draft when sent. A reply draft created without \u0060subject\u0060 stores an empty subject. When it is sent, it takes the thread subject, prefixed with \u0060Re:\u0060 when it does not already start with it.",
         "operationId": "InboxesCreateDraft",
         "parameters": [
           {
@@ -5277,11 +5391,9 @@
           {
             "name": "inboxId",
             "in": "path",
-            "description": "The Inbox ID. An email address is not accepted.",
             "required": true,
             "schema": {
-              "type": "string",
-              "format": "uuid"
+              "type": "string"
             }
           }
         ],
@@ -5328,16 +5440,6 @@
         "operationId": "InboxesGetDraft",
         "parameters": [
           {
-            "name": "inboxId",
-            "in": "path",
-            "description": "The Inbox ID. An email address is not accepted.",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
-          },
-          {
             "name": "draftId",
             "in": "path",
             "description": "The Draft ID.",
@@ -5345,6 +5447,14 @@
             "schema": {
               "type": "string",
               "format": "uuid"
+            }
+          },
+          {
+            "name": "inboxId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
             }
           }
         ],
@@ -5366,19 +5476,9 @@
           "Inboxes"
         ],
         "summary": "Update an existing draft",
-        "description": "Updates the content of an unsent draft. Omitted fields are left unchanged. Send at least one of \u0060to\u0060, \u0060cc\u0060, \u0060bcc\u0060, \u0060subject\u0060, \u0060text\u0060, \u0060html\u0060 or \u0060attachments\u0060. Sending \u0060attachments\u0060 replaces every attachment on the draft. A request that sets \u0060text\u0060 or \u0060html\u0060 replaces the whole body. The body part you omit from that request becomes \u0060null\u0060. The merged draft must still contain at least one non-empty field, and its combined recipients cannot exceed 50. A draft that was already sent, or that changed during the request, returns a 409.",
+        "description": "Updates the content of an unsent draft. Omitted fields are left unchanged. Send at least one of \u0060to\u0060, \u0060cc\u0060, \u0060bcc\u0060, \u0060subject\u0060, \u0060text\u0060, \u0060html\u0060 or \u0060attachments\u0060. Sending \u0060attachments\u0060 replaces every attachment on the draft. A request that sets \u0060text\u0060 or \u0060html\u0060 replaces the whole body. The body part you omit from that request becomes \u0060null\u0060. The merged draft must still contain at least one non-empty field, and its combined recipients cannot exceed 50. A draft that was already sent, or that changed during the request, returns a 409. The response holds only the Draft ID. Retrieve the draft to read its content.",
         "operationId": "InboxesUpdateDraft",
         "parameters": [
-          {
-            "name": "inboxId",
-            "in": "path",
-            "description": "The Inbox ID. An email address is not accepted.",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
-          },
           {
             "name": "draftId",
             "in": "path",
@@ -5387,6 +5487,14 @@
             "schema": {
               "type": "string",
               "format": "uuid"
+            }
+          },
+          {
+            "name": "inboxId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
             }
           }
         ],
@@ -5422,16 +5530,6 @@
         "operationId": "InboxesRemoveDraft",
         "parameters": [
           {
-            "name": "inboxId",
-            "in": "path",
-            "description": "The Inbox ID. An email address is not accepted.",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
-          },
-          {
             "name": "draftId",
             "in": "path",
             "description": "The Draft ID.",
@@ -5439,6 +5537,14 @@
             "schema": {
               "type": "string",
               "format": "uuid"
+            }
+          },
+          {
+            "name": "inboxId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
             }
           }
         ],
@@ -5462,7 +5568,7 @@
           "Inboxes"
         ],
         "summary": "Send a draft",
-        "description": "Sends the draft from the inbox address. A reply draft is sent in its thread. A draft without a thread starts a new thread. The draft must have at least one \u0060to\u0060 recipient, a non-empty \u0060subject\u0060, and \u0060html\u0060 or \u0060text\u0060, or the request returns a 422. A draft that was already sent returns a 409. The request body is optional and takes only \u0060headers\u0060. The whole email, encoded, can be at most 40 MB, or the request returns a 422.",
+        "description": "Sends the draft from the inbox address. A reply draft is sent in its thread. A draft without a thread starts a new thread. The draft must have at least one \u0060to\u0060 recipient and \u0060html\u0060 or \u0060text\u0060, or the request returns a 422. A standalone draft also needs a non-empty \u0060subject\u0060. A reply draft with an empty \u0060subject\u0060 is sent with the thread subject, prefixed with \u0060Re:\u0060 when it does not already start with it. A draft that was already sent returns a 409. The request body is optional and takes only \u0060headers\u0060. The whole email, encoded, can be at most 40 MB, or the request returns a 422.",
         "operationId": "InboxesSendDraft",
         "parameters": [
           {
@@ -5476,16 +5582,6 @@
             }
           },
           {
-            "name": "inboxId",
-            "in": "path",
-            "description": "The Inbox ID. An email address is not accepted.",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
-          },
-          {
             "name": "draftId",
             "in": "path",
             "description": "The Draft ID.",
@@ -5493,6 +5589,14 @@
             "schema": {
               "type": "string",
               "format": "uuid"
+            }
+          },
+          {
+            "name": "inboxId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
             }
           }
         ],
@@ -10943,7 +11047,8 @@
           "unread",
           "drafts",
           "last_received",
-          "created_at"
+          "created_at",
+          "updated_at"
         ],
         "type": "object",
         "properties": {
@@ -11014,6 +11119,12 @@
             "description": "ISO 8601 timestamp when the inbox was created.",
             "format": "date-time",
             "example": "2026-08-01T09:12:44.512Z"
+          },
+          "updated_at": {
+            "type": "string",
+            "description": "ISO 8601 timestamp when the inbox was last updated.",
+            "format": "date-time",
+            "example": "2026-08-03T10:20:05.118Z"
           }
         }
       },
@@ -11025,7 +11136,7 @@
         "properties": {
           "email_address": {
             "type": "string",
-            "description": "The inbox email address on one of your domains. The API trims and lowercases it. The part before the \u0060@\u0060 is at most 64 characters and contains only letters, numbers, and \u0060. _ % \u002B -\u0060. It cannot start or end with a dot or contain two dots in a row.",
+            "description": "The inbox email address on one of your domains. The API trims and lowercases it. The part before the \u0060@\u0060 is at most 64 characters and contains only letters, numbers, and \u0060. _ % -\u0060. A \u0060\u002B\u0060 returns a 422. It cannot start or end with a dot or contain two dots in a row.",
             "example": "support@acme.com"
           },
           "name": {
@@ -11181,7 +11292,7 @@
           "object",
           "instructions",
           "tone",
-          "enabled_actions"
+          "actions"
         ],
         "type": "object",
         "properties": {
@@ -11201,12 +11312,12 @@
           "tone": {
             "$ref": "#/components/schemas/InboxAgentTone"
           },
-          "enabled_actions": {
+          "actions": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/InboxAgentEnabledActionsItem"
+              "$ref": "#/components/schemas/InboxAgentActionsItem"
             },
-            "description": "The actions the agent can take. Empty when no actions are enabled."
+            "description": "The actions the agent can take, in the order of the enum. Empty when no actions are enabled."
           }
         }
       },
@@ -11230,7 +11341,7 @@
           },
           {
             "required": [
-              "enabled_actions"
+              "actions"
             ],
             "type": "object"
           }
@@ -11249,15 +11360,15 @@
           "tone": {
             "$ref": "#/components/schemas/UpdateInboxAgentOptionsTone"
           },
-          "enabled_actions": {
+          "actions": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/UpdateInboxAgentOptionsEnabledActionsItem"
+              "$ref": "#/components/schemas/UpdateInboxAgentOptionsActionsItem"
             },
-            "description": "The actions the agent can take. Replaces the whole set. Duplicates are removed. Send an empty array to disable all actions."
+            "description": "The actions the agent can take. Replaces the whole set. Duplicates are removed. Send an empty array to disable all actions. The old names \u0060archive_thread\u0060 and \u0060delete_thread\u0060 return a 422. Use \u0060archive\u0060 and \u0060move_to_trash\u0060."
           }
         },
-        "description": "At least one of \u0060instructions\u0060, \u0060tone\u0060, or \u0060enabled_actions\u0060 must be provided. Omitted fields keep their current value."
+        "description": "At least one of \u0060instructions\u0060, \u0060tone\u0060, or \u0060actions\u0060 must be provided. Omitted fields keep their current value."
       },
       "UpdateInboxAgentResponseSuccess": {
         "required": [
@@ -11583,8 +11694,7 @@
           "read",
           "received_at",
           "folder",
-          "matched_email_id",
-          "highlights"
+          "matched_email_id"
         ],
         "type": "object",
         "properties": {
@@ -11674,12 +11784,9 @@
               "null",
               "string"
             ],
-            "description": "Identifies the email in the thread that matched the search. When \u0060query\u0060 has words or phrases, it is the most relevant match. Otherwise, it is the newest. The get, reply and forward thread email endpoints accept it as \u0060email_id\u0060, but it is not equal to the \u0060id\u0060 those endpoints return. Null when the search index returns no matched email for the thread.",
+            "description": "The ID of the email in the thread that matched the search. When \u0060query\u0060 has words or phrases, it is the most relevant match. Otherwise, it is the newest. It is the same \u0060id\u0060 that the list thread emails endpoint returns, so use it as \u0060email_id\u0060 with the get, reply and forward endpoints. Null when the search index returns no matched email for the thread.",
             "format": "uuid",
             "example": "e8a3f1c6-2b9d-4e5a-a7c4-9d1b6f3e2a80"
-          },
-          "highlights": {
-            "$ref": "#/components/schemas/InboxThreadSearchResultAllOf2Highlights"
           }
         }
       },
@@ -11802,18 +11909,6 @@
               "folder"
             ],
             "type": "object"
-          },
-          {
-            "required": [
-              "add_label_ids"
-            ],
-            "type": "object"
-          },
-          {
-            "required": [
-              "remove_label_ids"
-            ],
-            "type": "object"
           }
         ],
         "properties": {
@@ -11824,32 +11919,77 @@
           },
           "folder": {
             "$ref": "#/components/schemas/UpdateInboxThreadOptionsFolder"
-          },
-          "add_label_ids": {
-            "maxItems": 10,
-            "minItems": 1,
-            "type": "array",
-            "items": {
-              "type": "string",
-              "format": "uuid"
-            },
-            "description": "Label IDs to apply to the thread. Between 1 and 10 IDs. A label ID that does not exist in the inbox returns a 404."
-          },
-          "remove_label_ids": {
-            "maxItems": 10,
-            "minItems": 1,
-            "type": "array",
-            "items": {
-              "type": "string",
-              "format": "uuid"
-            },
-            "description": "Label IDs to remove from the thread. Between 1 and 10 IDs. The labels themselves are kept. A label ID that does not exist in the inbox returns a 404."
           }
         },
-        "description": "At least one of \u0060read\u0060, \u0060folder\u0060, \u0060add_label_ids\u0060, or \u0060remove_label_ids\u0060 is required. A label ID cannot be both added and removed in the same request."
+        "description": "At least one of \u0060read\u0060 or \u0060folder\u0060 is required. Use the thread labels endpoints to change labels."
       },
       "UpdateInboxThreadResponseSuccess": {
         "$ref": "#/components/schemas/InboxThreadSummary"
+      },
+      "AddInboxThreadLabelsOptions": {
+        "required": [
+          "labels"
+        ],
+        "type": "object",
+        "properties": {
+          "labels": {
+            "maxItems": 10,
+            "minItems": 1,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "description": "The IDs of the labels to apply to the thread. Between 1 and 10 IDs, each a label of the inbox."
+          }
+        }
+      },
+      "SetInboxThreadLabelsOptions": {
+        "required": [
+          "labels"
+        ],
+        "type": "object",
+        "properties": {
+          "labels": {
+            "maxItems": 100,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "description": "The IDs of the labels the thread carries after the change. Up to 100 IDs, each a label of the inbox. Pass an empty array to take every label off the thread."
+          }
+        }
+      },
+      "InboxThreadLabelList": {
+        "required": [
+          "object",
+          "data"
+        ],
+        "type": "object",
+        "properties": {
+          "object": {
+            "type": "string",
+            "description": "Type of the response object.",
+            "example": "list"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/InboxThreadLabel"
+            },
+            "description": "Every label on the thread after the change."
+          }
+        }
+      },
+      "AddInboxThreadLabelsResponseSuccess": {
+        "$ref": "#/components/schemas/InboxThreadLabelList"
+      },
+      "SetInboxThreadLabelsResponseSuccess": {
+        "$ref": "#/components/schemas/InboxThreadLabelList"
+      },
+      "RemoveInboxThreadLabelResponseSuccess": {
+        "$ref": "#/components/schemas/InboxThreadLabelList"
       },
       "RemoveInboxThreadResponseSuccess": {
         "required": [
@@ -12055,6 +12195,20 @@
       },
       "ReplyInboxThreadEmailOptions": {
         "type": "object",
+        "anyOf": [
+          {
+            "required": [
+              "html"
+            ],
+            "type": "object"
+          },
+          {
+            "required": [
+              "text"
+            ],
+            "type": "object"
+          }
+        ],
         "properties": {
           "cc": {
             "$ref": "#/components/schemas/ReplyInboxThreadEmailOptionsCc"
@@ -12093,7 +12247,7 @@
             "items": {
               "$ref": "#/components/schemas/Attachment"
             },
-            "description": "Files to attach, as on \u0060POST /emails\u0060. Each one needs \u0060content\u0060 or \u0060path\u0060. Up to 10 files. The \u0060content\u0060 of all files can total at most 25 MB. A \u0060path\u0060 file counts toward the 10 files only, because it is fetched when the email is sent. An empty file, a blocked file type, a \u0060path\u0060 that is not an \u0060http\u0060 or \u0060https\u0060 URL or that points to \u0060localhost\u0060, \u0060127.0.0.1\u0060 or \u00600.0.0.0\u0060, or a \u0060content_type\u0060 that is not a valid MIME type returns a 422."
+            "description": "Files to attach, as on \u0060POST /emails\u0060. Each one needs \u0060content\u0060 or \u0060path\u0060. The \u0060content\u0060 of all files can total at most 25 MB. A \u0060path\u0060 file does not count toward the 25 MB, because it is fetched when the email is sent. An empty file, a blocked file type, a \u0060path\u0060 that does not start with \u0060http\u0060 or that starts with \u0060http://localhost:\u0060, or a \u0060content_type\u0060 that is not a valid MIME type returns a 422. Other \u0060path\u0060 problems fail the email when it is sent, not the request."
           },
           "headers": {
             "$ref": "#/components/schemas/ReplyInboxThreadEmailOptionsHeadersProperty"
@@ -12155,7 +12309,7 @@
             "items": {
               "$ref": "#/components/schemas/Attachment"
             },
-            "description": "Files to attach, as on \u0060POST /emails\u0060. Each one needs \u0060content\u0060 or \u0060path\u0060. They share one limit with the attachments of the original message, which the forward also sends. Together they can have up to 10 files and at most 25 MB of \u0060content\u0060. A \u0060path\u0060 file counts toward the 10 files only, because it is fetched when the email is sent. An empty file, a blocked file type, a \u0060path\u0060 that is not an \u0060http\u0060 or \u0060https\u0060 URL or that points to \u0060localhost\u0060, \u0060127.0.0.1\u0060 or \u00600.0.0.0\u0060, or a \u0060content_type\u0060 that is not a valid MIME type returns a 422."
+            "description": "Files to attach, as on \u0060POST /emails\u0060. Each one needs \u0060content\u0060 or \u0060path\u0060. They share one limit with the attachments of the original message, which the forward also sends. Together they can have at most 25 MB of \u0060content\u0060. A \u0060path\u0060 file does not count toward the 25 MB, because it is fetched when the email is sent. An empty file, a blocked file type, a \u0060path\u0060 that does not start with \u0060http\u0060 or that starts with \u0060http://localhost:\u0060, or a \u0060content_type\u0060 that is not a valid MIME type returns a 422. Other \u0060path\u0060 problems fail the email when it is sent, not the request."
           },
           "headers": {
             "$ref": "#/components/schemas/ForwardInboxThreadEmailOptionsHeadersProperty"
@@ -12676,7 +12830,24 @@
         "description": "Send at least one of \u0060to\u0060, \u0060cc\u0060, \u0060bcc\u0060, \u0060subject\u0060, \u0060text\u0060, \u0060html\u0060 or \u0060attachments\u0060. Omitted fields are left unchanged. Setting \u0060text\u0060 or \u0060html\u0060 replaces the whole body, so the body part you omit becomes \u0060null\u0060. The merged draft must contain at least one non-empty field, and its combined recipients cannot exceed 50."
       },
       "UpdateInboxDraftResponseSuccess": {
-        "$ref": "#/components/schemas/InboxDraft"
+        "required": [
+          "object",
+          "id"
+        ],
+        "type": "object",
+        "properties": {
+          "object": {
+            "type": "string",
+            "description": "The object type. Always \u0060inbox_draft\u0060.",
+            "example": "inbox_draft"
+          },
+          "id": {
+            "type": "string",
+            "description": "The ID of the draft.",
+            "format": "uuid",
+            "example": "c3a1e8b4-2d5f-4a7c-9e10-6b8d7f5a4c32"
+          }
+        }
       },
       "RemoveInboxDraftResponseSuccess": {
         "required": [
@@ -13267,7 +13438,7 @@
             "$ref": "#/components/schemas/InboxThreadSummary"
           }
         },
-        "description": "The data of an \u0060inbox.thread.labels.updated\u0060 event. One event carries one label, in either \u0060added\u0060 or \u0060removed\u0060."
+        "description": "The data of an \u0060inbox.thread.labels.updated\u0060 event. Adding labels fills only \u0060added\u0060. Removing one label fills only \u0060removed\u0060. Setting the labels of a thread can fill both."
       },
       "InboxDraftEventData": {
         "required": [
@@ -13588,7 +13759,7 @@
             "example": "2026-09-29T12:00:00.000Z"
           },
           "data": {
-            "description": "The data of an \u0060inbox.thread.labels.updated\u0060 event. One event carries one label, in either \u0060added\u0060 or \u0060removed\u0060.",
+            "description": "The data of an \u0060inbox.thread.labels.updated\u0060 event. Adding labels fills only \u0060added\u0060. Removing one label fills only \u0060removed\u0060. Setting the labels of a thread can fill both.",
             "$ref": "#/components/schemas/InboxThreadLabelsUpdatedEventData"
           }
         }
@@ -13911,8 +14082,7 @@
       },
       "InboxThreadSearchResultAllOf2": {
         "required": [
-          "matched_email_id",
-          "highlights"
+          "matched_email_id"
         ],
         "type": "object",
         "properties": {
@@ -13921,12 +14091,9 @@
               "null",
               "string"
             ],
-            "description": "Identifies the email in the thread that matched the search. When \u0060query\u0060 has words or phrases, it is the most relevant match. Otherwise, it is the newest. The get, reply and forward thread email endpoints accept it as \u0060email_id\u0060, but it is not equal to the \u0060id\u0060 those endpoints return. Null when the search index returns no matched email for the thread.",
+            "description": "The ID of the email in the thread that matched the search. When \u0060query\u0060 has words or phrases, it is the most relevant match. Otherwise, it is the newest. It is the same \u0060id\u0060 that the list thread emails endpoint returns, so use it as \u0060email_id\u0060 with the get, reply and forward endpoints. Null when the search index returns no matched email for the thread.",
             "format": "uuid",
             "example": "e8a3f1c6-2b9d-4e5a-a7c4-9d1b6f3e2a80"
-          },
-          "highlights": {
-            "$ref": "#/components/schemas/InboxThreadSearchResultAllOf2Highlights"
           }
         }
       },
@@ -15141,7 +15308,9 @@
           "email_address",
           "from_name",
           "unread",
-          "last_received"
+          "last_received",
+          "created_at",
+          "updated_at"
         ],
         "type": "object",
         "properties": {
@@ -15185,6 +15354,18 @@
             "description": "ISO 8601 timestamp of the newest received email in the Inbox folder. \u0060null\u0060 when the folder has no received email.",
             "format": "date-time",
             "example": "2026-08-05T14:03:11.229Z"
+          },
+          "created_at": {
+            "type": "string",
+            "description": "ISO 8601 timestamp when the inbox was created.",
+            "format": "date-time",
+            "example": "2026-08-01T09:12:44.512Z"
+          },
+          "updated_at": {
+            "type": "string",
+            "description": "ISO 8601 timestamp when the inbox was last updated.",
+            "format": "date-time",
+            "example": "2026-08-03T10:20:05.118Z"
           }
         }
       },
@@ -15225,63 +15406,6 @@
         "description": "Custom headers to add to the email. The \u0060In-Reply-To\u0060, \u0060References\u0060 and \u0060Reply-To\u0060 headers are set by Resend and cannot be set here. Sending one of them, in any letter case, returns a 422. Header names cannot be empty, and names and values cannot contain line breaks or null characters, or the request returns a 422. \u0060null\u0060 means no custom headers.",
         "example": {
           "X-Ticket-Id": "4821"
-        }
-      },
-      "InboxThreadSearchResultAllOf2Highlights": {
-        "type": "object",
-        "properties": {
-          "subject": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
-          "body": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
-          "from": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
-          "to": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
-          "cc": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
-          "bcc": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
-          "attachments": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          }
-        },
-        "additionalProperties": false,
-        "description": "Where \u0060query\u0060 matched the email in \u0060matched_email_id\u0060, as text fragments with each match wrapped in \u0060**\u0060. Only keys with a match are present. An empty object when there is no \u0060query\u0060.",
-        "example": {
-          "subject": [
-            "September **invoice**"
-          ],
-          "attachments": [
-            "**invoice**-2026-09.pdf"
-          ]
         }
       },
       "GetUsageResponseSuccessEmailsDaily": {
@@ -17992,20 +18116,20 @@
           ]
         }
       },
-      "InboxAgentEnabledActionsItem": {
+      "InboxAgentActionsItem": {
         "enum": [
           "draft_reply",
           "forward_thread",
           "add_labels",
           "assign_thread",
           "mark_as_spam",
-          "archive_thread",
-          "delete_thread"
+          "archive",
+          "move_to_trash"
         ],
         "type": "string",
         "additionalProperties": false,
         "x-ms-enum": {
-          "name": "InboxAgentEnabledActionsItem",
+          "name": "InboxAgentActionsItem",
           "modelAsString": false,
           "values": [
             {
@@ -18029,12 +18153,12 @@
               "name": "MarkAsSpam"
             },
             {
-              "value": "archive_thread",
-              "name": "ArchiveThread"
+              "value": "archive",
+              "name": "Archive"
             },
             {
-              "value": "delete_thread",
-              "name": "DeleteThread"
+              "value": "move_to_trash",
+              "name": "MoveToTrash"
             }
           ]
         }
@@ -18077,20 +18201,20 @@
           ]
         }
       },
-      "UpdateInboxAgentOptionsEnabledActionsItem": {
+      "UpdateInboxAgentOptionsActionsItem": {
         "enum": [
           "draft_reply",
           "forward_thread",
           "add_labels",
           "assign_thread",
           "mark_as_spam",
-          "archive_thread",
-          "delete_thread"
+          "archive",
+          "move_to_trash"
         ],
         "type": "string",
         "additionalProperties": false,
         "x-ms-enum": {
-          "name": "UpdateInboxAgentOptionsEnabledActionsItem",
+          "name": "UpdateInboxAgentOptionsActionsItem",
           "modelAsString": false,
           "values": [
             {
@@ -18114,12 +18238,12 @@
               "name": "MarkAsSpam"
             },
             {
-              "value": "archive_thread",
-              "name": "ArchiveThread"
+              "value": "archive",
+              "name": "Archive"
             },
             {
-              "value": "delete_thread",
-              "name": "DeleteThread"
+              "value": "move_to_trash",
+              "name": "MoveToTrash"
             }
           ]
         }
@@ -19466,6 +19590,16 @@
         "schema": {
           "type": "string"
         }
+      },
+      "InboxIdOrEmailAddress": {
+        "name": "inbox_id",
+        "in": "path",
+        "description": "The Inbox ID or the inbox email address, such as \u0060support@acme.com\u0060. A value that contains \u0060@\u0060 must be a valid email address, and any other value must be a UUID, or the request returns a 422. The address match is case-insensitive and never falls back to the inbox \u0060name\u0060. An address that matches no inbox returns a 404.",
+        "required": true,
+        "schema": {
+          "type": "string"
+        },
+        "example": "b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1"
       }
     },
     "securitySchemes": {
@@ -19559,7 +19693,7 @@
     },
     {
       "name": "Inboxes",
-      "description": "Create and manage Inboxes through the Resend API. Every Inboxes endpoint needs a full access API key. A sending access key returns a 401 \u0060restricted_api_key\u0060."
+      "description": "Create and manage Inboxes through the Resend API. A sending access key can call only these Inboxes endpoints: \u0060POST /inboxes/{inbox_id}/threads/{thread_id}/emails/{email_id}/reply\u0060, \u0060POST /inboxes/{inbox_id}/threads/{thread_id}/emails/{email_id}/forward\u0060, \u0060POST /inboxes/{inbox_id}/drafts\u0060 and \u0060POST /inboxes/{inbox_id}/drafts/{draft_id}/send\u0060. When the key is limited to one domain, the inbox address must be on that domain, or the request returns a 403. Every other Inboxes endpoint needs a full access API key, and a sending access key returns a 401 \u0060restricted_api_key\u0060."
     }
   ],
   "webhooks": {
@@ -20369,7 +20503,7 @@
           "Webhook Events"
         ],
         "summary": "Inbox thread labels updated",
-        "description": "Occurs whenever a label was applied to or removed from a thread. One event carries one label. Deleting a label does not send this event for the threads that had it.",
+        "description": "Occurs whenever labels were applied to or removed from a thread. One event lists every label that one request added to or removed from the thread. A request that changes no label sends no event. Deleting a label does not send this event for the threads that had it.",
         "operationId": "PostOpenApiFixerWebhooksEvent32",
         "requestBody": {
           "content": {

@@ -46,14 +46,6 @@ namespace Soenneker.Resend.OpenApiClient.Models
         public bool? HasAttachment { get; set; }
         /// <summary>Whether the thread has an unsent draft.</summary>
         public bool? HasDraft { get; set; }
-        /// <summary>Where `query` matched the email in `matched_email_id`, as text fragments with each match wrapped in `**`. Only keys with a match are present. An empty object when there is no `query`.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.Resend.OpenApiClient.Models.InboxThreadSearchResultAllOf2Highlights? Highlights { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.Resend.OpenApiClient.Models.InboxThreadSearchResultAllOf2Highlights Highlights { get; set; }
-#endif
         /// <summary>The ID of the thread.</summary>
         public Guid? Id { get; set; }
         /// <summary>The labels attached to the thread.</summary>
@@ -64,7 +56,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
 #else
         public List<global::Soenneker.Resend.OpenApiClient.Models.InboxThreadLabel> Labels { get; set; }
 #endif
-        /// <summary>Identifies the email in the thread that matched the search. When `query` has words or phrases, it is the most relevant match. Otherwise, it is the newest. The get, reply and forward thread email endpoints accept it as `email_id`, but it is not equal to the `id` those endpoints return. Null when the search index returns no matched email for the thread.</summary>
+        /// <summary>The ID of the email in the thread that matched the search. When `query` has words or phrases, it is the most relevant match. Otherwise, it is the newest. It is the same `id` that the list thread emails endpoint returns, so use it as `email_id` with the get, reply and forward endpoints. Null when the search index returns no matched email for the thread.</summary>
         public Guid? MatchedEmailId { get; set; }
         /// <summary>True only when every email in the thread is read.</summary>
         public bool? Read { get; set; }
@@ -118,7 +110,6 @@ namespace Soenneker.Resend.OpenApiClient.Models
                 { "from", n => { From = n.GetStringValue(); } },
                 { "has_attachment", n => { HasAttachment = n.GetBoolValue(); } },
                 { "has_draft", n => { HasDraft = n.GetBoolValue(); } },
-                { "highlights", n => { Highlights = n.GetObjectValue<global::Soenneker.Resend.OpenApiClient.Models.InboxThreadSearchResultAllOf2Highlights>(global::Soenneker.Resend.OpenApiClient.Models.InboxThreadSearchResultAllOf2Highlights.CreateFromDiscriminatorValue); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "labels", n => { Labels = n.GetCollectionOfObjectValues<global::Soenneker.Resend.OpenApiClient.Models.InboxThreadLabel>(global::Soenneker.Resend.OpenApiClient.Models.InboxThreadLabel.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "matched_email_id", n => { MatchedEmailId = n.GetGuidValue(); } },
@@ -142,7 +133,6 @@ namespace Soenneker.Resend.OpenApiClient.Models
             writer.WriteStringValue("from", From);
             writer.WriteBoolValue("has_attachment", HasAttachment);
             writer.WriteBoolValue("has_draft", HasDraft);
-            writer.WriteObjectValue<global::Soenneker.Resend.OpenApiClient.Models.InboxThreadSearchResultAllOf2Highlights>("highlights", Highlights);
             writer.WriteGuidValue("id", Id);
             writer.WriteCollectionOfObjectValues<global::Soenneker.Resend.OpenApiClient.Models.InboxThreadLabel>("labels", Labels);
             writer.WriteGuidValue("matched_email_id", MatchedEmailId);

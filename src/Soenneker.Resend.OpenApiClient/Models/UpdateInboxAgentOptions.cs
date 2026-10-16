@@ -8,21 +8,21 @@ using System;
 namespace Soenneker.Resend.OpenApiClient.Models
 {
     /// <summary>
-    /// At least one of `instructions`, `tone`, or `enabled_actions` must be provided. Omitted fields keep their current value.
+    /// At least one of `instructions`, `tone`, or `actions` must be provided. Omitted fields keep their current value.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class UpdateInboxAgentOptions : IAdditionalDataHolder, IParsable
     {
-        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
-        public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The actions the agent can take. Replaces the whole set. Duplicates are removed. Send an empty array to disable all actions.</summary>
+        /// <summary>The actions the agent can take. Replaces the whole set. Duplicates are removed. Send an empty array to disable all actions. The old names `archive_thread` and `delete_thread` return a 422. Use `archive` and `move_to_trash`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Resend.OpenApiClient.Models.UpdateInboxAgentOptionsEnabledActionsItem?>? EnabledActions { get; set; }
+        public List<global::Soenneker.Resend.OpenApiClient.Models.UpdateInboxAgentOptionsActionsItem?>? Actions { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.Resend.OpenApiClient.Models.UpdateInboxAgentOptionsEnabledActionsItem?> EnabledActions { get; set; }
+        public List<global::Soenneker.Resend.OpenApiClient.Models.UpdateInboxAgentOptionsActionsItem?> Actions { get; set; }
 #endif
+        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
+        public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Instructions the agent follows when it handles the threads of the inbox. Max 4000 characters. Leading and trailing whitespace is trimmed, and the trimmed value must not be empty. Send null to clear the instructions.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -58,7 +58,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "enabled_actions", n => { EnabledActions = n.GetCollectionOfEnumValues<global::Soenneker.Resend.OpenApiClient.Models.UpdateInboxAgentOptionsEnabledActionsItem>()?.AsList(); } },
+                { "actions", n => { Actions = n.GetCollectionOfEnumValues<global::Soenneker.Resend.OpenApiClient.Models.UpdateInboxAgentOptionsActionsItem>()?.AsList(); } },
                 { "instructions", n => { Instructions = n.GetStringValue(); } },
                 { "tone", n => { Tone = n.GetEnumValue<global::Soenneker.Resend.OpenApiClient.Models.UpdateInboxAgentOptionsTone>(); } },
             };
@@ -70,7 +70,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteCollectionOfEnumValues<global::Soenneker.Resend.OpenApiClient.Models.UpdateInboxAgentOptionsEnabledActionsItem>("enabled_actions", EnabledActions);
+            writer.WriteCollectionOfEnumValues<global::Soenneker.Resend.OpenApiClient.Models.UpdateInboxAgentOptionsActionsItem>("actions", Actions);
             writer.WriteStringValue("instructions", Instructions);
             writer.WriteEnumValue<global::Soenneker.Resend.OpenApiClient.Models.UpdateInboxAgentOptionsTone>("tone", Tone);
             writer.WriteAdditionalData(AdditionalData);

@@ -14,6 +14,8 @@ namespace Soenneker.Resend.OpenApiClient.Models
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
+        /// <summary>ISO 8601 timestamp when the inbox was created.</summary>
+        public DateTimeOffset? CreatedAt { get; set; }
         /// <summary>The address of the inbox.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -44,6 +46,8 @@ namespace Soenneker.Resend.OpenApiClient.Models
 #endif
         /// <summary>The number of unread threads in the Inbox folder.</summary>
         public int? Unread { get; set; }
+        /// <summary>ISO 8601 timestamp when the inbox was last updated.</summary>
+        public DateTimeOffset? UpdatedAt { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Resend.OpenApiClient.Models.ListInboxesResponseSuccessDataItem"/> and sets the default values.
         /// </summary>
@@ -69,12 +73,14 @@ namespace Soenneker.Resend.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "email_address", n => { EmailAddress = n.GetStringValue(); } },
                 { "from_name", n => { FromName = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "last_received", n => { LastReceived = n.GetDateTimeOffsetValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "unread", n => { Unread = n.GetIntValue(); } },
+                { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
             };
         }
         /// <summary>
@@ -84,12 +90,14 @@ namespace Soenneker.Resend.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteDateTimeOffsetValue("created_at", CreatedAt);
             writer.WriteStringValue("email_address", EmailAddress);
             writer.WriteStringValue("from_name", FromName);
             writer.WriteGuidValue("id", Id);
             writer.WriteDateTimeOffsetValue("last_received", LastReceived);
             writer.WriteStringValue("name", Name);
             writer.WriteIntValue("unread", Unread);
+            writer.WriteDateTimeOffsetValue("updated_at", UpdatedAt);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

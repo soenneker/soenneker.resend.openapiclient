@@ -12,16 +12,16 @@ namespace Soenneker.Resend.OpenApiClient.Models
     public partial class GetInboxAgentResponseSuccess : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
     {
-        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
-        public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>The actions the agent can take. Empty when no actions are enabled.</summary>
+        /// <summary>The actions the agent can take, in the order of the enum. Empty when no actions are enabled.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.Resend.OpenApiClient.Models.InboxAgentEnabledActionsItem?>? EnabledActions { get; set; }
+        public List<global::Soenneker.Resend.OpenApiClient.Models.InboxAgentActionsItem?>? Actions { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.Resend.OpenApiClient.Models.InboxAgentEnabledActionsItem?> EnabledActions { get; set; }
+        public List<global::Soenneker.Resend.OpenApiClient.Models.InboxAgentActionsItem?> Actions { get; set; }
 #endif
+        /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
+        public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Instructions the agent follows when it handles the threads of the inbox. Null when no instructions are set.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -65,7 +65,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "enabled_actions", n => { EnabledActions = n.GetCollectionOfEnumValues<global::Soenneker.Resend.OpenApiClient.Models.InboxAgentEnabledActionsItem>()?.AsList(); } },
+                { "actions", n => { Actions = n.GetCollectionOfEnumValues<global::Soenneker.Resend.OpenApiClient.Models.InboxAgentActionsItem>()?.AsList(); } },
                 { "instructions", n => { Instructions = n.GetStringValue(); } },
                 { "object", n => { Object = n.GetStringValue(); } },
                 { "tone", n => { Tone = n.GetEnumValue<global::Soenneker.Resend.OpenApiClient.Models.InboxAgentTone>(); } },
@@ -78,7 +78,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteCollectionOfEnumValues<global::Soenneker.Resend.OpenApiClient.Models.InboxAgentEnabledActionsItem>("enabled_actions", EnabledActions);
+            writer.WriteCollectionOfEnumValues<global::Soenneker.Resend.OpenApiClient.Models.InboxAgentActionsItem>("actions", Actions);
             writer.WriteStringValue("instructions", Instructions);
             writer.WriteStringValue("object", Object);
             writer.WriteEnumValue<global::Soenneker.Resend.OpenApiClient.Models.InboxAgentTone>("tone", Tone);

@@ -16,7 +16,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Timestamp when the event was emitted.</summary>
         public DateTimeOffset? CreatedAt { get; set; }
-        /// <summary>The data of an `inbox.thread.labels.updated` event. One event carries one label, in either `added` or `removed`.</summary>
+        /// <summary>The data of an `inbox.thread.labels.updated` event. Adding labels fills only `added`. Removing one label fills only `removed`. Setting the labels of a thread can fill both.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public global::Soenneker.Resend.OpenApiClient.Models.InboxThreadLabelsUpdatedEventData? Data { get; set; }

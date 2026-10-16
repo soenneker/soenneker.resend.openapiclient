@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.Resend.OpenApiClient.Models
 {
     /// <summary>
-    /// The data of an `inbox.thread.labels.updated` event. One event carries one label, in either `added` or `removed`.
+    /// The data of an `inbox.thread.labels.updated` event. Adding labels fills only `added`. Removing one label fills only `removed`. Setting the labels of a thread can fill both.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class InboxThreadLabelsUpdatedEventData : IAdditionalDataHolder, IParsable

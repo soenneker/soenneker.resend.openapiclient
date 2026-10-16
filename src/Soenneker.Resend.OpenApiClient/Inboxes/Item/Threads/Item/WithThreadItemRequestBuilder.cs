@@ -4,6 +4,7 @@ using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.Resend.OpenApiClient.Inboxes.Item.Threads.Item.Emails;
+using Soenneker.Resend.OpenApiClient.Inboxes.Item.Threads.Item.Labels;
 using Soenneker.Resend.OpenApiClient.Models;
 using System.Collections.Generic;
 using System.IO;
@@ -22,6 +23,11 @@ namespace Soenneker.Resend.OpenApiClient.Inboxes.Item.Threads.Item
         public global::Soenneker.Resend.OpenApiClient.Inboxes.Item.Threads.Item.Emails.EmailsRequestBuilder Emails
         {
             get => new global::Soenneker.Resend.OpenApiClient.Inboxes.Item.Threads.Item.Emails.EmailsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The labels property</summary>
+        public global::Soenneker.Resend.OpenApiClient.Inboxes.Item.Threads.Item.Labels.LabelsRequestBuilder Labels
+        {
+            get => new global::Soenneker.Resend.OpenApiClient.Inboxes.Item.Threads.Item.Labels.LabelsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Resend.OpenApiClient.Inboxes.Item.Threads.Item.WithThreadItemRequestBuilder"/> and sets the default values.
@@ -76,10 +82,10 @@ namespace Soenneker.Resend.OpenApiClient.Inboxes.Item.Threads.Item
             return await RequestAdapter.SendAsync<global::Soenneker.Resend.OpenApiClient.Models.GetInboxThreadResponseSuccess>(requestInfo, global::Soenneker.Resend.OpenApiClient.Models.GetInboxThreadResponseSuccess.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Marks a thread read or unread, moves it to a folder, or adds and removes labels. At least one of `read`, `folder`, `add_label_ids`, or `remove_label_ids` is required. A label ID cannot be both added and removed in the same request. Removing a label from a thread keeps the label itself. Moving a thread out of `trash` restores it and clears its deletion deadline. The changes apply in this order: `read`, `folder`, added labels, removed labels. They are not atomic, so a 404 for a label leaves the earlier changes applied.
+        /// Marks a thread read or unread, or moves it to a folder. At least one of `read` or `folder` is required. To change the labels of a thread, use the add, set, and remove thread labels endpoints. This endpoint ignores the removed `add_label_ids` and `remove_label_ids` fields, so a body with only those fields returns a 422 validation_error. Moving a thread out of `trash` restores it and clears its deletion deadline. The changes apply in this order: `read`, then `folder`. They are not atomic.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Resend.OpenApiClient.Models.UpdateInboxThreadResponseSuccess"/></returns>
-        /// <param name="body">At least one of `read`, `folder`, `add_label_ids`, or `remove_label_ids` is required. A label ID cannot be both added and removed in the same request.</param>
+        /// <param name="body">At least one of `read` or `folder` is required. Use the thread labels endpoints to change labels.</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -134,10 +140,10 @@ namespace Soenneker.Resend.OpenApiClient.Inboxes.Item.Threads.Item
             return requestInfo;
         }
         /// <summary>
-        /// Marks a thread read or unread, moves it to a folder, or adds and removes labels. At least one of `read`, `folder`, `add_label_ids`, or `remove_label_ids` is required. A label ID cannot be both added and removed in the same request. Removing a label from a thread keeps the label itself. Moving a thread out of `trash` restores it and clears its deletion deadline. The changes apply in this order: `read`, `folder`, added labels, removed labels. They are not atomic, so a 404 for a label leaves the earlier changes applied.
+        /// Marks a thread read or unread, or moves it to a folder. At least one of `read` or `folder` is required. To change the labels of a thread, use the add, set, and remove thread labels endpoints. This endpoint ignores the removed `add_label_ids` and `remove_label_ids` fields, so a body with only those fields returns a 422 validation_error. Moving a thread out of `trash` restores it and clears its deletion deadline. The changes apply in this order: `read`, then `folder`. They are not atomic.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
-        /// <param name="body">At least one of `read`, `folder`, `add_label_ids`, or `remove_label_ids` is required. A label ID cannot be both added and removed in the same request.</param>
+        /// <param name="body">At least one of `read` or `folder` is required. Use the thread labels endpoints to change labels.</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable

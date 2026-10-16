@@ -34,7 +34,7 @@ namespace Soenneker.Resend.OpenApiClient.Inboxes.Item.Agent
         {
         }
         /// <summary>
-        /// Returns the agent settings of the inbox. An inbox without a configured agent returns empty settings: `instructions` and `tone` are null and `enabled_actions` is an empty array.
+        /// Returns the agent settings of the inbox. An inbox without a configured agent returns empty settings: `instructions` and `tone` are null and `actions` is an empty array.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Resend.OpenApiClient.Models.GetInboxAgentResponseSuccess"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -55,7 +55,7 @@ namespace Soenneker.Resend.OpenApiClient.Inboxes.Item.Agent
         /// Updates the agent settings of the inbox. The agent is created when the inbox has none. Omitted fields keep their current value.
         /// </summary>
         /// <returns>A <see cref="global::Soenneker.Resend.OpenApiClient.Models.UpdateInboxAgentResponseSuccess"/></returns>
-        /// <param name="body">At least one of `instructions`, `tone`, or `enabled_actions` must be provided. Omitted fields keep their current value.</param>
+        /// <param name="body">At least one of `instructions`, `tone`, or `actions` must be provided. Omitted fields keep their current value.</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -72,7 +72,7 @@ namespace Soenneker.Resend.OpenApiClient.Inboxes.Item.Agent
             return await RequestAdapter.SendAsync<global::Soenneker.Resend.OpenApiClient.Models.UpdateInboxAgentResponseSuccess>(requestInfo, global::Soenneker.Resend.OpenApiClient.Models.UpdateInboxAgentResponseSuccess.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Returns the agent settings of the inbox. An inbox without a configured agent returns empty settings: `instructions` and `tone` are null and `enabled_actions` is an empty array.
+        /// Returns the agent settings of the inbox. An inbox without a configured agent returns empty settings: `instructions` and `tone` are null and `actions` is an empty array.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -94,7 +94,7 @@ namespace Soenneker.Resend.OpenApiClient.Inboxes.Item.Agent
         /// Updates the agent settings of the inbox. The agent is created when the inbox has none. Omitted fields keep their current value.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
-        /// <param name="body">At least one of `instructions`, `tone`, or `enabled_actions` must be provided. Omitted fields keep their current value.</param>
+        /// <param name="body">At least one of `instructions`, `tone`, or `actions` must be provided. Omitted fields keep their current value.</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable

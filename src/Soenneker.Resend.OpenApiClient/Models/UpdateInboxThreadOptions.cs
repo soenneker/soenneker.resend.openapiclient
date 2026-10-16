@@ -8,33 +8,17 @@ using System;
 namespace Soenneker.Resend.OpenApiClient.Models
 {
     /// <summary>
-    /// At least one of `read`, `folder`, `add_label_ids`, or `remove_label_ids` is required. A label ID cannot be both added and removed in the same request.
+    /// At least one of `read` or `folder` is required. Use the thread labels endpoints to change labels.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class UpdateInboxThreadOptions : IAdditionalDataHolder, IParsable
     {
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
-        /// <summary>Label IDs to apply to the thread. Between 1 and 10 IDs. A label ID that does not exist in the inbox returns a 404.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public List<Guid?>? AddLabelIds { get; set; }
-#nullable restore
-#else
-        public List<Guid?> AddLabelIds { get; set; }
-#endif
         /// <summary>Moves the thread to this folder. `sent` is assigned automatically and cannot be set.</summary>
         public global::Soenneker.Resend.OpenApiClient.Models.UpdateInboxThreadOptionsFolder? Folder { get; set; }
         /// <summary>Marks every email in the thread read or unread.</summary>
         public bool? Read { get; set; }
-        /// <summary>Label IDs to remove from the thread. Between 1 and 10 IDs. The labels themselves are kept. A label ID that does not exist in the inbox returns a 404.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public List<Guid?>? RemoveLabelIds { get; set; }
-#nullable restore
-#else
-        public List<Guid?> RemoveLabelIds { get; set; }
-#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Resend.OpenApiClient.Models.UpdateInboxThreadOptions"/> and sets the default values.
         /// </summary>
@@ -60,10 +44,8 @@ namespace Soenneker.Resend.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "add_label_ids", n => { AddLabelIds = n.GetCollectionOfPrimitiveValues<Guid?>()?.AsList(); } },
                 { "folder", n => { Folder = n.GetEnumValue<global::Soenneker.Resend.OpenApiClient.Models.UpdateInboxThreadOptionsFolder>(); } },
                 { "read", n => { Read = n.GetBoolValue(); } },
-                { "remove_label_ids", n => { RemoveLabelIds = n.GetCollectionOfPrimitiveValues<Guid?>()?.AsList(); } },
             };
         }
         /// <summary>
@@ -73,10 +55,8 @@ namespace Soenneker.Resend.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteCollectionOfPrimitiveValues<Guid?>("add_label_ids", AddLabelIds);
             writer.WriteEnumValue<global::Soenneker.Resend.OpenApiClient.Models.UpdateInboxThreadOptionsFolder>("folder", Folder);
             writer.WriteBoolValue("read", Read);
-            writer.WriteCollectionOfPrimitiveValues<Guid?>("remove_label_ids", RemoveLabelIds);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

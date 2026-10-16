@@ -66,6 +66,8 @@ namespace Soenneker.Resend.OpenApiClient.Models
 #endif
         /// <summary>The number of unread threads in the Inbox folder.</summary>
         public int? Unread { get; set; }
+        /// <summary>ISO 8601 timestamp when the inbox was last updated.</summary>
+        public DateTimeOffset? UpdatedAt { get; set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Resend.OpenApiClient.Models.GetInboxResponseSuccess"/> and sets the default values.
         /// </summary>
@@ -102,6 +104,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
                 { "object", n => { Object = n.GetStringValue(); } },
                 { "receiving_address", n => { ReceivingAddress = n.GetStringValue(); } },
                 { "unread", n => { Unread = n.GetIntValue(); } },
+                { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
             };
         }
         /// <summary>
@@ -122,6 +125,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
             writer.WriteStringValue("object", Object);
             writer.WriteStringValue("receiving_address", ReceivingAddress);
             writer.WriteIntValue("unread", Unread);
+            writer.WriteDateTimeOffsetValue("updated_at", UpdatedAt);
             writer.WriteAdditionalData(AdditionalData);
         }
     }
