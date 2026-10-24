@@ -26,14 +26,14 @@ namespace Soenneker.Resend.OpenApiClient.Contacts
         }
         /// <summary>Gets an item from the Soenneker.Resend.OpenApiClient.contacts.item collection</summary>
         /// <param name="position">The Contact ID or email address.</param>
-        /// <returns>A <see cref="global::Soenneker.Resend.OpenApiClient.Contacts.Item.ContactItemRequestBuilder"/></returns>
-        public global::Soenneker.Resend.OpenApiClient.Contacts.Item.ContactItemRequestBuilder this[string position]
+        /// <returns>A <see cref="global::Soenneker.Resend.OpenApiClient.Contacts.Item.ContactsItemRequestBuilder"/></returns>
+        public global::Soenneker.Resend.OpenApiClient.Contacts.Item.ContactsItemRequestBuilder this[string position]
         {
             get
             {
                 var urlTplParams = new Dictionary<string, object>(PathParameters);
-                urlTplParams.Add("contact%2Did", position);
-                return new global::Soenneker.Resend.OpenApiClient.Contacts.Item.ContactItemRequestBuilder(urlTplParams, RequestAdapter);
+                urlTplParams.Add("id", position);
+                return new global::Soenneker.Resend.OpenApiClient.Contacts.Item.ContactsItemRequestBuilder(urlTplParams, RequestAdapter);
             }
         }
         /// <summary>

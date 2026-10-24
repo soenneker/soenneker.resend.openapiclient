@@ -14,10 +14,10 @@ using System;
 namespace Soenneker.Resend.OpenApiClient.Contacts.Item
 {
     /// <summary>
-    /// Builds and executes requests for operations under \contacts\{contact-id}
+    /// Builds and executes requests for operations under \contacts\{id}
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    public partial class ContactItemRequestBuilder : BaseRequestBuilder
+    public partial class ContactsItemRequestBuilder : BaseRequestBuilder
     {
         /// <summary>The segments property</summary>
         public global::Soenneker.Resend.OpenApiClient.Contacts.Item.Segments.SegmentsRequestBuilder Segments
@@ -30,19 +30,19 @@ namespace Soenneker.Resend.OpenApiClient.Contacts.Item
             get => new global::Soenneker.Resend.OpenApiClient.Contacts.Item.Topics.TopicsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.Resend.OpenApiClient.Contacts.Item.ContactItemRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.Resend.OpenApiClient.Contacts.Item.ContactsItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public ContactItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/contacts/{contact%2Did}", pathParameters)
+        public ContactsItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/contacts/{id}", pathParameters)
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="global::Soenneker.Resend.OpenApiClient.Contacts.Item.ContactItemRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::Soenneker.Resend.OpenApiClient.Contacts.Item.ContactsItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public ContactItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/contacts/{contact%2Did}", rawUrl)
+        public ContactsItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/contacts/{id}", rawUrl)
         {
         }
         /// <summary>
@@ -164,11 +164,11 @@ namespace Soenneker.Resend.OpenApiClient.Contacts.Item
         /// <summary>
         /// Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         /// </summary>
-        /// <returns>A <see cref="global::Soenneker.Resend.OpenApiClient.Contacts.Item.ContactItemRequestBuilder"/></returns>
+        /// <returns>A <see cref="global::Soenneker.Resend.OpenApiClient.Contacts.Item.ContactsItemRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public global::Soenneker.Resend.OpenApiClient.Contacts.Item.ContactItemRequestBuilder WithUrl(string rawUrl)
+        public global::Soenneker.Resend.OpenApiClient.Contacts.Item.ContactsItemRequestBuilder WithUrl(string rawUrl)
         {
-            return new global::Soenneker.Resend.OpenApiClient.Contacts.Item.ContactItemRequestBuilder(rawUrl, RequestAdapter);
+            return new global::Soenneker.Resend.OpenApiClient.Contacts.Item.ContactsItemRequestBuilder(rawUrl, RequestAdapter);
         }
     }
 }

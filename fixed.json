@@ -3104,7 +3104,7 @@
         }
       }
     },
-    "/contacts/{contactId}/segments": {
+    "/contacts/{id}/segments": {
       "get": {
         "tags": [
           "Contacts"
@@ -3113,7 +3113,7 @@
         "operationId": "ContactsListSegments",
         "parameters": [
           {
-            "name": "contactId",
+            "name": "id",
             "in": "path",
             "description": "The Contact ID or email address.",
             "required": true,
@@ -3148,7 +3148,7 @@
         }
       }
     },
-    "/contacts/{contactId}/segments/{segmentId}": {
+    "/contacts/{id}/segments/{segmentId}": {
       "post": {
         "tags": [
           "Contacts"
@@ -3157,7 +3157,7 @@
         "operationId": "ContactsAddSegment",
         "parameters": [
           {
-            "name": "contactId",
+            "name": "id",
             "in": "path",
             "description": "The Contact ID or email address.",
             "required": true,
@@ -3196,7 +3196,7 @@
         "operationId": "ContactsRemoveSegment",
         "parameters": [
           {
-            "name": "contactId",
+            "name": "id",
             "in": "path",
             "description": "The Contact ID or email address.",
             "required": true,
@@ -3228,7 +3228,7 @@
         }
       }
     },
-    "/contacts/{contactId}/topics": {
+    "/contacts/{id}/topics": {
       "get": {
         "tags": [
           "Contacts"
@@ -3237,7 +3237,7 @@
         "operationId": "ContactsListTopics",
         "parameters": [
           {
-            "name": "contactId",
+            "name": "id",
             "in": "path",
             "description": "The Contact ID or email address.",
             "required": true,
@@ -3279,7 +3279,7 @@
         "operationId": "ContactsUpdateTopics",
         "parameters": [
           {
-            "name": "contactId",
+            "name": "id",
             "in": "path",
             "description": "The Contact ID or email address.",
             "required": true,
@@ -4205,10 +4205,12 @@
           {
             "name": "inboxId",
             "in": "path",
+            "description": "The Inbox ID or the inbox email address, such as \u0060support@acme.com\u0060. A value that contains \u0060@\u0060 must be a valid email address, and any other value must be a UUID, or the request returns a 422. The address match is case-insensitive and never falls back to the inbox \u0060name\u0060. An address that matches no inbox returns a 404.",
             "required": true,
             "schema": {
               "type": "string"
-            }
+            },
+            "example": "b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1"
           }
         ],
         "responses": {
@@ -4235,10 +4237,12 @@
           {
             "name": "inboxId",
             "in": "path",
+            "description": "The Inbox ID or the inbox email address, such as \u0060support@acme.com\u0060. A value that contains \u0060@\u0060 must be a valid email address, and any other value must be a UUID, or the request returns a 422. The address match is case-insensitive and never falls back to the inbox \u0060name\u0060. An address that matches no inbox returns a 404.",
             "required": true,
             "schema": {
               "type": "string"
-            }
+            },
+            "example": "b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1"
           }
         ],
         "requestBody": {
@@ -4275,10 +4279,12 @@
           {
             "name": "inboxId",
             "in": "path",
+            "description": "The Inbox ID or the inbox email address, such as \u0060support@acme.com\u0060. A value that contains \u0060@\u0060 must be a valid email address, and any other value must be a UUID, or the request returns a 422. The address match is case-insensitive and never falls back to the inbox \u0060name\u0060. An address that matches no inbox returns a 404.",
             "required": true,
             "schema": {
               "type": "string"
-            }
+            },
+            "example": "b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1"
           }
         ],
         "responses": {
@@ -4307,10 +4313,12 @@
           {
             "name": "inboxId",
             "in": "path",
+            "description": "The Inbox ID or the inbox email address, such as \u0060support@acme.com\u0060. A value that contains \u0060@\u0060 must be a valid email address, and any other value must be a UUID, or the request returns a 422. The address match is case-insensitive and never falls back to the inbox \u0060name\u0060. An address that matches no inbox returns a 404.",
             "required": true,
             "schema": {
               "type": "string"
-            }
+            },
+            "example": "b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1"
           }
         ],
         "responses": {
@@ -4337,10 +4345,12 @@
           {
             "name": "inboxId",
             "in": "path",
+            "description": "The Inbox ID or the inbox email address, such as \u0060support@acme.com\u0060. A value that contains \u0060@\u0060 must be a valid email address, and any other value must be a UUID, or the request returns a 422. The address match is case-insensitive and never falls back to the inbox \u0060name\u0060. An address that matches no inbox returns a 404.",
             "required": true,
             "schema": {
               "type": "string"
-            }
+            },
+            "example": "b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1"
           }
         ],
         "requestBody": {
@@ -4379,10 +4389,12 @@
           {
             "name": "inboxId",
             "in": "path",
+            "description": "The Inbox ID or the inbox email address, such as \u0060support@acme.com\u0060. A value that contains \u0060@\u0060 must be a valid email address, and any other value must be a UUID, or the request returns a 422. The address match is case-insensitive and never falls back to the inbox \u0060name\u0060. An address that matches no inbox returns a 404.",
             "required": true,
             "schema": {
               "type": "string"
-            }
+            },
+            "example": "b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1"
           }
         ],
         "responses": {
@@ -4409,10 +4421,12 @@
           {
             "name": "inboxId",
             "in": "path",
+            "description": "The Inbox ID or the inbox email address, such as \u0060support@acme.com\u0060. A value that contains \u0060@\u0060 must be a valid email address, and any other value must be a UUID, or the request returns a 422. The address match is case-insensitive and never falls back to the inbox \u0060name\u0060. An address that matches no inbox returns a 404.",
             "required": true,
             "schema": {
               "type": "string"
-            }
+            },
+            "example": "b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1"
           }
         ],
         "requestBody": {
@@ -4449,6 +4463,16 @@
         "operationId": "InboxesUpdateLabel",
         "parameters": [
           {
+            "name": "inboxId",
+            "in": "path",
+            "description": "The Inbox ID or the inbox email address, such as \u0060support@acme.com\u0060. A value that contains \u0060@\u0060 must be a valid email address, and any other value must be a UUID, or the request returns a 422. The address match is case-insensitive and never falls back to the inbox \u0060name\u0060. An address that matches no inbox returns a 404.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1"
+          },
+          {
             "name": "labelId",
             "in": "path",
             "description": "The Label ID.",
@@ -4456,14 +4480,6 @@
             "schema": {
               "type": "string",
               "format": "uuid"
-            }
-          },
-          {
-            "name": "inboxId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
             }
           }
         ],
@@ -4498,6 +4514,16 @@
         "operationId": "InboxesRemoveLabel",
         "parameters": [
           {
+            "name": "inboxId",
+            "in": "path",
+            "description": "The Inbox ID or the inbox email address, such as \u0060support@acme.com\u0060. A value that contains \u0060@\u0060 must be a valid email address, and any other value must be a UUID, or the request returns a 422. The address match is case-insensitive and never falls back to the inbox \u0060name\u0060. An address that matches no inbox returns a 404.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1"
+          },
+          {
             "name": "labelId",
             "in": "path",
             "description": "The Label ID.",
@@ -4505,14 +4531,6 @@
             "schema": {
               "type": "string",
               "format": "uuid"
-            }
-          },
-          {
-            "name": "inboxId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
             }
           }
         ],
@@ -4539,6 +4557,16 @@
         "description": "Returns the threads in an inbox, most recently active first. A thread is a conversation made up of one or more emails. The \u0060after\u0060 and \u0060before\u0060 cursors take a thread ID, and only one of them can be passed. A cursor that is not a UUID, such as a date, returns a 422 validation_error. A cursor thread that is not in the selected folders returns a 404. To find threads by text, sender, recipient, attachment, or date, use the search threads endpoint.",
         "operationId": "InboxesListThreads",
         "parameters": [
+          {
+            "name": "inboxId",
+            "in": "path",
+            "description": "The Inbox ID or the inbox email address, such as \u0060support@acme.com\u0060. A value that contains \u0060@\u0060 must be a valid email address, and any other value must be a UUID, or the request returns a 422. The address match is case-insensitive and never falls back to the inbox \u0060name\u0060. An address that matches no inbox returns a 404.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1"
+          },
           {
             "name": "folders",
             "in": "query",
@@ -4591,14 +4619,6 @@
           {
             "description": "Return items before this cursor.",
             "$ref": "#/components/parameters/PaginationBefore"
-          },
-          {
-            "name": "inboxId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -4624,6 +4644,16 @@
         "description": "Finds threads by the text of their emails, who sent or received them, whether they have attachments, and their dates. Results are ordered by latest activity, newest first, and paginate like the list threads endpoint, so a cursor that is not a thread ID returns a 422. Search can be up to about a minute behind new emails. Different parameters combine, so a thread must match all of them. \u0060folders\u0060, \u0060labels\u0060, and \u0060read\u0060 apply to the thread. \u0060query\u0060, \u0060from\u0060, \u0060to\u0060, \u0060cc\u0060, \u0060bcc\u0060, \u0060has_attachment\u0060, \u0060start_date\u0060, and \u0060end_date\u0060 must all match the same email in the thread. When any of these email filters is set, the matching email must itself be in one of \u0060folders\u0060. For \u0060sent\u0060, that means an email the inbox sent. When more than 10,000 threads match, search covers the 10,000 with the newest matching email.",
         "operationId": "InboxesSearchThreads",
         "parameters": [
+          {
+            "name": "inboxId",
+            "in": "path",
+            "description": "The Inbox ID or the inbox email address, such as \u0060support@acme.com\u0060. A value that contains \u0060@\u0060 must be a valid email address, and any other value must be a UUID, or the request returns a 422. The address match is case-insensitive and never falls back to the inbox \u0060name\u0060. An address that matches no inbox returns a 404.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1"
+          },
           {
             "name": "query",
             "in": "query",
@@ -4768,14 +4798,6 @@
           {
             "description": "Return items before this cursor.",
             "$ref": "#/components/parameters/PaginationBefore"
-          },
-          {
-            "name": "inboxId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -4802,6 +4824,16 @@
         "operationId": "InboxesGetThread",
         "parameters": [
           {
+            "name": "inboxId",
+            "in": "path",
+            "description": "The Inbox ID or the inbox email address, such as \u0060support@acme.com\u0060. A value that contains \u0060@\u0060 must be a valid email address, and any other value must be a UUID, or the request returns a 422. The address match is case-insensitive and never falls back to the inbox \u0060name\u0060. An address that matches no inbox returns a 404.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1"
+          },
+          {
             "name": "threadId",
             "in": "path",
             "description": "The Thread ID.",
@@ -4809,14 +4841,6 @@
             "schema": {
               "type": "string",
               "format": "uuid"
-            }
-          },
-          {
-            "name": "inboxId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
             }
           }
         ],
@@ -4842,6 +4866,16 @@
         "operationId": "InboxesUpdateThread",
         "parameters": [
           {
+            "name": "inboxId",
+            "in": "path",
+            "description": "The Inbox ID or the inbox email address, such as \u0060support@acme.com\u0060. A value that contains \u0060@\u0060 must be a valid email address, and any other value must be a UUID, or the request returns a 422. The address match is case-insensitive and never falls back to the inbox \u0060name\u0060. An address that matches no inbox returns a 404.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1"
+          },
+          {
             "name": "threadId",
             "in": "path",
             "description": "The Thread ID.",
@@ -4849,14 +4883,6 @@
             "schema": {
               "type": "string",
               "format": "uuid"
-            }
-          },
-          {
-            "name": "inboxId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
             }
           }
         ],
@@ -4892,6 +4918,16 @@
         "operationId": "InboxesRemoveThread",
         "parameters": [
           {
+            "name": "inboxId",
+            "in": "path",
+            "description": "The Inbox ID or the inbox email address, such as \u0060support@acme.com\u0060. A value that contains \u0060@\u0060 must be a valid email address, and any other value must be a UUID, or the request returns a 422. The address match is case-insensitive and never falls back to the inbox \u0060name\u0060. An address that matches no inbox returns a 404.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1"
+          },
+          {
             "name": "threadId",
             "in": "path",
             "description": "The Thread ID.",
@@ -4899,14 +4935,6 @@
             "schema": {
               "type": "string",
               "format": "uuid"
-            }
-          },
-          {
-            "name": "inboxId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
             }
           }
         ],
@@ -4934,6 +4962,16 @@
         "operationId": "InboxesAddThreadLabels",
         "parameters": [
           {
+            "name": "inboxId",
+            "in": "path",
+            "description": "The Inbox ID or the inbox email address, such as \u0060support@acme.com\u0060. A value that contains \u0060@\u0060 must be a valid email address, and any other value must be a UUID, or the request returns a 422. The address match is case-insensitive and never falls back to the inbox \u0060name\u0060. An address that matches no inbox returns a 404.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1"
+          },
+          {
             "name": "threadId",
             "in": "path",
             "description": "The Thread ID.",
@@ -4941,14 +4979,6 @@
             "schema": {
               "type": "string",
               "format": "uuid"
-            }
-          },
-          {
-            "name": "inboxId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
             }
           }
         ],
@@ -4984,6 +5014,16 @@
         "operationId": "InboxesSetThreadLabels",
         "parameters": [
           {
+            "name": "inboxId",
+            "in": "path",
+            "description": "The Inbox ID or the inbox email address, such as \u0060support@acme.com\u0060. A value that contains \u0060@\u0060 must be a valid email address, and any other value must be a UUID, or the request returns a 422. The address match is case-insensitive and never falls back to the inbox \u0060name\u0060. An address that matches no inbox returns a 404.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1"
+          },
+          {
             "name": "threadId",
             "in": "path",
             "description": "The Thread ID.",
@@ -4991,14 +5031,6 @@
             "schema": {
               "type": "string",
               "format": "uuid"
-            }
-          },
-          {
-            "name": "inboxId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
             }
           }
         ],
@@ -5036,6 +5068,16 @@
         "operationId": "InboxesRemoveThreadLabel",
         "parameters": [
           {
+            "name": "inboxId",
+            "in": "path",
+            "description": "The Inbox ID or the inbox email address, such as \u0060support@acme.com\u0060. A value that contains \u0060@\u0060 must be a valid email address, and any other value must be a UUID, or the request returns a 422. The address match is case-insensitive and never falls back to the inbox \u0060name\u0060. An address that matches no inbox returns a 404.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1"
+          },
+          {
             "name": "threadId",
             "in": "path",
             "description": "The Thread ID.",
@@ -5053,14 +5095,6 @@
             "schema": {
               "type": "string",
               "format": "uuid"
-            }
-          },
-          {
-            "name": "inboxId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
             }
           }
         ],
@@ -5088,6 +5122,16 @@
         "operationId": "InboxesListThreadEmails",
         "parameters": [
           {
+            "name": "inboxId",
+            "in": "path",
+            "description": "The Inbox ID or the inbox email address, such as \u0060support@acme.com\u0060. A value that contains \u0060@\u0060 must be a valid email address, and any other value must be a UUID, or the request returns a 422. The address match is case-insensitive and never falls back to the inbox \u0060name\u0060. An address that matches no inbox returns a 404.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1"
+          },
+          {
             "name": "threadId",
             "in": "path",
             "description": "The Thread ID.",
@@ -5108,14 +5152,6 @@
           {
             "description": "Return items before this cursor.",
             "$ref": "#/components/parameters/PaginationBefore"
-          },
-          {
-            "name": "inboxId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -5141,6 +5177,16 @@
         "operationId": "InboxesGetThreadEmail",
         "parameters": [
           {
+            "name": "inboxId",
+            "in": "path",
+            "description": "The Inbox ID or the inbox email address, such as \u0060support@acme.com\u0060. A value that contains \u0060@\u0060 must be a valid email address, and any other value must be a UUID, or the request returns a 422. The address match is case-insensitive and never falls back to the inbox \u0060name\u0060. An address that matches no inbox returns a 404.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1"
+          },
+          {
             "name": "threadId",
             "in": "path",
             "description": "The Thread ID.",
@@ -5158,14 +5204,6 @@
             "schema": {
               "type": "string",
               "format": "uuid"
-            }
-          },
-          {
-            "name": "inboxId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
             }
           }
         ],
@@ -5203,6 +5241,16 @@
             }
           },
           {
+            "name": "inboxId",
+            "in": "path",
+            "description": "The Inbox ID or the inbox email address, such as \u0060support@acme.com\u0060. A value that contains \u0060@\u0060 must be a valid email address, and any other value must be a UUID, or the request returns a 422. The address match is case-insensitive and never falls back to the inbox \u0060name\u0060. An address that matches no inbox returns a 404.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1"
+          },
+          {
             "name": "threadId",
             "in": "path",
             "description": "The Thread ID.",
@@ -5220,14 +5268,6 @@
             "schema": {
               "type": "string",
               "format": "uuid"
-            }
-          },
-          {
-            "name": "inboxId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
             }
           }
         ],
@@ -5275,6 +5315,16 @@
             }
           },
           {
+            "name": "inboxId",
+            "in": "path",
+            "description": "The Inbox ID or the inbox email address, such as \u0060support@acme.com\u0060. A value that contains \u0060@\u0060 must be a valid email address, and any other value must be a UUID, or the request returns a 422. The address match is case-insensitive and never falls back to the inbox \u0060name\u0060. An address that matches no inbox returns a 404.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1"
+          },
+          {
             "name": "threadId",
             "in": "path",
             "description": "The Thread ID.",
@@ -5292,14 +5342,6 @@
             "schema": {
               "type": "string",
               "format": "uuid"
-            }
-          },
-          {
-            "name": "inboxId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
             }
           }
         ],
@@ -5337,6 +5379,16 @@
         "operationId": "InboxesListDrafts",
         "parameters": [
           {
+            "name": "inboxId",
+            "in": "path",
+            "description": "The Inbox ID or the inbox email address, such as \u0060support@acme.com\u0060. A value that contains \u0060@\u0060 must be a valid email address, and any other value must be a UUID, or the request returns a 422. The address match is case-insensitive and never falls back to the inbox \u0060name\u0060. An address that matches no inbox returns a 404.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1"
+          },
+          {
             "description": "Number of items to return.",
             "$ref": "#/components/parameters/PaginationLimit"
           },
@@ -5347,14 +5399,6 @@
           {
             "description": "Return items before this cursor.",
             "$ref": "#/components/parameters/PaginationBefore"
-          },
-          {
-            "name": "inboxId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
           }
         ],
         "responses": {
@@ -5391,10 +5435,12 @@
           {
             "name": "inboxId",
             "in": "path",
+            "description": "The Inbox ID or the inbox email address, such as \u0060support@acme.com\u0060. A value that contains \u0060@\u0060 must be a valid email address, and any other value must be a UUID, or the request returns a 422. The address match is case-insensitive and never falls back to the inbox \u0060name\u0060. An address that matches no inbox returns a 404.",
             "required": true,
             "schema": {
               "type": "string"
-            }
+            },
+            "example": "b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1"
           }
         ],
         "requestBody": {
@@ -5440,6 +5486,16 @@
         "operationId": "InboxesGetDraft",
         "parameters": [
           {
+            "name": "inboxId",
+            "in": "path",
+            "description": "The Inbox ID or the inbox email address, such as \u0060support@acme.com\u0060. A value that contains \u0060@\u0060 must be a valid email address, and any other value must be a UUID, or the request returns a 422. The address match is case-insensitive and never falls back to the inbox \u0060name\u0060. An address that matches no inbox returns a 404.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1"
+          },
+          {
             "name": "draftId",
             "in": "path",
             "description": "The Draft ID.",
@@ -5447,14 +5503,6 @@
             "schema": {
               "type": "string",
               "format": "uuid"
-            }
-          },
-          {
-            "name": "inboxId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
             }
           }
         ],
@@ -5480,6 +5528,16 @@
         "operationId": "InboxesUpdateDraft",
         "parameters": [
           {
+            "name": "inboxId",
+            "in": "path",
+            "description": "The Inbox ID or the inbox email address, such as \u0060support@acme.com\u0060. A value that contains \u0060@\u0060 must be a valid email address, and any other value must be a UUID, or the request returns a 422. The address match is case-insensitive and never falls back to the inbox \u0060name\u0060. An address that matches no inbox returns a 404.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1"
+          },
+          {
             "name": "draftId",
             "in": "path",
             "description": "The Draft ID.",
@@ -5487,14 +5545,6 @@
             "schema": {
               "type": "string",
               "format": "uuid"
-            }
-          },
-          {
-            "name": "inboxId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
             }
           }
         ],
@@ -5530,6 +5580,16 @@
         "operationId": "InboxesRemoveDraft",
         "parameters": [
           {
+            "name": "inboxId",
+            "in": "path",
+            "description": "The Inbox ID or the inbox email address, such as \u0060support@acme.com\u0060. A value that contains \u0060@\u0060 must be a valid email address, and any other value must be a UUID, or the request returns a 422. The address match is case-insensitive and never falls back to the inbox \u0060name\u0060. An address that matches no inbox returns a 404.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1"
+          },
+          {
             "name": "draftId",
             "in": "path",
             "description": "The Draft ID.",
@@ -5537,14 +5597,6 @@
             "schema": {
               "type": "string",
               "format": "uuid"
-            }
-          },
-          {
-            "name": "inboxId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
             }
           }
         ],
@@ -5582,6 +5634,16 @@
             }
           },
           {
+            "name": "inboxId",
+            "in": "path",
+            "description": "The Inbox ID or the inbox email address, such as \u0060support@acme.com\u0060. A value that contains \u0060@\u0060 must be a valid email address, and any other value must be a UUID, or the request returns a 422. The address match is case-insensitive and never falls back to the inbox \u0060name\u0060. An address that matches no inbox returns a 404.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "b3e2b2b6-3f0e-4c8e-9ad3-2f43a1e2c7f1"
+          },
+          {
             "name": "draftId",
             "in": "path",
             "description": "The Draft ID.",
@@ -5589,14 +5651,6 @@
             "schema": {
               "type": "string",
               "format": "uuid"
-            }
-          },
-          {
-            "name": "inboxId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
             }
           }
         ],
@@ -5814,7 +5868,10 @@
             "items": {
               "type": "string",
               "description": "The email addresses of the recipients."
-            }
+            },
+            "example": [
+              "delivered@resend.dev"
+            ]
           },
           "from": {
             "type": "string",
@@ -7595,7 +7652,10 @@
             "items": {
               "type": "string"
             },
-            "description": "The recipient email addresses."
+            "description": "The recipient email addresses.",
+            "example": [
+              "delivered@resend.dev"
+            ]
           },
           "from": {
             "type": "string",
@@ -7650,7 +7710,10 @@
             "items": {
               "type": "string"
             },
-            "description": "The recipient addresses the email was forwarded for, taken from the \u0060for\u0060 clause of the message\u0027s \u0060Received\u0060 headers."
+            "description": "The recipient addresses the email was forwarded for, taken from the \u0060for\u0060 clause of the message\u0027s \u0060Received\u0060 headers.",
+            "example": [
+              "forwarded@example.com"
+            ]
           },
           "html": {
             "type": [
@@ -7726,7 +7789,13 @@
             "items": {
               "type": "string"
             },
-            "description": "Array of event types to subscribe to."
+            "description": "Array of event types to subscribe to.",
+            "example": [
+              "email.sent",
+              "email.delivered",
+              "email.bounced",
+              "email.suppressed"
+            ]
           }
         }
       },
@@ -7833,7 +7902,11 @@
             "items": {
               "type": "string"
             },
-            "description": "Array of event types to subscribe to."
+            "description": "Array of event types to subscribe to.",
+            "example": [
+              "email.sent",
+              "email.delivered"
+            ]
           },
           "status": {
             "$ref": "#/components/schemas/UpdateWebhookRequestStatus"
@@ -10143,7 +10216,10 @@
             "items": {
               "type": "string"
             },
-            "description": "The recipient addresses the email was forwarded for, taken from the \u0060for\u0060 clause of the message\u0027s \u0060Received\u0060 headers."
+            "description": "The recipient addresses the email was forwarded for, taken from the \u0060for\u0060 clause of the message\u0027s \u0060Received\u0060 headers.",
+            "example": [
+              "forwarded@example.com"
+            ]
           },
           "attachments": {
             "type": "array",
@@ -10906,7 +10982,10 @@
             "items": {
               "type": "string"
             },
-            "description": "Email addresses to suppress."
+            "description": "Email addresses to suppress.",
+            "example": [
+              "steve.wozniak@gmail.com"
+            ]
           }
         }
       },
@@ -10932,7 +11011,10 @@
             "items": {
               "type": "string"
             },
-            "description": "Email addresses to remove from the suppression list."
+            "description": "Email addresses to remove from the suppression list.",
+            "example": [
+              "steve.wozniak@gmail.com"
+            ]
           },
           "ids": {
             "maxItems": 100,
@@ -10941,7 +11023,10 @@
             "items": {
               "type": "string"
             },
-            "description": "Suppression IDs to remove from the suppression list."
+            "description": "Suppression IDs to remove from the suppression list.",
+            "example": [
+              "e169aa45-1ecf-4183-9955-b1499d5701d3"
+            ]
           }
         },
         "description": "Provide either \u0060emails\u0060 or \u0060ids\u0060, but not both."
@@ -11214,14 +11299,12 @@
           {
             "required": [
               "name"
-            ],
-            "type": "object"
+            ]
           },
           {
             "required": [
               "from_name"
-            ],
-            "type": "object"
+            ]
           }
         ],
         "properties": {
@@ -11317,7 +11400,11 @@
             "items": {
               "$ref": "#/components/schemas/InboxAgentActionsItem"
             },
-            "description": "The actions the agent can take, in the order of the enum. Empty when no actions are enabled."
+            "description": "The actions the agent can take, in the order of the enum. Empty when no actions are enabled.",
+            "example": [
+              "draft_reply",
+              "add_labels"
+            ]
           }
         }
       },
@@ -11330,20 +11417,17 @@
           {
             "required": [
               "instructions"
-            ],
-            "type": "object"
+            ]
           },
           {
             "required": [
               "tone"
-            ],
-            "type": "object"
+            ]
           },
           {
             "required": [
               "actions"
-            ],
-            "type": "object"
+            ]
           }
         ],
         "properties": {
@@ -11365,7 +11449,11 @@
             "items": {
               "$ref": "#/components/schemas/UpdateInboxAgentOptionsActionsItem"
             },
-            "description": "The actions the agent can take. Replaces the whole set. Duplicates are removed. Send an empty array to disable all actions. The old names \u0060archive_thread\u0060 and \u0060delete_thread\u0060 return a 422. Use \u0060archive\u0060 and \u0060move_to_trash\u0060."
+            "description": "The actions the agent can take. Replaces the whole set. Duplicates are removed. Send an empty array to disable all actions. The old names \u0060archive_thread\u0060 and \u0060delete_thread\u0060 return a 422. Use \u0060archive\u0060 and \u0060move_to_trash\u0060.",
+            "example": [
+              "draft_reply",
+              "add_labels"
+            ]
           }
         },
         "description": "At least one of \u0060instructions\u0060, \u0060tone\u0060, or \u0060actions\u0060 must be provided. Omitted fields keep their current value."
@@ -11622,7 +11710,10 @@
             "items": {
               "type": "string"
             },
-            "description": "The recipients of the most recent email. For a received email, these are the addresses it was delivered to, not the full \u0060To\u0060 header."
+            "description": "The recipients of the most recent email. For a received email, these are the addresses it was delivered to, not the full \u0060To\u0060 header.",
+            "example": [
+              "support@example.com"
+            ]
           },
           "cc": {
             "type": "array",
@@ -11725,7 +11816,10 @@
             "items": {
               "type": "string"
             },
-            "description": "The recipients of the most recent email. For a received email, these are the addresses it was delivered to, not the full \u0060To\u0060 header."
+            "description": "The recipients of the most recent email. For a received email, these are the addresses it was delivered to, not the full \u0060To\u0060 header.",
+            "example": [
+              "support@example.com"
+            ]
           },
           "cc": {
             "type": "array",
@@ -11901,14 +11995,12 @@
           {
             "required": [
               "read"
-            ],
-            "type": "object"
+            ]
           },
           {
             "required": [
               "folder"
-            ],
-            "type": "object"
+            ]
           }
         ],
         "properties": {
@@ -11940,7 +12032,10 @@
               "type": "string",
               "format": "uuid"
             },
-            "description": "The IDs of the labels to apply to the thread. Between 1 and 10 IDs, each a label of the inbox."
+            "description": "The IDs of the labels to apply to the thread. Between 1 and 10 IDs, each a label of the inbox.",
+            "example": [
+              "7f9c1d2e-4a6b-4c3d-8e15-9b0a7c6d5e34"
+            ]
           }
         }
       },
@@ -11957,7 +12052,10 @@
               "type": "string",
               "format": "uuid"
             },
-            "description": "The IDs of the labels the thread carries after the change. Up to 100 IDs, each a label of the inbox. Pass an empty array to take every label off the thread."
+            "description": "The IDs of the labels the thread carries after the change. Up to 100 IDs, each a label of the inbox. Pass an empty array to take every label off the thread.",
+            "example": [
+              "7f9c1d2e-4a6b-4c3d-8e15-9b0a7c6d5e34"
+            ]
           }
         }
       },
@@ -12086,7 +12184,10 @@
             "items": {
               "type": "string"
             },
-            "description": "The recipients of the message. For a received message, these are the addresses it was delivered to, not the full \u0060To\u0060 header."
+            "description": "The recipients of the message. For a received message, these are the addresses it was delivered to, not the full \u0060To\u0060 header.",
+            "example": [
+              "support@acme.com"
+            ]
           },
           "cc": {
             "type": "array",
@@ -12109,7 +12210,10 @@
             "items": {
               "type": "string"
             },
-            "description": "The Reply-To addresses of the message."
+            "description": "The Reply-To addresses of the message.",
+            "example": [
+              "replies@example.org"
+            ]
           },
           "subject": {
             "type": [
@@ -12199,14 +12303,12 @@
           {
             "required": [
               "html"
-            ],
-            "type": "object"
+            ]
           },
           {
             "required": [
               "text"
-            ],
-            "type": "object"
+            ]
           }
         ],
         "properties": {
@@ -12742,44 +12844,37 @@
           {
             "required": [
               "to"
-            ],
-            "type": "object"
+            ]
           },
           {
             "required": [
               "cc"
-            ],
-            "type": "object"
+            ]
           },
           {
             "required": [
               "bcc"
-            ],
-            "type": "object"
+            ]
           },
           {
             "required": [
               "subject"
-            ],
-            "type": "object"
+            ]
           },
           {
             "required": [
               "text"
-            ],
-            "type": "object"
+            ]
           },
           {
             "required": [
               "html"
-            ],
-            "type": "object"
+            ]
           },
           {
             "required": [
               "attachments"
-            ],
-            "type": "object"
+            ]
           }
         ],
         "properties": {
@@ -12903,7 +12998,6 @@
           "system"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "What made the change.",
         "example": "dashboard",
         "x-ms-enum": {
@@ -12997,7 +13091,10 @@
             "items": {
               "type": "string"
             },
-            "description": "The recipients of the email."
+            "description": "The recipients of the email.",
+            "example": [
+              "support@acme.com"
+            ]
           },
           "cc": {
             "type": "array",
@@ -13857,7 +13954,6 @@
         }
       },
       "SendEmailRequestTo": {
-        "type": "object",
         "oneOf": [
           {
             "type": "string"
@@ -13874,7 +13970,6 @@
         "description": "Recipient email address. For multiple addresses, send as an array of strings. Max 50."
       },
       "SendEmailRequestBcc": {
-        "type": "object",
         "oneOf": [
           {
             "type": "string"
@@ -13889,7 +13984,6 @@
         "description": "Bcc recipient email address. For multiple addresses, send as an array of strings."
       },
       "SendEmailRequestCc": {
-        "type": "object",
         "oneOf": [
           {
             "type": "string"
@@ -13904,7 +13998,6 @@
         "description": "Cc recipient email address. For multiple addresses, send as an array of strings."
       },
       "SendEmailRequestReplyTo": {
-        "type": "object",
         "oneOf": [
           {
             "type": "string"
@@ -13935,7 +14028,6 @@
         "description": "Use a published template to send the email. If provided, do not include html or text."
       },
       "EmailTemplateInputVariablesAdditionalProperties": {
-        "type": "object",
         "oneOf": [
           {
             "type": "string"
@@ -13946,49 +14038,48 @@
         ]
       },
       "TemplateVariableFallbackValue": {
-        "type": "object",
         "oneOf": [
           {
-            "$ref": "#/components/schemas/TemplateVariableFallbackValueBranch1"
+            "type": "string"
           },
           {
-            "$ref": "#/components/schemas/TemplateVariableFallbackValueBranch2"
+            "type": "number"
           },
           {
-            "$ref": "#/components/schemas/TemplateVariableFallbackValueBranch3"
+            "type": "boolean"
           },
           {
             "type": "object"
           },
           {
-            "$ref": "#/components/schemas/TemplateVariableFallbackValueBranch5"
+            "type": "array",
+            "items": {}
           }
         ],
         "description": "The fallback value of the variable."
       },
       "TemplateVariableInputFallbackValue": {
-        "type": "object",
         "oneOf": [
           {
-            "$ref": "#/components/schemas/TemplateVariableInputFallbackValueBranch1"
+            "type": "string"
           },
           {
-            "$ref": "#/components/schemas/TemplateVariableInputFallbackValueBranch2"
+            "type": "number"
           },
           {
-            "$ref": "#/components/schemas/TemplateVariableInputFallbackValueBranch3"
+            "type": "boolean"
           },
           {
             "type": "object"
           },
           {
-            "$ref": "#/components/schemas/TemplateVariableInputFallbackValueBranch5"
+            "type": "array",
+            "items": {}
           }
         ],
         "description": "The fallback value of the variable."
       },
       "CreateContactPropertyOptionsFallbackValue": {
-        "type": "object",
         "oneOf": [
           {
             "type": "string"
@@ -14000,7 +14091,6 @@
         "description": "The default value to use when the property is not set for a contact. Must match the type specified in the type field."
       },
       "GetContactPropertyResponseSuccessFallbackValue": {
-        "type": "object",
         "oneOf": [
           {
             "type": "string"
@@ -14013,7 +14103,6 @@
         "example": "Acme Corp"
       },
       "ListContactPropertiesResponseSuccessDataItemFallbackValue": {
-        "type": "object",
         "oneOf": [
           {
             "type": "string"
@@ -14025,7 +14114,6 @@
         "description": "The default value when the property is not set for a contact."
       },
       "UpdateContactPropertyOptionsFallbackValue": {
-        "type": "object",
         "oneOf": [
           {
             "type": "string"
@@ -14098,7 +14186,6 @@
         }
       },
       "ReplyInboxThreadEmailOptionsCc": {
-        "type": "object",
         "oneOf": [
           {
             "type": "string"
@@ -14117,7 +14204,6 @@
         "description": "CC recipient email address. For multiple addresses, send as an array of strings. Without \u0060reply_all\u0060, the reply copies only these addresses. With \u0060reply_all\u0060, these addresses are merged with the copied recipients, without duplicates. \u0060cc\u0060 and \u0060bcc\u0060 combined must be fewer than 50 addresses. After the \u0060to\u0060 recipients are added, the reply cannot exceed 50 recipients. Each address is \u0060email@example.com\u0060 or \u0060Name \u003Cemail@example.com\u003E\u0060. An address that is not valid returns a 422."
       },
       "ReplyInboxThreadEmailOptionsBcc": {
-        "type": "object",
         "oneOf": [
           {
             "type": "string"
@@ -14136,7 +14222,6 @@
         "description": "BCC recipient email address. For multiple addresses, send as an array of strings. BCC recipients of the original message are never copied. Each address is \u0060email@example.com\u0060 or \u0060Name \u003Cemail@example.com\u003E\u0060. An address that is not valid returns a 422."
       },
       "ForwardInboxThreadEmailOptionsTo": {
-        "type": "object",
         "oneOf": [
           {
             "type": "string"
@@ -14153,7 +14238,6 @@
         "description": "Recipient email address. For multiple addresses, send as an array of strings. Must name at least one address. \u0060to\u0060, \u0060cc\u0060 and \u0060bcc\u0060 combined cannot exceed 50 recipients. Each address is \u0060email@example.com\u0060 or \u0060Name \u003Cemail@example.com\u003E\u0060. An address that is not valid returns a 422."
       },
       "ForwardInboxThreadEmailOptionsCc": {
-        "type": "object",
         "oneOf": [
           {
             "type": "string"
@@ -14172,7 +14256,6 @@
         "description": "CC recipient email address. For multiple addresses, send as an array of strings. Counts toward the 50-recipient limit. Each address is \u0060email@example.com\u0060 or \u0060Name \u003Cemail@example.com\u003E\u0060. An address that is not valid returns a 422."
       },
       "ForwardInboxThreadEmailOptionsBcc": {
-        "type": "object",
         "oneOf": [
           {
             "type": "string"
@@ -14191,7 +14274,6 @@
         "description": "BCC recipient email address. For multiple addresses, send as an array of strings. Counts toward the 50-recipient limit. Each address is \u0060email@example.com\u0060 or \u0060Name \u003Cemail@example.com\u003E\u0060. An address that is not valid returns a 422."
       },
       "CreateInboxDraftOptionsTo": {
-        "type": "object",
         "oneOf": [
           {
             "type": "string"
@@ -14210,7 +14292,6 @@
         "description": "The recipients. For multiple addresses, send an array of strings. Each value can include a friendly name, for example \u0060Ada Lovelace \u003Cada@example.org\u003E\u0060. Each address is \u0060email@example.com\u0060 or \u0060Name \u003Cemail@example.com\u003E\u0060. An address that is not valid returns a 422."
       },
       "CreateInboxDraftOptionsCc": {
-        "type": "object",
         "oneOf": [
           {
             "type": "string"
@@ -14229,7 +14310,6 @@
         "description": "The CC recipients. For multiple addresses, send an array of strings. Each address is \u0060email@example.com\u0060 or \u0060Name \u003Cemail@example.com\u003E\u0060. An address that is not valid returns a 422."
       },
       "CreateInboxDraftOptionsBcc": {
-        "type": "object",
         "oneOf": [
           {
             "type": "string"
@@ -14248,7 +14328,6 @@
         "description": "The BCC recipients. For multiple addresses, send an array of strings. Each address is \u0060email@example.com\u0060 or \u0060Name \u003Cemail@example.com\u003E\u0060. An address that is not valid returns a 422."
       },
       "UpdateInboxDraftOptionsTo": {
-        "type": "object",
         "oneOf": [
           {
             "type": "string"
@@ -14267,7 +14346,6 @@
         "description": "The recipients. For multiple addresses, send an array of strings. Each value can include a friendly name. Pass \u0060null\u0060 to clear. Each address is \u0060email@example.com\u0060 or \u0060Name \u003Cemail@example.com\u003E\u0060. An address that is not valid returns a 422."
       },
       "UpdateInboxDraftOptionsCc": {
-        "type": "object",
         "oneOf": [
           {
             "type": "string"
@@ -14286,7 +14364,6 @@
         "description": "The CC recipients. Pass \u0060null\u0060 or \u0060[]\u0060 to clear. Each address is \u0060email@example.com\u0060 or \u0060Name \u003Cemail@example.com\u003E\u0060. An address that is not valid returns a 422."
       },
       "UpdateInboxDraftOptionsBcc": {
-        "type": "object",
         "oneOf": [
           {
             "type": "string"
@@ -14815,7 +14892,10 @@
             "items": {
               "type": "string"
             },
-            "description": "The recipient email addresses."
+            "description": "The recipient email addresses.",
+            "example": [
+              "delivered@resend.dev"
+            ]
           },
           "from": {
             "type": "string",
@@ -15518,100 +15598,6 @@
         "type": "object",
         "description": "Placeholder schema for path example refs"
       },
-      "TemplateVariableFallbackValueBranch1": {
-        "required": [
-          "value"
-        ],
-        "type": "object",
-        "properties": {
-          "value": {
-            "type": "string"
-          }
-        }
-      },
-      "TemplateVariableFallbackValueBranch2": {
-        "required": [
-          "value"
-        ],
-        "type": "object",
-        "properties": {
-          "value": {
-            "type": "number"
-          }
-        }
-      },
-      "TemplateVariableFallbackValueBranch3": {
-        "required": [
-          "value"
-        ],
-        "type": "object",
-        "properties": {
-          "value": {
-            "type": "boolean"
-          }
-        }
-      },
-      "TemplateVariableFallbackValueBranch5": {
-        "required": [
-          "value"
-        ],
-        "type": "object",
-        "properties": {
-          "value": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/TemplateVariableFallbackValueBranch5ValueItem"
-            }
-          }
-        }
-      },
-      "TemplateVariableInputFallbackValueBranch1": {
-        "required": [
-          "value"
-        ],
-        "type": "object",
-        "properties": {
-          "value": {
-            "type": "string"
-          }
-        }
-      },
-      "TemplateVariableInputFallbackValueBranch2": {
-        "required": [
-          "value"
-        ],
-        "type": "object",
-        "properties": {
-          "value": {
-            "type": "number"
-          }
-        }
-      },
-      "TemplateVariableInputFallbackValueBranch3": {
-        "required": [
-          "value"
-        ],
-        "type": "object",
-        "properties": {
-          "value": {
-            "type": "boolean"
-          }
-        }
-      },
-      "TemplateVariableInputFallbackValueBranch5": {
-        "required": [
-          "value"
-        ],
-        "type": "object",
-        "properties": {
-          "value": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/TemplateVariableInputFallbackValueBranch5ValueItem"
-            }
-          }
-        }
-      },
       "EmailsSendBatchRequestRequestBody": {
         "type": "array",
         "items": {
@@ -15627,7 +15613,11 @@
         "additionalProperties": {
           "$ref": "#/components/schemas/EmailTemplateInputVariablesAdditionalProperties"
         },
-        "description": "Template variables object with key/value pairs."
+        "description": "Template variables object with key/value pairs.",
+        "example": {
+          "variableName": "Sign up now",
+          "variableName2": 123
+        }
       },
       "GetEmailsMetricsResponseTotalsProperty": {
         "type": "object",
@@ -15678,12 +15668,31 @@
         "description": "A map of custom property keys and values to update."
       },
       "GetReceivedEmailResponseHeadersProperty": {
-        "type": "object",
-        "description": "The email headers."
+        "type": [
+          "null",
+          "object"
+        ],
+        "description": "The email headers.",
+        "example": {
+          "X-Custom-Header": "value"
+        }
       },
       "GetWebhookEventResponsePayloadProperty": {
         "type": "object",
-        "description": "The event payload sent to the webhook endpoint."
+        "description": "The event payload sent to the webhook endpoint.",
+        "example": {
+          "type": "email.sent",
+          "created_at": "2026-08-22T15:28:00.000Z",
+          "data": {
+            "email_id": "571f1f42-1c2d-4b1f-8f8e-8b3b5b3b5b3b",
+            "from": "onboarding@resend.dev",
+            "to": [
+              "delivered@resend.dev"
+            ],
+            "subject": "Welcome",
+            "created_at": "2026-08-22T15:27:59.000Z"
+          }
+        }
       },
       "CreateSegmentOptionsFilterProperty": {
         "type": "object",
@@ -15694,11 +15703,17 @@
         "description": "Filter conditions for the segment."
       },
       "LogRequestBodyProperty": {
-        "type": "object",
+        "type": [
+          "null",
+          "object"
+        ],
         "description": "The request body sent to the API."
       },
       "LogResponseBodyProperty": {
-        "type": "object",
+        "type": [
+          "null",
+          "object"
+        ],
         "description": "The response body returned by the API."
       },
       "AutomationStepConfigProperty": {
@@ -15710,27 +15725,45 @@
         "description": "Configuration for the step. Shape depends on \u0060type\u0060. For \u0060delay\u0060 steps, config contains \u0060{ duration: string }\u0060 with a human-readable duration (e.g. \u0060\u002230 minutes\u0022\u0060). For \u0060wait_for_event\u0060 steps, config contains \u0060{ event_name: string, timeout?: string, filter_rule?: object }\u0060 where \u0060timeout\u0060 is a human-readable duration.\n"
       },
       "AutomationRunStepOutputProperty": {
-        "type": "object",
+        "type": [
+          "null",
+          "object"
+        ],
         "description": "The output produced by the step, if any."
       },
       "AutomationRunStepErrorProperty": {
-        "type": "object",
+        "type": [
+          "null",
+          "object"
+        ],
         "description": "The error produced by the step, if any."
       },
       "EventTypeSchemaProperty": {
-        "type": "object",
+        "type": [
+          "null",
+          "object"
+        ],
         "description": "A flat key/type map defining the event payload schema. Supported types are \u0060string\u0060, \u0060number\u0060, \u0060boolean\u0060, and \u0060date\u0060."
       },
       "EventSummarySchemaProperty": {
-        "type": "object",
+        "type": [
+          "null",
+          "object"
+        ],
         "description": "A flat key/type map defining the event payload schema. Supported types are \u0060string\u0060, \u0060number\u0060, \u0060boolean\u0060, and \u0060date\u0060."
       },
       "CreateEventRequestSchemaProperty": {
-        "type": "object",
+        "type": [
+          "null",
+          "object"
+        ],
         "description": "An optional flat key/type map defining the event payload schema. Supported types are \u0060string\u0060, \u0060number\u0060, \u0060boolean\u0060, and \u0060date\u0060."
       },
       "UpdateEventRequestSchemaProperty": {
-        "type": "object",
+        "type": [
+          "null",
+          "object"
+        ],
         "description": "A flat key/type map defining the event payload schema. Set to \u0060null\u0060 to clear the schema. Supported types are \u0060string\u0060, \u0060number\u0060, \u0060boolean\u0060, and \u0060date\u0060."
       },
       "SendEventRequestPayloadProperty": {
@@ -15773,38 +15806,54 @@
         "description": "Tag key-value pairs associated with the email."
       },
       "ReplyInboxThreadEmailOptionsHeadersProperty": {
-        "type": "object",
+        "type": [
+          "null",
+          "object"
+        ],
         "additionalProperties": {
           "type": "string"
         },
-        "description": "Custom headers to add to the email. The \u0060In-Reply-To\u0060, \u0060References\u0060 and \u0060Reply-To\u0060 headers are set by Resend and cannot be set here. Sending one of them, in any letter case, returns a 422. Header names cannot be empty, and names and values cannot contain line breaks or null characters, or the request returns a 422. \u0060null\u0060 means no custom headers."
+        "description": "Custom headers to add to the email. The \u0060In-Reply-To\u0060, \u0060References\u0060 and \u0060Reply-To\u0060 headers are set by Resend and cannot be set here. Sending one of them, in any letter case, returns a 422. Header names cannot be empty, and names and values cannot contain line breaks or null characters, or the request returns a 422. \u0060null\u0060 means no custom headers.",
+        "example": {
+          "X-Ticket-Id": "4821"
+        }
       },
       "ForwardInboxThreadEmailOptionsHeadersProperty": {
-        "type": "object",
+        "type": [
+          "null",
+          "object"
+        ],
         "additionalProperties": {
           "type": "string"
         },
-        "description": "Custom headers to add to the email. The \u0060In-Reply-To\u0060, \u0060References\u0060 and \u0060Reply-To\u0060 headers are set by Resend and cannot be set here. Sending one of them, in any letter case, returns a 422. Header names cannot be empty, and names and values cannot contain line breaks or null characters, or the request returns a 422. \u0060null\u0060 means no custom headers."
+        "description": "Custom headers to add to the email. The \u0060In-Reply-To\u0060, \u0060References\u0060 and \u0060Reply-To\u0060 headers are set by Resend and cannot be set here. Sending one of them, in any letter case, returns a 422. Header names cannot be empty, and names and values cannot contain line breaks or null characters, or the request returns a 422. \u0060null\u0060 means no custom headers.",
+        "example": {
+          "X-Ticket-Id": "4821"
+        }
       },
       "SendInboxDraftOptionsHeadersProperty": {
-        "type": "object",
+        "type": [
+          "null",
+          "object"
+        ],
         "additionalProperties": {
           "type": "string"
         },
-        "description": "Custom headers to add to the email. The \u0060In-Reply-To\u0060, \u0060References\u0060 and \u0060Reply-To\u0060 headers are set by Resend and cannot be set here. Sending one of them, in any letter case, returns a 422. Header names cannot be empty, and names and values cannot contain line breaks or null characters, or the request returns a 422. \u0060null\u0060 means no custom headers."
+        "description": "Custom headers to add to the email. The \u0060In-Reply-To\u0060, \u0060References\u0060 and \u0060Reply-To\u0060 headers are set by Resend and cannot be set here. Sending one of them, in any letter case, returns a 422. Header names cannot be empty, and names and values cannot contain line breaks or null characters, or the request returns a 422. \u0060null\u0060 means no custom headers.",
+        "example": {
+          "X-Ticket-Id": "4821"
+        }
       },
       "SendEmailRequestTemplateVariables": {
         "type": "object",
         "additionalProperties": {
           "$ref": "#/components/schemas/EmailTemplateInputVariablesAdditionalProperties"
         },
-        "description": "Template variables object with key/value pairs."
-      },
-      "TemplateVariableFallbackValueBranch5ValueItem": {
-        "type": "object"
-      },
-      "TemplateVariableInputFallbackValueBranch5ValueItem": {
-        "type": "object"
+        "description": "Template variables object with key/value pairs.",
+        "example": {
+          "variableName": "Sign up now",
+          "variableName2": 123
+        }
       },
       "EmailLastEvent": {
         "enum": [
@@ -15822,7 +15871,6 @@
           "suppressed"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "The status of the email.",
         "example": "delivered",
         "x-ms-enum": {
@@ -15888,7 +15936,6 @@
           "broadcast"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "GetEmailsMetricsResponseDimensionsItem",
           "modelAsString": false,
@@ -15920,7 +15967,6 @@
           "monthly"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "The bucket size used when \u0060period\u0060 is in \u0060dimensions\u0060.",
         "x-ms-enum": {
           "name": "GetEmailsMetricsResponseGranularity",
@@ -15951,7 +15997,6 @@
           "disabled"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "Enable or disable sending emails from this domain.",
         "x-ms-enum": {
           "name": "DomainCapabilitiesSending",
@@ -15974,7 +16019,6 @@
           "disabled"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "Enable or disable receiving emails to this domain.",
         "x-ms-enum": {
           "name": "DomainCapabilitiesReceiving",
@@ -15999,7 +16043,6 @@
           "ap-northeast-1"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "The region where emails will be sent from. Possible values are us-east-1 | eu-west-1 | sa-east-1 | ap-northeast-1",
         "x-ms-enum": {
           "name": "CreateDomainRequestRegion",
@@ -16030,7 +16073,6 @@
           "enforced"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "TLS mode. Opportunistic attempts secure connection but falls back to unencrypted. Enforced requires TLS or email won\u0027t be sent.",
         "x-ms-enum": {
           "name": "CreateDomainRequestTls",
@@ -16057,7 +16099,6 @@
           "partially_failed"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "The status of the domain.",
         "x-ms-enum": {
           "name": "CreateDomainResponseStatus",
@@ -16096,7 +16137,6 @@
           "enforced"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "enforced | opportunistic.",
         "x-ms-enum": {
           "name": "UpdateDomainOptionsTls",
@@ -16122,7 +16162,6 @@
           "TrackingCAA"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "The type of record (SPF for sending, DKIM for sending, Receiving for inbound emails, Tracking \u0026 TrackingCAA for click and open tracking).",
         "x-ms-enum": {
           "name": "DomainRecordRecord",
@@ -16151,7 +16190,6 @@
           "CAA"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "The DNS record type.",
         "x-ms-enum": {
           "name": "DomainRecordType",
@@ -16185,7 +16223,6 @@
           "not_started"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "The status of the record.",
         "x-ms-enum": {
           "name": "DomainRecordStatus",
@@ -16224,7 +16261,6 @@
           "partially_failed"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "The status of the domain.",
         "example": "not_started",
         "x-ms-enum": {
@@ -16266,7 +16302,6 @@
           "ap-northeast-1"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "The region where emails will be sent from. Possible values are us-east-1 | eu-west-1 | sa-east-1 | ap-northeast-1",
         "x-ms-enum": {
           "name": "CreateDomainClaimRequestRegion",
@@ -16296,7 +16331,6 @@
           "TXT"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "The DNS record type. Always TXT for domain claims.",
         "example": "TXT",
         "x-ms-enum": {
@@ -16322,7 +16356,6 @@
           "failed"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "The status of the claim.",
         "example": "pending",
         "x-ms-enum": {
@@ -16376,7 +16409,6 @@
           "null",
           "string"
         ],
-        "additionalProperties": false,
         "description": "The region where the claimed domain will send from.",
         "example": "us-east-1",
         "x-ms-enum": {
@@ -16413,7 +16445,6 @@
           "null",
           "string"
         ],
-        "additionalProperties": false,
         "description": "Why the claim is currently blocked, if applicable.",
         "example": null,
         "x-ms-enum": {
@@ -16445,7 +16476,6 @@
           "partially_failed"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "The status of the domain.",
         "example": "not_started",
         "x-ms-enum": {
@@ -16485,7 +16515,6 @@
           "sending_access"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "The API key can have full access to Resend\u2019s API or be only restricted to send emails. * full_access - Can create, delete, get, and update any resource. * sending_access - Can only send emails.",
         "x-ms-enum": {
           "name": "CreateApiKeyRequestPermission",
@@ -16508,7 +16537,6 @@
           "skip"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "Strategy to use when an imported contact already exists.",
         "example": "skip",
         "x-ms-enum": {
@@ -16534,7 +16562,6 @@
           "failed"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "Current status of the contact import.",
         "example": "completed",
         "x-ms-enum": {
@@ -16570,7 +16597,6 @@
           "null",
           "string"
         ],
-        "additionalProperties": false,
         "description": "How the attachment should be displayed.",
         "example": "attachment",
         "x-ms-enum": {
@@ -16594,7 +16620,6 @@
           "disabled"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "The status of the webhook.",
         "example": "enabled",
         "x-ms-enum": {
@@ -16620,7 +16645,6 @@
           "failed"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "The delivery status of the event for this webhook.",
         "example": "attempting",
         "x-ms-enum": {
@@ -16655,7 +16679,6 @@
           "list"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "The type of the variable.",
         "x-ms-enum": {
           "name": "TemplateVariableType",
@@ -16693,7 +16716,6 @@
           "list"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "The type of the variable.",
         "x-ms-enum": {
           "name": "TemplateVariableInputType",
@@ -16728,7 +16750,6 @@
           "published"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "The publication status of the template.",
         "x-ms-enum": {
           "name": "TemplateStatus",
@@ -16751,7 +16772,6 @@
           "published"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "The publication status of the template.",
         "x-ms-enum": {
           "name": "TemplateListItemStatus",
@@ -16774,7 +16794,6 @@
           "opt_out"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "The default subscription status for the topic. Cannot be changed after creation.",
         "x-ms-enum": {
           "name": "CreateTopicOptionsDefaultSubscription",
@@ -16797,7 +16816,6 @@
           "private"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "The visibility of the topic. Public topics are visible to all contacts on the unsubscribe page. Private topics are only visible to opted-in contacts.",
         "x-ms-enum": {
           "name": "CreateTopicOptionsVisibility",
@@ -16820,7 +16838,6 @@
           "opt_out"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "The default subscription status for the topic.",
         "x-ms-enum": {
           "name": "GetTopicResponseSuccessDefaultSubscription",
@@ -16843,7 +16860,6 @@
           "private"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "The visibility of the topic.",
         "x-ms-enum": {
           "name": "GetTopicResponseSuccessVisibility",
@@ -16866,7 +16882,6 @@
           "private"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "The visibility of the topic.",
         "x-ms-enum": {
           "name": "UpdateTopicOptionsVisibility",
@@ -16889,7 +16904,6 @@
           "number"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "The property type.",
         "x-ms-enum": {
           "name": "CreateContactPropertyOptionsType",
@@ -16916,7 +16930,6 @@
           "OPTIONS"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "The HTTP method used.",
         "x-ms-enum": {
           "name": "LogSummaryMethod",
@@ -16959,7 +16972,6 @@
           "OPTIONS"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "The HTTP method used.",
         "x-ms-enum": {
           "name": "LogMethod",
@@ -17004,7 +17016,6 @@
           "add_to_segment"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "The type of automation step.",
         "x-ms-enum": {
           "name": "AutomationStepType",
@@ -17057,7 +17068,6 @@
           "add_to_segment"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "The type of automation step.",
         "x-ms-enum": {
           "name": "AutomationStepResponseType",
@@ -17107,7 +17117,6 @@
           "event_received"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "The type of connection. Defaults to \u0060default\u0060.",
         "x-ms-enum": {
           "name": "AutomationConnectionType",
@@ -17142,7 +17151,6 @@
           "disabled"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "The initial status of the automation. Defaults to \u0060disabled\u0060.",
         "x-ms-enum": {
           "name": "CreateAutomationRequestStatus",
@@ -17165,7 +17173,6 @@
           "disabled"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "The current status of the automation.",
         "x-ms-enum": {
           "name": "AutomationStatus",
@@ -17188,7 +17195,6 @@
           "disabled"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "The current status of the automation.",
         "x-ms-enum": {
           "name": "AutomationListItemStatus",
@@ -17211,7 +17217,6 @@
           "disabled"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "The status of the automation.",
         "x-ms-enum": {
           "name": "PatchAutomationRequestStatus",
@@ -17240,7 +17245,6 @@
           "add_to_segment"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "The type of automation step.",
         "x-ms-enum": {
           "name": "AutomationRunStepType",
@@ -17289,7 +17293,6 @@
           "cancelled"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "The current status of the automation run.",
         "x-ms-enum": {
           "name": "AutomationRunStatus",
@@ -17322,7 +17325,6 @@
           "cancelled"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "The current status of the automation run.",
         "x-ms-enum": {
           "name": "AutomationRunListItemStatus",
@@ -17358,7 +17360,6 @@
           "AttachmentRejected"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "Bounce sub-type."
       },
       "WebhookEventBounceType": {
@@ -17368,7 +17369,6 @@
           "Permanent"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "Bounce type."
       },
       "WebhookEventSuppressedReason": {
@@ -17377,7 +17377,6 @@
           "previous_complaint"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "Reason the address is suppressed.",
         "x-ms-enum": {
           "name": "WebhookEventSuppressedReason",
@@ -17400,7 +17399,6 @@
           "OnAccountSuppressionList"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "Suppression type."
       },
       "WebhookDomainRecordRecord": {
@@ -17412,7 +17410,6 @@
           "TrackingCAA"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "The purpose of the DNS record (SPF and DKIM for sending; Receiving MX for inbound emails; Tracking and TrackingCAA for click and open tracking).",
         "x-ms-enum": {
           "name": "WebhookDomainRecordRecord",
@@ -17445,7 +17442,6 @@
           "CAA"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "DNS record type.",
         "x-ms-enum": {
           "name": "WebhookDomainRecordType",
@@ -17479,7 +17475,6 @@
           "not_started"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "Verification status of this specific record.",
         "x-ms-enum": {
           "name": "WebhookDomainRecordStatus",
@@ -17518,7 +17513,6 @@
           "not_started"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "Aggregated verification status of the domain.",
         "x-ms-enum": {
           "name": "DomainEventDataStatus",
@@ -17559,7 +17553,6 @@
           "ap-northeast-1"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "AWS region where the domain is configured.",
         "x-ms-enum": {
           "name": "DomainEventDataRegion",
@@ -17591,7 +17584,6 @@
           "manual"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "Origin of the suppression.",
         "x-ms-enum": {
           "name": "SuppressionEventDataOrigin",
@@ -17618,7 +17610,6 @@
           "opt_out"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "The default subscription status for the topic.",
         "x-ms-enum": {
           "name": "TopicEventDataDefaultSubscription",
@@ -18056,7 +18047,6 @@
           "manual"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "Origin of the suppression.",
         "example": "manual",
         "x-ms-enum": {
@@ -18090,7 +18080,6 @@
           "null",
           "string"
         ],
-        "additionalProperties": false,
         "description": "The tone the agent writes in. Null when no tone is set.",
         "example": "concise_professional",
         "x-ms-enum": {
@@ -18127,7 +18116,6 @@
           "move_to_trash"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "InboxAgentActionsItem",
           "modelAsString": false,
@@ -18175,7 +18163,6 @@
           "null",
           "string"
         ],
-        "additionalProperties": false,
         "description": "The tone the agent writes in. Send null to clear the tone.",
         "example": "concise_professional",
         "x-ms-enum": {
@@ -18212,7 +18199,6 @@
           "move_to_trash"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "UpdateInboxAgentOptionsActionsItem",
           "modelAsString": false,
@@ -18257,7 +18243,6 @@
           "trash"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "The folder the thread is in. Every thread is in exactly one folder. \u0060inbox\u0060 holds threads with at least one received email. \u0060archive\u0060 and \u0060spam\u0060 hold threads moved there. \u0060trash\u0060 holds threads scheduled for deletion in 30 days. \u0060sent\u0060 holds threads whose emails are all outbound, and is assigned automatically.",
         "example": "inbox",
         "x-ms-enum": {
@@ -18296,7 +18281,6 @@
           "trash"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "The folder the thread is in.",
         "example": "inbox",
         "x-ms-enum": {
@@ -18334,7 +18318,6 @@
           "trash"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "Moves the thread to this folder. \u0060sent\u0060 is assigned automatically and cannot be set.",
         "example": "archive",
         "x-ms-enum": {
@@ -18366,7 +18349,6 @@
           "outbound"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "Whether the inbox received the message (\u0060inbound\u0060) or sent it (\u0060outbound\u0060). A message the inbox sent to itself is \u0060inbound\u0060, so a reply to it goes to its sender.",
         "example": "inbound",
         "x-ms-enum": {
@@ -18390,7 +18372,6 @@
           "reply"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "\u0060reply\u0060 when the draft replies to an email in an existing thread. \u0060standalone\u0060 when the draft starts a new thread.",
         "example": "standalone",
         "x-ms-enum": {
@@ -18414,7 +18395,6 @@
           "reply"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "\u0060reply\u0060 when the draft replies to an email in an existing thread. \u0060standalone\u0060 when the draft starts a new thread.",
         "example": "standalone",
         "x-ms-enum": {
@@ -18437,7 +18417,6 @@
           true
         ],
         "type": "boolean",
-        "additionalProperties": false,
         "description": "Indicates whether the draft was successfully deleted.",
         "example": true
       },
@@ -18447,7 +18426,6 @@
           "outbound"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "Whether the email was received by the inbox or sent from it.",
         "example": "inbound",
         "x-ms-enum": {
@@ -18471,7 +18449,6 @@
           "reply"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "\u0060standalone\u0060 for a new conversation, or \u0060reply\u0060.",
         "example": "reply",
         "x-ms-enum": {
@@ -18497,7 +18474,6 @@
           "trash"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "The folder the thread was in.",
         "example": "inbox",
         "x-ms-enum": {
@@ -18531,7 +18507,6 @@
           "trash"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "The folder the thread moved to.",
         "example": "archive",
         "x-ms-enum": {
@@ -18815,7 +18790,6 @@
           "opt_out"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "The subscription status for this topic.",
         "x-ms-enum": {
           "name": "CreateContactOptionsTopicsItemSubscription",
@@ -18839,7 +18813,6 @@
           "undetermined"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "The type of bounce. Only present when \u0060type\u0060 is \u0060bounced\u0060.",
         "x-ms-enum": {
           "name": "ListBroadcastRecipientsResponseSuccessDataItemBounceType",
@@ -18870,7 +18843,6 @@
           "null",
           "string"
         ],
-        "additionalProperties": false,
         "description": "How the attachment should be displayed.",
         "example": "attachment",
         "x-ms-enum": {
@@ -18898,7 +18870,6 @@
           "null",
           "string"
         ],
-        "additionalProperties": false,
         "description": "How the attachment should be displayed.",
         "x-ms-enum": {
           "name": "GetReceivedEmailResponseAttachmentsItemContentDisposition",
@@ -18923,7 +18894,6 @@
           "failed"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "The delivery status of the event for this webhook.",
         "example": "success",
         "x-ms-enum": {
@@ -18955,7 +18925,6 @@
           "opt_out"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "The default subscription status for the topic.",
         "x-ms-enum": {
           "name": "ListTopicsResponseSuccessDataItemDefaultSubscription",
@@ -18978,7 +18947,6 @@
           "private"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "The visibility of the topic.",
         "x-ms-enum": {
           "name": "ListTopicsResponseSuccessDataItemVisibility",
@@ -19001,7 +18969,6 @@
           "opt_out"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "The subscription status for this topic.",
         "x-ms-enum": {
           "name": "GetContactTopicsResponseSuccessDataItemSubscription",
@@ -19024,7 +18991,6 @@
           "opt_out"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "The subscription status (opt_in or opt_out).",
         "x-ms-enum": {
           "name": "UpdateContactTopicsOptionsTopicsItemSubscription",
@@ -19047,7 +19013,6 @@
           "opt_out"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "The subscription status.",
         "x-ms-enum": {
           "name": "UpdateContactTopicsResponseSuccessTopicsItemSubscription",
@@ -19070,7 +19035,6 @@
           "opt_out"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "The new subscription status for this topic.",
         "x-ms-enum": {
           "name": "ContactTopicsEventDataTopicsItemSubscription",
@@ -19094,7 +19058,6 @@
           "manual"
         ],
         "type": "string",
-        "additionalProperties": false,
         "description": "Origin of the suppression.",
         "example": "manual",
         "x-ms-enum": {
@@ -19126,7 +19089,6 @@
           "null",
           "string"
         ],
-        "additionalProperties": false,
         "description": "How the attachment should be displayed.",
         "x-ms-enum": {
           "name": "ListReceivedEmailsResponseDataItemAttachmentsItemContentDisposition",
@@ -19151,7 +19113,6 @@
           "monthly"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "EmailsMetricsGranularityParameter",
           "modelAsString": false,
@@ -19201,7 +19162,6 @@
           "unsubscribe_rate"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "EmailsMetricsMetricsParameterItem",
           "modelAsString": false,
@@ -19305,7 +19265,6 @@
           "broadcast"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "EmailsMetricsDimensionsParameterItem",
           "modelAsString": false,
@@ -19337,7 +19296,6 @@
           "failed"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "ContactsListImportsStatusParameter",
           "modelAsString": false,
@@ -19373,7 +19331,6 @@
           "suppressed"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "BroadcastsRecipientsTypeParameter",
           "modelAsString": false,
@@ -19420,7 +19377,6 @@
           "undetermined"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "BroadcastsRecipientsBounceTypeParameter",
           "modelAsString": false,
@@ -19446,7 +19402,6 @@
           "disabled"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "AutomationsListStatusParameter",
           "modelAsString": false,
@@ -19469,7 +19424,6 @@
           "manual"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "SuppressionsListOriginParameter",
           "modelAsString": false,
@@ -19498,7 +19452,6 @@
           "trash"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "InboxesListThreadsFoldersParameterItem",
           "modelAsString": false,
@@ -19535,7 +19488,6 @@
           "trash"
         ],
         "type": "string",
-        "additionalProperties": false,
         "x-ms-enum": {
           "name": "InboxesSearchThreadsFoldersParameterItem",
           "modelAsString": false,

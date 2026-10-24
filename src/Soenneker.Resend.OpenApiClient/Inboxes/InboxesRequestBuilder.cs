@@ -19,7 +19,7 @@ namespace Soenneker.Resend.OpenApiClient.Inboxes
     public partial class InboxesRequestBuilder : BaseRequestBuilder
     {
         /// <summary>Gets an item from the Soenneker.Resend.OpenApiClient.inboxes.item collection</summary>
-        /// <param name="position">Unique identifier of the item</param>
+        /// <param name="position">The Inbox ID or the inbox email address, such as `support@acme.com`. A value that contains `@` must be a valid email address, and any other value must be a UUID, or the request returns a 422. The address match is case-insensitive and never falls back to the inbox `name`. An address that matches no inbox returns a 404.</param>
         /// <returns>A <see cref="global::Soenneker.Resend.OpenApiClient.Inboxes.Item.WithInboxItemRequestBuilder"/></returns>
         public global::Soenneker.Resend.OpenApiClient.Inboxes.Item.WithInboxItemRequestBuilder this[string position]
         {

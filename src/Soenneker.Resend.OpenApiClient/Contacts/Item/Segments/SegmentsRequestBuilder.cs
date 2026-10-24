@@ -13,7 +13,7 @@ using System;
 namespace Soenneker.Resend.OpenApiClient.Contacts.Item.Segments
 {
     /// <summary>
-    /// Builds and executes requests for operations under \contacts\{contact-id}\segments
+    /// Builds and executes requests for operations under \contacts\{id}\segments
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class SegmentsRequestBuilder : BaseRequestBuilder
@@ -35,7 +35,7 @@ namespace Soenneker.Resend.OpenApiClient.Contacts.Item.Segments
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public SegmentsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/contacts/{contact%2Did}/segments{?after*,before*,limit*}", pathParameters)
+        public SegmentsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/contacts/{id}/segments{?after*,before*,limit*}", pathParameters)
         {
         }
         /// <summary>
@@ -43,7 +43,7 @@ namespace Soenneker.Resend.OpenApiClient.Contacts.Item.Segments
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public SegmentsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/contacts/{contact%2Did}/segments{?after*,before*,limit*}", rawUrl)
+        public SegmentsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/contacts/{id}/segments{?after*,before*,limit*}", rawUrl)
         {
         }
         /// <summary>

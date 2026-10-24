@@ -8,42 +8,22 @@ using System;
 namespace Soenneker.Resend.OpenApiClient.Models
 {
     /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.Resend.OpenApiClient.Models.TemplateVariableFallbackValueBranch1"/>, <see cref="global::Soenneker.Resend.OpenApiClient.Models.TemplateVariableFallbackValueBranch2"/>, <see cref="global::Soenneker.Resend.OpenApiClient.Models.TemplateVariableFallbackValueBranch3"/>, <see cref="global::Soenneker.Resend.OpenApiClient.Models.TemplateVariableFallbackValueBranch5"/>, <see cref="global::Soenneker.Resend.OpenApiClient.Models.TemplateVariableFallbackValueMember1"/>
+    /// Composed type wrapper for classes <see cref="bool"/>, <see cref="double"/>, <see cref="global::Soenneker.Resend.OpenApiClient.Models.TemplateVariableFallbackValueMember1"/>, <see cref="global::Soenneker.Resend.OpenApiClient.Models.TemplateVariableFallbackValueMember2"/>, <see cref="string"/>
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class TemplateVariableFallbackValue : IComposedTypeWrapper, IParsable
     {
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.Resend.OpenApiClient.Models.TemplateVariableFallbackValueBranch1"/></summary>
+        /// <summary>Composed type representation for type <see cref="bool"/></summary>
+        public bool? Boolean { get; set; }
+        /// <summary>Composed type representation for type <see cref="double"/></summary>
+        public double? Double { get; set; }
+        /// <summary>Composed type representation for type <see cref="string"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Resend.OpenApiClient.Models.TemplateVariableFallbackValueBranch1? TemplateVariableFallbackValueBranch1 { get; set; }
+        public string? String { get; set; }
 #nullable restore
 #else
-        public global::Soenneker.Resend.OpenApiClient.Models.TemplateVariableFallbackValueBranch1 TemplateVariableFallbackValueBranch1 { get; set; }
-#endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.Resend.OpenApiClient.Models.TemplateVariableFallbackValueBranch2"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.Resend.OpenApiClient.Models.TemplateVariableFallbackValueBranch2? TemplateVariableFallbackValueBranch2 { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.Resend.OpenApiClient.Models.TemplateVariableFallbackValueBranch2 TemplateVariableFallbackValueBranch2 { get; set; }
-#endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.Resend.OpenApiClient.Models.TemplateVariableFallbackValueBranch3"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.Resend.OpenApiClient.Models.TemplateVariableFallbackValueBranch3? TemplateVariableFallbackValueBranch3 { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.Resend.OpenApiClient.Models.TemplateVariableFallbackValueBranch3 TemplateVariableFallbackValueBranch3 { get; set; }
-#endif
-        /// <summary>Composed type representation for type <see cref="global::Soenneker.Resend.OpenApiClient.Models.TemplateVariableFallbackValueBranch5"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::Soenneker.Resend.OpenApiClient.Models.TemplateVariableFallbackValueBranch5? TemplateVariableFallbackValueBranch5 { get; set; }
-#nullable restore
-#else
-        public global::Soenneker.Resend.OpenApiClient.Models.TemplateVariableFallbackValueBranch5 TemplateVariableFallbackValueBranch5 { get; set; }
+        public string String { get; set; }
 #endif
         /// <summary>Composed type representation for type <see cref="global::Soenneker.Resend.OpenApiClient.Models.TemplateVariableFallbackValueMember1"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -52,6 +32,14 @@ namespace Soenneker.Resend.OpenApiClient.Models
 #nullable restore
 #else
         public global::Soenneker.Resend.OpenApiClient.Models.TemplateVariableFallbackValueMember1 TemplateVariableFallbackValueMember1 { get; set; }
+#endif
+        /// <summary>Composed type representation for type <see cref="global::Soenneker.Resend.OpenApiClient.Models.TemplateVariableFallbackValueMember2"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::Soenneker.Resend.OpenApiClient.Models.TemplateVariableFallbackValueMember2? TemplateVariableFallbackValueMember2 { get; set; }
+#nullable restore
+#else
+        public global::Soenneker.Resend.OpenApiClient.Models.TemplateVariableFallbackValueMember2 TemplateVariableFallbackValueMember2 { get; set; }
 #endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
@@ -63,21 +51,17 @@ namespace Soenneker.Resend.OpenApiClient.Models
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             var mappingValue = parseNode.GetChildNode("")?.GetStringValue();
             var result = new global::Soenneker.Resend.OpenApiClient.Models.TemplateVariableFallbackValue();
-            if("TemplateVariableFallbackValueBranch1".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            if(parseNode.GetBoolValue() is bool booleanValue)
             {
-                result.TemplateVariableFallbackValueBranch1 = new global::Soenneker.Resend.OpenApiClient.Models.TemplateVariableFallbackValueBranch1();
+                result.Boolean = booleanValue;
             }
-            else if("TemplateVariableFallbackValueBranch2".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if(parseNode.GetDoubleValue() is double doubleValue)
             {
-                result.TemplateVariableFallbackValueBranch2 = new global::Soenneker.Resend.OpenApiClient.Models.TemplateVariableFallbackValueBranch2();
+                result.Double = doubleValue;
             }
-            else if("TemplateVariableFallbackValueBranch3".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
+            else if(parseNode.GetStringValue() is string stringValue)
             {
-                result.TemplateVariableFallbackValueBranch3 = new global::Soenneker.Resend.OpenApiClient.Models.TemplateVariableFallbackValueBranch3();
-            }
-            else if("TemplateVariableFallbackValueBranch5".Equals(mappingValue, StringComparison.OrdinalIgnoreCase))
-            {
-                result.TemplateVariableFallbackValueBranch5 = new global::Soenneker.Resend.OpenApiClient.Models.TemplateVariableFallbackValueBranch5();
+                result.String = stringValue;
             }
             return result;
         }
@@ -87,25 +71,13 @@ namespace Soenneker.Resend.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            if(TemplateVariableFallbackValueBranch1 != null)
-            {
-                return TemplateVariableFallbackValueBranch1.GetFieldDeserializers();
-            }
-            else if(TemplateVariableFallbackValueBranch2 != null)
-            {
-                return TemplateVariableFallbackValueBranch2.GetFieldDeserializers();
-            }
-            else if(TemplateVariableFallbackValueBranch3 != null)
-            {
-                return TemplateVariableFallbackValueBranch3.GetFieldDeserializers();
-            }
-            else if(TemplateVariableFallbackValueBranch5 != null)
-            {
-                return TemplateVariableFallbackValueBranch5.GetFieldDeserializers();
-            }
-            else if(TemplateVariableFallbackValueMember1 != null)
+            if(TemplateVariableFallbackValueMember1 != null)
             {
                 return TemplateVariableFallbackValueMember1.GetFieldDeserializers();
+            }
+            else if(TemplateVariableFallbackValueMember2 != null)
+            {
+                return TemplateVariableFallbackValueMember2.GetFieldDeserializers();
             }
             return new Dictionary<string, Action<IParseNode>>();
         }
@@ -116,25 +88,25 @@ namespace Soenneker.Resend.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            if(TemplateVariableFallbackValueBranch1 != null)
-            {
-                writer.WriteObjectValue<global::Soenneker.Resend.OpenApiClient.Models.TemplateVariableFallbackValueBranch1>(null, TemplateVariableFallbackValueBranch1);
-            }
-            else if(TemplateVariableFallbackValueBranch2 != null)
-            {
-                writer.WriteObjectValue<global::Soenneker.Resend.OpenApiClient.Models.TemplateVariableFallbackValueBranch2>(null, TemplateVariableFallbackValueBranch2);
-            }
-            else if(TemplateVariableFallbackValueBranch3 != null)
-            {
-                writer.WriteObjectValue<global::Soenneker.Resend.OpenApiClient.Models.TemplateVariableFallbackValueBranch3>(null, TemplateVariableFallbackValueBranch3);
-            }
-            else if(TemplateVariableFallbackValueBranch5 != null)
-            {
-                writer.WriteObjectValue<global::Soenneker.Resend.OpenApiClient.Models.TemplateVariableFallbackValueBranch5>(null, TemplateVariableFallbackValueBranch5);
-            }
-            else if(TemplateVariableFallbackValueMember1 != null)
+            if(TemplateVariableFallbackValueMember1 != null)
             {
                 writer.WriteObjectValue<global::Soenneker.Resend.OpenApiClient.Models.TemplateVariableFallbackValueMember1>(null, TemplateVariableFallbackValueMember1);
+            }
+            else if(TemplateVariableFallbackValueMember2 != null)
+            {
+                writer.WriteObjectValue<global::Soenneker.Resend.OpenApiClient.Models.TemplateVariableFallbackValueMember2>(null, TemplateVariableFallbackValueMember2);
+            }
+            else if(Boolean != null)
+            {
+                writer.WriteBoolValue(null, Boolean);
+            }
+            else if(Double != null)
+            {
+                writer.WriteDoubleValue(null, Double);
+            }
+            else if(String != null)
+            {
+                writer.WriteStringValue(null, String);
             }
         }
     }
