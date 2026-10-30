@@ -8119,7 +8119,7 @@
             "$ref": "#/components/schemas/TemplateVariableInputType"
           },
           "fallback_value": {
-            "$ref": "#/components/schemas/TemplateVariableInputFallbackValue"
+            "$ref": "#/components/schemas/TemplateVariableFallbackValue"
           }
         }
       },
@@ -17630,12 +17630,12 @@
         }
       },
       "EmailSentType": {
-        "const": null,
         "enum": [
           "email.sent"
         ],
         "type": "string",
         "description": "The event type.",
+        "x-client-original-const": "email.sent",
         "x-ms-enum": {
           "name": "EmailSentType",
           "modelAsString": false,
@@ -17648,12 +17648,12 @@
         }
       },
       "EmailDeliveredType": {
-        "const": null,
         "enum": [
           "email.delivered"
         ],
         "type": "string",
         "description": "The event type.",
+        "x-client-original-const": "email.delivered",
         "x-ms-enum": {
           "name": "EmailDeliveredType",
           "modelAsString": false,
@@ -17666,12 +17666,12 @@
         }
       },
       "EmailDeliveryDelayedType": {
-        "const": null,
         "enum": [
           "email.delivery_delayed"
         ],
         "type": "string",
         "description": "The event type.",
+        "x-client-original-const": "email.delivery_delayed",
         "x-ms-enum": {
           "name": "EmailDeliveryDelayedType",
           "modelAsString": false,
@@ -17684,12 +17684,12 @@
         }
       },
       "EmailBouncedType": {
-        "const": null,
         "enum": [
           "email.bounced"
         ],
         "type": "string",
         "description": "The event type.",
+        "x-client-original-const": "email.bounced",
         "x-ms-enum": {
           "name": "EmailBouncedType",
           "modelAsString": false,
@@ -17702,12 +17702,12 @@
         }
       },
       "EmailComplainedType": {
-        "const": null,
         "enum": [
           "email.complained"
         ],
         "type": "string",
         "description": "The event type.",
+        "x-client-original-const": "email.complained",
         "x-ms-enum": {
           "name": "EmailComplainedType",
           "modelAsString": false,
@@ -17720,12 +17720,12 @@
         }
       },
       "EmailOpenedType": {
-        "const": null,
         "enum": [
           "email.opened"
         ],
         "type": "string",
         "description": "The event type.",
+        "x-client-original-const": "email.opened",
         "x-ms-enum": {
           "name": "EmailOpenedType",
           "modelAsString": false,
@@ -17738,12 +17738,12 @@
         }
       },
       "EmailClickedType": {
-        "const": null,
         "enum": [
           "email.clicked"
         ],
         "type": "string",
         "description": "The event type.",
+        "x-client-original-const": "email.clicked",
         "x-ms-enum": {
           "name": "EmailClickedType",
           "modelAsString": false,
@@ -17756,12 +17756,12 @@
         }
       },
       "EmailFailedType": {
-        "const": null,
         "enum": [
           "email.failed"
         ],
         "type": "string",
         "description": "The event type.",
+        "x-client-original-const": "email.failed",
         "x-ms-enum": {
           "name": "EmailFailedType",
           "modelAsString": false,
@@ -17774,12 +17774,12 @@
         }
       },
       "EmailScheduledType": {
-        "const": null,
         "enum": [
           "email.scheduled"
         ],
         "type": "string",
         "description": "The event type.",
+        "x-client-original-const": "email.scheduled",
         "x-ms-enum": {
           "name": "EmailScheduledType",
           "modelAsString": false,
@@ -17792,12 +17792,12 @@
         }
       },
       "EmailSuppressedType": {
-        "const": null,
         "enum": [
           "email.suppressed"
         ],
         "type": "string",
         "description": "The event type.",
+        "x-client-original-const": "email.suppressed",
         "x-ms-enum": {
           "name": "EmailSuppressedType",
           "modelAsString": false,
@@ -17810,12 +17810,12 @@
         }
       },
       "EmailReceivedType": {
-        "const": null,
         "enum": [
           "email.received"
         ],
         "type": "string",
         "description": "The event type.",
+        "x-client-original-const": "email.received",
         "x-ms-enum": {
           "name": "EmailReceivedType",
           "modelAsString": false,
@@ -17828,12 +17828,12 @@
         }
       },
       "ContactCreatedType": {
-        "const": null,
         "enum": [
           "contact.created"
         ],
         "type": "string",
         "description": "The event type.",
+        "x-client-original-const": "contact.created",
         "x-ms-enum": {
           "name": "ContactCreatedType",
           "modelAsString": false,
@@ -17846,12 +17846,12 @@
         }
       },
       "ContactUpdatedType": {
-        "const": null,
         "enum": [
           "contact.updated"
         ],
         "type": "string",
         "description": "The event type.",
+        "x-client-original-const": "contact.updated",
         "x-ms-enum": {
           "name": "ContactUpdatedType",
           "modelAsString": false,
@@ -17864,12 +17864,12 @@
         }
       },
       "ContactDeletedType": {
-        "const": null,
         "enum": [
           "contact.deleted"
         ],
         "type": "string",
         "description": "The event type.",
+        "x-client-original-const": "contact.deleted",
         "x-ms-enum": {
           "name": "ContactDeletedType",
           "modelAsString": false,
@@ -17882,12 +17882,12 @@
         }
       },
       "ContactTopicsUpdatedType": {
-        "const": null,
         "enum": [
           "contact.topics.updated"
         ],
         "type": "string",
         "description": "The event type.",
+        "x-client-original-const": "contact.topics.updated",
         "x-ms-enum": {
           "name": "ContactTopicsUpdatedType",
           "modelAsString": false,
@@ -17900,12 +17900,12 @@
         }
       },
       "DomainCreatedType": {
-        "const": null,
         "enum": [
           "domain.created"
         ],
         "type": "string",
         "description": "The event type.",
+        "x-client-original-const": "domain.created",
         "x-ms-enum": {
           "name": "DomainCreatedType",
           "modelAsString": false,
@@ -17918,12 +17918,12 @@
         }
       },
       "DomainUpdatedType": {
-        "const": null,
         "enum": [
           "domain.updated"
         ],
         "type": "string",
         "description": "The event type.",
+        "x-client-original-const": "domain.updated",
         "x-ms-enum": {
           "name": "DomainUpdatedType",
           "modelAsString": false,
@@ -17936,12 +17936,12 @@
         }
       },
       "DomainDeletedType": {
-        "const": null,
         "enum": [
           "domain.deleted"
         ],
         "type": "string",
         "description": "The event type.",
+        "x-client-original-const": "domain.deleted",
         "x-ms-enum": {
           "name": "DomainDeletedType",
           "modelAsString": false,
@@ -17954,12 +17954,12 @@
         }
       },
       "SuppressionAddedType": {
-        "const": null,
         "enum": [
           "suppression.added"
         ],
         "type": "string",
         "description": "The event type.",
+        "x-client-original-const": "suppression.added",
         "x-ms-enum": {
           "name": "SuppressionAddedType",
           "modelAsString": false,
@@ -17972,12 +17972,12 @@
         }
       },
       "SuppressionRemovedType": {
-        "const": null,
         "enum": [
           "suppression.removed"
         ],
         "type": "string",
         "description": "The event type.",
+        "x-client-original-const": "suppression.removed",
         "x-ms-enum": {
           "name": "SuppressionRemovedType",
           "modelAsString": false,
@@ -17990,12 +17990,12 @@
         }
       },
       "TopicCreatedType": {
-        "const": null,
         "enum": [
           "topic.created"
         ],
         "type": "string",
         "description": "The event type.",
+        "x-client-original-const": "topic.created",
         "x-ms-enum": {
           "name": "TopicCreatedType",
           "modelAsString": false,
@@ -18008,12 +18008,12 @@
         }
       },
       "TopicUpdatedType": {
-        "const": null,
         "enum": [
           "topic.updated"
         ],
         "type": "string",
         "description": "The event type.",
+        "x-client-original-const": "topic.updated",
         "x-ms-enum": {
           "name": "TopicUpdatedType",
           "modelAsString": false,
@@ -18026,12 +18026,12 @@
         }
       },
       "TopicDeletedType": {
-        "const": null,
         "enum": [
           "topic.deleted"
         ],
         "type": "string",
         "description": "The event type.",
+        "x-client-original-const": "topic.deleted",
         "x-ms-enum": {
           "name": "TopicDeletedType",
           "modelAsString": false,
@@ -18536,12 +18536,12 @@
         }
       },
       "InboxCreatedType": {
-        "const": null,
         "enum": [
           "inbox.created"
         ],
         "type": "string",
         "description": "The event type.",
+        "x-client-original-const": "inbox.created",
         "x-ms-enum": {
           "name": "InboxCreatedType",
           "modelAsString": false,
@@ -18554,12 +18554,12 @@
         }
       },
       "InboxUpdatedType": {
-        "const": null,
         "enum": [
           "inbox.updated"
         ],
         "type": "string",
         "description": "The event type.",
+        "x-client-original-const": "inbox.updated",
         "x-ms-enum": {
           "name": "InboxUpdatedType",
           "modelAsString": false,
@@ -18572,12 +18572,12 @@
         }
       },
       "InboxDeletedType": {
-        "const": null,
         "enum": [
           "inbox.deleted"
         ],
         "type": "string",
         "description": "The event type.",
+        "x-client-original-const": "inbox.deleted",
         "x-ms-enum": {
           "name": "InboxDeletedType",
           "modelAsString": false,
@@ -18590,12 +18590,12 @@
         }
       },
       "InboxThreadCreatedType": {
-        "const": null,
         "enum": [
           "inbox.thread.created"
         ],
         "type": "string",
         "description": "The event type.",
+        "x-client-original-const": "inbox.thread.created",
         "x-ms-enum": {
           "name": "InboxThreadCreatedType",
           "modelAsString": false,
@@ -18608,12 +18608,12 @@
         }
       },
       "InboxEmailReceivedType": {
-        "const": null,
         "enum": [
           "inbox.email.received"
         ],
         "type": "string",
         "description": "The event type.",
+        "x-client-original-const": "inbox.email.received",
         "x-ms-enum": {
           "name": "InboxEmailReceivedType",
           "modelAsString": false,
@@ -18626,12 +18626,12 @@
         }
       },
       "InboxEmailSentType": {
-        "const": null,
         "enum": [
           "inbox.email.sent"
         ],
         "type": "string",
         "description": "The event type.",
+        "x-client-original-const": "inbox.email.sent",
         "x-ms-enum": {
           "name": "InboxEmailSentType",
           "modelAsString": false,
@@ -18644,12 +18644,12 @@
         }
       },
       "InboxThreadFolderUpdatedType": {
-        "const": null,
         "enum": [
           "inbox.thread.folder.updated"
         ],
         "type": "string",
         "description": "The event type.",
+        "x-client-original-const": "inbox.thread.folder.updated",
         "x-ms-enum": {
           "name": "InboxThreadFolderUpdatedType",
           "modelAsString": false,
@@ -18662,12 +18662,12 @@
         }
       },
       "InboxThreadAssignedType": {
-        "const": null,
         "enum": [
           "inbox.thread.assigned"
         ],
         "type": "string",
         "description": "The event type.",
+        "x-client-original-const": "inbox.thread.assigned",
         "x-ms-enum": {
           "name": "InboxThreadAssignedType",
           "modelAsString": false,
@@ -18680,12 +18680,12 @@
         }
       },
       "InboxThreadUnassignedType": {
-        "const": null,
         "enum": [
           "inbox.thread.unassigned"
         ],
         "type": "string",
         "description": "The event type.",
+        "x-client-original-const": "inbox.thread.unassigned",
         "x-ms-enum": {
           "name": "InboxThreadUnassignedType",
           "modelAsString": false,
@@ -18698,12 +18698,12 @@
         }
       },
       "InboxThreadLabelsUpdatedType": {
-        "const": null,
         "enum": [
           "inbox.thread.labels.updated"
         ],
         "type": "string",
         "description": "The event type.",
+        "x-client-original-const": "inbox.thread.labels.updated",
         "x-ms-enum": {
           "name": "InboxThreadLabelsUpdatedType",
           "modelAsString": false,
@@ -18716,12 +18716,12 @@
         }
       },
       "InboxDraftCreatedType": {
-        "const": null,
         "enum": [
           "inbox.draft.created"
         ],
         "type": "string",
         "description": "The event type.",
+        "x-client-original-const": "inbox.draft.created",
         "x-ms-enum": {
           "name": "InboxDraftCreatedType",
           "modelAsString": false,
@@ -18734,12 +18734,12 @@
         }
       },
       "InboxDraftUpdatedType": {
-        "const": null,
         "enum": [
           "inbox.draft.updated"
         ],
         "type": "string",
         "description": "The event type.",
+        "x-client-original-const": "inbox.draft.updated",
         "x-ms-enum": {
           "name": "InboxDraftUpdatedType",
           "modelAsString": false,
@@ -18752,12 +18752,12 @@
         }
       },
       "InboxDraftSentType": {
-        "const": null,
         "enum": [
           "inbox.draft.sent"
         ],
         "type": "string",
         "description": "The event type.",
+        "x-client-original-const": "inbox.draft.sent",
         "x-ms-enum": {
           "name": "InboxDraftSentType",
           "modelAsString": false,
@@ -18770,12 +18770,12 @@
         }
       },
       "InboxDraftDeletedType": {
-        "const": null,
         "enum": [
           "inbox.draft.deleted"
         ],
         "type": "string",
         "description": "The event type.",
+        "x-client-original-const": "inbox.draft.deleted",
         "x-ms-enum": {
           "name": "InboxDraftDeletedType",
           "modelAsString": false,

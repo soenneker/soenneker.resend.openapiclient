@@ -18,17 +18,19 @@ namespace Soenneker.Resend.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("receiving") is { } nullNodeReceiving && nullNodeReceiving.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Receiving = null;
-            if (parseNode.GetChildNode("sending") is { } nullNodeSending && nullNodeSending.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Sending = null;
+            if (parseNode.GetChildNode("receiving") is null) { _explicitNullValueReceiving = default!; _explicitNullProperties?.Remove("receiving"); }
+            else if (parseNode.GetChildNode("receiving") is { } nullNodeReceiving && nullNodeReceiving.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Receiving = null;
+            if (parseNode.GetChildNode("sending") is null) { _explicitNullValueSending = default!; _explicitNullProperties?.Remove("sending"); }
+            else if (parseNode.GetChildNode("sending") is { } nullNodeSending && nullNodeSending.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Sending = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Enable or disable receiving emails to this domain.</summary>
-        public global::Soenneker.Resend.OpenApiClient.Models.DomainCapabilitiesReceiving? Receiving { get => _explicitNullValueReceiving; set { _explicitNullValueReceiving = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("receiving"); else _explicitNullProperties?.Remove("receiving"); } }
+        public global::Soenneker.Resend.OpenApiClient.Models.DomainCapabilitiesReceiving? Receiving { get => _explicitNullValueReceiving; set { _explicitNullValueReceiving = value; AdditionalData?.Remove("receiving"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("receiving"); else _explicitNullProperties?.Remove("receiving"); } }
         private global::Soenneker.Resend.OpenApiClient.Models.DomainCapabilitiesReceiving? _explicitNullValueReceiving = default!;
         /// <summary>Enable or disable sending emails from this domain.</summary>
-        public global::Soenneker.Resend.OpenApiClient.Models.DomainCapabilitiesSending? Sending { get => _explicitNullValueSending; set { _explicitNullValueSending = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sending"); else _explicitNullProperties?.Remove("sending"); } }
+        public global::Soenneker.Resend.OpenApiClient.Models.DomainCapabilitiesSending? Sending { get => _explicitNullValueSending; set { _explicitNullValueSending = value; AdditionalData?.Remove("sending"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sending"); else _explicitNullProperties?.Remove("sending"); } }
         private global::Soenneker.Resend.OpenApiClient.Models.DomainCapabilitiesSending? _explicitNullValueSending = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Resend.OpenApiClient.Models.DomainCapabilities"/> and sets the default values.
@@ -55,8 +57,8 @@ namespace Soenneker.Resend.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "receiving", n => { Receiving = n.GetEnumValue<global::Soenneker.Resend.OpenApiClient.Models.DomainCapabilitiesReceiving>(); } },
-                { "sending", n => { Sending = n.GetEnumValue<global::Soenneker.Resend.OpenApiClient.Models.DomainCapabilitiesSending>(); } },
+                { "receiving", n => { var parsed = n.GetEnumValue<global::Soenneker.Resend.OpenApiClient.Models.DomainCapabilitiesReceiving>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueReceiving = default; _explicitNullProperties?.Remove("receiving"); AdditionalData["receiving"] = unknown; } else { Receiving = parsed; AdditionalData.Remove("receiving"); } } },
+                { "sending", n => { var parsed = n.GetEnumValue<global::Soenneker.Resend.OpenApiClient.Models.DomainCapabilitiesSending>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueSending = default; _explicitNullProperties?.Remove("sending"); AdditionalData["sending"] = unknown; } else { Sending = parsed; AdditionalData.Remove("sending"); } } },
             };
         }
         /// <summary>

@@ -17,9 +17,12 @@ namespace Soenneker.Resend.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("fallback_value") is { } nullNodeFallbackValue && nullNodeFallbackValue.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FallbackValue = null;
-            if (parseNode.GetChildNode("key") is { } nullNodeKey && nullNodeKey.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Key = null;
-            if (parseNode.GetChildNode("type") is { } nullNodeType && nullNodeType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Type = null;
+            if (parseNode.GetChildNode("fallback_value") is null) { _explicitNullValueFallbackValue = default!; _explicitNullProperties?.Remove("fallback_value"); }
+            else if (parseNode.GetChildNode("fallback_value") is { } nullNodeFallbackValue && nullNodeFallbackValue.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FallbackValue = null;
+            if (parseNode.GetChildNode("key") is null) { _explicitNullValueKey = default!; _explicitNullProperties?.Remove("key"); }
+            else if (parseNode.GetChildNode("key") is { } nullNodeKey && nullNodeKey.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Key = null;
+            if (parseNode.GetChildNode("type") is null) { _explicitNullValueType = default!; _explicitNullProperties?.Remove("type"); }
+            else if (parseNode.GetChildNode("type") is { } nullNodeType && nullNodeType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Type = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -27,25 +30,25 @@ namespace Soenneker.Resend.OpenApiClient.Models
         /// <summary>The fallback value of the variable.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Resend.OpenApiClient.Models.TemplateVariableInputFallbackValue? FallbackValue { get => _explicitNullValueFallbackValue; set { _explicitNullValueFallbackValue = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("fallback_value"); else _explicitNullProperties?.Remove("fallback_value"); } }
-        private global::Soenneker.Resend.OpenApiClient.Models.TemplateVariableInputFallbackValue? _explicitNullValueFallbackValue = default!;
+        public global::Soenneker.Resend.OpenApiClient.Models.TemplateVariableFallbackValue? FallbackValue { get => _explicitNullValueFallbackValue; set { _explicitNullValueFallbackValue = value; AdditionalData?.Remove("fallback_value"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("fallback_value"); else _explicitNullProperties?.Remove("fallback_value"); } }
+        private global::Soenneker.Resend.OpenApiClient.Models.TemplateVariableFallbackValue? _explicitNullValueFallbackValue = default!;
 #nullable restore
 #else
-        public global::Soenneker.Resend.OpenApiClient.Models.TemplateVariableInputFallbackValue FallbackValue { get => _explicitNullValueFallbackValue; set { _explicitNullValueFallbackValue = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("fallback_value"); else _explicitNullProperties?.Remove("fallback_value"); } }
-        private global::Soenneker.Resend.OpenApiClient.Models.TemplateVariableInputFallbackValue _explicitNullValueFallbackValue = default!;
+        public global::Soenneker.Resend.OpenApiClient.Models.TemplateVariableFallbackValue FallbackValue { get => _explicitNullValueFallbackValue; set { _explicitNullValueFallbackValue = value; AdditionalData?.Remove("fallback_value"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("fallback_value"); else _explicitNullProperties?.Remove("fallback_value"); } }
+        private global::Soenneker.Resend.OpenApiClient.Models.TemplateVariableFallbackValue _explicitNullValueFallbackValue = default!;
 #endif
         /// <summary>The key of the variable.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Key { get => _explicitNullValueKey; set { _explicitNullValueKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("key"); else _explicitNullProperties?.Remove("key"); } }
+        public string? Key { get => _explicitNullValueKey; set { _explicitNullValueKey = value; AdditionalData?.Remove("key"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("key"); else _explicitNullProperties?.Remove("key"); } }
         private string? _explicitNullValueKey = default!;
 #nullable restore
 #else
-        public string Key { get => _explicitNullValueKey; set { _explicitNullValueKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("key"); else _explicitNullProperties?.Remove("key"); } }
+        public string Key { get => _explicitNullValueKey; set { _explicitNullValueKey = value; AdditionalData?.Remove("key"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("key"); else _explicitNullProperties?.Remove("key"); } }
         private string _explicitNullValueKey = default!;
 #endif
         /// <summary>The type of the variable.</summary>
-        public global::Soenneker.Resend.OpenApiClient.Models.TemplateVariableInputType? Type { get => _explicitNullValueType; set { _explicitNullValueType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("type"); else _explicitNullProperties?.Remove("type"); } }
+        public global::Soenneker.Resend.OpenApiClient.Models.TemplateVariableInputType? Type { get => _explicitNullValueType; set { _explicitNullValueType = value; AdditionalData?.Remove("type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("type"); else _explicitNullProperties?.Remove("type"); } }
         private global::Soenneker.Resend.OpenApiClient.Models.TemplateVariableInputType? _explicitNullValueType = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Resend.OpenApiClient.Models.TemplateVariableInput"/> and sets the default values.
@@ -72,9 +75,9 @@ namespace Soenneker.Resend.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "fallback_value", n => { FallbackValue = n.GetObjectValue<global::Soenneker.Resend.OpenApiClient.Models.TemplateVariableInputFallbackValue>(global::Soenneker.Resend.OpenApiClient.Models.TemplateVariableInputFallbackValue.CreateFromDiscriminatorValue); } },
+                { "fallback_value", n => { FallbackValue = n.GetObjectValue<global::Soenneker.Resend.OpenApiClient.Models.TemplateVariableFallbackValue>(global::Soenneker.Resend.OpenApiClient.Models.TemplateVariableFallbackValue.CreateFromDiscriminatorValue); } },
                 { "key", n => { Key = n.GetStringValue(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.Resend.OpenApiClient.Models.TemplateVariableInputType>(); } },
+                { "type", n => { var parsed = n.GetEnumValue<global::Soenneker.Resend.OpenApiClient.Models.TemplateVariableInputType>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueType = default; _explicitNullProperties?.Remove("type"); AdditionalData["type"] = unknown; } else { Type = parsed; AdditionalData.Remove("type"); } } },
             };
         }
         /// <summary>
@@ -84,7 +87,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.Resend.OpenApiClient.Models.TemplateVariableInputFallbackValue>("fallback_value", FallbackValue);
+            writer.WriteObjectValue<global::Soenneker.Resend.OpenApiClient.Models.TemplateVariableFallbackValue>("fallback_value", FallbackValue);
             writer.WriteStringValue("key", Key);
             writer.WriteEnumValue<global::Soenneker.Resend.OpenApiClient.Models.TemplateVariableInputType>("type", Type);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);

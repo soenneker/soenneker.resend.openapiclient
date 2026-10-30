@@ -65,7 +65,7 @@ namespace Soenneker.Resend.OpenApiClient.Inboxes.Item.Threads.Search
         public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Soenneker.Resend.OpenApiClient.Inboxes.Item.Threads.Search.SearchRequestBuilder.SearchRequestBuilderGetQueryParameters>> requestConfiguration = default)
         {
 #endif
-            var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
+            var requestInfo = new RequestInformation(Method.GET, global::Soenneker.OpenApi.Generated.OpenApiServiceRoutes.Resolve(UrlTemplate, RequestAdapter.BaseUrl, "https://api.resend.com", "/inboxes/{inboxId}/threads/search", PathParameters.ContainsKey("request-raw-url")), PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;

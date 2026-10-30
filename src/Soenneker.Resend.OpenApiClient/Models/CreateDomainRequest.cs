@@ -17,14 +17,22 @@ namespace Soenneker.Resend.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("capabilities") is { } nullNodeCapabilities && nullNodeCapabilities.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Capabilities = null;
-            if (parseNode.GetChildNode("click_tracking") is { } nullNodeClickTracking && nullNodeClickTracking.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ClickTracking = null;
-            if (parseNode.GetChildNode("custom_return_path") is { } nullNodeCustomReturnPath && nullNodeCustomReturnPath.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CustomReturnPath = null;
-            if (parseNode.GetChildNode("name") is { } nullNodeName && nullNodeName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Name = null;
-            if (parseNode.GetChildNode("open_tracking") is { } nullNodeOpenTracking && nullNodeOpenTracking.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OpenTracking = null;
-            if (parseNode.GetChildNode("region") is { } nullNodeRegion && nullNodeRegion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Region = null;
-            if (parseNode.GetChildNode("tls") is { } nullNodeTls && nullNodeTls.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Tls = null;
-            if (parseNode.GetChildNode("tracking_subdomain") is { } nullNodeTrackingSubdomain && nullNodeTrackingSubdomain.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TrackingSubdomain = null;
+            if (parseNode.GetChildNode("capabilities") is null) { _explicitNullValueCapabilities = default!; _explicitNullProperties?.Remove("capabilities"); }
+            else if (parseNode.GetChildNode("capabilities") is { } nullNodeCapabilities && nullNodeCapabilities.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Capabilities = null;
+            if (parseNode.GetChildNode("click_tracking") is null) { _explicitNullValueClickTracking = default!; _explicitNullProperties?.Remove("click_tracking"); }
+            else if (parseNode.GetChildNode("click_tracking") is { } nullNodeClickTracking && nullNodeClickTracking.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ClickTracking = null;
+            if (parseNode.GetChildNode("custom_return_path") is null) { _explicitNullValueCustomReturnPath = default!; _explicitNullProperties?.Remove("custom_return_path"); }
+            else if (parseNode.GetChildNode("custom_return_path") is { } nullNodeCustomReturnPath && nullNodeCustomReturnPath.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CustomReturnPath = null;
+            if (parseNode.GetChildNode("name") is null) { _explicitNullValueName = default!; _explicitNullProperties?.Remove("name"); }
+            else if (parseNode.GetChildNode("name") is { } nullNodeName && nullNodeName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Name = null;
+            if (parseNode.GetChildNode("open_tracking") is null) { _explicitNullValueOpenTracking = default!; _explicitNullProperties?.Remove("open_tracking"); }
+            else if (parseNode.GetChildNode("open_tracking") is { } nullNodeOpenTracking && nullNodeOpenTracking.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OpenTracking = null;
+            if (parseNode.GetChildNode("region") is null) { _explicitNullValueRegion = default!; _explicitNullProperties?.Remove("region"); }
+            else if (parseNode.GetChildNode("region") is { } nullNodeRegion && nullNodeRegion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Region = null;
+            if (parseNode.GetChildNode("tls") is null) { _explicitNullValueTls = default!; _explicitNullProperties?.Remove("tls"); }
+            else if (parseNode.GetChildNode("tls") is { } nullNodeTls && nullNodeTls.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Tls = null;
+            if (parseNode.GetChildNode("tracking_subdomain") is null) { _explicitNullValueTrackingSubdomain = default!; _explicitNullProperties?.Remove("tracking_subdomain"); }
+            else if (parseNode.GetChildNode("tracking_subdomain") is { } nullNodeTrackingSubdomain && nullNodeTrackingSubdomain.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TrackingSubdomain = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -32,53 +40,53 @@ namespace Soenneker.Resend.OpenApiClient.Models
         /// <summary>Configure the domain capabilities for sending and receiving emails. At least one capability must be enabled.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Resend.OpenApiClient.Models.DomainCapabilities? Capabilities { get => _explicitNullValueCapabilities; set { _explicitNullValueCapabilities = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("capabilities"); else _explicitNullProperties?.Remove("capabilities"); } }
+        public global::Soenneker.Resend.OpenApiClient.Models.DomainCapabilities? Capabilities { get => _explicitNullValueCapabilities; set { _explicitNullValueCapabilities = value; AdditionalData?.Remove("capabilities"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("capabilities"); else _explicitNullProperties?.Remove("capabilities"); } }
         private global::Soenneker.Resend.OpenApiClient.Models.DomainCapabilities? _explicitNullValueCapabilities = default!;
 #nullable restore
 #else
-        public global::Soenneker.Resend.OpenApiClient.Models.DomainCapabilities Capabilities { get => _explicitNullValueCapabilities; set { _explicitNullValueCapabilities = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("capabilities"); else _explicitNullProperties?.Remove("capabilities"); } }
+        public global::Soenneker.Resend.OpenApiClient.Models.DomainCapabilities Capabilities { get => _explicitNullValueCapabilities; set { _explicitNullValueCapabilities = value; AdditionalData?.Remove("capabilities"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("capabilities"); else _explicitNullProperties?.Remove("capabilities"); } }
         private global::Soenneker.Resend.OpenApiClient.Models.DomainCapabilities _explicitNullValueCapabilities = default!;
 #endif
         /// <summary>Track clicks within the body of each HTML email.</summary>
-        public bool? ClickTracking { get => _explicitNullValueClickTracking; set { _explicitNullValueClickTracking = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("click_tracking"); else _explicitNullProperties?.Remove("click_tracking"); } }
+        public bool? ClickTracking { get => _explicitNullValueClickTracking; set { _explicitNullValueClickTracking = value; AdditionalData?.Remove("click_tracking"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("click_tracking"); else _explicitNullProperties?.Remove("click_tracking"); } }
         private bool? _explicitNullValueClickTracking = default!;
         /// <summary>For advanced use cases, choose a subdomain for the Return-Path address. Defaults to &apos;send&apos; (i.e., send.yourdomain.tld).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? CustomReturnPath { get => _explicitNullValueCustomReturnPath; set { _explicitNullValueCustomReturnPath = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("custom_return_path"); else _explicitNullProperties?.Remove("custom_return_path"); } }
+        public string? CustomReturnPath { get => _explicitNullValueCustomReturnPath; set { _explicitNullValueCustomReturnPath = value; AdditionalData?.Remove("custom_return_path"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("custom_return_path"); else _explicitNullProperties?.Remove("custom_return_path"); } }
         private string? _explicitNullValueCustomReturnPath = default!;
 #nullable restore
 #else
-        public string CustomReturnPath { get => _explicitNullValueCustomReturnPath; set { _explicitNullValueCustomReturnPath = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("custom_return_path"); else _explicitNullProperties?.Remove("custom_return_path"); } }
+        public string CustomReturnPath { get => _explicitNullValueCustomReturnPath; set { _explicitNullValueCustomReturnPath = value; AdditionalData?.Remove("custom_return_path"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("custom_return_path"); else _explicitNullProperties?.Remove("custom_return_path"); } }
         private string _explicitNullValueCustomReturnPath = default!;
 #endif
         /// <summary>The name of the domain you want to create.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        public string? Name { get => _explicitNullValueName; set { _explicitNullValueName = value; AdditionalData?.Remove("name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
         private string? _explicitNullValueName = default!;
 #nullable restore
 #else
-        public string Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        public string Name { get => _explicitNullValueName; set { _explicitNullValueName = value; AdditionalData?.Remove("name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
         private string _explicitNullValueName = default!;
 #endif
         /// <summary>Track the open rate of each email.</summary>
-        public bool? OpenTracking { get => _explicitNullValueOpenTracking; set { _explicitNullValueOpenTracking = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("open_tracking"); else _explicitNullProperties?.Remove("open_tracking"); } }
+        public bool? OpenTracking { get => _explicitNullValueOpenTracking; set { _explicitNullValueOpenTracking = value; AdditionalData?.Remove("open_tracking"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("open_tracking"); else _explicitNullProperties?.Remove("open_tracking"); } }
         private bool? _explicitNullValueOpenTracking = default!;
         /// <summary>The region where emails will be sent from. Possible values are us-east-1 | eu-west-1 | sa-east-1 | ap-northeast-1</summary>
-        public global::Soenneker.Resend.OpenApiClient.Models.CreateDomainRequestRegion? Region { get => _explicitNullValueRegion; set { _explicitNullValueRegion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("region"); else _explicitNullProperties?.Remove("region"); } }
+        public global::Soenneker.Resend.OpenApiClient.Models.CreateDomainRequestRegion? Region { get => _explicitNullValueRegion; set { _explicitNullValueRegion = value; AdditionalData?.Remove("region"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("region"); else _explicitNullProperties?.Remove("region"); } }
         private global::Soenneker.Resend.OpenApiClient.Models.CreateDomainRequestRegion? _explicitNullValueRegion = default!;
         /// <summary>TLS mode. Opportunistic attempts secure connection but falls back to unencrypted. Enforced requires TLS or email won&apos;t be sent.</summary>
-        public global::Soenneker.Resend.OpenApiClient.Models.CreateDomainRequestTls? Tls { get => _explicitNullValueTls; set { _explicitNullValueTls = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tls"); else _explicitNullProperties?.Remove("tls"); } }
+        public global::Soenneker.Resend.OpenApiClient.Models.CreateDomainRequestTls? Tls { get => _explicitNullValueTls; set { _explicitNullValueTls = value; AdditionalData?.Remove("tls"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tls"); else _explicitNullProperties?.Remove("tls"); } }
         private global::Soenneker.Resend.OpenApiClient.Models.CreateDomainRequestTls? _explicitNullValueTls = default!;
         /// <summary>The subdomain to use for click and open tracking.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? TrackingSubdomain { get => _explicitNullValueTrackingSubdomain; set { _explicitNullValueTrackingSubdomain = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tracking_subdomain"); else _explicitNullProperties?.Remove("tracking_subdomain"); } }
+        public string? TrackingSubdomain { get => _explicitNullValueTrackingSubdomain; set { _explicitNullValueTrackingSubdomain = value; AdditionalData?.Remove("tracking_subdomain"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tracking_subdomain"); else _explicitNullProperties?.Remove("tracking_subdomain"); } }
         private string? _explicitNullValueTrackingSubdomain = default!;
 #nullable restore
 #else
-        public string TrackingSubdomain { get => _explicitNullValueTrackingSubdomain; set { _explicitNullValueTrackingSubdomain = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tracking_subdomain"); else _explicitNullProperties?.Remove("tracking_subdomain"); } }
+        public string TrackingSubdomain { get => _explicitNullValueTrackingSubdomain; set { _explicitNullValueTrackingSubdomain = value; AdditionalData?.Remove("tracking_subdomain"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tracking_subdomain"); else _explicitNullProperties?.Remove("tracking_subdomain"); } }
         private string _explicitNullValueTrackingSubdomain = default!;
 #endif
         /// <summary>
@@ -111,8 +119,8 @@ namespace Soenneker.Resend.OpenApiClient.Models
                 { "custom_return_path", n => { CustomReturnPath = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "open_tracking", n => { OpenTracking = n.GetBoolValue(); } },
-                { "region", n => { Region = n.GetEnumValue<global::Soenneker.Resend.OpenApiClient.Models.CreateDomainRequestRegion>(); } },
-                { "tls", n => { Tls = n.GetEnumValue<global::Soenneker.Resend.OpenApiClient.Models.CreateDomainRequestTls>(); } },
+                { "region", n => { var parsed = n.GetEnumValue<global::Soenneker.Resend.OpenApiClient.Models.CreateDomainRequestRegion>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueRegion = default; _explicitNullProperties?.Remove("region"); AdditionalData["region"] = unknown; } else { Region = parsed; AdditionalData.Remove("region"); } } },
+                { "tls", n => { var parsed = n.GetEnumValue<global::Soenneker.Resend.OpenApiClient.Models.CreateDomainRequestTls>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueTls = default; _explicitNullProperties?.Remove("tls"); AdditionalData["tls"] = unknown; } else { Tls = parsed; AdditionalData.Remove("tls"); } } },
                 { "tracking_subdomain", n => { TrackingSubdomain = n.GetStringValue(); } },
             };
         }

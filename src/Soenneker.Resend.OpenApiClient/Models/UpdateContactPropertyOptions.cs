@@ -17,7 +17,8 @@ namespace Soenneker.Resend.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("fallback_value") is { } nullNodeFallbackValue && nullNodeFallbackValue.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FallbackValue = null;
+            if (parseNode.GetChildNode("fallback_value") is null) { _explicitNullValueFallbackValue = default!; _explicitNullProperties?.Remove("fallback_value"); }
+            else if (parseNode.GetChildNode("fallback_value") is { } nullNodeFallbackValue && nullNodeFallbackValue.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FallbackValue = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -25,11 +26,11 @@ namespace Soenneker.Resend.OpenApiClient.Models
         /// <summary>The default value to use when the property is not set for a contact. Must match the type of the property.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Resend.OpenApiClient.Models.UpdateContactPropertyOptionsFallbackValue? FallbackValue { get => _explicitNullValueFallbackValue; set { _explicitNullValueFallbackValue = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("fallback_value"); else _explicitNullProperties?.Remove("fallback_value"); } }
+        public global::Soenneker.Resend.OpenApiClient.Models.UpdateContactPropertyOptionsFallbackValue? FallbackValue { get => _explicitNullValueFallbackValue; set { _explicitNullValueFallbackValue = value; AdditionalData?.Remove("fallback_value"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("fallback_value"); else _explicitNullProperties?.Remove("fallback_value"); } }
         private global::Soenneker.Resend.OpenApiClient.Models.UpdateContactPropertyOptionsFallbackValue? _explicitNullValueFallbackValue = default!;
 #nullable restore
 #else
-        public global::Soenneker.Resend.OpenApiClient.Models.UpdateContactPropertyOptionsFallbackValue FallbackValue { get => _explicitNullValueFallbackValue; set { _explicitNullValueFallbackValue = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("fallback_value"); else _explicitNullProperties?.Remove("fallback_value"); } }
+        public global::Soenneker.Resend.OpenApiClient.Models.UpdateContactPropertyOptionsFallbackValue FallbackValue { get => _explicitNullValueFallbackValue; set { _explicitNullValueFallbackValue = value; AdditionalData?.Remove("fallback_value"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("fallback_value"); else _explicitNullProperties?.Remove("fallback_value"); } }
         private global::Soenneker.Resend.OpenApiClient.Models.UpdateContactPropertyOptionsFallbackValue _explicitNullValueFallbackValue = default!;
 #endif
         /// <summary>

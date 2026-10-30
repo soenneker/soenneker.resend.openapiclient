@@ -78,7 +78,7 @@ namespace Soenneker.Resend.OpenApiClient.Emails.Receiving
         public RequestInformation ToGetRequestInformation(Action<RequestConfiguration<global::Soenneker.Resend.OpenApiClient.Emails.Receiving.ReceivingRequestBuilder.ReceivingRequestBuilderGetQueryParameters>> requestConfiguration = default)
         {
 #endif
-            var requestInfo = new RequestInformation(Method.GET, UrlTemplate, PathParameters);
+            var requestInfo = new RequestInformation(Method.GET, global::Soenneker.OpenApi.Generated.OpenApiServiceRoutes.Resolve(UrlTemplate, RequestAdapter.BaseUrl, "https://api.resend.com", "/emails/receiving", PathParameters.ContainsKey("request-raw-url")), PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");
             return requestInfo;
