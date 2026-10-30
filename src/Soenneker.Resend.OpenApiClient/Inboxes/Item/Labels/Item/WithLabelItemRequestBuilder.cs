@@ -49,7 +49,7 @@ namespace Soenneker.Resend.OpenApiClient.Inboxes.Item.Labels.Item
         {
 #endif
             var requestInfo = ToDeleteRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Resend.OpenApiClient.Models.RemoveInboxLabelResponseSuccess>(requestInfo, global::Soenneker.Resend.OpenApiClient.Models.RemoveInboxLabelResponseSuccess.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Resend.OpenApiClient.Models.RemoveInboxLabelResponseSuccess>(requestInfo, global::Soenneker.Resend.OpenApiClient.Models.RemoveInboxLabelResponseSuccess.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Renames or recolors a label. Omitted fields keep their current value. A new name must not match another label on the inbox, compared without case, or the request returns a 422 validation_error.
@@ -69,7 +69,7 @@ namespace Soenneker.Resend.OpenApiClient.Inboxes.Item.Labels.Item
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPatchRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Resend.OpenApiClient.Models.UpdateInboxLabelResponseSuccess>(requestInfo, global::Soenneker.Resend.OpenApiClient.Models.UpdateInboxLabelResponseSuccess.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Resend.OpenApiClient.Models.UpdateInboxLabelResponseSuccess>(requestInfo, global::Soenneker.Resend.OpenApiClient.Models.UpdateInboxLabelResponseSuccess.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Deletes the label and removes it from every thread that carries it.

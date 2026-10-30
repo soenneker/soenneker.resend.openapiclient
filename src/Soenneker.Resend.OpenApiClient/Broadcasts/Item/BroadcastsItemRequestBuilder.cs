@@ -79,7 +79,7 @@ namespace Soenneker.Resend.OpenApiClient.Broadcasts.Item
         {
 #endif
             var requestInfo = ToDeleteRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Resend.OpenApiClient.Models.RemoveBroadcastResponseSuccess>(requestInfo, global::Soenneker.Resend.OpenApiClient.Models.RemoveBroadcastResponseSuccess.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Resend.OpenApiClient.Models.RemoveBroadcastResponseSuccess>(requestInfo, global::Soenneker.Resend.OpenApiClient.Models.RemoveBroadcastResponseSuccess.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Retrieve a single broadcast
@@ -97,7 +97,7 @@ namespace Soenneker.Resend.OpenApiClient.Broadcasts.Item
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Resend.OpenApiClient.Models.GetBroadcastResponseSuccess>(requestInfo, global::Soenneker.Resend.OpenApiClient.Models.GetBroadcastResponseSuccess.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Resend.OpenApiClient.Models.GetBroadcastResponseSuccess>(requestInfo, global::Soenneker.Resend.OpenApiClient.Models.GetBroadcastResponseSuccess.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Update an existing broadcast
@@ -117,7 +117,7 @@ namespace Soenneker.Resend.OpenApiClient.Broadcasts.Item
 #endif
             if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPatchRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Resend.OpenApiClient.Models.UpdateBroadcastResponseSuccess>(requestInfo, global::Soenneker.Resend.OpenApiClient.Models.UpdateBroadcastResponseSuccess.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Resend.OpenApiClient.Models.UpdateBroadcastResponseSuccess>(requestInfo, global::Soenneker.Resend.OpenApiClient.Models.UpdateBroadcastResponseSuccess.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Remove an existing broadcast that is in the draft status

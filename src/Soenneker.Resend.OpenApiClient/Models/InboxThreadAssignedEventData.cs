@@ -12,47 +12,72 @@ namespace Soenneker.Resend.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class InboxThreadAssignedEventData : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("assigned_by_email") is { } nullNodeAssignedByEmail && nullNodeAssignedByEmail.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AssignedByEmail = null;
+            if (parseNode.GetChildNode("assignee_email") is { } nullNodeAssigneeEmail && nullNodeAssigneeEmail.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AssigneeEmail = null;
+            if (parseNode.GetChildNode("inbox_id") is { } nullNodeInboxId && nullNodeInboxId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InboxId = null;
+            if (parseNode.GetChildNode("previous_assignee_email") is { } nullNodePreviousAssigneeEmail && nullNodePreviousAssigneeEmail.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PreviousAssigneeEmail = null;
+            if (parseNode.GetChildNode("source") is { } nullNodeSource && nullNodeSource.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Source = null;
+            if (parseNode.GetChildNode("thread") is { } nullNodeThread && nullNodeThread.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Thread = null;
+            if (parseNode.GetChildNode("thread_id") is { } nullNodeThreadId && nullNodeThreadId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ThreadId = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The email of the member who made the assignment. Null when no member made it.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? AssignedByEmail { get; set; }
+        public string? AssignedByEmail { get => _explicitNullValueAssignedByEmail; set { _explicitNullValueAssignedByEmail = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("assigned_by_email"); else _explicitNullProperties?.Remove("assigned_by_email"); } }
+        private string? _explicitNullValueAssignedByEmail = default!;
 #nullable restore
 #else
-        public string AssignedByEmail { get; set; }
+        public string AssignedByEmail { get => _explicitNullValueAssignedByEmail; set { _explicitNullValueAssignedByEmail = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("assigned_by_email"); else _explicitNullProperties?.Remove("assigned_by_email"); } }
+        private string _explicitNullValueAssignedByEmail = default!;
 #endif
         /// <summary>The email of the member the thread is now assigned to.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? AssigneeEmail { get; set; }
+        public string? AssigneeEmail { get => _explicitNullValueAssigneeEmail; set { _explicitNullValueAssigneeEmail = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("assignee_email"); else _explicitNullProperties?.Remove("assignee_email"); } }
+        private string? _explicitNullValueAssigneeEmail = default!;
 #nullable restore
 #else
-        public string AssigneeEmail { get; set; }
+        public string AssigneeEmail { get => _explicitNullValueAssigneeEmail; set { _explicitNullValueAssigneeEmail = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("assignee_email"); else _explicitNullProperties?.Remove("assignee_email"); } }
+        private string _explicitNullValueAssigneeEmail = default!;
 #endif
         /// <summary>The ID of the inbox.</summary>
-        public Guid? InboxId { get; set; }
+        public Guid? InboxId { get => _explicitNullValueInboxId; set { _explicitNullValueInboxId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("inbox_id"); else _explicitNullProperties?.Remove("inbox_id"); } }
+        private Guid? _explicitNullValueInboxId = default!;
         /// <summary>The email of the member the thread was assigned to before. Null when it was unassigned.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? PreviousAssigneeEmail { get; set; }
+        public string? PreviousAssigneeEmail { get => _explicitNullValuePreviousAssigneeEmail; set { _explicitNullValuePreviousAssigneeEmail = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("previous_assignee_email"); else _explicitNullProperties?.Remove("previous_assignee_email"); } }
+        private string? _explicitNullValuePreviousAssigneeEmail = default!;
 #nullable restore
 #else
-        public string PreviousAssigneeEmail { get; set; }
+        public string PreviousAssigneeEmail { get => _explicitNullValuePreviousAssigneeEmail; set { _explicitNullValuePreviousAssigneeEmail = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("previous_assignee_email"); else _explicitNullProperties?.Remove("previous_assignee_email"); } }
+        private string _explicitNullValuePreviousAssigneeEmail = default!;
 #endif
         /// <summary>What made the change.</summary>
-        public global::Soenneker.Resend.OpenApiClient.Models.InboxEventSource? Source { get; set; }
+        public global::Soenneker.Resend.OpenApiClient.Models.InboxEventSource? Source { get => _explicitNullValueSource; set { _explicitNullValueSource = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source"); else _explicitNullProperties?.Remove("source"); } }
+        private global::Soenneker.Resend.OpenApiClient.Models.InboxEventSource? _explicitNullValueSource = default!;
         /// <summary>The thread as it is when the webhook is sent. Absent when the thread no longer exists.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Resend.OpenApiClient.Models.InboxThreadSummary? Thread { get; set; }
+        public global::Soenneker.Resend.OpenApiClient.Models.InboxThreadSummary? Thread { get => _explicitNullValueThread; set { _explicitNullValueThread = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("thread"); else _explicitNullProperties?.Remove("thread"); } }
+        private global::Soenneker.Resend.OpenApiClient.Models.InboxThreadSummary? _explicitNullValueThread = default!;
 #nullable restore
 #else
-        public global::Soenneker.Resend.OpenApiClient.Models.InboxThreadSummary Thread { get; set; }
+        public global::Soenneker.Resend.OpenApiClient.Models.InboxThreadSummary Thread { get => _explicitNullValueThread; set { _explicitNullValueThread = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("thread"); else _explicitNullProperties?.Remove("thread"); } }
+        private global::Soenneker.Resend.OpenApiClient.Models.InboxThreadSummary _explicitNullValueThread = default!;
 #endif
         /// <summary>The ID of the thread.</summary>
-        public Guid? ThreadId { get; set; }
+        public Guid? ThreadId { get => _explicitNullValueThreadId; set { _explicitNullValueThreadId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("thread_id"); else _explicitNullProperties?.Remove("thread_id"); } }
+        private Guid? _explicitNullValueThreadId = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Resend.OpenApiClient.Models.InboxThreadAssignedEventData"/> and sets the default values.
         /// </summary>
@@ -68,7 +93,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
         public static global::Soenneker.Resend.OpenApiClient.Models.InboxThreadAssignedEventData CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Resend.OpenApiClient.Models.InboxThreadAssignedEventData();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Resend.OpenApiClient.Models.InboxThreadAssignedEventData(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -101,6 +126,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
             writer.WriteEnumValue<global::Soenneker.Resend.OpenApiClient.Models.InboxEventSource>("source", Source);
             writer.WriteObjectValue<global::Soenneker.Resend.OpenApiClient.Models.InboxThreadSummary>("thread", Thread);
             writer.WriteGuidValue("thread_id", ThreadId);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -11,80 +11,114 @@ namespace Soenneker.Resend.OpenApiClient.Models
     #pragma warning disable CS1591
     public partial class GetUsageResponseSuccess : IAdditionalDataHolder, IParsable
     #pragma warning restore CS1591
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("ai_credits") is { } nullNodeAiCredits && nullNodeAiCredits.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AiCredits = null;
+            if (parseNode.GetChildNode("automation_runs") is { } nullNodeAutomationRuns && nullNodeAutomationRuns.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AutomationRuns = null;
+            if (parseNode.GetChildNode("broadcasts") is { } nullNodeBroadcasts && nullNodeBroadcasts.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Broadcasts = null;
+            if (parseNode.GetChildNode("contacts") is { } nullNodeContacts && nullNodeContacts.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Contacts = null;
+            if (parseNode.GetChildNode("domains") is { } nullNodeDomains && nullNodeDomains.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Domains = null;
+            if (parseNode.GetChildNode("emails") is { } nullNodeEmails && nullNodeEmails.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Emails = null;
+            if (parseNode.GetChildNode("object") is { } nullNodeObject && nullNodeObject.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Object = null;
+            if (parseNode.GetChildNode("rate_limit") is { } nullNodeRateLimit && nullNodeRateLimit.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RateLimit = null;
+            if (parseNode.GetChildNode("segments") is { } nullNodeSegments && nullNodeSegments.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Segments = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The ai_credits property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Resend.OpenApiClient.Models.GetUsageResponseSuccessAiCredits? AiCredits { get; set; }
+        public global::Soenneker.Resend.OpenApiClient.Models.GetUsageResponseSuccessAiCredits? AiCredits { get => _explicitNullValueAiCredits; set { _explicitNullValueAiCredits = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ai_credits"); else _explicitNullProperties?.Remove("ai_credits"); } }
+        private global::Soenneker.Resend.OpenApiClient.Models.GetUsageResponseSuccessAiCredits? _explicitNullValueAiCredits = default!;
 #nullable restore
 #else
-        public global::Soenneker.Resend.OpenApiClient.Models.GetUsageResponseSuccessAiCredits AiCredits { get; set; }
+        public global::Soenneker.Resend.OpenApiClient.Models.GetUsageResponseSuccessAiCredits AiCredits { get => _explicitNullValueAiCredits; set { _explicitNullValueAiCredits = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ai_credits"); else _explicitNullProperties?.Remove("ai_credits"); } }
+        private global::Soenneker.Resend.OpenApiClient.Models.GetUsageResponseSuccessAiCredits _explicitNullValueAiCredits = default!;
 #endif
         /// <summary>The automation_runs property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Resend.OpenApiClient.Models.GetUsageResponseSuccessAutomationRuns? AutomationRuns { get; set; }
+        public global::Soenneker.Resend.OpenApiClient.Models.GetUsageResponseSuccessAutomationRuns? AutomationRuns { get => _explicitNullValueAutomationRuns; set { _explicitNullValueAutomationRuns = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("automation_runs"); else _explicitNullProperties?.Remove("automation_runs"); } }
+        private global::Soenneker.Resend.OpenApiClient.Models.GetUsageResponseSuccessAutomationRuns? _explicitNullValueAutomationRuns = default!;
 #nullable restore
 #else
-        public global::Soenneker.Resend.OpenApiClient.Models.GetUsageResponseSuccessAutomationRuns AutomationRuns { get; set; }
+        public global::Soenneker.Resend.OpenApiClient.Models.GetUsageResponseSuccessAutomationRuns AutomationRuns { get => _explicitNullValueAutomationRuns; set { _explicitNullValueAutomationRuns = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("automation_runs"); else _explicitNullProperties?.Remove("automation_runs"); } }
+        private global::Soenneker.Resend.OpenApiClient.Models.GetUsageResponseSuccessAutomationRuns _explicitNullValueAutomationRuns = default!;
 #endif
         /// <summary>The broadcasts property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Resend.OpenApiClient.Models.GetUsageResponseSuccessBroadcasts? Broadcasts { get; set; }
+        public global::Soenneker.Resend.OpenApiClient.Models.GetUsageResponseSuccessBroadcasts? Broadcasts { get => _explicitNullValueBroadcasts; set { _explicitNullValueBroadcasts = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("broadcasts"); else _explicitNullProperties?.Remove("broadcasts"); } }
+        private global::Soenneker.Resend.OpenApiClient.Models.GetUsageResponseSuccessBroadcasts? _explicitNullValueBroadcasts = default!;
 #nullable restore
 #else
-        public global::Soenneker.Resend.OpenApiClient.Models.GetUsageResponseSuccessBroadcasts Broadcasts { get; set; }
+        public global::Soenneker.Resend.OpenApiClient.Models.GetUsageResponseSuccessBroadcasts Broadcasts { get => _explicitNullValueBroadcasts; set { _explicitNullValueBroadcasts = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("broadcasts"); else _explicitNullProperties?.Remove("broadcasts"); } }
+        private global::Soenneker.Resend.OpenApiClient.Models.GetUsageResponseSuccessBroadcasts _explicitNullValueBroadcasts = default!;
 #endif
         /// <summary>The contacts property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Resend.OpenApiClient.Models.GetUsageResponseSuccessContacts? Contacts { get; set; }
+        public global::Soenneker.Resend.OpenApiClient.Models.GetUsageResponseSuccessContacts? Contacts { get => _explicitNullValueContacts; set { _explicitNullValueContacts = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("contacts"); else _explicitNullProperties?.Remove("contacts"); } }
+        private global::Soenneker.Resend.OpenApiClient.Models.GetUsageResponseSuccessContacts? _explicitNullValueContacts = default!;
 #nullable restore
 #else
-        public global::Soenneker.Resend.OpenApiClient.Models.GetUsageResponseSuccessContacts Contacts { get; set; }
+        public global::Soenneker.Resend.OpenApiClient.Models.GetUsageResponseSuccessContacts Contacts { get => _explicitNullValueContacts; set { _explicitNullValueContacts = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("contacts"); else _explicitNullProperties?.Remove("contacts"); } }
+        private global::Soenneker.Resend.OpenApiClient.Models.GetUsageResponseSuccessContacts _explicitNullValueContacts = default!;
 #endif
         /// <summary>The domains property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Resend.OpenApiClient.Models.GetUsageResponseSuccessDomains? Domains { get; set; }
+        public global::Soenneker.Resend.OpenApiClient.Models.GetUsageResponseSuccessDomains? Domains { get => _explicitNullValueDomains; set { _explicitNullValueDomains = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("domains"); else _explicitNullProperties?.Remove("domains"); } }
+        private global::Soenneker.Resend.OpenApiClient.Models.GetUsageResponseSuccessDomains? _explicitNullValueDomains = default!;
 #nullable restore
 #else
-        public global::Soenneker.Resend.OpenApiClient.Models.GetUsageResponseSuccessDomains Domains { get; set; }
+        public global::Soenneker.Resend.OpenApiClient.Models.GetUsageResponseSuccessDomains Domains { get => _explicitNullValueDomains; set { _explicitNullValueDomains = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("domains"); else _explicitNullProperties?.Remove("domains"); } }
+        private global::Soenneker.Resend.OpenApiClient.Models.GetUsageResponseSuccessDomains _explicitNullValueDomains = default!;
 #endif
         /// <summary>The emails property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Resend.OpenApiClient.Models.GetUsageResponseSuccessEmails? Emails { get; set; }
+        public global::Soenneker.Resend.OpenApiClient.Models.GetUsageResponseSuccessEmails? Emails { get => _explicitNullValueEmails; set { _explicitNullValueEmails = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("emails"); else _explicitNullProperties?.Remove("emails"); } }
+        private global::Soenneker.Resend.OpenApiClient.Models.GetUsageResponseSuccessEmails? _explicitNullValueEmails = default!;
 #nullable restore
 #else
-        public global::Soenneker.Resend.OpenApiClient.Models.GetUsageResponseSuccessEmails Emails { get; set; }
+        public global::Soenneker.Resend.OpenApiClient.Models.GetUsageResponseSuccessEmails Emails { get => _explicitNullValueEmails; set { _explicitNullValueEmails = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("emails"); else _explicitNullProperties?.Remove("emails"); } }
+        private global::Soenneker.Resend.OpenApiClient.Models.GetUsageResponseSuccessEmails _explicitNullValueEmails = default!;
 #endif
         /// <summary>The type of object.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Object { get; set; }
+        public string? Object { get => _explicitNullValueObject; set { _explicitNullValueObject = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("object"); else _explicitNullProperties?.Remove("object"); } }
+        private string? _explicitNullValueObject = default!;
 #nullable restore
 #else
-        public string Object { get; set; }
+        public string Object { get => _explicitNullValueObject; set { _explicitNullValueObject = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("object"); else _explicitNullProperties?.Remove("object"); } }
+        private string _explicitNullValueObject = default!;
 #endif
         /// <summary>The rate_limit property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Resend.OpenApiClient.Models.GetUsageResponseSuccessRateLimit? RateLimit { get; set; }
+        public global::Soenneker.Resend.OpenApiClient.Models.GetUsageResponseSuccessRateLimit? RateLimit { get => _explicitNullValueRateLimit; set { _explicitNullValueRateLimit = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rate_limit"); else _explicitNullProperties?.Remove("rate_limit"); } }
+        private global::Soenneker.Resend.OpenApiClient.Models.GetUsageResponseSuccessRateLimit? _explicitNullValueRateLimit = default!;
 #nullable restore
 #else
-        public global::Soenneker.Resend.OpenApiClient.Models.GetUsageResponseSuccessRateLimit RateLimit { get; set; }
+        public global::Soenneker.Resend.OpenApiClient.Models.GetUsageResponseSuccessRateLimit RateLimit { get => _explicitNullValueRateLimit; set { _explicitNullValueRateLimit = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rate_limit"); else _explicitNullProperties?.Remove("rate_limit"); } }
+        private global::Soenneker.Resend.OpenApiClient.Models.GetUsageResponseSuccessRateLimit _explicitNullValueRateLimit = default!;
 #endif
         /// <summary>The segments property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.Resend.OpenApiClient.Models.GetUsageResponseSuccessSegments? Segments { get; set; }
+        public global::Soenneker.Resend.OpenApiClient.Models.GetUsageResponseSuccessSegments? Segments { get => _explicitNullValueSegments; set { _explicitNullValueSegments = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("segments"); else _explicitNullProperties?.Remove("segments"); } }
+        private global::Soenneker.Resend.OpenApiClient.Models.GetUsageResponseSuccessSegments? _explicitNullValueSegments = default!;
 #nullable restore
 #else
-        public global::Soenneker.Resend.OpenApiClient.Models.GetUsageResponseSuccessSegments Segments { get; set; }
+        public global::Soenneker.Resend.OpenApiClient.Models.GetUsageResponseSuccessSegments Segments { get => _explicitNullValueSegments; set { _explicitNullValueSegments = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("segments"); else _explicitNullProperties?.Remove("segments"); } }
+        private global::Soenneker.Resend.OpenApiClient.Models.GetUsageResponseSuccessSegments _explicitNullValueSegments = default!;
 #endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Resend.OpenApiClient.Models.GetUsageResponseSuccess"/> and sets the default values.
@@ -101,7 +135,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
         public static global::Soenneker.Resend.OpenApiClient.Models.GetUsageResponseSuccess CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Resend.OpenApiClient.Models.GetUsageResponseSuccess();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Resend.OpenApiClient.Models.GetUsageResponseSuccess(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -138,6 +172,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
             writer.WriteStringValue("object", Object);
             writer.WriteObjectValue<global::Soenneker.Resend.OpenApiClient.Models.GetUsageResponseSuccessRateLimit>("rate_limit", RateLimit);
             writer.WriteObjectValue<global::Soenneker.Resend.OpenApiClient.Models.GetUsageResponseSuccessSegments>("segments", Segments);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

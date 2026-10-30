@@ -49,7 +49,7 @@ namespace Soenneker.Resend.OpenApiClient.Domains.Item.Verify
         {
 #endif
             var requestInfo = ToPostRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::Soenneker.Resend.OpenApiClient.Models.VerifyDomainResponse>(requestInfo, global::Soenneker.Resend.OpenApiClient.Models.VerifyDomainResponse.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::Soenneker.Resend.OpenApiClient.Models.VerifyDomainResponse>(requestInfo, global::Soenneker.Resend.OpenApiClient.Models.VerifyDomainResponse.CreateFromDiscriminatorValue, new global::System.Collections.Generic.Dictionary<string, global::Microsoft.Kiota.Abstractions.Serialization.ParsableFactory<global::Microsoft.Kiota.Abstractions.Serialization.IParsable>> { { "4XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue }, { "5XX", global::Soenneker.OpenApi.Generated.OpenApiRawError.CreateFromDiscriminatorValue } }, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Triggers verification of the domain&apos;s DNS records including DKIM, SPF, and the tracking CNAME (if a tracking subdomain is configured).

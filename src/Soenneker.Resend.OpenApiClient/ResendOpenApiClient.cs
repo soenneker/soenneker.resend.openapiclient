@@ -42,6 +42,7 @@ namespace Soenneker.Resend.OpenApiClient
             get => new global::Soenneker.Resend.OpenApiClient.ApiKeys.ApiKeysRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The audiences property</summary>
+        [Obsolete("")]
         public global::Soenneker.Resend.OpenApiClient.Audiences.AudiencesRequestBuilder Audiences
         {
             get => new global::Soenneker.Resend.OpenApiClient.Audiences.AudiencesRequestBuilder(PathParameters, RequestAdapter);

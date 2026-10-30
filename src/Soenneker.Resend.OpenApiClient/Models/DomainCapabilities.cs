@@ -12,13 +12,24 @@ namespace Soenneker.Resend.OpenApiClient.Models
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class DomainCapabilities : IAdditionalDataHolder, IParsable
-    {
+    , global::Soenneker.OpenApi.Generated.IOpenApiExplicitNulls {
+        // Track explicitly assigned nulls separately from absent properties.
+        private global::System.Collections.Generic.HashSet<string> _explicitNullProperties = null!;
+
+        public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
+        {
+            if (parseNode.GetChildNode("receiving") is { } nullNodeReceiving && nullNodeReceiving.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Receiving = null;
+            if (parseNode.GetChildNode("sending") is { } nullNodeSending && nullNodeSending.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Sending = null;
+        }
+
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Enable or disable receiving emails to this domain.</summary>
-        public global::Soenneker.Resend.OpenApiClient.Models.DomainCapabilitiesReceiving? Receiving { get; set; }
+        public global::Soenneker.Resend.OpenApiClient.Models.DomainCapabilitiesReceiving? Receiving { get => _explicitNullValueReceiving; set { _explicitNullValueReceiving = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("receiving"); else _explicitNullProperties?.Remove("receiving"); } }
+        private global::Soenneker.Resend.OpenApiClient.Models.DomainCapabilitiesReceiving? _explicitNullValueReceiving = default!;
         /// <summary>Enable or disable sending emails from this domain.</summary>
-        public global::Soenneker.Resend.OpenApiClient.Models.DomainCapabilitiesSending? Sending { get; set; }
+        public global::Soenneker.Resend.OpenApiClient.Models.DomainCapabilitiesSending? Sending { get => _explicitNullValueSending; set { _explicitNullValueSending = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sending"); else _explicitNullProperties?.Remove("sending"); } }
+        private global::Soenneker.Resend.OpenApiClient.Models.DomainCapabilitiesSending? _explicitNullValueSending = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Resend.OpenApiClient.Models.DomainCapabilities"/> and sets the default values.
         /// </summary>
@@ -34,7 +45,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
         public static global::Soenneker.Resend.OpenApiClient.Models.DomainCapabilities CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
-            return new global::Soenneker.Resend.OpenApiClient.Models.DomainCapabilities();
+            return global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.Resend.OpenApiClient.Models.DomainCapabilities(), parseNode);
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -57,6 +68,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteEnumValue<global::Soenneker.Resend.OpenApiClient.Models.DomainCapabilitiesReceiving>("receiving", Receiving);
             writer.WriteEnumValue<global::Soenneker.Resend.OpenApiClient.Models.DomainCapabilitiesSending>("sending", Sending);
+            if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
     }

@@ -5419,7 +5419,7 @@
           "Inboxes"
         ],
         "summary": "Create a draft",
-        "description": "Creates an unsent draft on the inbox. Omit \u0060thread_id\u0060 and \u0060reply_to_email_id\u0060 for a draft that starts a new thread. Pass both together for a reply draft in an existing thread. A reply draft without \u0060to\u0060 is addressed to the sender of the email it replies to, or to its Reply-To when set. For an email the inbox sent, it defaults to that email\u0027s \u0060to\u0060 recipients. Send \u0060to: []\u0060 to leave it empty. At least one of \u0060to\u0060, \u0060cc\u0060, \u0060bcc\u0060, \u0060subject\u0060, \u0060text\u0060, \u0060html\u0060 or \u0060attachments\u0060 must be non-empty. The combined recipients of \u0060to\u0060, \u0060cc\u0060 and \u0060bcc\u0060 cannot exceed 50. Attachments are stored on the draft, so each one needs \u0060content\u0060, \u0060filename\u0060 and \u0060content_type\u0060. Returns 201 for a new draft. Only one unsent reply draft can target an email, so a reply draft request for an email that already has one returns 200 with the ID of the existing draft. An unknown \u0060thread_id\u0060, or a \u0060reply_to_email_id\u0060 that is not in that thread, returns a 404. That request ignores every other field, except \u0060attachments\u0060, which replaces the attachments of the existing draft when sent. A reply draft created without \u0060subject\u0060 stores an empty subject. When it is sent, it takes the thread subject, prefixed with \u0060Re:\u0060 when it does not already start with it.",
+        "description": "Creates an unsent draft on the inbox. Omit \u0060thread_id\u0060 and \u0060reply_to_email_id\u0060 for a draft that starts a new thread. Pass both together for a reply draft in an existing thread. A reply draft without \u0060to\u0060 is addressed to the sender of the email it replies to, or to its Reply-To when set. For an email the inbox sent, it defaults to that email\u0027s \u0060to\u0060 recipients. Send \u0060to: []\u0060 to leave it empty. At least one of \u0060to\u0060, \u0060cc\u0060, \u0060bcc\u0060, \u0060subject\u0060, \u0060text\u0060, \u0060html\u0060 or \u0060attachments\u0060 must be non-empty. The combined recipients of \u0060to\u0060, \u0060cc\u0060 and \u0060bcc\u0060 cannot exceed 50. Attachments are stored on the draft, so a \u0060path\u0060 file is downloaded when the request is made. Returns 201 for a new draft. Only one unsent reply draft can target an email, so a reply draft request for an email that already has one returns 200 with the ID of the existing draft. An unknown \u0060thread_id\u0060, or a \u0060reply_to_email_id\u0060 that is not in that thread, returns a 404. That request ignores every other field, except \u0060attachments\u0060, which replaces the attachments of the existing draft when sent. A reply draft created without \u0060subject\u0060 stores an empty subject. When it is sent, it takes the thread subject, prefixed with \u0060Re:\u0060 when it does not already start with it.",
         "operationId": "InboxesCreateDraft",
         "parameters": [
           {
@@ -12434,16 +12434,19 @@
       },
       "InboxDraftAttachmentInput": {
         "required": [
-          "content",
-          "filename",
-          "content_type"
+          "filename"
         ],
         "type": "object",
         "properties": {
           "content": {
             "type": "string",
-            "description": "The content of the file, encoded in base64. It cannot be empty.",
+            "description": "The content of the file, encoded in base64. It cannot be empty. Required without \u0060path\u0060.",
             "example": "aGVsbG8gZTJl"
+          },
+          "path": {
+            "type": "string",
+            "description": "A URL to download the file from, starting with \u0060http\u0060 or \u0060https\u0060. Required without \u0060content\u0060. A file that cannot be downloaded returns a 422, and so does a request whose downloads take more than 20 seconds together.",
+            "example": "https://example.com/invoice.pdf"
           },
           "filename": {
             "minLength": 1,
@@ -12454,11 +12457,11 @@
           "content_type": {
             "minLength": 1,
             "type": "string",
-            "description": "The MIME type of the attachment. It must be a valid MIME type, such as \u0060application/pdf\u0060, or the request returns a 422.",
+            "description": "The MIME type of the attachment. It must be a valid MIME type, such as \u0060application/pdf\u0060, or the request returns a 422. Required with \u0060content\u0060. With \u0060path\u0060, it defaults to the content type of the downloaded file.",
             "example": "application/pdf"
           }
         },
-        "description": "A file to store on a draft. Unlike \u0060POST /emails\u0060 attachments, a draft attachment cannot use \u0060path\u0060 or \u0060content_id\u0060. A \u0060path\u0060 without \u0060content\u0060 returns a 422, and when both are sent, \u0060path\u0060 is ignored."
+        "description": "A file to store on a draft. Send either \u0060content\u0060 or a \u0060path\u0060 URL. Unlike \u0060POST /emails\u0060 attachments, a \u0060path\u0060 file is downloaded when the request is made, not when the draft is sent, and a draft attachment cannot use \u0060content_id\u0060. When both \u0060content\u0060 and \u0060path\u0060 are sent, \u0060path\u0060 is ignored."
       },
       "InboxDraftAttachment": {
         "required": [
@@ -12798,7 +12801,7 @@
             "items": {
               "$ref": "#/components/schemas/InboxDraftAttachmentInput"
             },
-            "description": "Files to store on the draft. Each one needs \u0060content\u0060, \u0060filename\u0060 and \u0060content_type\u0060. A \u0060path\u0060 without \u0060content\u0060 returns a 422, and when both are sent, \u0060path\u0060 is ignored. A \u0060content_id\u0060 returns a 422. The files on a draft can total at most 25 MB. An empty file or a blocked file type returns a 422."
+            "description": "Files to store on the draft. Each one needs a \u0060filename\u0060 and either \u0060content\u0060 or a \u0060path\u0060 URL. A \u0060path\u0060 file is downloaded when the request is made and stored on the draft. When both are sent, \u0060path\u0060 is ignored. A \u0060content_id\u0060 returns a 422. The files on a draft, downloaded ones included, can total at most 25 MB. A \u0060path\u0060 that does not start with \u0060http\u0060 or \u0060https\u0060, or that cannot be downloaded, returns a 422, and so does a request whose downloads take more than 20 seconds together. An empty file or a blocked file type returns a 422."
           },
           "thread_id": {
             "type": "string",
@@ -12919,7 +12922,7 @@
             "items": {
               "$ref": "#/components/schemas/InboxDraftAttachmentInput"
             },
-            "description": "Files to store on the draft. Each one needs \u0060content\u0060, \u0060filename\u0060 and \u0060content_type\u0060. A \u0060path\u0060 without \u0060content\u0060 returns a 422, and when both are sent, \u0060path\u0060 is ignored. A \u0060content_id\u0060 returns a 422. The files on a draft can total at most 25 MB. An empty file or a blocked file type returns a 422. Sending the field replaces every attachment on the draft. Send \u0060[]\u0060 to remove them all. \u0060null\u0060 also removes them all."
+            "description": "Files to store on the draft. Each one needs a \u0060filename\u0060 and either \u0060content\u0060 or a \u0060path\u0060 URL. A \u0060path\u0060 file is downloaded when the request is made and stored on the draft. When both are sent, \u0060path\u0060 is ignored. A \u0060content_id\u0060 returns a 422. The files on a draft, downloaded ones included, can total at most 25 MB. A \u0060path\u0060 that does not start with \u0060http\u0060 or \u0060https\u0060, or that cannot be downloaded, returns a 422, and so does a request whose downloads take more than 20 seconds together. An empty file or a blocked file type returns a 422. Sending the field replaces every attachment on the draft. Send \u0060[]\u0060 to remove them all. \u0060null\u0060 also removes them all."
           }
         },
         "description": "Send at least one of \u0060to\u0060, \u0060cc\u0060, \u0060bcc\u0060, \u0060subject\u0060, \u0060text\u0060, \u0060html\u0060 or \u0060attachments\u0060. Omitted fields are left unchanged. Setting \u0060text\u0060 or \u0060html\u0060 replaces the whole body, so the body part you omit becomes \u0060null\u0060. The merged draft must contain at least one non-empty field, and its combined recipients cannot exceed 50."
