@@ -692,6 +692,17 @@
                 }
               }
             }
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateDomainResponse"
+                }
+              }
+            },
+            "x-client-success-response-status": "201"
           }
         }
       },
@@ -996,6 +1007,17 @@
                 }
               }
             }
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateApiKeyResponse"
+                }
+              }
+            },
+            "x-client-success-response-status": "201"
           }
         }
       },
@@ -1197,6 +1219,17 @@
                 }
               }
             }
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateTemplateResponseSuccess"
+                }
+              }
+            },
+            "x-client-success-response-status": "201"
           }
         }
       },
@@ -1426,6 +1459,17 @@
                 }
               }
             }
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateAudienceResponseSuccess"
+                }
+              }
+            },
+            "x-client-success-response-status": "201"
           }
         },
         "deprecated": true
@@ -1544,6 +1588,17 @@
                 }
               }
             }
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateContactResponseSuccess"
+                }
+              }
+            },
+            "x-client-success-response-status": "201"
           }
         }
       },
@@ -1608,6 +1663,17 @@
                 }
               }
             }
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateContactImportResponseSuccess"
+                }
+              }
+            },
+            "x-client-success-response-status": "201"
           }
         }
       },
@@ -1813,6 +1879,17 @@
                 }
               }
             }
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateBroadcastResponseSuccess"
+                }
+              }
+            },
+            "x-client-success-response-status": "201"
           }
         }
       },
@@ -2056,6 +2133,17 @@
                 }
               }
             }
+          },
+          "200": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DuplicateBroadcastResponseSuccess"
+                }
+              }
+            },
+            "x-client-success-response-status": "201"
           }
         }
       }
@@ -2202,6 +2290,17 @@
                 }
               }
             }
+          },
+          "200": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateWebhookResponse"
+                }
+              }
+            },
+            "x-client-success-response-status": "201"
           }
         }
       },
@@ -2593,6 +2692,17 @@
                 }
               }
             }
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateSegmentResponseSuccess"
+                }
+              }
+            },
+            "x-client-success-response-status": "201"
           }
         }
       },
@@ -2802,6 +2912,17 @@
                 }
               }
             }
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateTopicResponseSuccess"
+                }
+              }
+            },
+            "x-client-success-response-status": "201"
           }
         }
       },
@@ -2966,6 +3087,17 @@
                 }
               }
             }
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateContactPropertyResponseSuccess"
+                }
+              }
+            },
+            "x-client-success-response-status": "201"
           }
         }
       },
@@ -3405,6 +3537,17 @@
                 }
               }
             }
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateAutomationResponse"
+                }
+              }
+            },
+            "x-client-success-response-status": "201"
           }
         }
       },
@@ -3583,6 +3726,17 @@
                 }
               }
             }
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DuplicateAutomationResponse"
+                }
+              }
+            },
+            "x-client-success-response-status": "201"
           }
         }
       }
@@ -3742,6 +3896,17 @@
                 }
               }
             }
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateEventResponse"
+                }
+              }
+            },
+            "x-client-success-response-status": "201"
           }
         }
       },
@@ -3805,6 +3970,17 @@
                 }
               }
             }
+          },
+          "200": {
+            "description": "Accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SendEventResponse"
+                }
+              }
+            },
+            "x-client-success-response-status": "202"
           }
         }
       }
@@ -3937,6 +4113,17 @@
                 }
               }
             }
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateSuppressionResponseSuccess"
+                }
+              }
+            },
+            "x-client-success-response-status": "201"
           }
         }
       },
@@ -4009,6 +4196,17 @@
                 }
               }
             }
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BatchAddSuppressionsResponseSuccess"
+                }
+              }
+            },
+            "x-client-success-response-status": "201"
           }
         }
       }
@@ -4156,6 +4354,17 @@
                 }
               }
             }
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateInboxResponseSuccess"
+                }
+              }
+            },
+            "x-client-success-response-status": "201"
           }
         }
       },
@@ -4449,6 +4658,17 @@
                 }
               }
             }
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateInboxLabelResponseSuccess"
+                }
+              }
+            },
+            "x-client-success-response-status": "201"
           }
         }
       }
