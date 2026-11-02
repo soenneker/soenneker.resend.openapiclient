@@ -44,8 +44,15 @@ namespace Soenneker.Resend.OpenApiClient.Models
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Why the claim is currently blocked, if applicable.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
         public global::Soenneker.Resend.OpenApiClient.Models.DomainClaimBlockedReason? BlockedReason { get => _explicitNullValueBlockedReason; set { _explicitNullValueBlockedReason = value; AdditionalData?.Remove("blocked_reason"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("blocked_reason"); else _explicitNullProperties?.Remove("blocked_reason"); } }
         private global::Soenneker.Resend.OpenApiClient.Models.DomainClaimBlockedReason? _explicitNullValueBlockedReason = default!;
+#nullable restore
+#else
+        public global::Soenneker.Resend.OpenApiClient.Models.DomainClaimBlockedReason BlockedReason { get => _explicitNullValueBlockedReason; set { _explicitNullValueBlockedReason = value; AdditionalData?.Remove("blocked_reason"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("blocked_reason"); else _explicitNullProperties?.Remove("blocked_reason"); } }
+        private global::Soenneker.Resend.OpenApiClient.Models.DomainClaimBlockedReason _explicitNullValueBlockedReason = default!;
+#endif
         /// <summary>The date and time the claim was created.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -127,8 +134,15 @@ namespace Soenneker.Resend.OpenApiClient.Models
         private global::Soenneker.Resend.OpenApiClient.Models.DomainClaimRecord _explicitNullValueRecord = default!;
 #endif
         /// <summary>The region where the claimed domain will send from.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
         public global::Soenneker.Resend.OpenApiClient.Models.DomainClaimRegion? Region { get => _explicitNullValueRegion; set { _explicitNullValueRegion = value; AdditionalData?.Remove("region"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("region"); else _explicitNullProperties?.Remove("region"); } }
         private global::Soenneker.Resend.OpenApiClient.Models.DomainClaimRegion? _explicitNullValueRegion = default!;
+#nullable restore
+#else
+        public global::Soenneker.Resend.OpenApiClient.Models.DomainClaimRegion Region { get => _explicitNullValueRegion; set { _explicitNullValueRegion = value; AdditionalData?.Remove("region"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("region"); else _explicitNullProperties?.Remove("region"); } }
+        private global::Soenneker.Resend.OpenApiClient.Models.DomainClaimRegion _explicitNullValueRegion = default!;
+#endif
         /// <summary>The status of the claim.</summary>
         public global::Soenneker.Resend.OpenApiClient.Models.DomainClaimStatus? Status { get => _explicitNullValueStatus; set { _explicitNullValueStatus = value; AdditionalData?.Remove("status"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status"); else _explicitNullProperties?.Remove("status"); } }
         private global::Soenneker.Resend.OpenApiClient.Models.DomainClaimStatus? _explicitNullValueStatus = default!;
@@ -157,7 +171,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "blocked_reason", n => { var parsed = n.GetEnumValue<global::Soenneker.Resend.OpenApiClient.Models.DomainClaimBlockedReason>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueBlockedReason = default; _explicitNullProperties?.Remove("blocked_reason"); AdditionalData["blocked_reason"] = unknown; } else { BlockedReason = parsed; AdditionalData.Remove("blocked_reason"); } } },
+                { "blocked_reason", n => { BlockedReason = n.GetObjectValue<global::Soenneker.Resend.OpenApiClient.Models.DomainClaimBlockedReason>(global::Soenneker.Resend.OpenApiClient.Models.DomainClaimBlockedReason.CreateFromDiscriminatorValue); } },
                 { "created_at", n => { CreatedAt = n.GetStringValue(); } },
                 { "domain_id", n => { DomainId = n.GetStringValue(); } },
                 { "expires_at", n => { ExpiresAt = n.GetStringValue(); } },
@@ -166,7 +180,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "object", n => { Object = n.GetStringValue(); } },
                 { "record", n => { Record = n.GetObjectValue<global::Soenneker.Resend.OpenApiClient.Models.DomainClaimRecord>(global::Soenneker.Resend.OpenApiClient.Models.DomainClaimRecord.CreateFromDiscriminatorValue); } },
-                { "region", n => { var parsed = n.GetEnumValue<global::Soenneker.Resend.OpenApiClient.Models.DomainClaimRegion>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueRegion = default; _explicitNullProperties?.Remove("region"); AdditionalData["region"] = unknown; } else { Region = parsed; AdditionalData.Remove("region"); } } },
+                { "region", n => { Region = n.GetObjectValue<global::Soenneker.Resend.OpenApiClient.Models.DomainClaimRegion>(global::Soenneker.Resend.OpenApiClient.Models.DomainClaimRegion.CreateFromDiscriminatorValue); } },
                 { "status", n => { var parsed = n.GetEnumValue<global::Soenneker.Resend.OpenApiClient.Models.DomainClaimStatus>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueStatus = default; _explicitNullProperties?.Remove("status"); AdditionalData["status"] = unknown; } else { Status = parsed; AdditionalData.Remove("status"); } } },
             };
         }
@@ -177,7 +191,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<global::Soenneker.Resend.OpenApiClient.Models.DomainClaimBlockedReason>("blocked_reason", BlockedReason);
+            writer.WriteObjectValue<global::Soenneker.Resend.OpenApiClient.Models.DomainClaimBlockedReason>("blocked_reason", BlockedReason);
             writer.WriteStringValue("created_at", CreatedAt);
             writer.WriteStringValue("domain_id", DomainId);
             writer.WriteStringValue("expires_at", ExpiresAt);
@@ -186,7 +200,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
             writer.WriteStringValue("name", Name);
             writer.WriteStringValue("object", Object);
             writer.WriteObjectValue<global::Soenneker.Resend.OpenApiClient.Models.DomainClaimRecord>("record", Record);
-            writer.WriteEnumValue<global::Soenneker.Resend.OpenApiClient.Models.DomainClaimRegion>("region", Region);
+            writer.WriteObjectValue<global::Soenneker.Resend.OpenApiClient.Models.DomainClaimRegion>("region", Region);
             writer.WriteEnumValue<global::Soenneker.Resend.OpenApiClient.Models.DomainClaimStatus>("status", Status);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);

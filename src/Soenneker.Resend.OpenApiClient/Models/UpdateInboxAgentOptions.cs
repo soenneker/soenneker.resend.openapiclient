@@ -49,8 +49,15 @@ namespace Soenneker.Resend.OpenApiClient.Models
         private string _explicitNullValueInstructions = default!;
 #endif
         /// <summary>The tone the agent writes in. Send null to clear the tone.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
         public global::Soenneker.Resend.OpenApiClient.Models.UpdateInboxAgentOptionsTone? Tone { get => _explicitNullValueTone; set { _explicitNullValueTone = value; AdditionalData?.Remove("tone"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tone"); else _explicitNullProperties?.Remove("tone"); } }
         private global::Soenneker.Resend.OpenApiClient.Models.UpdateInboxAgentOptionsTone? _explicitNullValueTone = default!;
+#nullable restore
+#else
+        public global::Soenneker.Resend.OpenApiClient.Models.UpdateInboxAgentOptionsTone Tone { get => _explicitNullValueTone; set { _explicitNullValueTone = value; AdditionalData?.Remove("tone"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tone"); else _explicitNullProperties?.Remove("tone"); } }
+        private global::Soenneker.Resend.OpenApiClient.Models.UpdateInboxAgentOptionsTone _explicitNullValueTone = default!;
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Resend.OpenApiClient.Models.UpdateInboxAgentOptions"/> and sets the default values.
         /// </summary>
@@ -78,7 +85,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
             {
                 { "actions", n => { Actions = n.GetCollectionOfEnumValues<global::Soenneker.Resend.OpenApiClient.Models.UpdateInboxAgentOptionsActionsItem>()?.AsList(); } },
                 { "instructions", n => { Instructions = n.GetStringValue(); } },
-                { "tone", n => { var parsed = n.GetEnumValue<global::Soenneker.Resend.OpenApiClient.Models.UpdateInboxAgentOptionsTone>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueTone = default; _explicitNullProperties?.Remove("tone"); AdditionalData["tone"] = unknown; } else { Tone = parsed; AdditionalData.Remove("tone"); } } },
+                { "tone", n => { Tone = n.GetObjectValue<global::Soenneker.Resend.OpenApiClient.Models.UpdateInboxAgentOptionsTone>(global::Soenneker.Resend.OpenApiClient.Models.UpdateInboxAgentOptionsTone.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -90,7 +97,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfEnumValues<global::Soenneker.Resend.OpenApiClient.Models.UpdateInboxAgentOptionsActionsItem>("actions", Actions);
             writer.WriteStringValue("instructions", Instructions);
-            writer.WriteEnumValue<global::Soenneker.Resend.OpenApiClient.Models.UpdateInboxAgentOptionsTone>("tone", Tone);
+            writer.WriteObjectValue<global::Soenneker.Resend.OpenApiClient.Models.UpdateInboxAgentOptionsTone>("tone", Tone);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }

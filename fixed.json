@@ -6003,21 +6003,6 @@
           }
         }
       },
-      "EmailTemplateInput": {
-        "required": [
-          "id"
-        ],
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "description": "The id of the published email template."
-          },
-          "variables": {
-            "$ref": "#/components/schemas/EmailTemplateInputVariablesProperty"
-          }
-        }
-      },
       "SendEmailResponse": {
         "type": "object",
         "properties": {
@@ -9899,7 +9884,7 @@
           "email": {
             "type": "string",
             "description": "The email address to associate with this event. Exactly one of \u0060contact_id\u0060 or \u0060email\u0060 must be provided.",
-            "format": "email"
+            "x-client-original-format": "email"
           },
           "payload": {
             "$ref": "#/components/schemas/SendEventRequestPayloadProperty"
@@ -14281,27 +14266,6 @@
         ],
         "description": "The fallback value of the variable."
       },
-      "TemplateVariableInputFallbackValue": {
-        "oneOf": [
-          {
-            "type": "string"
-          },
-          {
-            "type": "number"
-          },
-          {
-            "type": "boolean"
-          },
-          {
-            "type": "object"
-          },
-          {
-            "type": "array",
-            "items": {}
-          }
-        ],
-        "description": "The fallback value of the variable."
-      },
       "CreateContactPropertyOptionsFallbackValue": {
         "oneOf": [
           {
@@ -14346,67 +14310,6 @@
           }
         ],
         "description": "The default value to use when the property is not set for a contact. Must match the type of the property."
-      },
-      "EmailBouncedEventDataAllOf2": {
-        "required": [
-          "bounce"
-        ],
-        "type": "object",
-        "properties": {
-          "bounce": {
-            "$ref": "#/components/schemas/WebhookEventBounce"
-          }
-        }
-      },
-      "EmailClickedEventDataAllOf2": {
-        "required": [
-          "click"
-        ],
-        "type": "object",
-        "properties": {
-          "click": {
-            "$ref": "#/components/schemas/WebhookEventClick"
-          }
-        }
-      },
-      "EmailFailedEventDataAllOf2": {
-        "required": [
-          "failed"
-        ],
-        "type": "object",
-        "properties": {
-          "failed": {
-            "$ref": "#/components/schemas/WebhookEventFailed"
-          }
-        }
-      },
-      "EmailSuppressedEventDataAllOf2": {
-        "required": [
-          "suppressed"
-        ],
-        "type": "object",
-        "properties": {
-          "suppressed": {
-            "$ref": "#/components/schemas/WebhookEventSuppressed"
-          }
-        }
-      },
-      "InboxThreadSearchResultAllOf2": {
-        "required": [
-          "matched_email_id"
-        ],
-        "type": "object",
-        "properties": {
-          "matched_email_id": {
-            "type": [
-              "null",
-              "string"
-            ],
-            "description": "The ID of the email in the thread that matched the search. When \u0060query\u0060 has words or phrases, it is the most relevant match. Otherwise, it is the newest. It is the same \u0060id\u0060 that the list thread emails endpoint returns, so use it as \u0060email_id\u0060 with the get, reply and forward endpoints. Null when the search index returns no matched email for the thread.",
-            "format": "uuid",
-            "example": "e8a3f1c6-2b9d-4e5a-a7c4-9d1b6f3e2a80"
-          }
-        }
       },
       "ReplyInboxThreadEmailOptionsCc": {
         "oneOf": [
@@ -14604,28 +14507,6 @@
         ],
         "description": "The BCC recipients. Pass \u0060null\u0060 or \u0060[]\u0060 to clear. Each address is \u0060email@example.com\u0060 or \u0060Name \u003Cemail@example.com\u003E\u0060. An address that is not valid returns a 422."
       },
-      "SendEmailRequestHeaders": {
-        "type": "object",
-        "description": "Custom headers to add to the email."
-      },
-      "EmailTemplateInputVariables": {
-        "type": "object",
-        "additionalProperties": {
-          "$ref": "#/components/schemas/EmailTemplateInputVariablesAdditionalProperties"
-        },
-        "description": "Template variables object with key/value pairs.",
-        "example": {
-          "variableName": "Sign up now",
-          "variableName2": 123
-        }
-      },
-      "GetEmailsMetricsResponseTotals": {
-        "type": "object",
-        "additionalProperties": {
-          "type": "number"
-        },
-        "description": "The requested metrics, totaled over the whole date range."
-      },
       "GetUsageResponseSuccessEmails": {
         "type": "object",
         "properties": {
@@ -14794,23 +14675,6 @@
           }
         }
       },
-      "CreateContactOptionsProperties": {
-        "type": "object",
-        "additionalProperties": {
-          "anyOf": [
-            {
-              "type": "null"
-            },
-            {
-              "type": "number"
-            },
-            {
-              "type": "string"
-            }
-          ]
-        },
-        "description": "A map of custom property keys and values to create."
-      },
       "CreateContactOptionsSegmentsItem": {
         "type": "object",
         "properties": {
@@ -14831,30 +14695,6 @@
             "$ref": "#/components/schemas/CreateContactOptionsTopicsItemSubscription"
           }
         }
-      },
-      "GetContactResponseSuccessProperties": {
-        "type": "object",
-        "description": "A map of custom property keys and values."
-      },
-      "UpdateContactOptionsProperties": {
-        "type": "object",
-        "additionalProperties": {
-          "anyOf": [
-            {
-              "type": "null"
-            },
-            {
-              "type": "boolean"
-            },
-            {
-              "type": "number"
-            },
-            {
-              "type": "string"
-            }
-          ]
-        },
-        "description": "A map of custom property keys and values to update."
       },
       "ListContactsResponseSuccessDataItem": {
         "type": "object",
@@ -15059,16 +14899,6 @@
           }
         }
       },
-      "GetReceivedEmailResponseHeaders": {
-        "type": [
-          "null",
-          "object"
-        ],
-        "description": "The email headers.",
-        "example": {
-          "X-Custom-Header": "value"
-        }
-      },
       "GetReceivedEmailResponseAttachmentsItem": {
         "type": "object",
         "properties": {
@@ -15243,23 +15073,6 @@
           }
         }
       },
-      "GetWebhookEventResponsePayload": {
-        "type": "object",
-        "description": "The event payload sent to the webhook endpoint.",
-        "example": {
-          "type": "email.sent",
-          "created_at": "2026-08-22T15:28:00.000Z",
-          "data": {
-            "email_id": "571f1f42-1c2d-4b1f-8f8e-8b3b5b3b5b3b",
-            "from": "onboarding@resend.dev",
-            "to": [
-              "delivered@resend.dev"
-            ],
-            "subject": "Welcome",
-            "created_at": "2026-08-22T15:27:59.000Z"
-          }
-        }
-      },
       "ListWebhookEventAttemptsResponseDataItem": {
         "type": "object",
         "properties": {
@@ -15285,14 +15098,6 @@
             "example": "2026-08-22T15:33:12.000Z"
           }
         }
-      },
-      "CreateSegmentOptionsFilter": {
-        "type": "object",
-        "description": "Filter conditions for the segment."
-      },
-      "GetSegmentResponseSuccessFilter": {
-        "type": "object",
-        "description": "Filter conditions for the segment."
       },
       "ListSegmentsResponseSuccessDataItem": {
         "type": "object",
@@ -15431,81 +15236,6 @@
             "$ref": "#/components/schemas/UpdateContactTopicsResponseSuccessTopicsItemSubscription"
           }
         }
-      },
-      "LogRequestBody": {
-        "type": [
-          "null",
-          "object"
-        ],
-        "description": "The request body sent to the API."
-      },
-      "LogResponseBody": {
-        "type": [
-          "null",
-          "object"
-        ],
-        "description": "The response body returned by the API."
-      },
-      "AutomationStepConfig": {
-        "type": "object",
-        "description": "Configuration for the step. Shape depends on \u0060type\u0060: - **trigger**: \u0060{ event_name: string }\u0060 - **send_email**: \u0060{ template: { id: string, variables?: object }, subject?: string, from?: string, reply_to?: string }\u0060 - **delay**: \u0060{ duration: string }\u0060 \u2014 a human-readable duration (e.g. \u0060\u002230 minutes\u0022\u0060) - **wait_for_event**: \u0060{ event_name: string, timeout?: string, filter_rule?: object }\u0060 \u2014 \u0060timeout\u0060 is a human-readable duration (e.g. \u0060\u00221 hour\u0022\u0060) - **condition**: A rule tree with \u0060type\u0060 (\u0060rule\u0060, \u0060and\u0060, \u0060or\u0060), \u0060field\u0060, \u0060operator\u0060, and \u0060value\u0060 - **contact_update**: \u0060{ first_name?: string|object, last_name?: string|object, unsubscribed?: boolean|object, properties?: object }\u0060 - **contact_delete**: \u0060{}\u0060 - **add_to_segment**: \u0060{ segment_id: string }\u0060\n"
-      },
-      "AutomationStepResponseConfig": {
-        "type": "object",
-        "description": "Configuration for the step. Shape depends on \u0060type\u0060. For \u0060delay\u0060 steps, config contains \u0060{ duration: string }\u0060 with a human-readable duration (e.g. \u0060\u002230 minutes\u0022\u0060). For \u0060wait_for_event\u0060 steps, config contains \u0060{ event_name: string, timeout?: string, filter_rule?: object }\u0060 where \u0060timeout\u0060 is a human-readable duration.\n"
-      },
-      "AutomationRunStepOutput": {
-        "type": [
-          "null",
-          "object"
-        ],
-        "description": "The output produced by the step, if any."
-      },
-      "AutomationRunStepError": {
-        "type": [
-          "null",
-          "object"
-        ],
-        "description": "The error produced by the step, if any."
-      },
-      "EventTypeSchema": {
-        "type": [
-          "null",
-          "object"
-        ],
-        "description": "A flat key/type map defining the event payload schema. Supported types are \u0060string\u0060, \u0060number\u0060, \u0060boolean\u0060, and \u0060date\u0060."
-      },
-      "EventSummarySchema": {
-        "type": [
-          "null",
-          "object"
-        ],
-        "description": "A flat key/type map defining the event payload schema. Supported types are \u0060string\u0060, \u0060number\u0060, \u0060boolean\u0060, and \u0060date\u0060."
-      },
-      "CreateEventRequestSchema": {
-        "type": [
-          "null",
-          "object"
-        ],
-        "description": "An optional flat key/type map defining the event payload schema. Supported types are \u0060string\u0060, \u0060number\u0060, \u0060boolean\u0060, and \u0060date\u0060."
-      },
-      "UpdateEventRequestSchema": {
-        "type": [
-          "null",
-          "object"
-        ],
-        "description": "A flat key/type map defining the event payload schema. Set to \u0060null\u0060 to clear the schema. Supported types are \u0060string\u0060, \u0060number\u0060, \u0060boolean\u0060, and \u0060date\u0060."
-      },
-      "SendEventRequestPayload": {
-        "type": "object",
-        "description": "An optional payload of key/value pairs to include with the event."
-      },
-      "OutboundEmailEventDataTags": {
-        "type": "object",
-        "additionalProperties": {
-          "type": "string"
-        },
-        "description": "Tag key-value pairs associated with the email."
       },
       "OutboundEmailEventDataHeadersItem": {
         "required": [
@@ -15672,45 +15402,6 @@
           }
         }
       },
-      "ReplyInboxThreadEmailOptionsHeaders": {
-        "type": [
-          "null",
-          "object"
-        ],
-        "additionalProperties": {
-          "type": "string"
-        },
-        "description": "Custom headers to add to the email. The \u0060In-Reply-To\u0060, \u0060References\u0060 and \u0060Reply-To\u0060 headers are set by Resend and cannot be set here. Sending one of them, in any letter case, returns a 422. Header names cannot be empty, and names and values cannot contain line breaks or null characters, or the request returns a 422. \u0060null\u0060 means no custom headers.",
-        "example": {
-          "X-Ticket-Id": "4821"
-        }
-      },
-      "ForwardInboxThreadEmailOptionsHeaders": {
-        "type": [
-          "null",
-          "object"
-        ],
-        "additionalProperties": {
-          "type": "string"
-        },
-        "description": "Custom headers to add to the email. The \u0060In-Reply-To\u0060, \u0060References\u0060 and \u0060Reply-To\u0060 headers are set by Resend and cannot be set here. Sending one of them, in any letter case, returns a 422. Header names cannot be empty, and names and values cannot contain line breaks or null characters, or the request returns a 422. \u0060null\u0060 means no custom headers.",
-        "example": {
-          "X-Ticket-Id": "4821"
-        }
-      },
-      "SendInboxDraftOptionsHeaders": {
-        "type": [
-          "null",
-          "object"
-        ],
-        "additionalProperties": {
-          "type": "string"
-        },
-        "description": "Custom headers to add to the email. The \u0060In-Reply-To\u0060, \u0060References\u0060 and \u0060Reply-To\u0060 headers are set by Resend and cannot be set here. Sending one of them, in any letter case, returns a 422. Header names cannot be empty, and names and values cannot contain line breaks or null characters, or the request returns a 422. \u0060null\u0060 means no custom headers.",
-        "example": {
-          "X-Ticket-Id": "4821"
-        }
-      },
       "GetUsageResponseSuccessEmailsDaily": {
         "type": "object",
         "properties": {
@@ -15811,16 +15502,6 @@
           }
         }
       },
-      "EmailsSendBatchRequest": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/SendEmailRequest"
-        }
-      },
-      "ExamplePayload": {
-        "type": "object",
-        "description": "Placeholder schema for path example refs"
-      },
       "EmailsSendBatchRequestRequestBody": {
         "type": "array",
         "items": {
@@ -15830,17 +15511,6 @@
       "SendEmailRequestHeadersProperty": {
         "type": "object",
         "description": "Custom headers to add to the email."
-      },
-      "EmailTemplateInputVariablesProperty": {
-        "type": "object",
-        "additionalProperties": {
-          "$ref": "#/components/schemas/EmailTemplateInputVariablesAdditionalProperties"
-        },
-        "description": "Template variables object with key/value pairs.",
-        "example": {
-          "variableName": "Sign up now",
-          "variableName2": 123
-        }
       },
       "GetEmailsMetricsResponseTotalsProperty": {
         "type": "object",
@@ -16621,73 +16291,83 @@
         }
       },
       "DomainClaimRegion": {
-        "enum": [
-          "us-east-1",
-          "eu-west-1",
-          "sa-east-1",
-          "ap-northeast-1",
-          null
-        ],
-        "type": [
-          "null",
-          "string"
-        ],
         "description": "The region where the claimed domain will send from.",
         "example": "us-east-1",
-        "x-ms-enum": {
-          "name": "DomainClaimRegion",
-          "modelAsString": false,
-          "values": [
-            {
-              "value": "us-east-1",
-              "name": "UsEast1"
-            },
-            {
-              "value": "eu-west-1",
-              "name": "EuWest1"
-            },
-            {
-              "value": "sa-east-1",
-              "name": "SaEast1"
-            },
-            {
-              "value": "ap-northeast-1",
-              "name": "ApNortheast1"
+        "anyOf": [
+          {
+            "enum": [
+              "us-east-1",
+              "eu-west-1",
+              "sa-east-1",
+              "ap-northeast-1"
+            ],
+            "type": "string",
+            "description": "The region where the claimed domain will send from.",
+            "example": "us-east-1",
+            "x-ms-enum": {
+              "name": "DomainClaimRegion",
+              "modelAsString": false,
+              "values": [
+                {
+                  "value": "us-east-1",
+                  "name": "UsEast1"
+                },
+                {
+                  "value": "eu-west-1",
+                  "name": "EuWest1"
+                },
+                {
+                  "value": "sa-east-1",
+                  "name": "SaEast1"
+                },
+                {
+                  "value": "ap-northeast-1",
+                  "name": "ApNortheast1"
+                }
+              ]
             }
-          ]
-        }
+          },
+          {
+            "type": "null"
+          }
+        ]
       },
       "DomainClaimBlockedReason": {
-        "enum": [
-          "grace_period",
-          "recent_owner_activity",
-          "pending_scheduled_emails",
-          null
-        ],
-        "type": [
-          "null",
-          "string"
-        ],
         "description": "Why the claim is currently blocked, if applicable.",
         "example": null,
-        "x-ms-enum": {
-          "name": "DomainClaimBlockedReason",
-          "modelAsString": false,
-          "values": [
-            {
-              "value": "grace_period",
-              "name": "GracePeriod"
-            },
-            {
-              "value": "recent_owner_activity",
-              "name": "RecentOwnerActivity"
-            },
-            {
-              "value": "pending_scheduled_emails",
-              "name": "PendingScheduledEmails"
+        "anyOf": [
+          {
+            "enum": [
+              "grace_period",
+              "recent_owner_activity",
+              "pending_scheduled_emails"
+            ],
+            "type": "string",
+            "description": "Why the claim is currently blocked, if applicable.",
+            "example": null,
+            "x-ms-enum": {
+              "name": "DomainClaimBlockedReason",
+              "modelAsString": false,
+              "values": [
+                {
+                  "value": "grace_period",
+                  "name": "GracePeriod"
+                },
+                {
+                  "value": "recent_owner_activity",
+                  "name": "RecentOwnerActivity"
+                },
+                {
+                  "value": "pending_scheduled_emails",
+                  "name": "PendingScheduledEmails"
+                }
+              ]
             }
-          ]
-        }
+          },
+          {
+            "type": "null"
+          }
+        ]
       },
       "ListDomainsItemStatus": {
         "enum": [
@@ -16811,31 +16491,36 @@
         }
       },
       "RetrievedAttachmentContentDisposition": {
-        "enum": [
-          "inline",
-          "attachment",
-          null
-        ],
-        "type": [
-          "null",
-          "string"
-        ],
         "description": "How the attachment should be displayed.",
         "example": "attachment",
-        "x-ms-enum": {
-          "name": "RetrievedAttachmentContentDisposition",
-          "modelAsString": false,
-          "values": [
-            {
-              "value": "inline",
-              "name": "Inline"
-            },
-            {
-              "value": "attachment",
-              "name": "Attachment"
+        "anyOf": [
+          {
+            "enum": [
+              "inline",
+              "attachment"
+            ],
+            "type": "string",
+            "description": "How the attachment should be displayed.",
+            "example": "attachment",
+            "x-ms-enum": {
+              "name": "RetrievedAttachmentContentDisposition",
+              "modelAsString": false,
+              "values": [
+                {
+                  "value": "inline",
+                  "name": "Inline"
+                },
+                {
+                  "value": "attachment",
+                  "name": "Attachment"
+                }
+              ]
             }
-          ]
-        }
+          },
+          {
+            "type": "null"
+          }
+        ]
       },
       "UpdateWebhookRequestStatus": {
         "enum": [
@@ -18292,41 +17977,46 @@
         }
       },
       "InboxAgentTone": {
-        "enum": [
-          "concise_professional",
-          "concise_casual",
-          "expanded_professional",
-          "expanded_casual",
-          null
-        ],
-        "type": [
-          "null",
-          "string"
-        ],
         "description": "The tone the agent writes in. Null when no tone is set.",
         "example": "concise_professional",
-        "x-ms-enum": {
-          "name": "InboxAgentTone",
-          "modelAsString": false,
-          "values": [
-            {
-              "value": "concise_professional",
-              "name": "ConciseProfessional"
-            },
-            {
-              "value": "concise_casual",
-              "name": "ConciseCasual"
-            },
-            {
-              "value": "expanded_professional",
-              "name": "ExpandedProfessional"
-            },
-            {
-              "value": "expanded_casual",
-              "name": "ExpandedCasual"
+        "anyOf": [
+          {
+            "enum": [
+              "concise_professional",
+              "concise_casual",
+              "expanded_professional",
+              "expanded_casual"
+            ],
+            "type": "string",
+            "description": "The tone the agent writes in. Null when no tone is set.",
+            "example": "concise_professional",
+            "x-ms-enum": {
+              "name": "InboxAgentTone",
+              "modelAsString": false,
+              "values": [
+                {
+                  "value": "concise_professional",
+                  "name": "ConciseProfessional"
+                },
+                {
+                  "value": "concise_casual",
+                  "name": "ConciseCasual"
+                },
+                {
+                  "value": "expanded_professional",
+                  "name": "ExpandedProfessional"
+                },
+                {
+                  "value": "expanded_casual",
+                  "name": "ExpandedCasual"
+                }
+              ]
             }
-          ]
-        }
+          },
+          {
+            "type": "null"
+          }
+        ]
       },
       "InboxAgentActionsItem": {
         "enum": [
@@ -18375,41 +18065,46 @@
         }
       },
       "UpdateInboxAgentOptionsTone": {
-        "enum": [
-          "concise_professional",
-          "concise_casual",
-          "expanded_professional",
-          "expanded_casual",
-          null
-        ],
-        "type": [
-          "null",
-          "string"
-        ],
         "description": "The tone the agent writes in. Send null to clear the tone.",
         "example": "concise_professional",
-        "x-ms-enum": {
-          "name": "UpdateInboxAgentOptionsTone",
-          "modelAsString": false,
-          "values": [
-            {
-              "value": "concise_professional",
-              "name": "ConciseProfessional"
-            },
-            {
-              "value": "concise_casual",
-              "name": "ConciseCasual"
-            },
-            {
-              "value": "expanded_professional",
-              "name": "ExpandedProfessional"
-            },
-            {
-              "value": "expanded_casual",
-              "name": "ExpandedCasual"
+        "anyOf": [
+          {
+            "enum": [
+              "concise_professional",
+              "concise_casual",
+              "expanded_professional",
+              "expanded_casual"
+            ],
+            "type": "string",
+            "description": "The tone the agent writes in. Send null to clear the tone.",
+            "example": "concise_professional",
+            "x-ms-enum": {
+              "name": "UpdateInboxAgentOptionsTone",
+              "modelAsString": false,
+              "values": [
+                {
+                  "value": "concise_professional",
+                  "name": "ConciseProfessional"
+                },
+                {
+                  "value": "concise_casual",
+                  "name": "ConciseCasual"
+                },
+                {
+                  "value": "expanded_professional",
+                  "name": "ExpandedProfessional"
+                },
+                {
+                  "value": "expanded_casual",
+                  "name": "ExpandedCasual"
+                }
+              ]
             }
-          ]
-        }
+          },
+          {
+            "type": "null"
+          }
+        ]
       },
       "UpdateInboxAgentOptionsActionsItem": {
         "enum": [
@@ -19057,57 +18752,66 @@
         }
       },
       "ListAttachmentsResponseDataItemContentDisposition": {
-        "enum": [
-          "inline",
-          "attachment",
-          null
-        ],
-        "type": [
-          "null",
-          "string"
-        ],
         "description": "How the attachment should be displayed.",
         "example": "attachment",
-        "x-ms-enum": {
-          "name": "ListAttachmentsResponseDataItemContentDisposition",
-          "modelAsString": false,
-          "values": [
-            {
-              "value": "inline",
-              "name": "Inline"
-            },
-            {
-              "value": "attachment",
-              "name": "Attachment"
+        "anyOf": [
+          {
+            "enum": [
+              "inline",
+              "attachment"
+            ],
+            "type": "string",
+            "description": "How the attachment should be displayed.",
+            "example": "attachment",
+            "x-ms-enum": {
+              "name": "ListAttachmentsResponseDataItemContentDisposition",
+              "modelAsString": false,
+              "values": [
+                {
+                  "value": "inline",
+                  "name": "Inline"
+                },
+                {
+                  "value": "attachment",
+                  "name": "Attachment"
+                }
+              ]
             }
-          ]
-        }
+          },
+          {
+            "type": "null"
+          }
+        ]
       },
       "GetReceivedEmailResponseAttachmentsItemContentDisposition": {
-        "enum": [
-          "inline",
-          "attachment",
-          null
-        ],
-        "type": [
-          "null",
-          "string"
-        ],
         "description": "How the attachment should be displayed.",
-        "x-ms-enum": {
-          "name": "GetReceivedEmailResponseAttachmentsItemContentDisposition",
-          "modelAsString": false,
-          "values": [
-            {
-              "value": "inline",
-              "name": "Inline"
-            },
-            {
-              "value": "attachment",
-              "name": "Attachment"
+        "anyOf": [
+          {
+            "enum": [
+              "inline",
+              "attachment"
+            ],
+            "type": "string",
+            "description": "How the attachment should be displayed.",
+            "x-ms-enum": {
+              "name": "GetReceivedEmailResponseAttachmentsItemContentDisposition",
+              "modelAsString": false,
+              "values": [
+                {
+                  "value": "inline",
+                  "name": "Inline"
+                },
+                {
+                  "value": "attachment",
+                  "name": "Attachment"
+                }
+              ]
             }
-          ]
-        }
+          },
+          {
+            "type": "null"
+          }
+        ]
       },
       "ListWebhookEventsResponseDataItemStatus": {
         "enum": [
@@ -19303,30 +19007,34 @@
         }
       },
       "ListReceivedEmailsResponseDataItemAttachmentsItemContentDisposition": {
-        "enum": [
-          "inline",
-          "attachment",
-          null
-        ],
-        "type": [
-          "null",
-          "string"
-        ],
         "description": "How the attachment should be displayed.",
-        "x-ms-enum": {
-          "name": "ListReceivedEmailsResponseDataItemAttachmentsItemContentDisposition",
-          "modelAsString": false,
-          "values": [
-            {
-              "value": "inline",
-              "name": "Inline"
-            },
-            {
-              "value": "attachment",
-              "name": "Attachment"
+        "anyOf": [
+          {
+            "enum": [
+              "inline",
+              "attachment"
+            ],
+            "type": "string",
+            "description": "How the attachment should be displayed.",
+            "x-ms-enum": {
+              "name": "ListReceivedEmailsResponseDataItemAttachmentsItemContentDisposition",
+              "modelAsString": false,
+              "values": [
+                {
+                  "value": "inline",
+                  "name": "Inline"
+                },
+                {
+                  "value": "attachment",
+                  "name": "Attachment"
+                }
+              ]
             }
-          ]
-        }
+          },
+          {
+            "type": "null"
+          }
+        ]
       },
       "EmailsMetricsGranularityParameter": {
         "enum": [
@@ -20795,6 +20503,338 @@
             "description": "Return any 2xx status code to acknowledge receipt of the event."
           }
         }
+      }
+    }
+  },
+  "x-client-unused-schemas": {
+    "EmailTemplateInput": {
+      "required": [
+        "id"
+      ],
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "The id of the published email template."
+        },
+        "variables": {
+          "$ref": "#/components/schemas/EmailTemplateInputVariablesProperty"
+        }
+      }
+    },
+    "TemplateVariableInputFallbackValue": {
+      "oneOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "number"
+        },
+        {
+          "type": "boolean"
+        },
+        {
+          "type": "object"
+        },
+        {
+          "type": "array",
+          "items": {}
+        }
+      ],
+      "description": "The fallback value of the variable."
+    },
+    "EmailBouncedEventDataAllOf2": {
+      "required": [
+        "bounce"
+      ],
+      "type": "object",
+      "properties": {
+        "bounce": {
+          "$ref": "#/components/schemas/WebhookEventBounce"
+        }
+      }
+    },
+    "EmailClickedEventDataAllOf2": {
+      "required": [
+        "click"
+      ],
+      "type": "object",
+      "properties": {
+        "click": {
+          "$ref": "#/components/schemas/WebhookEventClick"
+        }
+      }
+    },
+    "EmailFailedEventDataAllOf2": {
+      "required": [
+        "failed"
+      ],
+      "type": "object",
+      "properties": {
+        "failed": {
+          "$ref": "#/components/schemas/WebhookEventFailed"
+        }
+      }
+    },
+    "EmailSuppressedEventDataAllOf2": {
+      "required": [
+        "suppressed"
+      ],
+      "type": "object",
+      "properties": {
+        "suppressed": {
+          "$ref": "#/components/schemas/WebhookEventSuppressed"
+        }
+      }
+    },
+    "InboxThreadSearchResultAllOf2": {
+      "required": [
+        "matched_email_id"
+      ],
+      "type": "object",
+      "properties": {
+        "matched_email_id": {
+          "type": [
+            "null",
+            "string"
+          ],
+          "description": "The ID of the email in the thread that matched the search. When \u0060query\u0060 has words or phrases, it is the most relevant match. Otherwise, it is the newest. It is the same \u0060id\u0060 that the list thread emails endpoint returns, so use it as \u0060email_id\u0060 with the get, reply and forward endpoints. Null when the search index returns no matched email for the thread.",
+          "format": "uuid",
+          "example": "e8a3f1c6-2b9d-4e5a-a7c4-9d1b6f3e2a80"
+        }
+      }
+    },
+    "SendEmailRequestHeaders": {
+      "type": "object",
+      "description": "Custom headers to add to the email."
+    },
+    "EmailTemplateInputVariables": {
+      "type": "object",
+      "additionalProperties": {
+        "$ref": "#/components/schemas/EmailTemplateInputVariablesAdditionalProperties"
+      },
+      "description": "Template variables object with key/value pairs.",
+      "example": {
+        "variableName": "Sign up now",
+        "variableName2": 123
+      }
+    },
+    "GetEmailsMetricsResponseTotals": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "number"
+      },
+      "description": "The requested metrics, totaled over the whole date range."
+    },
+    "CreateContactOptionsProperties": {
+      "type": "object",
+      "additionalProperties": {
+        "anyOf": [
+          {
+            "type": "null"
+          },
+          {
+            "type": "number"
+          },
+          {
+            "type": "string"
+          }
+        ]
+      },
+      "description": "A map of custom property keys and values to create."
+    },
+    "GetContactResponseSuccessProperties": {
+      "type": "object",
+      "description": "A map of custom property keys and values."
+    },
+    "UpdateContactOptionsProperties": {
+      "type": "object",
+      "additionalProperties": {
+        "anyOf": [
+          {
+            "type": "null"
+          },
+          {
+            "type": "boolean"
+          },
+          {
+            "type": "number"
+          },
+          {
+            "type": "string"
+          }
+        ]
+      },
+      "description": "A map of custom property keys and values to update."
+    },
+    "GetReceivedEmailResponseHeaders": {
+      "type": [
+        "null",
+        "object"
+      ],
+      "description": "The email headers.",
+      "example": {
+        "X-Custom-Header": "value"
+      }
+    },
+    "GetWebhookEventResponsePayload": {
+      "type": "object",
+      "description": "The event payload sent to the webhook endpoint.",
+      "example": {
+        "type": "email.sent",
+        "created_at": "2026-08-22T15:28:00.000Z",
+        "data": {
+          "email_id": "571f1f42-1c2d-4b1f-8f8e-8b3b5b3b5b3b",
+          "from": "onboarding@resend.dev",
+          "to": [
+            "delivered@resend.dev"
+          ],
+          "subject": "Welcome",
+          "created_at": "2026-08-22T15:27:59.000Z"
+        }
+      }
+    },
+    "CreateSegmentOptionsFilter": {
+      "type": "object",
+      "description": "Filter conditions for the segment."
+    },
+    "GetSegmentResponseSuccessFilter": {
+      "type": "object",
+      "description": "Filter conditions for the segment."
+    },
+    "LogRequestBody": {
+      "type": [
+        "null",
+        "object"
+      ],
+      "description": "The request body sent to the API."
+    },
+    "LogResponseBody": {
+      "type": [
+        "null",
+        "object"
+      ],
+      "description": "The response body returned by the API."
+    },
+    "AutomationStepConfig": {
+      "type": "object",
+      "description": "Configuration for the step. Shape depends on \u0060type\u0060: - **trigger**: \u0060{ event_name: string }\u0060 - **send_email**: \u0060{ template: { id: string, variables?: object }, subject?: string, from?: string, reply_to?: string }\u0060 - **delay**: \u0060{ duration: string }\u0060 \u2014 a human-readable duration (e.g. \u0060\u002230 minutes\u0022\u0060) - **wait_for_event**: \u0060{ event_name: string, timeout?: string, filter_rule?: object }\u0060 \u2014 \u0060timeout\u0060 is a human-readable duration (e.g. \u0060\u00221 hour\u0022\u0060) - **condition**: A rule tree with \u0060type\u0060 (\u0060rule\u0060, \u0060and\u0060, \u0060or\u0060), \u0060field\u0060, \u0060operator\u0060, and \u0060value\u0060 - **contact_update**: \u0060{ first_name?: string|object, last_name?: string|object, unsubscribed?: boolean|object, properties?: object }\u0060 - **contact_delete**: \u0060{}\u0060 - **add_to_segment**: \u0060{ segment_id: string }\u0060\n"
+    },
+    "AutomationStepResponseConfig": {
+      "type": "object",
+      "description": "Configuration for the step. Shape depends on \u0060type\u0060. For \u0060delay\u0060 steps, config contains \u0060{ duration: string }\u0060 with a human-readable duration (e.g. \u0060\u002230 minutes\u0022\u0060). For \u0060wait_for_event\u0060 steps, config contains \u0060{ event_name: string, timeout?: string, filter_rule?: object }\u0060 where \u0060timeout\u0060 is a human-readable duration.\n"
+    },
+    "AutomationRunStepOutput": {
+      "type": [
+        "null",
+        "object"
+      ],
+      "description": "The output produced by the step, if any."
+    },
+    "AutomationRunStepError": {
+      "type": [
+        "null",
+        "object"
+      ],
+      "description": "The error produced by the step, if any."
+    },
+    "EventTypeSchema": {
+      "type": [
+        "null",
+        "object"
+      ],
+      "description": "A flat key/type map defining the event payload schema. Supported types are \u0060string\u0060, \u0060number\u0060, \u0060boolean\u0060, and \u0060date\u0060."
+    },
+    "EventSummarySchema": {
+      "type": [
+        "null",
+        "object"
+      ],
+      "description": "A flat key/type map defining the event payload schema. Supported types are \u0060string\u0060, \u0060number\u0060, \u0060boolean\u0060, and \u0060date\u0060."
+    },
+    "CreateEventRequestSchema": {
+      "type": [
+        "null",
+        "object"
+      ],
+      "description": "An optional flat key/type map defining the event payload schema. Supported types are \u0060string\u0060, \u0060number\u0060, \u0060boolean\u0060, and \u0060date\u0060."
+    },
+    "UpdateEventRequestSchema": {
+      "type": [
+        "null",
+        "object"
+      ],
+      "description": "A flat key/type map defining the event payload schema. Set to \u0060null\u0060 to clear the schema. Supported types are \u0060string\u0060, \u0060number\u0060, \u0060boolean\u0060, and \u0060date\u0060."
+    },
+    "SendEventRequestPayload": {
+      "type": "object",
+      "description": "An optional payload of key/value pairs to include with the event."
+    },
+    "OutboundEmailEventDataTags": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      },
+      "description": "Tag key-value pairs associated with the email."
+    },
+    "ReplyInboxThreadEmailOptionsHeaders": {
+      "type": [
+        "null",
+        "object"
+      ],
+      "additionalProperties": {
+        "type": "string"
+      },
+      "description": "Custom headers to add to the email. The \u0060In-Reply-To\u0060, \u0060References\u0060 and \u0060Reply-To\u0060 headers are set by Resend and cannot be set here. Sending one of them, in any letter case, returns a 422. Header names cannot be empty, and names and values cannot contain line breaks or null characters, or the request returns a 422. \u0060null\u0060 means no custom headers.",
+      "example": {
+        "X-Ticket-Id": "4821"
+      }
+    },
+    "ForwardInboxThreadEmailOptionsHeaders": {
+      "type": [
+        "null",
+        "object"
+      ],
+      "additionalProperties": {
+        "type": "string"
+      },
+      "description": "Custom headers to add to the email. The \u0060In-Reply-To\u0060, \u0060References\u0060 and \u0060Reply-To\u0060 headers are set by Resend and cannot be set here. Sending one of them, in any letter case, returns a 422. Header names cannot be empty, and names and values cannot contain line breaks or null characters, or the request returns a 422. \u0060null\u0060 means no custom headers.",
+      "example": {
+        "X-Ticket-Id": "4821"
+      }
+    },
+    "SendInboxDraftOptionsHeaders": {
+      "type": [
+        "null",
+        "object"
+      ],
+      "additionalProperties": {
+        "type": "string"
+      },
+      "description": "Custom headers to add to the email. The \u0060In-Reply-To\u0060, \u0060References\u0060 and \u0060Reply-To\u0060 headers are set by Resend and cannot be set here. Sending one of them, in any letter case, returns a 422. Header names cannot be empty, and names and values cannot contain line breaks or null characters, or the request returns a 422. \u0060null\u0060 means no custom headers.",
+      "example": {
+        "X-Ticket-Id": "4821"
+      }
+    },
+    "EmailsSendBatchRequest": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/SendEmailRequest"
+      }
+    },
+    "ExamplePayload": {
+      "type": "object",
+      "description": "Placeholder schema for path example refs"
+    },
+    "EmailTemplateInputVariablesProperty": {
+      "type": "object",
+      "additionalProperties": {
+        "$ref": "#/components/schemas/EmailTemplateInputVariablesAdditionalProperties"
+      },
+      "description": "Template variables object with key/value pairs.",
+      "example": {
+        "variableName": "Sign up now",
+        "variableName2": 123
       }
     }
   }

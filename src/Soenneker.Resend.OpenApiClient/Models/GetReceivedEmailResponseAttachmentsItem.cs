@@ -34,8 +34,15 @@ namespace Soenneker.Resend.OpenApiClient.Models
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>How the attachment should be displayed.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
         public global::Soenneker.Resend.OpenApiClient.Models.GetReceivedEmailResponseAttachmentsItemContentDisposition? ContentDisposition { get => _explicitNullValueContentDisposition; set { _explicitNullValueContentDisposition = value; AdditionalData?.Remove("content_disposition"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("content_disposition"); else _explicitNullProperties?.Remove("content_disposition"); } }
         private global::Soenneker.Resend.OpenApiClient.Models.GetReceivedEmailResponseAttachmentsItemContentDisposition? _explicitNullValueContentDisposition = default!;
+#nullable restore
+#else
+        public global::Soenneker.Resend.OpenApiClient.Models.GetReceivedEmailResponseAttachmentsItemContentDisposition ContentDisposition { get => _explicitNullValueContentDisposition; set { _explicitNullValueContentDisposition = value; AdditionalData?.Remove("content_disposition"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("content_disposition"); else _explicitNullProperties?.Remove("content_disposition"); } }
+        private global::Soenneker.Resend.OpenApiClient.Models.GetReceivedEmailResponseAttachmentsItemContentDisposition _explicitNullValueContentDisposition = default!;
+#endif
         /// <summary>The content ID for inline attachments.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -97,7 +104,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "content_disposition", n => { var parsed = n.GetEnumValue<global::Soenneker.Resend.OpenApiClient.Models.GetReceivedEmailResponseAttachmentsItemContentDisposition>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueContentDisposition = default; _explicitNullProperties?.Remove("content_disposition"); AdditionalData["content_disposition"] = unknown; } else { ContentDisposition = parsed; AdditionalData.Remove("content_disposition"); } } },
+                { "content_disposition", n => { ContentDisposition = n.GetObjectValue<global::Soenneker.Resend.OpenApiClient.Models.GetReceivedEmailResponseAttachmentsItemContentDisposition>(global::Soenneker.Resend.OpenApiClient.Models.GetReceivedEmailResponseAttachmentsItemContentDisposition.CreateFromDiscriminatorValue); } },
                 { "content_id", n => { ContentId = n.GetStringValue(); } },
                 { "content_type", n => { ContentType = n.GetStringValue(); } },
                 { "filename", n => { Filename = n.GetStringValue(); } },
@@ -112,7 +119,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteEnumValue<global::Soenneker.Resend.OpenApiClient.Models.GetReceivedEmailResponseAttachmentsItemContentDisposition>("content_disposition", ContentDisposition);
+            writer.WriteObjectValue<global::Soenneker.Resend.OpenApiClient.Models.GetReceivedEmailResponseAttachmentsItemContentDisposition>("content_disposition", ContentDisposition);
             writer.WriteStringValue("content_id", ContentId);
             writer.WriteStringValue("content_type", ContentType);
             writer.WriteStringValue("filename", Filename);
