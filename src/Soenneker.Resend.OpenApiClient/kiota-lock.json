@@ -2,7 +2,7 @@
   "descriptionHash": "6F98DC49B48F14CF3F142CF2C58B3FDF25E0D29ED45DB8D5BA80A31CADC6724CF25CF4DCA3A6FDAB934CF8174CAEBE5813B991E166562392D53B2B48F1ADBA76",
   "descriptionLocation": "../../fixed.json",
   "lockFileVersion": "1.0.0",
-  "kiotaVersion": "1.37.0",
+  "kiotaVersion": "1.38.0",
   "clientClassName": "ResendOpenApiClient",
   "typeAccessModifier": "Public",
   "clientNamespaceName": "Soenneker.Resend.OpenApiClient",
