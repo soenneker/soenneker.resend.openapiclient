@@ -128,7 +128,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(7)
             {
                 { "client", n => { Client = n.GetObjectValue<global::Soenneker.Resend.OpenApiClient.Models.OAuthGrantClient>(global::Soenneker.Resend.OpenApiClient.Models.OAuthGrantClient.CreateFromDiscriminatorValue); } },
                 { "client_id", n => { ClientId = n.GetStringValue(); } },

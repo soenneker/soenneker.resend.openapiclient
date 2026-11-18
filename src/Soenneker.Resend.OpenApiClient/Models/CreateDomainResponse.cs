@@ -143,7 +143,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(10)
             {
                 { "capabilities", n => { Capabilities = n.GetObjectValue<global::Soenneker.Resend.OpenApiClient.Models.DomainCapabilities>(global::Soenneker.Resend.OpenApiClient.Models.DomainCapabilities.CreateFromDiscriminatorValue); } },
                 { "click_tracking", n => { ClickTracking = n.GetBoolValue(); } },

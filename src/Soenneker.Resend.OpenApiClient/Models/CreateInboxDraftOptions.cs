@@ -139,7 +139,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(9)
             {
                 { "attachments", n => { Attachments = n.GetCollectionOfObjectValues<global::Soenneker.Resend.OpenApiClient.Models.InboxDraftAttachmentInput>(global::Soenneker.Resend.OpenApiClient.Models.InboxDraftAttachmentInput.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "bcc", n => { Bcc = n.GetObjectValue<global::Soenneker.Resend.OpenApiClient.Models.CreateInboxDraftOptionsBcc>(global::Soenneker.Resend.OpenApiClient.Models.CreateInboxDraftOptionsBcc.CreateFromDiscriminatorValue); } },

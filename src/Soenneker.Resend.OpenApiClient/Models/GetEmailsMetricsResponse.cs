@@ -133,7 +133,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(8)
             {
                 { "data", n => { Data = n.GetCollectionOfObjectValues<global::Soenneker.Resend.OpenApiClient.Models.EmailMetricsDataRow>(global::Soenneker.Resend.OpenApiClient.Models.EmailMetricsDataRow.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "dimensions", n => { Dimensions = n.GetCollectionOfEnumValues<global::Soenneker.Resend.OpenApiClient.Models.GetEmailsMetricsResponseDimensionsItem>()?.AsList(); } },

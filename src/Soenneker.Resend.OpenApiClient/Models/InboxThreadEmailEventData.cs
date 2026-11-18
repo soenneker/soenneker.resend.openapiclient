@@ -89,7 +89,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(6)
             {
                 { "email", n => { Email = n.GetObjectValue<global::Soenneker.Resend.OpenApiClient.Models.InboxEventEmail>(global::Soenneker.Resend.OpenApiClient.Models.InboxEventEmail.CreateFromDiscriminatorValue); } },
                 { "email_id", n => { EmailId = n.GetGuidValue(); } },

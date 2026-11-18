@@ -102,7 +102,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(6)
             {
                 { "content_disposition", n => { ContentDisposition = n.GetObjectValue<global::Soenneker.Resend.OpenApiClient.Models.ListReceivedEmailsResponseDataItemAttachmentsItemContentDisposition>(global::Soenneker.Resend.OpenApiClient.Models.ListReceivedEmailsResponseDataItemAttachmentsItemContentDisposition.CreateFromDiscriminatorValue); } },
                 { "content_id", n => { ContentId = n.GetStringValue(); } },

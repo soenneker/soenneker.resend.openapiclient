@@ -4,6 +4,7 @@ using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
 using Microsoft.Kiota.Abstractions;
 using Soenneker.Resend.OpenApiClient.Domains.Item.Claim;
+using Soenneker.Resend.OpenApiClient.Domains.Item.Forge;
 using Soenneker.Resend.OpenApiClient.Domains.Item.Verify;
 using Soenneker.Resend.OpenApiClient.Models;
 using System.Collections.Generic;
@@ -23,6 +24,11 @@ namespace Soenneker.Resend.OpenApiClient.Domains.Item
         public global::Soenneker.Resend.OpenApiClient.Domains.Item.Claim.ClaimRequestBuilder Claim
         {
             get => new global::Soenneker.Resend.OpenApiClient.Domains.Item.Claim.ClaimRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The forge property</summary>
+        public global::Soenneker.Resend.OpenApiClient.Domains.Item.Forge.ForgeRequestBuilder Forge
+        {
+            get => new global::Soenneker.Resend.OpenApiClient.Domains.Item.Forge.ForgeRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The verify property</summary>
         public global::Soenneker.Resend.OpenApiClient.Domains.Item.Verify.VerifyRequestBuilder Verify

@@ -100,7 +100,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(7)
             {
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "default_subscription", n => { var parsed = n.GetEnumValue<global::Soenneker.Resend.OpenApiClient.Models.TopicEventDataDefaultSubscription>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueDefaultSubscription = default; _explicitNullProperties?.Remove("default_subscription"); AdditionalData["default_subscription"] = unknown; } else { DefaultSubscription = parsed; AdditionalData.Remove("default_subscription"); } } },

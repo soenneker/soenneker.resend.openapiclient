@@ -82,7 +82,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(6)
             {
                 { "from", n => { var parsed = n.GetEnumValue<global::Soenneker.Resend.OpenApiClient.Models.InboxThreadFolderUpdatedEventDataFrom>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueFrom = default; _explicitNullProperties?.Remove("from"); AdditionalData["from"] = unknown; } else { From = parsed; AdditionalData.Remove("from"); } } },
                 { "inbox_id", n => { InboxId = n.GetGuidValue(); } },

@@ -157,7 +157,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(10)
             {
                 { "bounce", n => { Bounce = n.GetObjectValue<global::Soenneker.Resend.OpenApiClient.Models.WebhookEventBounce>(global::Soenneker.Resend.OpenApiClient.Models.WebhookEventBounce.CreateFromDiscriminatorValue); } },
                 { "broadcast_id", n => { BroadcastId = n.GetStringValue(); } },

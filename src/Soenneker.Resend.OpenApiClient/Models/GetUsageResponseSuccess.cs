@@ -152,7 +152,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>
+            return new Dictionary<string, Action<IParseNode>>(9)
             {
                 { "ai_credits", n => { AiCredits = n.GetObjectValue<global::Soenneker.Resend.OpenApiClient.Models.GetUsageResponseSuccessAiCredits>(global::Soenneker.Resend.OpenApiClient.Models.GetUsageResponseSuccessAiCredits.CreateFromDiscriminatorValue); } },
                 { "automation_runs", n => { AutomationRuns = n.GetObjectValue<global::Soenneker.Resend.OpenApiClient.Models.GetUsageResponseSuccessAutomationRuns>(global::Soenneker.Resend.OpenApiClient.Models.GetUsageResponseSuccessAutomationRuns.CreateFromDiscriminatorValue); } },
