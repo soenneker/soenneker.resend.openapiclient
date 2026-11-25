@@ -15703,9 +15703,12 @@
           "null",
           "object"
         ],
-        "description": "The email headers.",
+        "additionalProperties": {
+          "type": "string"
+        },
+        "description": "The email headers, keyed by lowercase header name.",
         "example": {
-          "X-Custom-Header": "value"
+          "x-custom-header": "value"
         }
       },
       "GetWebhookEventResponsePayloadProperty": {
@@ -20826,9 +20829,12 @@
         "null",
         "object"
       ],
-      "description": "The email headers.",
+      "additionalProperties": {
+        "type": "string"
+      },
+      "description": "The email headers, keyed by lowercase header name.",
       "example": {
-        "X-Custom-Header": "value"
+        "x-custom-header": "value"
       }
     },
     "GetWebhookEventResponsePayload": {

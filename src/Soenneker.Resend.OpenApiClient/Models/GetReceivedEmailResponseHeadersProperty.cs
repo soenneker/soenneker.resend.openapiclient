@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.Resend.OpenApiClient.Models
 {
     /// <summary>
-    /// The email headers.
+    /// The email headers, keyed by lowercase header name.
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class GetReceivedEmailResponseHeadersProperty : IAdditionalDataHolder, IParsable
