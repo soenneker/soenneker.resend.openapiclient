@@ -396,6 +396,41 @@
               "type": "string",
               "format": "uuid"
             }
+          },
+          {
+            "name": "to",
+            "in": "query",
+            "description": "Comma-separated recipient addresses. Each value must exactly match the envelope recipient, with case. Returns emails that match any of them. Up to 20 values. Repeating the parameter returns a 422 validation_error.",
+            "explode": false,
+            "schema": {
+              "maxItems": 20,
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "example": [
+              "support@example.com",
+              "billing@example.com"
+            ]
+          },
+          {
+            "name": "start_date",
+            "in": "query",
+            "description": "Matches emails received on or after this date. Accepts a date like \u00602026-09-01\u0060 or an ISO 8601 timestamp, in UTC unless the timestamp has an offset.",
+            "schema": {
+              "type": "string"
+            },
+            "example": "2026-09-01"
+          },
+          {
+            "name": "end_date",
+            "in": "query",
+            "description": "Matches emails received on or before this date. Same formats as \u0060start_date\u0060. A date covers that whole day, so \u0060start_date=2026-09-01\u0026end_date=2026-09-30\u0060 covers all of September. A timestamp is used as given. An \u0060end_date\u0060 before \u0060start_date\u0060 returns a 422 validation_error. A range entirely outside your data retention also returns a 422.",
+            "schema": {
+              "type": "string"
+            },
+            "example": "2026-09-30"
           }
         ],
         "responses": {

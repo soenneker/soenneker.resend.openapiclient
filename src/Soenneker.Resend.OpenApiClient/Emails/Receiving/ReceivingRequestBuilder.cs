@@ -35,7 +35,7 @@ namespace Soenneker.Resend.OpenApiClient.Emails.Receiving
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public ReceivingRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/emails/receiving{?after*,before*,limit*}", pathParameters)
+        public ReceivingRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/emails/receiving{?after*,before*,end_date*,limit*,start_date*,to}", pathParameters)
         {
         }
         /// <summary>
@@ -43,7 +43,7 @@ namespace Soenneker.Resend.OpenApiClient.Emails.Receiving
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public ReceivingRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/emails/receiving{?after*,before*,limit*}", rawUrl)
+        public ReceivingRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/emails/receiving{?after*,before*,end_date*,limit*,start_date*,to}", rawUrl)
         {
         }
         /// <summary>
@@ -104,9 +104,39 @@ namespace Soenneker.Resend.OpenApiClient.Emails.Receiving
             /// <summary>Pagination cursor to fetch results before this email ID. Cannot be used with &apos;after&apos;.</summary>
             [QueryParameter("before")]
             public Guid? Before { get; set; }
+            /// <summary>Matches emails received on or before this date. Same formats as `start_date`. A date covers that whole day, so `start_date=2026-09-01&amp;end_date=2026-09-30` covers all of September. A timestamp is used as given. An `end_date` before `start_date` returns a 422 validation_error. A range entirely outside your data retention also returns a 422.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("end_date")]
+            public string? EndDate { get; set; }
+#nullable restore
+#else
+            [QueryParameter("end_date")]
+            public string EndDate { get; set; }
+#endif
             /// <summary>Maximum number of received emails to return.</summary>
             [QueryParameter("limit")]
             public int? Limit { get; set; }
+            /// <summary>Matches emails received on or after this date. Accepts a date like `2026-09-01` or an ISO 8601 timestamp, in UTC unless the timestamp has an offset.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("start_date")]
+            public string? StartDate { get; set; }
+#nullable restore
+#else
+            [QueryParameter("start_date")]
+            public string StartDate { get; set; }
+#endif
+            /// <summary>Comma-separated recipient addresses. Each value must exactly match the envelope recipient, with case. Returns emails that match any of them. Up to 20 values. Repeating the parameter returns a 422 validation_error.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("to")]
+            public string[]? To { get; set; }
+#nullable restore
+#else
+            [QueryParameter("to")]
+            public string[] To { get; set; }
+#endif
         }
     }
 }
