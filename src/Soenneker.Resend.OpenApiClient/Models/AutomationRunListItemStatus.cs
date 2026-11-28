@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using System;
 namespace Soenneker.Resend.OpenApiClient.Models
 {
-    /// <summary>The current status of the automation run.</summary>
+    /// <summary>The current status of the automation run. `cancelled` runs were stopped on purpose, `skipped` runs ended on their own.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum AutomationRunListItemStatus
     {
@@ -22,6 +22,14 @@ namespace Soenneker.Resend.OpenApiClient.Models
         [EnumMember(Value = "cancelled")]
         #pragma warning disable CS1591
         Cancelled,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "quota_exceeded")]
+        #pragma warning disable CS1591
+        QuotaExceeded,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "skipped")]
+        #pragma warning disable CS1591
+        Skipped,
         #pragma warning restore CS1591
     }
 }

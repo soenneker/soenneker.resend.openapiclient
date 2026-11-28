@@ -3881,7 +3881,7 @@
           {
             "name": "status",
             "in": "query",
-            "description": "Filter runs by status. Comma-separated list of: running, completed, failed, cancelled.",
+            "description": "Filter runs by status. Comma-separated list of: running, completed, failed, cancelled, quota_exceeded, skipped.",
             "schema": {
               "type": "string"
             }
@@ -9792,6 +9792,11 @@
           "status": {
             "$ref": "#/components/schemas/AutomationRunStatus"
           },
+          "status_reason": {
+            "type": "string",
+            "description": "The reason behind the run\u0027s status, for example \u0060missing_variable\u0060 or \u0060contact_deleted\u0060. Only present on \u0060failed\u0060 and \u0060skipped\u0060 runs.",
+            "example": "missing_variable"
+          },
           "started_at": {
             "type": [
               "null",
@@ -9831,6 +9836,11 @@
           },
           "status": {
             "$ref": "#/components/schemas/AutomationRunListItemStatus"
+          },
+          "status_reason": {
+            "type": "string",
+            "description": "The reason behind the run\u0027s status, for example \u0060missing_variable\u0060 or \u0060contact_deleted\u0060. Only present on \u0060failed\u0060 and \u0060skipped\u0060 runs.",
+            "example": "missing_variable"
           },
           "started_at": {
             "type": [
@@ -17390,10 +17400,12 @@
           "running",
           "completed",
           "failed",
-          "cancelled"
+          "cancelled",
+          "quota_exceeded",
+          "skipped"
         ],
         "type": "string",
-        "description": "The current status of the automation run.",
+        "description": "The current status of the automation run. \u0060cancelled\u0060 runs were stopped on purpose, \u0060skipped\u0060 runs ended on their own.",
         "x-ms-enum": {
           "name": "AutomationRunStatus",
           "modelAsString": false,
@@ -17413,6 +17425,14 @@
             {
               "value": "cancelled",
               "name": "Cancelled"
+            },
+            {
+              "value": "quota_exceeded",
+              "name": "QuotaExceeded"
+            },
+            {
+              "value": "skipped",
+              "name": "Skipped"
             }
           ]
         }
@@ -17422,10 +17442,12 @@
           "running",
           "completed",
           "failed",
-          "cancelled"
+          "cancelled",
+          "quota_exceeded",
+          "skipped"
         ],
         "type": "string",
-        "description": "The current status of the automation run.",
+        "description": "The current status of the automation run. \u0060cancelled\u0060 runs were stopped on purpose, \u0060skipped\u0060 runs ended on their own.",
         "x-ms-enum": {
           "name": "AutomationRunListItemStatus",
           "modelAsString": false,
@@ -17445,6 +17467,14 @@
             {
               "value": "cancelled",
               "name": "Cancelled"
+            },
+            {
+              "value": "quota_exceeded",
+              "name": "QuotaExceeded"
+            },
+            {
+              "value": "skipped",
+              "name": "Skipped"
             }
           ]
         }

@@ -27,6 +27,8 @@ namespace Soenneker.Resend.OpenApiClient.Models
             else if (parseNode.GetChildNode("started_at") is { } nullNodeStartedAt && nullNodeStartedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) StartedAt = null;
             if (parseNode.GetChildNode("status") is null) { _explicitNullValueStatus = default!; _explicitNullProperties?.Remove("status"); }
             else if (parseNode.GetChildNode("status") is { } nullNodeStatus && nullNodeStatus.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Status = null;
+            if (parseNode.GetChildNode("status_reason") is null) { _explicitNullValueStatusReason = default!; _explicitNullProperties?.Remove("status_reason"); }
+            else if (parseNode.GetChildNode("status_reason") is { } nullNodeStatusReason && nullNodeStatusReason.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) StatusReason = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -71,9 +73,19 @@ namespace Soenneker.Resend.OpenApiClient.Models
         public string StartedAt { get => _explicitNullValueStartedAt; set { _explicitNullValueStartedAt = value; AdditionalData?.Remove("started_at"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("started_at"); else _explicitNullProperties?.Remove("started_at"); } }
         private string _explicitNullValueStartedAt = default!;
 #endif
-        /// <summary>The current status of the automation run.</summary>
+        /// <summary>The current status of the automation run. `cancelled` runs were stopped on purpose, `skipped` runs ended on their own.</summary>
         public global::Soenneker.Resend.OpenApiClient.Models.AutomationRunListItemStatus? Status { get => _explicitNullValueStatus; set { _explicitNullValueStatus = value; AdditionalData?.Remove("status"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status"); else _explicitNullProperties?.Remove("status"); } }
         private global::Soenneker.Resend.OpenApiClient.Models.AutomationRunListItemStatus? _explicitNullValueStatus = default!;
+        /// <summary>The reason behind the run&apos;s status, for example `missing_variable` or `contact_deleted`. Only present on `failed` and `skipped` runs.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? StatusReason { get => _explicitNullValueStatusReason; set { _explicitNullValueStatusReason = value; AdditionalData?.Remove("status_reason"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status_reason"); else _explicitNullProperties?.Remove("status_reason"); } }
+        private string? _explicitNullValueStatusReason = default!;
+#nullable restore
+#else
+        public string StatusReason { get => _explicitNullValueStatusReason; set { _explicitNullValueStatusReason = value; AdditionalData?.Remove("status_reason"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status_reason"); else _explicitNullProperties?.Remove("status_reason"); } }
+        private string _explicitNullValueStatusReason = default!;
+#endif
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.Resend.OpenApiClient.Models.AutomationRunListItem"/> and sets the default values.
         /// </summary>
@@ -97,13 +109,14 @@ namespace Soenneker.Resend.OpenApiClient.Models
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
-            return new Dictionary<string, Action<IParseNode>>(5)
+            return new Dictionary<string, Action<IParseNode>>(6)
             {
                 { "completed_at", n => { CompletedAt = n.GetStringValue(); } },
                 { "created_at", n => { CreatedAt = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "started_at", n => { StartedAt = n.GetStringValue(); } },
                 { "status", n => { var parsed = n.GetEnumValue<global::Soenneker.Resend.OpenApiClient.Models.AutomationRunListItemStatus>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueStatus = default; _explicitNullProperties?.Remove("status"); AdditionalData["status"] = unknown; } else { Status = parsed; AdditionalData.Remove("status"); } } },
+                { "status_reason", n => { StatusReason = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -118,6 +131,7 @@ namespace Soenneker.Resend.OpenApiClient.Models
             writer.WriteStringValue("id", Id);
             writer.WriteStringValue("started_at", StartedAt);
             writer.WriteEnumValue<global::Soenneker.Resend.OpenApiClient.Models.AutomationRunListItemStatus>("status", Status);
+            writer.WriteStringValue("status_reason", StatusReason);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }
